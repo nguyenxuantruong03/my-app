@@ -5,13 +5,23 @@ export interface Store{
 export interface Billboard {
   id: string;
   label: string;
-  imageUrl: string;
+  imagebillboard: ImageBillboard[];
+}
+
+export interface ImageBillboard {
+  id: string;
+  url: string;
 }
 
 export interface Billboardmini {
   id: string;
   label: string;
-  imageUrl: string;
+  imagebillboardmini: ImageBillboardmini[];
+}
+
+export interface ImageBillboardmini {
+  id: string;
+  url: string;
 }
 
 export interface Billboardsale {

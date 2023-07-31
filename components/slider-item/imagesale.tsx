@@ -1,8 +1,14 @@
+import { Billboardsale } from "@/types";
 
-const ImageSale = () => {
+interface Imagesaleprops{
+   data: Billboardsale
+}
+const ImageSale:React.FC<Imagesaleprops> = ({data}) => {
     return ( 
         <div className="h-[75px] border rounded-xl my-4">
-           123
+           <div className="rounded-xl w-full h-[75px] overflow-hidden bg-cover"
+            style={{backgroundImage: `url(${data?.imageUrl})`}}>
+            </div>
         </div>
      );
 }
