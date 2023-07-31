@@ -1,0 +1,11 @@
+.container-11 {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+  }
+.container-1 {
+    background: #fff;
+    height: calc((100% - 30px) / 2);
+  
+  }
+  
