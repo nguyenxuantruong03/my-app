@@ -1,48 +1,17 @@
-"use client"
+import getProduct from "@/actions/product/get-product";
+import MainProduct from "@/components/product/mainproduct";
+import SlideItem from "@/components/slider-item/slideitem";
+import Suggest from "@/components/suggest/Suggest";
 
-import ProductList from "@/components/product/product-list/product-list";
-import ProductListSingnle from "@/components/product/product-list-single/product-list-single";
-
-
-export default function HomePage() {
+export const revalidate = 0;
+const HomePage = async () => {
+  const products = await getProduct({ isFeatured: true });
   return (
-    <div className="mx-auto max-w-7xl">
-      
-       <div className="my-14 ">
-        <h1 className="my-7 font-bold text-3xl">Test</h1>
-      <div className="h-[800px] ">
-        <ProductList />
-      </div>
-      </div>
-
-      <div className="my-14 ">
-        <h1 className="my-7 font-bold text-3xl">Test</h1>
-      <div className="h-[800px] ">
-        <ProductList />
-      </div>
-      </div>
-
-      <div className="my-14 ">
-        <h1 className="my-7 font-bold text-3xl">Test</h1>
-      <div className="h-[400px] bg-gray-500 ">
-        <ProductListSingnle />
-      </div>
-      </div>
-
-      <div className="my-14">
-        <h1 className="my-7 font-bold text-3xl">Test</h1>
-      <div className="h-[800px] ">
-        <ProductList />
-      </div>
-      </div>
-
-      <div className="my-14">
-        <h1 className="my-7 font-bold text-3xl">Test</h1>
-      <div className="h-[800px] ">
-        <ProductList />
-      </div>
-      </div>
-
-    </div>
-  )
-}
+    <>
+      <SlideItem />
+      <MainProduct items={products} />
+      <Suggest />
+    </>
+  );
+};
+export default HomePage;

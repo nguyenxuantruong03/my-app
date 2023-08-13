@@ -9,12 +9,12 @@ interface ImageMiniProps{
 const ImageMini:React.FC<ImageMiniProps> = ({data}) => {
   return (
     <>
-    <div className="h-[115px] rounded-md shadow-md">
+    <div className="h-[115px] rounded-md shadow-md ">
     <Link href="/">
-    <div className=" overflow-hidden rounded-xl h-[115px] w-full">
+    <div className=" overflow-hidden rounded-xl h-[115px]">
       <Image 
              src={data?.imagebillboardmini?.[0].url}
-             width="515"
+             width="275"
              height="215"
              alt="Image"
              className="object-cover rounded-md"
@@ -25,10 +25,10 @@ const ImageMini:React.FC<ImageMiniProps> = ({data}) => {
 
     <div className="h-[115px] rounded-md shadow-md">
     <Link href="/">
-    <div className=" overflow-hidden rounded-xl h-[115px] w-full">
+    <div className=" overflow-hidden rounded-xl h-[115px] ">
       <Image 
              src={data?.imagebillboardmini?.[1].url}
-             width="515"
+             width="275"
              height="215"
              alt="Image"
              className="object-cover rounded-md"
@@ -39,10 +39,10 @@ const ImageMini:React.FC<ImageMiniProps> = ({data}) => {
 
     <div className=" rounded-md shadow-md ">
     <Link href="/">
-    <div className=" overflow-hidden rounded-xl h-[115px] w-full">
+    <div className=" overflow-hidden rounded-xl h-[115px] ">
       <Image 
              src={data?.imagebillboardmini?.[2].url}
-             width="515"
+             width="275"
              height="215"
              alt="Image"
              className="object-cover rounded-md"

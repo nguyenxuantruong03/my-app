@@ -1,65 +1,88 @@
-import React, { useRef, useState } from 'react';
+"use client";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/grid';
-import 'swiper/css/pagination';
-import './product-list.css';
-import 'swiper/css/scrollbar';
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/pagination";
+import "./product-list.css";
+import "swiper/css/scrollbar";
 
-import "./product-list.css"
+import { Grid, Autoplay,FreeMode } from "swiper/modules";
+import { Product } from "@/types";
+import Image from "next/image";
+import Currency from "@/components/ui/currency";
+import { useRouter } from "next/navigation";
+import PrevNextSwiper from "./prevnextswiper";
 
+interface ProductListPorps {
+  data: Product[];
+}
 
-// import required modules
-import { Grid, Pagination,Autoplay } from 'swiper/modules';
+const ProductList: React.FC<ProductListPorps> = ({ data }) => {
+  const router = useRouter();
 
-export default function ProductList() {
+  // /product ở đây là file product nằm ở routes nó sẽ chuyển vào [productId]
+  const handleClick = (productId: string) => {
+    router.push(`/product/${productId}`);
+  };
+
   return (
     <>
-    <Swiper
-      slidesPerView={5}
-      grid={{
-        rows: 2,
-        fill:"row"
-      }}
-      autoplay={{
-        delay: 1500,
-        disableOnInteraction: false,
-      }}
-      spaceBetween={20}
-      modules={[Grid, Pagination,Autoplay]}
-      className="container-11 "
-    >
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      <SwiperSlide className="container-1">Slide 1</SwiperSlide>
-      {/* <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      <SwiperSlide>Slide 5</SwiperSlide>
-      <SwiperSlide>Slide 6</SwiperSlide>
-      <SwiperSlide>Slide 7</SwiperSlide>
-      <SwiperSlide>Slide 8</SwiperSlide>
-      <SwiperSlide>Slide 9</SwiperSlide>
-      <SwiperSlide>Slide 5</SwiperSlide>
-      <SwiperSlide>Slide 6</SwiperSlide>
-      <SwiperSlide>Slide 7</SwiperSlide>
-      <SwiperSlide>Slide 8</SwiperSlide>
-      <SwiperSlide>Slide 9</SwiperSlide> */}
-    </Swiper>
-  </>
+      <Swiper
+        slidesPerView={5}
+        grid={{
+          rows: 2,
+          fill: "row",
+        }}
+        spaceBetween={20}
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        freeMode={true}
+        modules={[Grid, Autoplay,FreeMode]}
+        className="mySwiper"
+      >
+        {data.map((product) => (
+          <SwiperSlide key={product.id}>
+            <div
+              onClick={() => handleClick(product.id)}
+              className=" bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative"
+            >
+              {/* Images and actions */}
+              <div className="aspect-square rounded-xl bg-gray-100 relative  ">
+                <Image
+                  src={product?.images?.[0].url}
+                  fill
+                  alt="Image"
+                  className="aspect-square object-cover rounded-md"
+                />
+              </div>
+              {/* Description */}
+              <div className="ml-3">
+                <p className="font-semibold text-lg">{product.name}</p>
+                <p className="text-sm text-gray-500">{product.category.name}</p>
+              </div>
+              <div className="flex items-center justify-between ml-3">
+                <Currency valueold={product?.priceold} value={product?.price} />
+              </div>
+            </div>
+            <div className="home-product-item__favorite">
+              <span className="ml-1">Giảm {product.percentpromotion}%</span>
+            </div>
+          </SwiperSlide>
+        ))}
+         <div className="absolute top-16 z-10 ">
+        <PrevNextSwiper/>
+        </div>
+      </Swiper>
+    </>
   );
-}
+};
+
+export default ProductList;
