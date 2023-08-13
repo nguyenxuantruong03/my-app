@@ -10,7 +10,7 @@ interface Query{
     isFeatured?: boolean
 }
 
-const getLaptop = async (query: Query):Promise<Laptop[]> =>{
+const getProduct10 = async (query: Query):Promise<Laptop[]> =>{
     const url = qs.stringifyUrl({
         url: URL,
         query:{
@@ -25,4 +25,4 @@ const getLaptop = async (query: Query):Promise<Laptop[]> =>{
     return res.json()
 } 
 
-export default getLaptop
+export default getProduct10

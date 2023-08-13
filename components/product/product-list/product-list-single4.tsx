@@ -14,7 +14,7 @@ import { Product4 } from "@/types";
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
-import PrevNextSwiper from "../prevnextswiper";
+import PrevNextSwiper from "./prevnextswiper";
 
 interface ProductListPorps {
   data: Product4[];
