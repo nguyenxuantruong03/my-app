@@ -2,12 +2,12 @@ import getColors from "@/actions/get-colors";
 import getProduct2 from "@/actions/product/get-product2";
 import getSizes from "@/actions/get-size";
 import ProductCard2 from "@/components/product/productcard-category/productcard-category2";
-import SliderSwipper from "@/components/slider-item/sliderswiper";
 import NoResults from "@/components/ui/no-result";
 import MobileFilter from "./components/mobile-filter";
 import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
+import BillboardCategory from "@/components/slider-item/billboard-category";
 
 export const revalidate = 0;
 interface CategoryPageProps {
@@ -37,7 +37,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     <div className="bg-white">
       <Container>
         <div className="mt-28 flex items-center justify-center">
-          <SliderSwipper data={billboard} />
+        <BillboardCategory data={billboard} />
         </div>
         <div className="px-4 sm:px-6 lg:px-8 pb-24 my-5">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">

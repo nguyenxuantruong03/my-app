@@ -4,9 +4,8 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import Navbar from "@/components/navbar/navbar";
 import ScrollButton from "@/components/backtotop/backToTop";
-import ModalProvider from "@/providers/modal-provider";
-import getProducts from "@/actions/products/get-all";
 import { Product } from "@/types";
+import ToastProvider from "@/providers/toast-provider";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -27,6 +26,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToastProvider />
         <Navbar />
         {children}
         <ScrollButton />

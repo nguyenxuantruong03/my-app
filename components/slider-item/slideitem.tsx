@@ -16,6 +16,7 @@ import getCategories7 from "@/actions/categories/get-categories7";
 import getCategories8 from "@/actions/categories/get-categories8";
 import getCategories9 from "@/actions/categories/get-categories9";
 import getCategorieslaptop from "@/actions/categories/get-categories10";
+import BillboardCategory from "./billboard-category";
 
 export const revalidate = 0;
 const SlideItem = async () => {
@@ -54,7 +55,9 @@ const SlideItem = async () => {
             categories9={categories9}
             categorieslaptop={categorieslaptop}
           />
-
+          <div className="hidden">
+          <BillboardCategory data={billboard} />
+          </div>
           <SliderSwipper data={billboard} />
 
           <div className="w-full space-y-4 h-[115px] ">
