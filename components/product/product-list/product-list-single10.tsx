@@ -10,21 +10,21 @@ import "swiper/css/pagination";
 
 // import required modules
 import { FreeMode, Autoplay } from "swiper/modules";
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
 import PrevNextSwiper from "./prevnextswiper";
 
 interface ProductListPorps {
-  data: Laptop[];
+  data: Product10[];
 }
 const ProductListSingnle: React.FC<ProductListPorps> = ({ data }) => {
   const router = useRouter();
 
   // /product ở đây là file product nằm ở routes nó sẽ chuyển vào [productId]
   const handleClick = (productId: string) => {
-    router.push(`/laptop/${productId}`);
+    router.push(`/product10/${productId}`);
   };
 
   return (
@@ -49,7 +49,7 @@ const ProductListSingnle: React.FC<ProductListPorps> = ({ data }) => {
               {/* Images and actions */}
               <div className="aspect-square rounded-xl bg-gray-100 relative  ">
                 <Image
-                  src={product?.imageslaptop?.[0].url}
+                  src={product?.images?.[0].url}
                   fill
                   alt="Image"
                   className="aspect-square object-cover rounded-md"
@@ -59,7 +59,7 @@ const ProductListSingnle: React.FC<ProductListPorps> = ({ data }) => {
               {/* Description */}
               <div className="ml-3">
                 <p className="font-semibold text-lg">{product.name}</p>
-                <p className="text-sm text-gray-500">{product.categorylaptop.name}</p>
+                <p className="text-sm text-gray-500">{product.category.name}</p>
               </div>
               <div className="flex items-center justify-between ml-3">
                 <Currency valueold={product?.priceold} value={product?.price} />

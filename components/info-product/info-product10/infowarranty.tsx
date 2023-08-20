@@ -5,12 +5,12 @@ import useSeeDetail1 from "@/hooks/use-see-detail1";
 import useSeeDetail2 from "@/hooks/use-see-detail2";
 import useSeeDetail3 from "@/hooks/use-see-detail3";
 import useSeeDetail4 from "@/hooks/use-see-detail4";
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import { ShieldCheck  } from "lucide-react";
 import { MouseEventHandler } from 'react';
 
 interface InfoWarrantyProps{
-    data: Laptop
+    data: Product10
 }
 const InfoWarranty:React.FC<InfoWarrantyProps> = ({data}) => {
     const seedetail = useSeeDetail()

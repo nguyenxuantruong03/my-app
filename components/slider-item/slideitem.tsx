@@ -15,7 +15,8 @@ import getCategories6 from "@/actions/categories/get-categories6";
 import getCategories7 from "@/actions/categories/get-categories7";
 import getCategories8 from "@/actions/categories/get-categories8";
 import getCategories9 from "@/actions/categories/get-categories9";
-import getCategorieslaptop from "@/actions/categories/get-categories10";
+import getCategories10 from "@/actions/categories/get-categories10";
+import getCategories11 from "@/actions/categories/get-categories11";
 import BillboardCategory from "./billboard-category";
 
 export const revalidate = 0;
@@ -37,7 +38,8 @@ const SlideItem = async () => {
   const categories7 = await getCategories7();
   const categories8 = await getCategories8();
   const categories9 = await getCategories9();
-  const categorieslaptop = await getCategorieslaptop();
+  const categories10 = await getCategories10();
+  const categories11 =await getCategories11();
   return (
     <>
       <div className=" mx-auto max-w-7xl h-[377px] my-2 mt-[120px]">
@@ -53,7 +55,8 @@ const SlideItem = async () => {
             categories7={categories7}
             categories8={categories8}
             categories9={categories9}
-            categorieslaptop={categorieslaptop}
+            categories10={categories10}
+            categories11={categories11}
           />
           <div className="hidden">
           <BillboardCategory data={billboard} />

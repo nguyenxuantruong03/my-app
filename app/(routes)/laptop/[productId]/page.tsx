@@ -1,15 +1,15 @@
 import Container from "@/components/ui/container";
 import Gallery from "@/components/gallery/gallery";
-import InfoProduct from "@/components/info-product/info-product10/info-product";
-import InfoWarranty from "@/components/info-product/info-product10/infowarranty";
-import InfoPromotion from "@/components/info-product/info-product10/info-promotion";
-import ProductListSingnle3 from "@/components/product/product-list/product-list-single10";
+import InfoProduct from "@/components/info-product/info-productlaptop/info-product";
+import InfoWarranty from "@/components/info-product/info-productlaptop/infowarranty";
+import InfoPromotion from "@/components/info-product/info-productlaptop/info-promotion";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
-import DetailProduct from "@/components/info-product/info-product10/detail-product";
-import ModalProviderProduct2 from "@/providers/modal-provider-product10";
-import getProducts10 from "@/actions/products/get-laptop10";
-import getProduct10 from "@/actions/product/get-product10";
+import DetailProduct from "@/components/info-product/info-productlaptop/detail-product";
+import ModalProviderProductLaptop from "@/providers/modal-provider-productlaptop";
+import ProductListSingnleLaptop from "@/components/product/product-list/product-list-laptop";
+import getLaptop from "@/actions/products/get-laptop";
+import getProductLaptop from "@/actions/product/get-product-laptop";
 
 export const revalidate = 0;
 
@@ -22,10 +22,10 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
     "1684ae8f-6edb-4d2e-8a5a-a40f81a4a581"
   );
-  const product = await getProducts10(params.productId);
+  const product = await getLaptop(params.productId);
 
-  const suggestedProducts = await getProduct10({
-    categoryId: product?.categorylaptop?.id,
+  const suggestedProducts = await getProductLaptop({
+    categorylaptopId: product?.categorylaptop?.id,
   });
 
   if (!product) {
@@ -37,7 +37,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
       <Container>
         <div className="px-4 py-10 sm:px-6 lg:px-8 mt-20">
           <div className="lg:grid lg:grid-cols-2 lg:item-start lg:gap-x-8 mt-5">
-            <Gallery images={product.imageslaptop} />
+            <Gallery images={product.images} />
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <InfoProduct data={product} />
             </div>
@@ -68,11 +68,11 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         </div>
         <hr className="my-10" />
         <h1 className="font-bold text-3xl my-3">Gợi ý khác </h1>
-        <ProductListSingnle3 data={suggestedProducts} />
+        <ProductListSingnleLaptop data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
       </Container>
-      <ModalProviderProduct2 data={product} />
+      <ModalProviderProductLaptop data={product} />
     </div>
   );
 };

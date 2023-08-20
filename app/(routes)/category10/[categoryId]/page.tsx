@@ -6,7 +6,7 @@ import MobileFilter from "./components/mobile-filter";
 import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
-import getLaptop from "@/actions/product/get-product10";
+import getProduct10 from "@/actions/product/get-product10";
 import BillboardCategory from "@/components/slider-item/billboard-category";
 
 export const revalidate = 0;
@@ -25,7 +25,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   searchParams,
 }) => {
   const billboard = await getBillboard("3375b5bc-24fb-4e37-adfc-589a35c75d58");
-  const product = await getLaptop({
+  const product = await getProduct10({
     categoryId: params.categoryId,
     sizeId: searchParams.sizeId,
     colorId: searchParams.colorId,

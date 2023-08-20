@@ -6,7 +6,7 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-    <div className="fixed z-[9999] w-full top-0">
+    <div className="fixed z-[100] w-full top-0">
     <div className="h-[40px] bg-[#e9efff]">
     <Link href="/#">
       <div className="mx-auto max-w-6xl ">

@@ -1,9 +1,9 @@
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import Modal from "./modal";
 import useSeeDetailSpecifications from "@/hooks/use-see-detail-specifications";
 
 interface SeeDetailSpecificationsPropductProps {
-  data: Laptop;
+  data: Product10;
 }
 const SeeDetailSpecifications: React.FC<
   SeeDetailSpecificationsPropductProps

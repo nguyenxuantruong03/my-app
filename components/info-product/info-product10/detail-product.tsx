@@ -1,8 +1,10 @@
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import Image from "next/image";
+import NewsPageProduct from "@/components/news/news-product";
+
 
 interface DetailProductProps {
-  data: Laptop;
+  data: Product10;
 }
 const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
   return (
@@ -28,7 +30,7 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
             {data.description4salientfeatures}
           </p>
           <Image
-            src={data?.imagesalientfeatureslaptop?.[0].url}
+            src={data?.imagesalientfeaturesproduct10?.[0].url}
             width="1000"
             height="200"
             alt="Image"
@@ -38,7 +40,7 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
             {data.contentsalientfeatures}
           </p>
 <Image
-            src={data?.imagesalientfeatureslaptop?.[1].url}
+            src={data?.imagesalientfeaturesproduct10?.[1].url}
             width="1000"
             height="300"
             alt="Image"
@@ -46,11 +48,13 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
           />
         </div>
         {/* News */}
-        <div className=" p-2 bg-slate-400 bg-opacity-20 w-[250px] rounded-lg h-[500px] absolute right-0 top-0">
+        <div className=" p-2 bg-slate-500 bg-opacity-20 w-[250px] rounded-lg absolute right-0 top-0">
           <h1 className="text-center text-lg font-bold text-red-500">
             Tin tức
           </h1>
-          <p className="text-sm "> content...</p>
+          <div>
+            <NewsPageProduct />
+          </div>
         </div>
       </div>
     </>

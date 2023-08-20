@@ -1,7 +1,7 @@
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import qs from "query-string"
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/laptop`
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/product10`
 
 interface Query{
     categoryId?: string;
@@ -10,7 +10,7 @@ interface Query{
     isFeatured?: boolean
 }
 
-const getProduct10 = async (query: Query):Promise<Laptop[]> =>{
+const getProduct10 = async (query: Query):Promise<Product10[]> =>{
     const url = qs.stringifyUrl({
         url: URL,
         query:{

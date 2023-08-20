@@ -1,13 +1,22 @@
+"use client"
 import { Product7 } from "@/types";
 import { CheckCircle2, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
+import useCart from "@/hooks/use-cart";
+import { MouseEventHandler } from "react";
 
 interface InfoProductProps{
     data: Product7;
 }
 const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
+    const cart = useCart()
+    const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+     event.stopPropagation();
+ 
+     cart.addItem(data);
+   };
     return ( 
         <div>
             <h1 className="text-3xl font-bold text-gray-900">{data.name} </h1>
@@ -44,7 +53,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                      </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">
-                <Button className="flex items-center gap-x-2">
+                <Button onClick={onAddtoCart}  className="flex items-center gap-x-2">
                     Mua ngay
                     <ShoppingCart />
                 </Button>

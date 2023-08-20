@@ -2,7 +2,6 @@ import getColors from "@/actions/get-colors";
 import getProduct from "@/actions/product/get-product";
 import getSizes from "@/actions/get-size";
 import ProductCard from "@/components/product/productcard-category/productcard-category";
-import SliderSwipper from "@/components/slider-item/sliderswiper";
 import NoResults from "@/components/ui/no-result";
 import MobileFilter from "./components/mobile-filter";
 import Filter from "./components/filter";

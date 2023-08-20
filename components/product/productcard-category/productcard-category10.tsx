@@ -4,18 +4,18 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import Currency from "@/components/ui/currency";
 import "../product-list/product-list.css";
 
 interface ProductCardProps{
-    data: Laptop;
+    data: Product10;
 }
 const ProductCard:React.FC<ProductCardProps> = ({data}) => {
     const router = useRouter()
 
     const handleClick= () =>{   
-        router.push(`/laptop/${data?.id}`)
+        router.push(`/product10/${data?.id}`)
     }
 
 
@@ -25,7 +25,7 @@ const ProductCard:React.FC<ProductCardProps> = ({data}) => {
             {/* Images and actions */}
             <div className="aspect-square rounded-xl bg-gray-100 ">
                 <Image 
-                src={data?.imageslaptop?.[0].url}
+                src={data?.images?.[0].url}
                 width="500"
                 height="500"
                 alt="Image"
@@ -38,7 +38,7 @@ const ProductCard:React.FC<ProductCardProps> = ({data}) => {
                     {data.name}
                 </p>
                 <p className="text-sm text-gray-500">
-                    {data.categorylaptop.name}
+                    {data.category.name}
                 </p>
             </div>
             <div className="flex items-center justify-between">

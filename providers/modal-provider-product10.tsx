@@ -5,11 +5,11 @@ import SeeDetail1 from "@/components/modal/see-detail-model1";
 import SeeDetail2 from "@/components/modal/see-detail-model2";
 import SeeDetail3 from "@/components/modal/see-detail-model3";
 import SeeDetail4 from "@/components/modal/see-detail-model4";
-import { Laptop } from "@/types";
+import { Product10 } from "@/types";
 import { useEffect, useState } from "react";
 
 interface ModalProviderProps{
-    data:Laptop
+    data:Product10
 }
 
 const ModalProviderProduct2:React.FC<ModalProviderProps> = ({data}) => {

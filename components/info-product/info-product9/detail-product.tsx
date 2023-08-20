@@ -1,5 +1,6 @@
 import { Product9 } from "@/types";
 import Image from "next/image";
+import NewsPageProduct from "@/components/news/news-product";
 
 interface DetailProductProps {
   data: Product9;
@@ -46,11 +47,13 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
           />
         </div>
         {/* News */}
-        <div className=" p-2 bg-slate-400 bg-opacity-20 w-[250px] rounded-lg h-[500px] absolute right-0 top-0">
+        <div className=" p-2 bg-slate-500 bg-opacity-20 w-[250px] rounded-lg absolute right-0 top-0">
           <h1 className="text-center text-lg font-bold text-red-500">
             Tin tức
           </h1>
-          <p className="text-sm "> content...</p>
+          <div>
+            <NewsPageProduct />
+          </div>
         </div>
       </div>
     </>

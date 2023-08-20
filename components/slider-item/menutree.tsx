@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import { ChevronRight } from "lucide-react";
-import { Category, Category1, Category10, Category2, Category3,Category4,Category5,Category6,Category7,Category8,Category9 } from "@/types";
+import { Category, Category1, Category10, Category11, Category2, Category3,Category4,Category5,Category6,Category7,Category8,Category9 } from "@/types";
 import {usePathname} from "next/navigation"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -18,9 +18,10 @@ categories6: Category6[]
 categories7: Category7[]
 categories8: Category8[]
 categories9: Category9[]
-categorieslaptop: Category10[]
+categories10: Category10[]
+categories11: Category11[]
 }
-const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categories3,categories4,categories5,categories6,categories7,categories8,categories9,categorieslaptop}) => {
+const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categories3,categories4,categories5,categories6,categories7,categories8,categories9,categories10,categories11}) => {
 
   const pathname = usePathname()
   const routes = data.map((route) =>({
@@ -74,10 +75,15 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
     label: categories.name,
     active: pathname === `/category9/${categories.id}`
   }))
-  const categorieslaptops = categorieslaptop.map((categories) =>({
+  const categories010 = categories10.map((categories) =>({
     href:`/category10/${categories.id}`,
     label: categories.name,
     active: pathname === `/category10/${categories.id}`
+  }))
+  const categories011 = categories11.map((categories) =>({
+    href:`/category11/${categories.id}`,
+    label: categories.name,
+    active: pathname === `/category11/${categories.id}`
   }))
 
   const [isShown, setIsShown] = useState(false);
@@ -204,7 +210,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -216,8 +222,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-                <div>
+              <div >
+                <div className="space-x-5 px-5 py-2">
                 {routes.map((route) => (
                     <Link
                       key={route.href}
@@ -239,17 +245,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver1} onMouseOut={handleMouseOut1}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Samsung </p>
+          <p className="hover:text-red-500">Âm thanh </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[4.5rem] left-[195px] z-30 ">
           {isShown1 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -261,8 +267,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories01.map((categories) => (
                     <Link
                       key={categories.href}
@@ -284,17 +290,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Âm thanh </p>
+          <p className="hover:text-red-500">Đồng hồ, máy ảnh </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[6.5rem] left-[195px] z-30 ">
           {isShown2 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -306,8 +312,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories02.map((categories) => (
                     <Link
                       key={categories.href}
@@ -329,17 +335,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Đồng hồ,Máy ảnh </p>
+          <p className="hover:text-red-500">Gia dụng, Smarthome </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[8.5rem] left-[195px] z-30 ">
           {isShown3 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -351,8 +357,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories03.map((categories) => (
                     <Link
                       key={categories.href}
@@ -374,17 +380,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Gia dụng,Smarthome</p>
+          <p className="hover:text-red-500">Phụ kiện</p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[10.5rem] left-[195px] z-30 ">
           {isShown4 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -396,8 +402,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories04.map((categories) => (
                     <Link
                       key={categories.href}
@@ -419,17 +425,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Phụ kiện </p>
+          <p className="hover:text-red-500">PC, màn hình </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[12.5rem] left-[195px] z-30 ">
           {isShown5 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -441,8 +447,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories05.map((categories) => (
                     <Link
                       key={categories.href}
@@ -464,17 +470,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">PC,Màn hình </p>
+          <p className="hover:text-red-500">Tivi </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[14.5rem] left-[195px] z-30 ">
           {isShown6 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -486,8 +492,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories06.map((categories) => (
                     <Link
                       key={categories.href}
@@ -509,17 +515,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Tivi </p>
+          <p className="hover:text-red-500">Ốp lưng </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[16.5rem] left-[195px] z-30 ">
           {isShown7 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -531,8 +537,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories07.map((categories) => (
                     <Link
                       key={categories.href}
@@ -554,17 +560,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Ốp lưng </p>
+          <p className="hover:text-red-500">Chuột, bàn phím </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[18.5rem] left-[195px] z-30 ">
           {isShown8 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -576,8 +582,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories08.map((categories) => (
                     <Link
                       key={categories.href}
@@ -599,17 +605,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Chuột, bàn phím </p>
+          <p className="hover:text-red-500">Sim</p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[20.5rem] left-[195px] z-30 ">
           {isShown9 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -621,8 +627,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
+              <div >
+              <div className="space-x-5 px-5 py-2">
                 {categories09.map((categories) => (
                     <Link
                       key={categories.href}
@@ -650,11 +656,11 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[22.5rem] left-[195px] z-30 ">
           {isShown10 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -666,18 +672,18 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-              <div>
-                {categorieslaptops.map((categorie) => (
+              <div >
+              <div className="space-x-5 px-5 py-2">
+              {categories010.map((categories) => (
                     <Link
-                      key={categorie.href}
-                      href={categorie.href}
+                      key={categories.href}
+                      href={categories.href}
                       className={cn(
                         "text-sm font-medium transition-colors hover:text-black",
-                        categorie.active ? "text-black" : "text-neutral-500"
+                        categories.active ? "text-black" : "text-neutral-500"
                       )}
                     >
-                      {categorie.label}
+                      {categories.label}
                     </Link>
                   ))}
                 </div>
@@ -689,17 +695,17 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
       <div onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11}>
         <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Iphone 15 </p>
+          <p className="hover:text-red-500">Hàng cũ </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-[24.5rem] left-[195px] z-30 ">
           {isShown11 && (
             <div
               className="absolute 
-      w-[1000px] 
+      w-[780px] 
       h-[400px] 
       shadow-xl 
       bg-white 
@@ -711,12 +717,21 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       animate-normal 
       animate-fill-forwards"
             >
-              <div className="grid grid-cols-5">
-                <div>123</div>
-                <div>123</div>
-                <div>112312323</div>
-                <div>123</div>
-                <div>123</div>
+              <div >
+                <div className="space-x-5 px-5 py-2">
+                {categories011.map((categories) => (
+                    <Link
+                      key={categories.href}
+                      href={categories.href}
+                      className={cn(
+                        "text-sm font-medium transition-colors hover:text-black",
+                        categories.active ? "text-black" : "text-neutral-500"
+                      )}
+                    >
+                      {categories.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           )}
