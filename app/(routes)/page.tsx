@@ -4,11 +4,11 @@ import getProductLaptop from "@/actions/product/get-product-laptop";
 import getProductMouse from "@/actions/product/get-product-mouse";
 import getProductTivi from "@/actions/product/get-product-tivi";
 import getProductWatch from "@/actions/product/get-product-watch";
+import Comment from "@/components/comment/comment";
 import NewsPage from "@/components/news/news";
 import MainProduct from "@/components/product/mainproduct";
 import SlideItem from "@/components/slider-item/slideitem";
 import Suggest from "@/components/suggest/Suggest";
-import Container from "@/components/ui/container";
 
 export const revalidate = 0;
 const HomePage = async () => {
@@ -24,6 +24,7 @@ const HomePage = async () => {
       <MainProduct ipad={ipad} watch={watch} headphone={headphone} tivi={tivi} laptop={laptop} mouse={mouse} />
       <Suggest />
       <NewsPage />
+      <Comment />
     </>
   );
 };
