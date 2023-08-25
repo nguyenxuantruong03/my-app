@@ -1,12 +1,12 @@
 import Container from "@/components/ui/container";
 import Gallery from "@/components/gallery/gallery";
-import InfoProduct from "@/components/info-product/info-productmouse/info-product";
-import InfoWarranty from "@/components/info-product/info-productmouse/infowarranty";
-import InfoPromotion from "@/components/info-product/info-productmouse/info-promotion";
+import InfoProduct from "@/components/info-product/info-product";
+import InfoWarranty from "@/components/info-product/infowarranty";
+import InfoPromotion from "@/components/info-product/info-promotion";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
-import DetailProduct from "@/components/info-product/info-productmouse/detail-product";
-import ModalProviderProductMouse from "@/providers/modal-provider-productmouse";
+import DetailProduct from "@/components/info-product/detail-product";
+import ModalProvider from "@/providers/modal-provider";
 import ProductListSingnleMouse from "@/components/product/product-list/product-list-single-mouse";
 import getMouse from "@/actions/products/get-mouse";
 import getProductMouse from "@/actions/product/get-product-mouse";
@@ -20,7 +20,7 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "1684ae8f-6edb-4d2e-8a5a-a40f81a4a581"
+    "3e77206e-551f-4453-948b-955e18ec62c1"
   );
   const product = await getMouse(params.productId);
 
@@ -72,7 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <hr className="my-5" />
         <DetailProduct data={product} />
       </Container>
-      <ModalProviderProductMouse data={product} />
+      <ModalProvider data={product} />
     </div>
   );
 };

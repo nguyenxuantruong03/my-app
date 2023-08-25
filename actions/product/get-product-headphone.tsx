@@ -4,7 +4,7 @@ import qs from "query-string"
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/headphone`
 
 interface Query{
-    categoryheadphoneId?: string;
+    categoryId?: string;
     colorId?: string;
     sizeId?: string;
     isFeatured?: boolean
@@ -16,7 +16,7 @@ const getProductHeadphone= async (query: Query):Promise<Headphone[]> =>{
         query:{
             colorId: query.colorId,
             sizeId: query.sizeId,
-            categoryheadphoneId: query.categoryheadphoneId,
+            categoryId: query.categoryId,
             isFeatured: query.isFeatured
         }
     })

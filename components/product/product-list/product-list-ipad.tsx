@@ -66,7 +66,7 @@ const ProductListSingnleiPad: React.FC<IphoneListPorps> = ({ data }) => {
               {/* Description */}
               <div className="ml-3">
                 <p className="font-semibold text-lg">{product.name}</p>
-                <p className="text-sm text-gray-500">{product.categoryipad.name}</p>
+                <p className="text-sm text-gray-500">{product.category.name}</p>
               </div>
               <div className="flex items-center justify-between ml-3">
                 <Currency valueold={product?.priceold} value={product?.price} />

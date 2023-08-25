@@ -1,26 +1,32 @@
-import { Product } from "@/types";
 import Image from "next/image";
-import NewsPageProduct from "../news/news-product";
+import NewsPageProduct from "@/components/news/news-product";
+import { Product,Headphone, Ipad, Laptop, Mouse, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch } from "@/types";
+
+
+
 
 interface DetailProductProps {
-  data: Product;
+  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
 }
+
 const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
+  const images = ( data.imagesalientfeatures);
+
   return (
     <>
       <div className="space-x-5 relative my-2">
-        <div className=" w-[1000px] shadow-inner pt-5 px-5 rounded-lg">
-          <div className=" p-2 bg-slate-400 bg-opacity-10 rounded-lg">
+        <div className="w-[1000px] shadow-inner pt-5 px-5 rounded-lg">
+          <div className="p-2 bg-slate-400 bg-opacity-10 rounded-lg">
             <h1 className="text-center text-lg font-bold text-red-500">
               Đặc điểm nổi bậc
             </h1>
-            <p className="text-sm "> {data.descriptionsalientfeatures}</p>
+            <p className="text-sm">{data.descriptionsalientfeatures}</p>
           </div>
-          <p className="my-1">{data.description2salientfeatures} </p>
+          <p className="my-1">{data.description2salientfeatures}</p>
           <span className="font-bold text-lg">
             Sản phẩm {data.name} có gì mới ?
           </span>
-          <div className="pl-2 my-1 ">
+          <div className="pl-2 my-1">
             <p>
               {data.name} là {data.description3salientfeatures}
             </p>
@@ -28,26 +34,20 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
           <p className="text-md font-bold my-2">
             {data.description4salientfeatures}
           </p>
-          <Image
-            src={data?.imagesalientfeatures?.[0].url}
-            width="1000"
-            height="200"
-            alt="Image"
-            className="aspect-square object-cover rounded-md"
-          />
-            <p className="text-sm my-2">
-            {data.contentsalientfeatures}
-          </p>
-<Image
-            src={data?.imagesalientfeatures?.[1].url}
-            width="1000"
-            height="300"
-            alt="Image"
-            className="aspect-square object-cover rounded-md"
-          />
+          {images.map((image, index) => (
+            <Image
+              key={index}
+              src={image.url}
+              width="1000"
+              height={index === 0 ? "200" : "300"}
+              alt="Image"
+              className="aspect-square object-cover rounded-md mt-3"
+            />
+          ))}
+          <p className="text-sm my-2">{data.contentsalientfeatures}</p>
         </div>
         {/* News */}
-        <div className=" p-2 bg-slate-500 bg-opacity-20 w-[250px] rounded-lg absolute right-0 top-0">
+        <div className="p-2 bg-slate-500 bg-opacity-20 w-[250px] rounded-lg absolute right-0 top-0">
           <h1 className="text-center text-lg font-bold text-red-500">
             Tin tức
           </h1>

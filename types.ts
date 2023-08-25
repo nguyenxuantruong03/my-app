@@ -137,8 +137,8 @@ export interface Product {
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -147,9 +147,9 @@ export interface Product {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product1 {
@@ -193,12 +193,12 @@ export interface Product1 {
  description3salientfeatures :string;                
  description4salientfeatures :string;                
  contentsalientfeatures      :string;  
- imagesalientfeaturesproduct1:Imagesalientfeaturesproduct1[]   
+ imagesalientfeatures:Imagesalientfeaturesproduct1[]   
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -207,9 +207,9 @@ export interface Product1 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product2 {
@@ -253,12 +253,12 @@ export interface Product2 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct2:Imagesalientfeaturesproduct2[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct2[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -267,9 +267,9 @@ export interface Product2 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product3 {
@@ -313,12 +313,12 @@ export interface Product3 {
  description3salientfeatures :string;                
  description4salientfeatures :string;                
  contentsalientfeatures      :string;  
- imagesalientfeaturesproduct3:Imagesalientfeaturesproduct3[] 
+ imagesalientfeatures:Imagesalientfeaturesproduct3[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -327,9 +327,9 @@ export interface Product3 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product4 {
@@ -373,12 +373,12 @@ export interface Product4 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct4:Imagesalientfeaturesproduct4[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct4[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -387,9 +387,9 @@ export interface Product4 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product5 {
@@ -433,12 +433,12 @@ export interface Product5 {
  description3salientfeatures :string;                
  description4salientfeatures :string;                
  contentsalientfeatures      :string;  
- imagesalientfeaturesproduct5:Imagesalientfeaturesproduct5[] 
+ imagesalientfeatures:Imagesalientfeaturesproduct5[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -447,9 +447,9 @@ export interface Product5 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product6 {
@@ -493,12 +493,12 @@ export interface Product6 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct6:Imagesalientfeaturesproduct6[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct6[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -507,9 +507,9 @@ export interface Product6 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product7 {
@@ -553,12 +553,12 @@ export interface Product7 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct7:Imagesalientfeaturesproduct7[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct7[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -567,9 +567,9 @@ export interface Product7 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product8 {
@@ -613,12 +613,12 @@ export interface Product8 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct8:Imagesalientfeaturesproduct8[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct8[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -627,9 +627,9 @@ export interface Product8 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Product9 {
@@ -673,12 +673,12 @@ export interface Product9 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct9:Imagesalientfeaturesproduct9[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct9[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -687,9 +687,9 @@ export interface Product9 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 
@@ -734,12 +734,12 @@ export interface Product10 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct10:Imagesalientfeaturesproduct10[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct10[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -748,9 +748,9 @@ export interface Product10 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 
@@ -795,12 +795,12 @@ export interface Product11 {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesproduct11:Imagesalientfeaturesproduct11[] 
+  imagesalientfeatures:Imagesalientfeaturesproduct11[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -809,15 +809,15 @@ export interface Product11 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Laptop {
   id: string;
 
-  categorylaptop: Category10;
+  category: Category10;
   size: Size;
   color: Color;
   images: Imagelaptop[];
@@ -855,12 +855,12 @@ export interface Laptop {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeatureslaptop:Imagesalientfeatureslaptop[] 
+  imagesalientfeatures:Imagesalientfeatureslaptop[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -869,15 +869,15 @@ export interface Laptop {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Headphone {
   id: string;
 
-  categoryheadphone: Category2;
+  category: Category2;
   size: Size;
   color: Color;
   images: Imageheadphone[];
@@ -915,12 +915,12 @@ export interface Headphone {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesheadphone:Imagesalientfeaturesheadphone[] 
+  imagesalientfeatures:Imagesalientfeaturesheadphone[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -929,15 +929,15 @@ export interface Headphone {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Tivi {
   id: string;
 
-  categorytivi: Category7;
+  category: Category7;
   size: Size;
   color: Color;
   images: Imagetivi[];
@@ -975,12 +975,12 @@ export interface Tivi {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturestivi:Imagesalientfeaturestivi[] 
+  imagesalientfeatures:Imagesalientfeaturestivi[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -989,15 +989,15 @@ export interface Tivi {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Watch {
   id: string;
 
-  categorywatch: Category3;
+  category: Category3;
   size: Size;
   color: Color;
   images: Imagewatch[];
@@ -1035,12 +1035,12 @@ export interface Watch {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeatureswatch:Imagesalientfeatureswatch[] 
+  imagesalientfeatures:Imagesalientfeatureswatch[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -1049,15 +1049,15 @@ export interface Watch {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Ipad {
   id: string;
 
-  categoryipad: Category1;
+  category: Category1;
   size: Size;
   color: Color;
   images: Imageipad[];
@@ -1095,12 +1095,12 @@ export interface Ipad {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesipad:Imagesalientfeaturesipad[] 
+  imagesalientfeatures:Imagesalientfeaturesipad[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -1109,9 +1109,9 @@ export interface Ipad {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 
@@ -1155,12 +1155,12 @@ export interface Mouse {
   description3salientfeatures :string;                
   description4salientfeatures :string;                
   contentsalientfeatures      :string;  
-  imagesalientfeaturesmouse:Imagesalientfeaturesmouse[] 
+  imagesalientfeatures:Imagesalientfeaturesmouse[] 
   name: string;
   heading: string;
   description: string;
-  price: string;
-  priceold: string;
+  price: number;
+  priceold: number;
   percentpromotion: string;
   // Khuyến mãi
   promotionheading: string;
@@ -1169,9 +1169,9 @@ export interface Mouse {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: string;
+  guaranteeprice: number;
 
-  isFeatured: boolean;
+numberisFeatured: boolean;
 }
 
 export interface Size {

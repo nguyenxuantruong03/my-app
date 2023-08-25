@@ -1,11 +1,12 @@
 "use client"
 import useSeeDetailSpecifications from "@/hooks/use-see-detail-specifications";
-import { Product } from "@/types";
+import { Product ,Headphone, Ipad, Laptop, Mouse, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch } from "@/types";
 import { Package2, Receipt, Shield, Smartphone,GraduationCap,Gift,Sparkle, ChevronDown  } from "lucide-react";
 import { MouseEventHandler } from "react";
 
 interface InfoPromotionprops{
-    data: Product
+    data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
+
 }
 const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
     const seedetailspecification = useSeeDetailSpecifications()

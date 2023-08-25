@@ -1,12 +1,13 @@
 import Container from "@/components/ui/container";
 import Gallery from "@/components/gallery/gallery";
-import InfoProduct from "@/components/info-product/info-productlaptop/info-product";
-import InfoWarranty from "@/components/info-product/info-productlaptop/infowarranty";
-import InfoPromotion from "@/components/info-product/info-productlaptop/info-promotion";
+import InfoProduct from "@/components/info-product/info-product";
+import InfoWarranty from "@/components/info-product/infowarranty";
+import InfoPromotion from "@/components/info-product/info-promotion";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
-import DetailProduct from "@/components/info-product/info-productlaptop/detail-product";
-import ModalProviderProductLaptop from "@/providers/modal-provider-productlaptop";
+import DetailProduct from "@/components/info-product/detail-product";
+
+import ModalProvider from "@/providers/modal-provider";
 import ProductListSingnleLaptop from "@/components/product/product-list/product-list-laptop";
 import getLaptop from "@/actions/products/get-laptop";
 import getProductLaptop from "@/actions/product/get-product-laptop";
@@ -20,12 +21,12 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "1684ae8f-6edb-4d2e-8a5a-a40f81a4a581"
+    "3e77206e-551f-4453-948b-955e18ec62c1"
   );
   const product = await getLaptop(params.productId);
 
   const suggestedProducts = await getProductLaptop({
-    categorylaptopId: product?.categorylaptop?.id,
+    categoryId: product?.category?.id,
   });
 
   if (!product) {
@@ -72,7 +73,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <hr className="my-5" />
         <DetailProduct data={product} />
       </Container>
-      <ModalProviderProductLaptop data={product} />
+      <ModalProvider data={product} />
     </div>
   );
 };

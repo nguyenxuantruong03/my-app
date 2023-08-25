@@ -1,13 +1,13 @@
 import Container from "@/components/ui/container";
 import Gallery from "@/components/gallery/gallery";
-import InfoProduct from "@/components/info-product/info-product10/info-product";
-import InfoWarranty from "@/components/info-product/info-product10/infowarranty";
-import InfoPromotion from "@/components/info-product/info-product10/info-promotion";
+import InfoProduct from "@/components/info-product/info-product";
+import InfoWarranty from "@/components/info-product/infowarranty";
+import InfoPromotion from "@/components/info-product/info-promotion";
 import ProductListSingnle10 from "@/components/product/product-list/product-list-single10";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
-import DetailProduct from "@/components/info-product/info-product10/detail-product";
-import ModalProviderProduct10 from "@/providers/modal-provider-product10";
+import DetailProduct from "@/components/info-product/detail-product";
+import ModalProvider from "@/providers/modal-provider";
 import getProducts10 from "@/actions/products/get-laptop10";
 import getProduct10 from "@/actions/product/get-product10";
 
@@ -20,7 +20,7 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "1684ae8f-6edb-4d2e-8a5a-a40f81a4a581"
+    "3e77206e-551f-4453-948b-955e18ec62c1"
   );
   const product = await getProducts10(params.productId);
 
@@ -72,7 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <hr className="my-5" />
         <DetailProduct data={product} />
       </Container>
-      <ModalProviderProduct10 data={product} />
+      <ModalProvider data={product} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import qs from "query-string"
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/watch`
 
 interface Query{
-    categorywatchId?: string;
+    categoryId?: string;
     colorId?: string;
     sizeId?: string;
     isFeatured?: boolean
@@ -16,7 +16,7 @@ const getProductWatch= async (query: Query):Promise<Watch[]> =>{
         query:{
             colorId: query.colorId,
             sizeId: query.sizeId,
-            categorywatchId: query.categorywatchId,
+            categoryId: query.categoryId,
             isFeatured: query.isFeatured
         }
     })

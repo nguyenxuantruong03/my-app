@@ -21,12 +21,12 @@ import BillboardCategory from "./billboard-category";
 
 export const revalidate = 0;
 const SlideItem = async () => {
-  const billboard = await getBillboard("3375b5bc-24fb-4e37-adfc-589a35c75d58");
+  const billboard = await getBillboard("b07b8761-8367-44d1-b67e-349646648191");
   const billboardmini = await getBillboardmini(
-    "1684ae8f-6edb-4d2e-8a5a-a40f81a4a581"
+    "3e77206e-551f-4453-948b-955e18ec62c1"
   );
   const billboardsale = await getBillboardsale(
-    "5fc9e2b0-06d0-4695-a2c3-57b11365c95f"
+    "85c5eda8-421e-4f83-a40f-fc2f0760ba70"
   );
   const categories = await getCategories();
   const categories1 = await getCategories1();

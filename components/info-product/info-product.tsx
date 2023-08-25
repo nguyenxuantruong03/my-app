@@ -1,30 +1,45 @@
 "use client"
-import { Product } from "@/types";
+import { Product ,Headphone, Ipad, Laptop, Mouse, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch } from "@/types";
 import Currency from "../ui/currency";
 import { CheckCircle2, ShoppingCart } from "lucide-react";
 import  Button  from "../ui/button";
 import Image from "next/image";
 import useCart from "@/hooks/use-cart";
 import { MouseEventHandler } from "react";
+import { useState } from "react";
 
 interface InfoProductProps{
-    data: Product;
+  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
 }
 const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
     const cart = useCart();
-    const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) =>{
-        event.stopPropagation();    
+    const [quantity, setQuantity] = useState(1)
 
-        cart.addItem(data)
-    } 
+   
+    const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+      event.stopPropagation();
+      const productWithQuantity = { ...data, quantity };
+      cart.addItem(productWithQuantity);
+      cart.updateQuantity(data.id, quantity); // Update the quantity in the cart
+    };
+
+  
+    const incrementQuantity = () => {
+        setQuantity((prevQuantity) => prevQuantity + 1);
+      };
+    
+      const decrementQuantity = () => {
+        if (quantity > 1) {
+          setQuantity((prevQuantity) => prevQuantity - 1);
+        }
+      };
+    
     return ( 
         <div>
             <h1 className="text-3xl font-bold text-gray-900">{data.name} </h1>
-            <div className="mt-3 flex items-end justify-between">
-                <p className="text-2xl text-gray-900">
-                    <Currency value={data.price} valueold={data.priceold}/>
-                </p>
-            </div>
+           
+     
+
             <hr className="my-4"/>
             <div className="flex flex-col gap-y-6">
                 <div className="flex items-center gap-x-4">
@@ -52,6 +67,31 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                     {data?.description}
                      </div>
             </div>
+            <div className="mt-5 flex items-center gap-x-3">
+        {/* Quantity increment and decrement buttons */}
+        <button
+          onClick={decrementQuantity}
+          className="px-2 py-1 border rounded-md border-gray-300"
+        >
+          -
+        </button>
+        <span className="text-xl">{quantity}</span>
+        <button
+          onClick={incrementQuantity}
+          className="px-2 py-1 border rounded-md border-gray-300"
+        >
+          +
+        </button>
+      </div>
+      <div className="mt-5 flex gap-x-4">
+        <h3 className="font-semibold"> Tổng giá: </h3>
+        <p className="text-lg text-gray-900">
+          <Currency
+            value={data.price * quantity} // Ensure data.price is a number
+            valueold={data.priceold * quantity} // Ensure data.priceold is a number
+          />
+        </p>
+      </div>
             <div className="mt-10 flex items-center gap-x-3">
                 <Button onClick={onAddtoCart} className="flex items-center gap-x-2">
                     Mua ngay

@@ -5,21 +5,48 @@ import IconButton from "@/components/ui/icon-button";
 import useCart, { ProductUnion } from "@/hooks/use-cart";
 import { X } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 interface CartItemProps {
   data: ProductUnion;
 }
 
-// const isProduct = (item: ProductUnion): item is Product => {
-//   return (item as Product).imagesalientfeatures !== undefined;
-// };
+type ProductWithQuantity = ProductUnion & { quantity: number };
+
+const isProductWithQuantity = (item: ProductUnion): item is ProductWithQuantity => {
+  return 'quantity' in item;
+};
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
   const cart = useCart();
+  const [quantity, setQuantity] = useState<number>(
+    isProductWithQuantity(data) ? data.quantity : 1
+  );
+
+  const incrementQuantity = () => {
+    if (isProductWithQuantity(data)) {
+      const newQuantity = quantity + 1;
+      setQuantity(newQuantity);
+      cart.updateQuantity(data.id, newQuantity); // Update the quantity in the cart
+    }
+  };
+
+  const decrementQuantity = () => {
+    if (
+      (isProductWithQuantity(data)) &&
+      quantity > 1
+    ) {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      cart.updateQuantity(data.id, newQuantity);
+    }
+  };
 
   const onRemove = () => {
     cart.removeItem(data.id);
   };
+
+  const totalPrice = data.price * quantity;
   return (
     <li className="flex py-6 border-b">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
@@ -46,7 +73,24 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                         {data.size.name}
                 </p>
           </div>
-          <Currency value={data.price} valueold={data.priceold}/>
+          <div className="mt-1 flex text-sm">
+            {/* ... */}
+            {/* Quantity increment and decrement buttons */}
+            <button
+              onClick={decrementQuantity}
+              className="px-2 py-1 border rounded-md border-gray-300"
+            >
+              -
+            </button>
+            <span className="text-xl">{quantity}</span>
+            <button
+              onClick={incrementQuantity}
+              className="px-2 py-1 border rounded-md border-gray-300"
+            >
+              +
+            </button>
+          </div>
+          <Currency value={totalPrice} valueold={data.priceold}/>
         </div>
       </div>
     </li>

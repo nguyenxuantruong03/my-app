@@ -4,7 +4,7 @@ import qs from "query-string"
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/tivi`
 
 interface Query{
-    categorytiviId?: string;
+    categoryId?: string;
     colorId?: string;
     sizeId?: string;
     isFeatured?: boolean
@@ -16,7 +16,7 @@ const getProductTivi= async (query: Query):Promise<Tivi[]> =>{
         query:{
             colorId: query.colorId,
             sizeId: query.sizeId,
-            categorytiviId: query.categorytiviId,
+            categoryId: query.categoryId,
             isFeatured: query.isFeatured
         }
     })

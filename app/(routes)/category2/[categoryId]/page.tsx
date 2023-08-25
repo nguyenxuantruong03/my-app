@@ -24,7 +24,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   params,
   searchParams,
 }) => {
-  const billboard = await getBillboard("3375b5bc-24fb-4e37-adfc-589a35c75d58");
+  const billboard = await getBillboard("b07b8761-8367-44d1-b67e-349646648191");
   const product = await getProduct2({
     categoryId: params.categoryId,
     sizeId: searchParams.sizeId,

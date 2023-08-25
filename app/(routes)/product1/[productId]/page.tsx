@@ -1,15 +1,15 @@
 import Container from "@/components/ui/container";
 import Gallery from "@/components/gallery/gallery";
-import InfoProduct from "@/components/info-product/info-product1/info-product1";
-import InfoWarranty from "@/components/info-product/info-product1/infowarranty1";
-import InfoPromotion from "@/components/info-product/info-product1/info-promotion1";
+import InfoProduct from "@/components/info-product/info-product";
+import InfoWarranty from "@/components/info-product/infowarranty";
+import InfoPromotion from "@/components/info-product/info-promotion";
 import ProductListSingnle1 from "@/components/product/product-list/product-list-single1";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
-import DetailProduct from "@/components/info-product/info-product1/detail-product1";
+import DetailProduct from "@/components/info-product/detail-product";
 import getProducts1 from "@/actions/products/get-smartphone1";
 import getProduct1 from "@/actions/product/get-product1";
-import ModalProviderProduct1 from "@/providers/modal-provider-product1";
+import ModalProvider from "@/providers/modal-provider";
 
 export const revalidate = 0;
 
@@ -20,7 +20,7 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "1684ae8f-6edb-4d2e-8a5a-a40f81a4a581"
+    "3e77206e-551f-4453-948b-955e18ec62c1"
   );
   const product = await getProducts1(params.productId);
 
@@ -72,7 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <hr className="my-5" />
         <DetailProduct data={product} />
       </Container>
-      <ModalProviderProduct1 data={product} />
+      <ModalProvider data={product} />
     </div>
   );
 };

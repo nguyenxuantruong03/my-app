@@ -10,6 +10,7 @@ interface CartStore {
   addItem: (data: ProductUnion) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
+  updateQuantity: (id: string, quantity: number) => void;
 }
 
 const useCart = create(
@@ -26,6 +27,13 @@ const useCart = create(
 
         set({ items: [...get().items, data] });
         toast.success("Sản phẩm thêm thành công");
+      },
+      updateQuantity: (id: string, quantity: number) => {
+        set((state) => ({
+          items: state.items.map((item) =>
+            item.id === id ? { ...item, quantity } : item
+          ),
+        }));
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter((item) => item.id !== id)] });
