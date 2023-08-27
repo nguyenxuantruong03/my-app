@@ -1,12 +1,14 @@
 "use client"
 import { Product ,Headphone, Ipad, Laptop, Mouse, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch } from "@/types";
 import Currency from "../ui/currency";
-import { CheckCircle2, ShoppingCart } from "lucide-react";
+import { CheckCircle2, ShoppingBasket, ShoppingCart } from "lucide-react";
 import  Button  from "../ui/button";
 import Image from "next/image";
 import useCart from "@/hooks/use-cart";
 import { MouseEventHandler } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface InfoProductProps{
   data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
@@ -14,13 +16,37 @@ interface InfoProductProps{
 const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
     const cart = useCart();
     const [quantity, setQuantity] = useState(1)
-
+    const router = useRouter()
    
     const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.stopPropagation();
       const productWithQuantity = { ...data, quantity };
-      cart.addItem(productWithQuantity);
-      cart.updateQuantity(data.id, quantity); // Update the quantity in the cart
+  
+      const existingCartItem = cart.items.find((item) => item.id === data.id);
+  
+      if (existingCartItem) {
+        cart.updateQuantity(data.id, existingCartItem.quantity + quantity);
+        toast.success("Sản phẩm đã được cập nhật số lượng trong giỏ hàng.");
+      } else {
+        cart.addItem(productWithQuantity, quantity);
+        toast.success("Sản phẩm đã thêm vào giỏ hàng.");
+      }
+    };
+
+    const onAddtoPushCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+      event.stopPropagation();
+      const productWithQuantity = { ...data, quantity };
+  
+      const existingCartItem = cart.items.find((item) => item.id === data.id);
+  
+      if (existingCartItem) {
+        cart.updateQuantity(data.id, existingCartItem.quantity + quantity);
+        toast.success("Sản phẩm đã được cập nhật số lượng trong giỏ hàng.");
+      } else {
+        cart.addItem(productWithQuantity, quantity);
+        toast.success("Sản phẩm đã thêm vào giỏ hàng.");
+      }
+      router.push("/cart")
     };
 
   
@@ -33,7 +59,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
           setQuantity((prevQuantity) => prevQuantity - 1);
         }
       };
-    
+      const discountedPrice = data.price * ((100 - data.percentpromotion) / 100);
     return ( 
         <div>
             <h1 className="text-3xl font-bold text-gray-900">{data.name} </h1>
@@ -88,14 +114,19 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
         <p className="text-lg text-gray-900">
           <Currency
             value={data.price * quantity} // Ensure data.price is a number
-            valueold={data.priceold * quantity} // Ensure data.priceold is a number
+            valueold={discountedPrice * quantity} 
           />
         </p>
       </div>
             <div className="mt-10 flex items-center gap-x-3">
-                <Button onClick={onAddtoCart} className="flex items-center gap-x-2">
-                    Mua ngay
+                <Button onClick={onAddtoCart} className=" gap-x-2">
+                    <ShoppingBasket />
+                </Button>
+                <Button onClick={onAddtoPushCart} className="w-full " >
+                  <div className="flex text-lg items-center gap-x-2 pl-[11.25rem] ">
+                   Mua ngay
                     <ShoppingCart />
+                    </div>
                 </Button>
             </div>
             {/* Ưa đãi thêm */}

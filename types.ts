@@ -138,8 +138,7 @@ export interface Product {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -149,7 +148,8 @@ export interface Product {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
 }
 
 export interface Product1 {
@@ -198,8 +198,7 @@ export interface Product1 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -209,7 +208,9 @@ export interface Product1 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product2 {
@@ -258,8 +259,7 @@ export interface Product2 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -269,7 +269,9 @@ export interface Product2 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product3 {
@@ -318,8 +320,7 @@ export interface Product3 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -329,7 +330,9 @@ export interface Product3 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product4 {
@@ -378,8 +381,7 @@ export interface Product4 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -389,7 +391,9 @@ export interface Product4 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product5 {
@@ -438,8 +442,7 @@ export interface Product5 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -449,7 +452,9 @@ export interface Product5 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product6 {
@@ -498,8 +503,7 @@ export interface Product6 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -509,7 +513,9 @@ export interface Product6 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product7 {
@@ -558,8 +564,7 @@ export interface Product7 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -569,7 +574,9 @@ export interface Product7 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product8 {
@@ -618,8 +625,7 @@ export interface Product8 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -629,7 +635,9 @@ export interface Product8 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Product9 {
@@ -678,8 +686,7 @@ export interface Product9 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -689,7 +696,9 @@ export interface Product9 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 
@@ -739,8 +748,7 @@ export interface Product10 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -750,7 +758,9 @@ export interface Product10 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 
@@ -800,8 +810,7 @@ export interface Product11 {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -811,7 +820,9 @@ export interface Product11 {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Laptop {
@@ -860,8 +871,7 @@ export interface Laptop {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -871,7 +881,9 @@ export interface Laptop {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Headphone {
@@ -920,8 +932,7 @@ export interface Headphone {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -931,7 +942,9 @@ export interface Headphone {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Tivi {
@@ -980,8 +993,7 @@ export interface Tivi {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -991,7 +1003,9 @@ export interface Tivi {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Watch {
@@ -1040,8 +1054,7 @@ export interface Watch {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -1051,7 +1064,9 @@ export interface Watch {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Ipad {
@@ -1100,8 +1115,7 @@ export interface Ipad {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -1111,7 +1125,9 @@ export interface Ipad {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 
@@ -1160,8 +1176,7 @@ export interface Mouse {
   heading: string;
   description: string;
   price: number;
-  priceold: number;
-  percentpromotion: string;
+  percentpromotion: number;
   // Khuyến mãi
   promotionheading: string;
   promotiondescription: string;
@@ -1171,7 +1186,9 @@ export interface Mouse {
   guaranteeinfomation: string;
   guaranteeprice: number;
 
-numberisFeatured: boolean;
+isFeatured: boolean;
+quantity:number
+
 }
 
 export interface Size {

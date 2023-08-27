@@ -40,7 +40,10 @@ const ProductListSingnle: React.FC<ProductListPorps> = ({ data }) => {
         modules={[FreeMode, Autoplay]}
         className="container-0"
       >
-        {data.map((product) => (
+         {data.map((product) => {
+          const discountedPrice = product.price * ((100 - product.percentpromotion) / 100);
+
+          return (
           <SwiperSlide key={product.id}>
             <div
               onClick={() => handleClick(product.id)}
@@ -62,14 +65,15 @@ const ProductListSingnle: React.FC<ProductListPorps> = ({ data }) => {
                 <p className="text-sm text-gray-500">{product.category.name}</p>
               </div>
               <div className="flex items-center justify-between ml-3">
-                <Currency valueold={product?.priceold} value={product?.price} />
+              <Currency valueold={product?.price} value={discountedPrice} />
               </div>
             </div>
             <div className="home-product-item__favorite">
               <span className="ml-1">Giảm {product.percentpromotion}%</span>
             </div>
           </SwiperSlide>
-        ))}
+        )
+          })}
         <div className="absolute -top-32 z-10 ">
           <PrevNextSwiper />
         </div>

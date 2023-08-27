@@ -23,6 +23,10 @@ const SeeDetailSpecifications: React.FC<SeeDetailSpecificationsProps<any>> = ({
           <div
             key={num}
             className={`justify-around flex p-2 rounded-md my-2 ${
+            /* Biểu thức `num % 2 === 0` đang kiểm tra xem giá trị của `num` có phải là số chẵn hay không. `%`
+             toán tử là toán tử mô đun, trả về phần dư của phép chia `num` cho 2. Nếu
+             số dư là 0, nghĩa là `num` chia hết cho 2 và do đó là số chẵn. Vì vậy, `num %
+             2 === 0` đánh giá là `true` cho số chẵn và `false` cho số lẻ. */
               num % 2 === 0 ? "bg-gray-500 bg-opacity-10" : ""
             }`}
           >

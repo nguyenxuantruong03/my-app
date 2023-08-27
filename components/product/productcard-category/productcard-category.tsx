@@ -17,7 +17,7 @@ const ProductCard:React.FC<ProductCardProps> = ({data}) => {
     const handleClick= () =>{   
         router.push(`/product/${data?.id}`)
     }
-
+    const discountedPrice = data.price * ((100 - data.percentpromotion) / 100);
 
     return ( 
         <div className="relative">
@@ -42,7 +42,7 @@ const ProductCard:React.FC<ProductCardProps> = ({data}) => {
                 </p>
             </div>
             <div className="flex items-center justify-between">
-                <Currency value={data?.price} valueold={data?.priceold}/>
+            <Currency valueold={data?.price} value={discountedPrice} />
             </div>
         </div>
          <div className="home-product-item__favorite ">

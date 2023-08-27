@@ -68,8 +68,8 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
                 </div>
             </div>
             <div className="h-[65px] w-[508px] m-auto mt-4 border-2 border-slate-500  rounded-md">
-                <p className="my-1 ml-2 text-sm font-semibold"> 1 đổi 1 VIP 12 tháng: Đổi máy mới tương đương khi có lỗi từ NSX trong 12 tháng </p>
-                <div className="flex justify-between mx-8 mt-5">
+                <p className="ml-2 text-sm font-semibold"> 1 đổi 1 VIP 12 tháng: Đổi máy mới tương đương khi có lỗi từ NSX trong 12 tháng </p>
+                <div className="flex justify-between mx-8 mb-1">
                     <p className="text-sm "><Currencyonevalue value={data.guaranteedescription} /> </p>
                     <span onClick={onSeeDetail2} className=" text-red-600 cursor-pointer text-sm font-bold"> Xem chi tiết</span>
                 </div>
@@ -82,7 +82,7 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
                 </div>
             </div>
             <div className="h-[65px] w-[508px] m-auto mt-4 border-2 border-slate-500  rounded-md">
-                <p className="my-1 ml-2 text-sm font-semibold">1 đổi 1 VIP 6 tháng: Đổi máy mới tương đương khi có lỗi từ NSX trong 6 tháng </p>
+                <p className=" ml-2 text-sm font-semibold">1 đổi 1 VIP 6 tháng: Đổi máy mới tương đương khi có lỗi từ NSX trong 6 tháng </p>
                 <div className="flex justify-between mx-8 mt-5">
                     <p className="text-sm "><Currencyonevalue value={data.guaranteeprice} /> </p>
                     <span onClick={onSeeDetail4} className=" text-red-600 cursor-pointer text-sm font-bold"> Xem chi tiết</span>

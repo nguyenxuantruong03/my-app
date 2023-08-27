@@ -22,7 +22,8 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   const [quantity, setQuantity] = useState<number>(
     isProductWithQuantity(data) ? data.quantity : 1
   );
-
+  const selected = cart.selectedItems.includes(data.id);
+  
   const incrementQuantity = () => {
     if (isProductWithQuantity(data)) {
       const newQuantity = quantity + 1;
@@ -45,10 +46,18 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   const onRemove = () => {
     cart.removeItem(data.id);
   };
-
+  const percentPrice = data.price * ((100 - data.percentpromotion) / 100) * quantity;
   const totalPrice = data.price * quantity;
   return (
-    <li className="flex py-6 border-b">
+    <li className={`flex py-6 border-b ${selected ? 'selected' : ''}`}>
+      <div className="px-5 my-auto">
+      <input
+      className="w-4 h-4"
+  type="checkbox"
+  checked={cart.selectedItems.includes(data.id)}
+  onChange={() => cart.toggleSelectItem(data.id)}
+/>
+</div>
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill
@@ -57,6 +66,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           className="object-cover object-center"
         />
       </div>
+      
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
         <div className="absolute z-10 right-0 top-0">
           <IconButton onClick={onRemove} icon={<X size={15} />} />
@@ -65,6 +75,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           <div className="flex justify-between">
             <p className="text-lg font-semibold text-black">{data.name}</p>
           </div>
+          
           <div className="mt-1 flex text-sm">
                 <p className="text-gray-500">
                         {data.color.name}
@@ -74,7 +85,6 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                 </p>
           </div>
           <div className="mt-1 flex text-sm">
-            {/* ... */}
             {/* Quantity increment and decrement buttons */}
             <button
               onClick={decrementQuantity}
@@ -90,7 +100,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
               +
             </button>
           </div>
-          <Currency value={totalPrice} valueold={data.priceold}/>
+          <Currency value={percentPrice} valueold={totalPrice}/>
         </div>
       </div>
     </li>

@@ -62,7 +62,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
              </div>
             <div className="flex text-[#666666] my-2">
             <GraduationCap className=" ml-1 w-5 h-5 "/>
-            <p className="ml-1 text-sm"> Giảm thêm 500k khi có thẻ sinh viên </p>
+            <p className="ml-1 text-sm"> Giảm thêm 500k cho sinh viên </p>
             </div>
              </div>
              </div>
