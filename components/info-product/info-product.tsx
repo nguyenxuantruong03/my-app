@@ -35,7 +35,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
 
     const onAddtoPushCart: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.stopPropagation();
-      const productWithQuantity = { ...data, quantity };
+      const productWithQuantity = { ...data, quantity,selectedWarranty: cart.getSelectedItemWarranty(data.id), };
   
       const existingCartItem = cart.items.find((item) => item.id === data.id);
   
@@ -101,7 +101,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
         >
           -
         </button>
-        <span className="text-xl">{quantity}</span>
+        <span className="text-xl mx-1">{quantity}</span>
         <button
           onClick={incrementQuantity}
           className="px-2 py-1 border rounded-md border-gray-300"

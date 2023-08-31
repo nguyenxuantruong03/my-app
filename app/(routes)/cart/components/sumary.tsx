@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
+import { Trash } from "lucide-react";
 
 const Sumary = () => {
   const searchParams = useSearchParams();
@@ -13,6 +14,10 @@ const Sumary = () => {
   const removeAll = useCart((state) => state.removeAll);
   const cart = useCart();
   
+  const onRemoveAll = () => {
+    cart.removeSelectedItems();
+    toast.success("Selected items have been removed from the cart.");
+  };
 
   useEffect(() => {
     if (searchParams.get("success")) {
@@ -25,14 +30,17 @@ const Sumary = () => {
     }
   }, [searchParams, removeAll]);
 
-  const selectedItems = items.filter(item => cart.selectedItems.includes(item.id));
+  const selectedItems = items.filter((item) =>
+  cart.selectedItems.includes(item.id)
+);
 
 const totalAmounts = selectedItems.reduce(
   (total, item) => {
-    const itemInCart = items.find(cartItem => cartItem.id === item.id);
-    const quantity = itemInCart?.quantity || 1; // Use quantity from item in cart, default to 1
+    const itemInCart = items.find((cartItem) => cartItem.id === item.id);
+    const quantity = itemInCart?.quantity || 1;
 
-    const itemTotalPrice = item.price * ((100 - item.percentpromotion) / 100) * quantity;
+    const itemTotalPrice =
+      (item.price * (100 - item.percentpromotion)) / 100 * quantity;
     const itemTotalPriceOld = item.price * quantity;
 
     return {
@@ -42,6 +50,18 @@ const totalAmounts = selectedItems.reduce(
   },
   { totalPrice: 0, totalPriceOld: 0 }
 );
+
+const totalWarrantyAmount = selectedItems.reduce((total, item) => {
+  const itemInCart = items.find((cartItem) => cartItem.id === item.id);
+  const quantity = itemInCart?.quantity || 1;
+
+  const selectedWarranty = cart.selectedWarranties[item.id];
+  const warrantyAmount = selectedWarranty ? parseFloat(selectedWarranty) : 0;
+
+  return total + warrantyAmount * quantity;
+}, 0);
+
+const totalAmount = totalAmounts.totalPrice + totalWarrantyAmount;
 
   // const onCheckout = async () => {
   //   const reponse = await axios.post(
@@ -55,7 +75,8 @@ const totalAmounts = selectedItems.reduce(
   // };
   return (
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-      <div className="flex gap-x-3 items-center">
+      <div className="flex  items-center justify-between">
+        <div className="flex items-center gap-x-3">
         <input
       className="w-4 h-4"
         type="checkbox"
@@ -63,16 +84,20 @@ const totalAmounts = selectedItems.reduce(
         onChange={() => cart.toggleSelectAll()}
       />
       <h2 className="text-lg font-medium text-gray-900">Chọn tất cả</h2>
+        </div>
+      <Button onClick={onRemoveAll} disabled={selectedItems.length === 0} className="justify-around flex">
+       <Trash />
+      </Button>
       </div>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
           <div className="text-base font-medium text-gray-900">Tổng tiền</div>
-          <Currency value={totalAmounts.totalPrice}  valueold ={totalAmounts.totalPriceOld}/>
+          <Currency value={totalAmount}  valueold ={totalAmounts.totalPriceOld}/>
         </div>
       </div>
       <Button
         // onClick={onCheckout}
-        disabled={items.length === 0}
+        disabled={selectedItems.length === 0}
         className="w-full mt-6"
       >
         Thanh toán

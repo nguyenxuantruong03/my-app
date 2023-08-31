@@ -146,10 +146,13 @@ export interface Product {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
+
+
 }
 
 export interface Product1 {
@@ -206,10 +209,11 @@ export interface Product1 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -267,11 +271,11 @@ export interface Product2 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
-
+selectedWarranty:any
 }
 
 export interface Product3 {
@@ -328,10 +332,11 @@ export interface Product3 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -389,10 +394,11 @@ export interface Product4 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -450,10 +456,11 @@ export interface Product5 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -511,10 +518,11 @@ export interface Product6 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -572,10 +580,11 @@ export interface Product7 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -633,10 +642,11 @@ export interface Product8 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -694,10 +704,11 @@ export interface Product9 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -756,10 +767,11 @@ export interface Product10 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -818,10 +830,11 @@ export interface Product11 {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -879,10 +892,11 @@ export interface Laptop {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -940,10 +954,11 @@ export interface Headphone {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -1001,10 +1016,11 @@ export interface Tivi {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -1062,10 +1078,11 @@ export interface Watch {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -1123,10 +1140,11 @@ export interface Ipad {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 
@@ -1184,10 +1202,11 @@ export interface Mouse {
   guaranteeheading: string;
   guaranteedescription: string;
   guaranteeinfomation: string;
-  guaranteeprice: number;
+  guaranteeprice: string;
 
 isFeatured: boolean;
 quantity:number
+selectedWarranty:any
 
 }
 

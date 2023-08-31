@@ -1,6 +1,7 @@
 "use client";
 
 import Currency from "@/components/ui/currency";
+import Currencyonevalue from "@/components/ui/currencyonevalue";
 import IconButton from "@/components/ui/icon-button";
 import useCart, { ProductUnion } from "@/hooks/use-cart";
 import { X } from "lucide-react";
@@ -13,8 +14,10 @@ interface CartItemProps {
 
 type ProductWithQuantity = ProductUnion & { quantity: number };
 
-const isProductWithQuantity = (item: ProductUnion): item is ProductWithQuantity => {
-  return 'quantity' in item;
+const isProductWithQuantity = (
+  item: ProductUnion
+): item is ProductWithQuantity => {
+  return "quantity" in item;
 };
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
@@ -23,7 +26,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
     isProductWithQuantity(data) ? data.quantity : 1
   );
   const selected = cart.selectedItems.includes(data.id);
-  
+
   const incrementQuantity = () => {
     if (isProductWithQuantity(data)) {
       const newQuantity = quantity + 1;
@@ -33,10 +36,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   };
 
   const decrementQuantity = () => {
-    if (
-      (isProductWithQuantity(data)) &&
-      quantity > 1
-    ) {
+    if (isProductWithQuantity(data) && quantity > 1) {
       const newQuantity = quantity - 1;
       setQuantity(newQuantity);
       cart.updateQuantity(data.id, newQuantity);
@@ -46,18 +46,19 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   const onRemove = () => {
     cart.removeItem(data.id);
   };
-  const percentPrice = data.price * ((100 - data.percentpromotion) / 100) * quantity;
+  const percentPrice =
+    data.price * ((100 - data.percentpromotion) / 100) * quantity;
   const totalPrice = data.price * quantity;
   return (
-    <li className={`flex py-6 border-b ${selected ? 'selected' : ''}`}>
+    <li className={`flex py-6 border-b ${selected ? "selected" : ""}`}>
       <div className="px-5 my-auto">
-      <input
-      className="w-4 h-4"
-  type="checkbox"
-  checked={cart.selectedItems.includes(data.id)}
-  onChange={() => cart.toggleSelectItem(data.id)}
-/>
-</div>
+        <input
+          className="w-4 h-4"
+          type="checkbox"
+          checked={cart.selectedItems.includes(data.id)}
+          onChange={() => cart.toggleSelectItem(data.id)}
+        />
+      </div>
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill
@@ -66,7 +67,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           className="object-cover object-center"
         />
       </div>
-      
+
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
         <div className="absolute z-10 right-0 top-0">
           <IconButton onClick={onRemove} icon={<X size={15} />} />
@@ -75,14 +76,12 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           <div className="flex justify-between">
             <p className="text-lg font-semibold text-black">{data.name}</p>
           </div>
-          
+
           <div className="mt-1 flex text-sm">
-                <p className="text-gray-500">
-                        {data.color.name}
-                </p>
-                <p className="text-gray-500 ml-4 border-1 border-gray-200">
-                        {data.size.name}
-                </p>
+            <p className="text-gray-500">{data.color.name}</p>
+            <p className="text-gray-500 ml-4 border-1 border-gray-200">
+              {data.size.name}
+            </p>
           </div>
           <div className="mt-1 flex text-sm">
             {/* Quantity increment and decrement buttons */}
@@ -92,7 +91,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
             >
               -
             </button>
-            <span className="text-xl">{quantity}</span>
+            <span className="text-xl mx-1">{quantity}</span>
             <button
               onClick={incrementQuantity}
               className="px-2 py-1 border rounded-md border-gray-300"
@@ -100,7 +99,19 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
               +
             </button>
           </div>
-          <Currency value={percentPrice} valueold={totalPrice}/>
+          <Currency value={percentPrice} valueold={totalPrice} />
+        </div>
+        <div className="mt-1 text-sm text-gray-500">
+          Giá tiền bảo hành cho {data.name}:
+          {data.id in cart.selectedWarranties ? (
+            <span>
+              <Currencyonevalue value={cart.selectedWarranties[data.id]} />
+            </span>
+          ) : (
+            <span>
+              <Currencyonevalue value={0} />
+            </span>
+          )}
         </div>
       </div>
     </li>

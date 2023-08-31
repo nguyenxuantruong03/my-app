@@ -3,7 +3,7 @@ import Link from "next/link";
 const RelatedTagWatch= () => {
     return ( 
         <div className=" my-2 relative">
-            <div className="absolute flex bottom-4 left-[46rem] space-x-4 ">
+            <div className="absolute flex bottom-4 left-[45.8rem] space-x-4 ">
          <div className=" p-1 bg-gray-300 bg-opacity-40 rounded-md border-gray-400 border-[1px] text-xs">
             <Link  href="">
             Apple watch

@@ -9,7 +9,7 @@ export const formatter = new Intl.NumberFormat("de-DE",{
   })
 
   interface CurrencyonevalueProps{
-    value?: string | number;
+    value?: string | number |null;
   }
 
 const Currencyonevalue:React.FC<CurrencyonevalueProps> = ({value}) => {
