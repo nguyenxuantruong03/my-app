@@ -10,6 +10,10 @@ interface Comment {
   comment: string;
   commenter: string;
   createdAt: string;
+  nameproduct: string;
+}
+interface CommentProps {
+  data: string;
 }
 
 const colors = {
@@ -19,7 +23,7 @@ const colors = {
   gradienthover: " linear-gradient(135deg,#009fff, #ec2f4b)"
 };
 
-const Comment = () => {
+const Comment: React.FC<CommentProps> = ({ data }) => {
   const [rating, setRating] = useState<number | null>(null);
   const [comment, setComment] = useState<string>("");
   const [savedComments, setSavedComments] = useState<Comment[]>([]);
@@ -33,11 +37,10 @@ const Comment = () => {
   const [collapsedComments, setCollapsedComments] = useState<boolean>(false);
   const stars = Array(5).fill(0);
   const stars1 = Array(1).fill(0);
-
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get("/api/comments");
+        const response = await axios.get(`/api/comments`);
         const fetchedComments: Comment[] = response.data;
         setSavedComments(fetchedComments);
 
@@ -107,12 +110,13 @@ const Comment = () => {
     const newComment = {
       rating: rating as number,
       comment,
-      commenter: "Anonymous", // Change this to the actual commenter's name
+      commenter: "Vô danh", // Change this to the actual commenter's name
       createdAt: new Date(),
+      nameproduct: data ||"123"
     };
 
     try {
-      const response = await axios.post("/api/comments", newComment);
+      const response = await axios.post("/api/comments/", newComment);
       const savedComment: Comment = response.data;
 
       const updatedComments: Comment[] = [...savedComments, savedComment];
@@ -170,7 +174,7 @@ const Comment = () => {
 
   const renderStars = (integerPart : number, fractionalPart: number) => {
     const starElements = [];
-    
+
     // Render full stars for the integer part
     for (let i = 0; i < integerPart; i++) {
       starElements.push(
@@ -184,7 +188,7 @@ const Comment = () => {
         />
       );
     }
-  
+
     // Render a partially filled star for the fractional part
     if (fractionalPart > 0) {
       starElements.push(
@@ -194,12 +198,14 @@ const Comment = () => {
           color={colors.orange}
           style={{
             marginRight: 10,
-            clipPath: `polygon(0 0, ${fractionalPart * 100}% 0, ${fractionalPart * 100}% 100%, 0% 100%)`,
+            clipPath: `polygon(0 0, ${fractionalPart * 100}% 0, ${
+              fractionalPart * 100
+            }% 100%, 0% 100%)`,
           }}
         />
       );
     }
-  
+
     // Render grey stars for the remaining empty stars
     const remainingStars = 5 - starElements.length;
     for (let i = 0; i < remainingStars; i++) {
@@ -214,35 +220,37 @@ const Comment = () => {
         />
       );
     }
-     return starElements
-  }
+    return starElements;
+  };
 
   const formatTimestamp = (timestamp: string) => {
-  const createdDate = new Date(timestamp);
-  const currentDate = new Date();
+    const createdDate = new Date(timestamp);
+    const currentDate = new Date();
 
-  const timeDifference = currentDate.getTime() - createdDate.getTime();
-  const minuteDifference = Math.floor(timeDifference / (1000 * 60));
-  const hourDifference = Math.floor(timeDifference / (1000 * 60 * 60));
-  const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  const monthDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30));
+    const timeDifference = currentDate.getTime() - createdDate.getTime();
+    const minuteDifference = Math.floor(timeDifference / (1000 * 60));
+    const hourDifference = Math.floor(timeDifference / (1000 * 60 * 60));
+    const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const monthDifference = Math.floor(
+      timeDifference / (1000 * 60 * 60 * 24 * 30)
+    );
 
-  if (monthDifference >= 1) {
-    return createdDate.toLocaleDateString("vi-VN");
-  } else if (dayDifference >= 2) {
-    return `${dayDifference} ngày trước`;
-  } else if (dayDifference === 1) {
-    return "1 ngày trước";
-  } else if (hourDifference >= 2) {
-    return `${hourDifference} giờ trước`;
-  } else if (hourDifference === 1) {
-    return "1 giờ trước";
-  } else if (minuteDifference >= 2) {
-    return `${minuteDifference} phút trước`;
-  } else {
-    return "Vừa xong";
-  }
-};
+    if (monthDifference >= 1) {
+      return createdDate.toLocaleDateString("vi-VN");
+    } else if (dayDifference >= 2) {
+      return `${dayDifference} ngày trước`;
+    } else if (dayDifference === 1) {
+      return "1 ngày trước";
+    } else if (hourDifference >= 2) {
+      return `${hourDifference} giờ trước`;
+    } else if (hourDifference === 1) {
+      return "1 giờ trước";
+    } else if (minuteDifference >= 2) {
+      return `${minuteDifference} phút trước`;
+    } else {
+      return "Vừa xong";
+    }
+  };
 
   return (
     <Container>
@@ -250,16 +258,22 @@ const Comment = () => {
         <h2 className="text-xl font-semibold mb-4">Rate and Comment</h2>
         <div className="grid grid-cols-2 shadow-inner p-2">
           <div className="m-auto">
-            <h3 className="font-bold text-3xl">{calculateAverageRating().toFixed(1)}/5</h3>
+            <h3 className="font-bold text-3xl">
+              {calculateAverageRating().toFixed(1)}/5
+            </h3>
             <h3 className="flex">
-                {renderStars(Math.floor(calculateAverageRating()), calculateAverageRating() % 1)}
+              {renderStars(
+                Math.floor(calculateAverageRating()),
+                calculateAverageRating() % 1
+              )}
             </h3>
             <h3>{totalReviews} đánh giá và nhận xét</h3>
           </div>
 
           <div>
             <div className="flex relative">
-              5{stars1.map((_, index) => (
+              5
+              {stars1.map((_, index) => (
                 <FaStar
                   key={index}
                   size={24}
@@ -270,14 +284,24 @@ const Comment = () => {
                   }}
                 />
               ))}
-              <div style={{ width: `${(starReviewCounts[4] / totalReviews) * 100}%`, backgroundImage: colors.gradient, height: '100%', borderRadius: '20px' }}> 
-              <h3 className="text-[#ee9ca7]">{starReviewCounts[4]}</h3>
+              <div
+                style={{
+                  width: `${(starReviewCounts[4] / totalReviews) * 100}%`,
+                  backgroundImage: colors.gradient,
+                  height: "100%",
+                  borderRadius: "20px",
+                }}
+              >
+                <h3 className="text-[#ee9ca7]">{starReviewCounts[4]}</h3>
               </div>
-              <h3 className="absolute right-0">{starReviewCounts[4]} đánh giá</h3>
+              <h3 className="absolute right-0">
+                {starReviewCounts[4]} đánh giá
+              </h3>
             </div>
 
             <div className="flex mt-2 relative">
-              4{stars1.map((_, index) => (
+              4
+              {stars1.map((_, index) => (
                 <FaStar
                   key={index}
                   size={24}
@@ -288,14 +312,24 @@ const Comment = () => {
                   }}
                 />
               ))}
-              <div style={{ width: `${(starReviewCounts[3] / totalReviews) * 100}%`, backgroundImage: colors.gradient, height: '100%', borderRadius: '20px' }}> 
-              <h3 className="text-[#ee9ca7]">{starReviewCounts[3]}</h3>
+              <div
+                style={{
+                  width: `${(starReviewCounts[3] / totalReviews) * 100}%`,
+                  backgroundImage: colors.gradient,
+                  height: "100%",
+                  borderRadius: "20px",
+                }}
+              >
+                <h3 className="text-[#ee9ca7]">{starReviewCounts[3]}</h3>
               </div>
-              <h3 className="absolute right-0">{starReviewCounts[3]} đánh giá</h3>
+              <h3 className="absolute right-0">
+                {starReviewCounts[3]} đánh giá
+              </h3>
             </div>
 
             <div className="flex mt-2 relative">
-              3{stars1.map((_, index) => (
+              3
+              {stars1.map((_, index) => (
                 <FaStar
                   key={index}
                   size={24}
@@ -306,14 +340,24 @@ const Comment = () => {
                   }}
                 />
               ))}
-              <div style={{ width: `${(starReviewCounts[2] / totalReviews) * 100}%`, backgroundImage: colors.gradient, height: '100%', borderRadius: '20px' }}> 
-              <h3 className="text-[#ee9ca7]">{starReviewCounts[2]}</h3>
+              <div
+                style={{
+                  width: `${(starReviewCounts[2] / totalReviews) * 100}%`,
+                  backgroundImage: colors.gradient,
+                  height: "100%",
+                  borderRadius: "20px",
+                }}
+              >
+                <h3 className="text-[#ee9ca7]">{starReviewCounts[2]}</h3>
               </div>
-              <h3 className="absolute right-0">{starReviewCounts[2]} đánh giá</h3>
+              <h3 className="absolute right-0">
+                {starReviewCounts[2]} đánh giá
+              </h3>
             </div>
 
             <div className="flex mt-2 relative">
-              2{stars1.map((_, index) => (
+              2
+              {stars1.map((_, index) => (
                 <FaStar
                   key={index}
                   size={24}
@@ -324,14 +368,24 @@ const Comment = () => {
                   }}
                 />
               ))}
-              <div style={{ width: `${(starReviewCounts[1] / totalReviews) * 100}%`, backgroundImage: colors.gradient, height: '100%', borderRadius: '20px' }}> 
-              <h3 className="text-[#ee9ca7]">{starReviewCounts[1]}</h3>
+              <div
+                style={{
+                  width: `${(starReviewCounts[1] / totalReviews) * 100}%`,
+                  backgroundImage: colors.gradient,
+                  height: "100%",
+                  borderRadius: "20px",
+                }}
+              >
+                <h3 className="text-[#ee9ca7]">{starReviewCounts[1]}</h3>
               </div>
-              <h3 className="absolute right-0">{starReviewCounts[1]} đánh giá</h3>
+              <h3 className="absolute right-0">
+                {starReviewCounts[1]} đánh giá
+              </h3>
             </div>
 
             <div className="flex mt-2 relative">
-              1{stars1.map((_, index) => (
+              1
+              {stars1.map((_, index) => (
                 <FaStar
                   key={index}
                   size={24}
@@ -342,12 +396,20 @@ const Comment = () => {
                   }}
                 />
               ))}
-              <div style={{ width: `${(starReviewCounts[0] / totalReviews) * 100}%`, backgroundImage: colors.gradient, height: '100%', borderRadius: '20px' }}> 
-              <h3 className="text-[#ee9ca7]">{starReviewCounts[0]}</h3>
+              <div
+                style={{
+                  width: `${(starReviewCounts[0] / totalReviews) * 100}%`,
+                  backgroundImage: colors.gradient,
+                  height: "100%",
+                  borderRadius: "20px",
+                }}
+              >
+                <h3 className="text-[#ee9ca7]">{starReviewCounts[0]}</h3>
               </div>
-              <h3 className="absolute right-0">{starReviewCounts[0]} đánh giá</h3>
+              <h3 className="absolute right-0">
+                {starReviewCounts[0]} đánh giá
+              </h3>
             </div>
-
           </div>
         </div>
 
@@ -398,10 +460,10 @@ const Comment = () => {
           onClick={handleSubmit}
           className={`text-white px-4 py-2 rounded `}
           style={{ backgroundImage: colors.gradient }}
-          onMouseOver={event => {
+          onMouseOver={(event) => {
             event.currentTarget.style.backgroundImage = colors.gradienthover;
           }}
-          onMouseLeave={event => {
+          onMouseLeave={(event) => {
             event.currentTarget.style.backgroundImage = colors.gradient;
           }}
         >
@@ -419,43 +481,42 @@ const Comment = () => {
                       .slice()
                       .sort((a, b) => b.rating - a.rating)
                       .map((comment, index) => (
-                        <li key={index} className="">
-                          <div className=" flex items-center relative"> 
-                          <Image 
-                          src="https://bathanh.com.vn/wp-content/uploads/2017/08/default_avatar.png"
-                          alt=""
-                          width="30"
-                          height="30"
-                          className="rounded-md"
-                          />
-                          <p className="ml-3 font-bold">{comment.commenter}</p>
-                          <p className=" absolute right-0 text-sm font-bold text-gray-800 text-opacity-60">
-                          {formatTimestamp(comment.createdAt)}
-                          </p>
+                        <li key={index} >
+                          <div className=" flex items-center relative">
+                            <Image
+                              src="https://bathanh.com.vn/wp-content/uploads/2017/08/default_avatar.png"
+                              alt=""
+                              width="30"
+                              height="30"
+                              className="rounded-md"
+                            />
+                            <p className="ml-3 font-bold flex">
+                              {comment.commenter} <p className="text-sm text-gray-400 flex items-center font-normal ">-{comment.nameproduct}</p>
+                            </p>
+                              
 
+                            <p className=" absolute right-0 text-sm font-bold text-gray-800 text-opacity-60">
+                              {formatTimestamp(comment.createdAt)}
+                            </p>
                           </div>
-
-                          <div className="bg-gray-100 mt-4 mb-4 rounded-md p-2 text-sm ml-12"> 
-                          <p>Nhận xét: {comment.comment}</p>
-                          
-                          
-                          {/* Format the date and time */}
-                          <div className="flex space-x-2 items-center text-sm">
-                          <p> Đánh giá: </p>
-                          {stars.map((_, starIndex) => (
-                              <FaStar
-                                key={starIndex}
-                                size={16}
-                                color={
-                                  starIndex + 1 <= parseInt(rating, 10)
-                                    ? colors.orange
-                                    : colors.grey
-                                }
-                              />
-                            ))}
+                          <div className="bg-gray-100 mt-4 mb-4 rounded-md p-2 text-sm ml-12">
+                            <p>Nhận xét: {comment.comment}</p>
+                            {/* Format the date and time */}
+                            <div className="flex space-x-2 items-center text-sm">
+                              <p> Đánh giá: </p>
+                              {stars.map((_, starIndex) => (
+                                <FaStar
+                                  key={starIndex}
+                                  size={16}
+                                  color={
+                                    starIndex + 1 <= parseInt(rating, 10)
+                                      ? colors.orange
+                                      : colors.grey
+                                  }
+                                />
+                              ))}
+                            </div>
                           </div>
-                          </div>    
-                         
                         </li>
                       ))}
                   </ul>
@@ -464,21 +525,20 @@ const Comment = () => {
             </div>
           ))}
         <button
-  onClick={() => {
-    setCollapsedComments(!collapsedComments);
-  }}
-  className={`rounded px-2 md:px-28 md:py-2 py-1 mb-2 md:ml-[512px]  ${
-    collapsedComments
-      ? ' text-gray-700 '
-      : 'text-white'
-  }`}
-  style={{
-    backgroundImage: collapsedComments ? colors.gradienthover : colors.gradient
-  }}
->
-  {collapsedComments ? "Thu gọn" : "Xem thêm"}
-</button>
-
+          onClick={() => {
+            setCollapsedComments(!collapsedComments);
+          }}
+          className={`rounded px-2 md:px-28 md:py-2 py-1 mb-2 md:ml-[512px]  ${
+            collapsedComments ? " text-gray-700 " : "text-white"
+          }`}
+          style={{
+            backgroundImage: collapsedComments
+              ? colors.gradienthover
+              : colors.gradient,
+          }}
+        >
+          {collapsedComments ? "Thu gọn" : "Xem thêm"}
+        </button>
       </div>
     </Container>
   );

@@ -16,5 +16,6 @@ model Comment {
   rating    Int
   comment   String
   commenter String
+  nameproduct String
   createdAt DateTime @default(now())
 }

@@ -10,6 +10,7 @@ import ModalProvider from "@/providers/modal-provider";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
 import DetailProduct from "@/components/info-product/detail-product";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnle data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

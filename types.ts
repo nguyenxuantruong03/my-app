@@ -151,10 +151,7 @@ export interface Product {
 isFeatured: boolean;
 quantity:number
 selectedWarranty:any
-
-
 }
-
 export interface Product1 {
   id: string;
 
@@ -214,7 +211,6 @@ export interface Product1 {
 isFeatured: boolean;
 quantity:number
 selectedWarranty:any
-
 }
 
 export interface Product2 {

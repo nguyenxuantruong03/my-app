@@ -24,7 +24,6 @@ const HomePage = async () => {
       <MainProduct ipad={ipad} watch={watch} headphone={headphone} tivi={tivi} laptop={laptop} mouse={mouse} />
       <Suggest />
       <NewsPage />
-      <Comment />
     </>
   );
 };

@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
     const body = await req.json();
-    const { rating, comment, commenter  } = body;
+    const { rating, comment, commenter,nameproduct  } = body;
 
     try {
       const newComment = await prisma.comment.create({
@@ -13,6 +13,7 @@ export async function POST(req: Request) {
           rating,
           comment,
           commenter,
+          nameproduct
         },
       });
       return NextResponse.json(newComment);
