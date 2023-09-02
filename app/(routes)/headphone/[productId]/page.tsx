@@ -10,6 +10,7 @@ import ModalProvider from "@/providers/modal-provider";
 import ProductListSingnleHeadphone from "@/components/product/product-list/product-list-headphone";
 import getHeadphone from "@/actions/products/get-headphone";
 import getProductHeadphone from "@/actions/product/get-product-headphone";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnleHeadphone data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

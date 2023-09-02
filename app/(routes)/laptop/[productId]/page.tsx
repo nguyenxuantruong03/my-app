@@ -11,6 +11,7 @@ import ModalProvider from "@/providers/modal-provider";
 import ProductListSingnleLaptop from "@/components/product/product-list/product-list-laptop";
 import getLaptop from "@/actions/products/get-laptop";
 import getProductLaptop from "@/actions/product/get-product-laptop";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -72,6 +73,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnleLaptop data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

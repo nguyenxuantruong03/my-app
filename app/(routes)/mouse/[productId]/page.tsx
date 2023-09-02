@@ -10,6 +10,7 @@ import ModalProvider from "@/providers/modal-provider";
 import ProductListSingnleMouse from "@/components/product/product-list/product-list-single-mouse";
 import getMouse from "@/actions/products/get-mouse";
 import getProductMouse from "@/actions/product/get-product-mouse";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnleMouse data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

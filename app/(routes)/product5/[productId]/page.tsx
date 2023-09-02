@@ -11,6 +11,7 @@ import DetailProduct from "@/components/info-product/detail-product";
 import ModalProvider from "@/providers/modal-provider";
 import getProducts5 from "@/actions/products/get-accessory5";
 import getProduct5 from "@/actions/product/get-product5";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -72,6 +73,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnle5 data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

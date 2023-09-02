@@ -59,7 +59,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       }
     };
 
-    fetchComments();
+     fetchComments();
   }, []);
 
   const handleTimestampUpdate = () => {
@@ -73,7 +73,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
 
     const timeDifference = Date.now() - parseInt(lastCommentTime, 10);
-    const minutesPassed = timeDifference / (1000 * 60); // Convert milliseconds to hours
+    const minutesPassed = timeDifference / (0 * 60); // Convert milliseconds to hours
+    // const minutesPassed = timeDifference / (1000 * 60); // Convert milliseconds to hours
 
     return minutesPassed >= 1;
   };
@@ -111,7 +112,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       rating: rating as number,
       comment,
       commenter: "Vô danh", // Change this to the actual commenter's name
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(),
       nameproduct: data ||"123"
     };
 
@@ -130,9 +131,9 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
 
       const updatedCommentsByRating: { [key: number]: Comment[] } = {
         ...commentsByRating,
-        [savedComment.rating]: [
-          ...(commentsByRating[savedComment.rating] || []),
-          savedComment,
+        [newComment.rating]: [
+          ...(commentsByRating[newComment.rating] || []),
+          newComment,
         ],
       };
       setCommentsByRating(updatedCommentsByRating);
@@ -141,22 +142,35 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
   };
 
-  const totalReviews = savedComments.length;
+  const calculateTotalReviews = () => {
+    return savedComments.filter((comment) => comment.nameproduct === data).length;
+  };
+
+  // Use the calculateTotalReviews function to get the total reviews for the current product
+  const totalReviews = calculateTotalReviews();
 
   const starReviewCounts: number[] = [0, 0, 0, 0, 0];
 
-  savedComments.forEach((savedComment) => {
+  savedComments
+  .filter((comment) => comment.nameproduct === data)
+  .forEach((savedComment) => {
     if (savedComment.rating >= 1 && savedComment.rating <= 5) {
       starReviewCounts[savedComment.rating - 1]++;
     }
   });
 
-  const calculateAverageRating = () => {
-    const totalStarsGiven = savedComments.reduce(
+  const calculateAverageRating = (productName: string) => {
+    const productComments = savedComments.filter(
+      (comment) => comment.nameproduct === productName
+    );
+  
+    const totalStarsGiven = productComments.reduce(
       (total, savedComment) => total + savedComment.rating,
       0
     );
-    const totalReviews = savedComments.length;
+  
+    const totalReviews = productComments.length;
+  
     if (totalReviews === 0) {
       return 0;
     }
@@ -251,20 +265,20 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       return "Vừa xong";
     }
   };
-
+ 
   return (
     <Container>
-      <div className="p-4 shadow-xl min-h-screen rounded-md">
-        <h2 className="text-xl font-semibold mb-4">Rate and Comment</h2>
+      <div className="p-4 shadow-lg my-6 rounded-md">
+        <h2 className="text-xl font-semibold mb-4">Rate and Comment -{data}</h2>
         <div className="grid grid-cols-2 shadow-inner p-2">
           <div className="m-auto">
             <h3 className="font-bold text-3xl">
-              {calculateAverageRating().toFixed(1)}/5
+              {calculateAverageRating(data).toFixed(1)}/5
             </h3>
             <h3 className="flex">
               {renderStars(
-                Math.floor(calculateAverageRating()),
-                calculateAverageRating() % 1
+                Math.floor(calculateAverageRating(data)),
+                calculateAverageRating(data) % 1
               )}
             </h3>
             <h3>{totalReviews} đánh giá và nhận xét</h3>
@@ -474,11 +488,11 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           .sort(([ratingA], [ratingB]) => parseInt(ratingB) - parseInt(ratingA))
           .map(([rating, comments]) => (
             <div key={rating}>
-              {(collapsedComments || rating === "5") && (
+              {(collapsedComments || rating === "5" || rating === "4"|| rating === "3") && (
                 <div className="mt-10">
                   <ul>
                     {comments
-                      .slice()
+                    .filter((comment) => comment.nameproduct === data)
                       .sort((a, b) => b.rating - a.rating)
                       .map((comment, index) => (
                         <li key={index} >
@@ -537,7 +551,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               : colors.gradient,
           }}
         >
-          {collapsedComments ? "Thu gọn" : "Xem thêm"}
+          {collapsedComments ? "Thu gọn" : "Xem tất cả"}
         </button>
       </div>
     </Container>

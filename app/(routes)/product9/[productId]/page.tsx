@@ -10,6 +10,7 @@ import DetailProduct from "@/components/info-product/detail-product";
 import ModalProvider from "@/providers/modal-provider";
 import getProducts9 from "@/actions/products/get-mouse9";
 import getProduct9 from "@/actions/product/get-product9";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnle9 data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

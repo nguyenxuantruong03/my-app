@@ -19,3 +19,5 @@ model Comment {
   nameproduct String
   createdAt DateTime @default(now())
 }
+
+

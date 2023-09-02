@@ -10,6 +10,7 @@ import ModalProvider from "@/providers/modal-provider";
 import ProductListSingnleTivi from "@/components/product/product-list/product-list-single-tivi";
 import getTivi from "@/actions/products/get-tivi";
 import getProductTivi from "@/actions/product/get-product-tivi";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnleTivi data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>

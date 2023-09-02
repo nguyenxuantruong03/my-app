@@ -10,6 +10,7 @@ import DetailProduct from "@/components/info-product/detail-product";
 import InfoProduct from "@/components/info-product/info-product";
 import InfoWarranty from "@/components/info-product/infowarranty";
 import InfoPromotion from "@/components/info-product/info-promotion";
+import Comment from "@/components/comment/comment";
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingnle11 data={suggestedProducts} />
         <hr className="my-5" />
         <DetailProduct data={product} />
+        <Comment data={product.name}/>
       </Container>
       <ModalProvider data={product} />
     </div>
