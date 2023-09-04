@@ -3,15 +3,15 @@ import Gallery from "@/components/gallery/gallery";
 import InfoProduct from "@/components/info-product/info-product";
 import InfoWarranty from "@/components/info-product/infowarranty";
 import InfoPromotion from "@/components/info-product/info-promotion";
-import ProductListSingnle5 from "@/components/product/product-list/product-list-single5";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
 import DetailProduct from "@/components/info-product/detail-product";
 
 import ModalProvider from "@/providers/modal-provider";
-import getProducts5 from "@/actions/products/get-accessory5";
 import getProduct5 from "@/actions/product/get-product5";
 import Comment from "@/components/comment/comment";
+import { getProducts5 } from "@/actions/products/get-products";
+import ProductListSingle from "@/components/product/product-list/product-list-signle";
 
 export const revalidate = 0;
 
@@ -70,10 +70,10 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         </div>
         <hr className="my-10" />
         <h1 className="font-bold text-3xl my-3">Gợi ý khác </h1>
-        <ProductListSingnle5 data={suggestedProducts} />
+        <ProductListSingle data={suggestedProducts} route="product5" />
         <hr className="my-5" />
         <DetailProduct data={product} />
-        <Comment data={product.name}/>
+        <Comment data={product.name} />
       </Container>
       <ModalProvider data={product} />
     </div>

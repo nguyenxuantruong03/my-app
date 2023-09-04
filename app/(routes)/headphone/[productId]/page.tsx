@@ -7,10 +7,10 @@ import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
 import DetailProduct from "@/components/info-product/detail-product";
 import ModalProvider from "@/providers/modal-provider";
-import ProductListSingnleHeadphone from "@/components/product/product-list/product-list-headphone";
-import getHeadphone from "@/actions/products/get-headphone";
 import getProductHeadphone from "@/actions/product/get-product-headphone";
 import Comment from "@/components/comment/comment";
+import { getHeadphone } from "@/actions/products/get-products";
+import ProductList from "@/components/product/product-list/product-list";
 
 export const revalidate = 0;
 
@@ -69,7 +69,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         </div>
         <hr className="my-10" />
         <h1 className="font-bold text-3xl my-3">Gợi ý khác </h1>
-        <ProductListSingnleHeadphone data={suggestedProducts} />
+        <ProductList data={suggestedProducts} productType="headphone"/>
         <hr className="my-5" />
         <DetailProduct data={product} />
         <Comment data={product.name}/>

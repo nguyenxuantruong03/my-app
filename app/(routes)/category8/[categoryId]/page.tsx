@@ -6,8 +6,8 @@ import MobileFilter from "./components/mobile-filter";
 import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
-import  ProductCard8  from '@/components/product/productcard-category/productcard-category8';
 import BillboardCategory from "@/components/slider-item/billboard-category";
+import ProductCard from "@/components/product/productcard-category/productcard";
 
 export const revalidate = 0;
 interface CategoryPageProps {
@@ -51,7 +51,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               {product.length === 0 && <NoResults />}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {product.map((item) => (
-                  <ProductCard8 key={item.id} data={item} />
+                  <ProductCard key={item.id} data={item} route="product8"/>
                 ))}
               </div>
             </div>

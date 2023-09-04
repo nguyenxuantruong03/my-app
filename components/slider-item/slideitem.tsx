@@ -5,19 +5,8 @@ import MenuTree from "./menutree";
 import SliderSwipper from "./sliderswiper";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import getBillboardsale from "@/actions/billboard/get-billboardsale";
-import getCategories from "@/actions/categories/get-categories";
-import getCategories1 from "@/actions/categories/get-categories1";
-import getCategories2 from "@/actions/categories/get-categories2";
-import getCategories3 from "@/actions/categories/get-categories3";
-import getCategories4 from "@/actions/categories/get-categories4";
-import getCategories5 from "@/actions/categories/get-categories5";
-import getCategories6 from "@/actions/categories/get-categories6";
-import getCategories7 from "@/actions/categories/get-categories7";
-import getCategories8 from "@/actions/categories/get-categories8";
-import getCategories9 from "@/actions/categories/get-categories9";
-import getCategories10 from "@/actions/categories/get-categories10";
-import getCategories11 from "@/actions/categories/get-categories11";
 import BillboardCategory from "./billboard-category";
+import { getCategories, getCategories1, getCategories10, getCategories11, getCategories2, getCategories3, getCategories4, getCategories5, getCategories6, getCategories7, getCategories8, getCategories9 } from "@/actions/categories/get-categories";
 
 export const revalidate = 0;
 const SlideItem = async () => {

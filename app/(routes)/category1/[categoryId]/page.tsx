@@ -6,8 +6,8 @@ import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import getProduct1 from "@/actions/product/get-product1";
-import ProductCard1 from "@/components/product/productcard-category/productcard-category1";
 import BillboardCategory from "@/components/slider-item/billboard-category";
+import ProductCard from "@/components/product/productcard-category/productcard";
 
 export const revalidate = 0;
 interface CategoryPageProps {
@@ -51,7 +51,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               {product.length === 0 && <NoResults />}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {product.map((item) => (
-                  <ProductCard1 key={item.id} data={item} />
+                  <ProductCard key={item.id} data={item} route="product1"/>
                 ))}
               </div>
             </div>

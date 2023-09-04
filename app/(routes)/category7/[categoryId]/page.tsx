@@ -1,13 +1,13 @@
 import getColors from "@/actions/get-colors";
 import getProduct7 from "@/actions/product/get-product7";
 import getSizes from "@/actions/get-size";
-import ProductCard7 from "@/components/product/productcard-category/productcard-category7";
 import NoResults from "@/components/ui/no-result";
 import MobileFilter from "./components/mobile-filter";
 import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import BillboardCategory from "@/components/slider-item/billboard-category";
+import ProductCard from "@/components/product/productcard-category/productcard";
 
 export const revalidate = 0;
 interface CategoryPageProps {
@@ -51,7 +51,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               {product.length === 0 && <NoResults />}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {product.map((item) => (
-                  <ProductCard7 key={item.id} data={item} />
+                  <ProductCard key={item.id} data={item} route="product7"/>
                 ))}
               </div>
             </div>

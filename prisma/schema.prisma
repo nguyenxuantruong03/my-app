@@ -20,4 +20,8 @@ model Comment {
   createdAt DateTime @default(now())
 }
 
-
+model WheelSpin {
+  id        Int       @id @default(autoincrement())
+  coin    String
+  createdAt DateTime  @default(now())
+}

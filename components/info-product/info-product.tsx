@@ -113,8 +113,8 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
         <h3 className="font-semibold"> Tổng giá: </h3>
         <p className="text-lg text-gray-900">
           <Currency
-            value={data.price * quantity} // Ensure data.price is a number
-            valueold={discountedPrice * quantity} 
+            value={discountedPrice * quantity} 
+            valueold={data.price * quantity} // Ensure data.price is a number
           />
         </p>
       </div>

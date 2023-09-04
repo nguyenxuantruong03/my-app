@@ -1,31 +1,45 @@
-"use client";
-// Import Swiper React components
+"use client"
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
-import "./product-list.css";
 import "swiper/css/scrollbar";
-
-import { Grid, Autoplay,FreeMode } from "swiper/modules";
-import { Product } from "@/types";
+import { Grid, Autoplay, FreeMode } from "swiper/modules";
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
 import PrevNextSwiper from "./prevnextswiper";
+import "./product-list.css"
 
-interface ProductListPorps {
-  data: Product[];
+// Define the types for different product categories
+import { Headphone, Ipad, Laptop, Watch } from "@/types";
+
+interface ProductListProps {
+  data: Headphone[] | Ipad[] | Laptop[] | Watch[]
+  productType: "headphone" | "ipad" | "laptop" | "watch";
 }
 
-const ProductList: React.FC<ProductListPorps> = ({ data }) => {
+const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
   const router = useRouter();
 
-  // /product ở đây là file product nằm ở routes nó sẽ chuyển vào [productId]
   const handleClick = (productId: string) => {
-    router.push(`/product/${productId}`);
+    switch (productType) {
+      case "headphone":
+        router.push(`/headphone/${productId}`);
+        break;
+      case "ipad":
+        router.push(`/ipad/${productId}`);
+        break;
+      case "laptop":
+        router.push(`/laptop/${productId}`);
+        break;
+      case "watch":
+        router.push(`/watch/${productId}`);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -45,44 +59,42 @@ const ProductList: React.FC<ProductListPorps> = ({ data }) => {
           disableOnInteraction: false,
         }}
         freeMode={true}
-        modules={[Grid, Autoplay,FreeMode]}
+        modules={[Grid, Autoplay, FreeMode]}
         className="mySwiper"
       >
-         {data.map((product) => {
+        {data.map((product) => {
           const discountedPrice = product.price * ((100 - product.percentpromotion) / 100);
 
           return (
-          <SwiperSlide key={product.id}>
-            <div
-              onClick={() => handleClick(product.id)}
-              className=" bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative"
-            >
-              {/* Images and actions */}
-              <div className="aspect-square rounded-xl bg-gray-100 relative  ">
-                <Image
-                  src={product?.images?.[0].url}
-                  fill
-                  alt="Image"
-                  className="aspect-square object-cover rounded-md"
-                />
+            <SwiperSlide key={product.id}>
+              <div
+                onClick={() => handleClick(product.id)}
+                className="bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative"
+              >
+                <div className="aspect-square rounded-xl bg-gray-100 relative">
+                  <Image
+                    src={product?.images?.[0].url}
+                    alt="Image"
+                    className="aspect-square object-cover rounded-md"
+                    fill
+                  />
+                </div>
+                <div className="ml-3">
+                  <p className="font-semibold text-lg">{product.name}</p>
+                  <p className="text-sm text-gray-500">{product.category.name}</p>
+                </div>
+                <div className="flex items-center justify-between ml-3">
+                  <Currency valueold={product?.price} value={discountedPrice} />
+                </div>
               </div>
-              {/* Description */}
-              <div className="ml-3">
-                <p className="font-semibold text-lg">{product.name}</p>
-                <p className="text-sm text-gray-500">{product.category.name}</p>
+              <div className="home-product-item__favorite">
+                <span className="ml-1">Giảm {product.percentpromotion}%</span>
               </div>
-              <div className="flex items-center justify-between ml-3">
-              <Currency valueold={product?.price} value={discountedPrice} />
-              </div>
-            </div>
-            <div className="home-product-item__favorite">
-              <span className="ml-1">Giảm {product.percentpromotion}%</span>
-            </div>
-          </SwiperSlide>
-        )
+            </SwiperSlide>
+          );
         })}
-         <div className="absolute top-16 z-10 ">
-        <PrevNextSwiper/>
+        <div className="absolute top-16 z-10 ">
+          <PrevNextSwiper />
         </div>
       </Swiper>
     </>

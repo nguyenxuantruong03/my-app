@@ -4,7 +4,6 @@ import getProductLaptop from "@/actions/product/get-product-laptop";
 import getProductMouse from "@/actions/product/get-product-mouse";
 import getProductTivi from "@/actions/product/get-product-tivi";
 import getProductWatch from "@/actions/product/get-product-watch";
-import Comment from "@/components/comment/comment";
 import NewsPage from "@/components/news/news";
 import MainProduct from "@/components/product/mainproduct";
 import SlideItem from "@/components/slider-item/slideitem";
