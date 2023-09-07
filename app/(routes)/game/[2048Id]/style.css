@@ -1,0 +1,77 @@
+/* Modify your existing CSS classes */
+.cell-2 {
+  background-color: red;
+  color: white;
+  font-size: 2rem; /* Adjust the font size to match your desired size */
+  font-weight: bold;
+}
+
+.cell-4 {
+  background-color: green;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-8 {
+  background-color: #ff6f61; /* Hip color */
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-16 {
+  background-color: orange;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-32 {
+  background-color: yellow;
+  color: black; /* Change text color for better visibility */
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-64 {
+  background-color: white;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-128 {
+  background-color: brown;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-256 {
+  background-color: navy;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-512 {
+  background-color: blue;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-1024 {
+  background-color: gray;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cell-2048 {
+  background-color: red;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
