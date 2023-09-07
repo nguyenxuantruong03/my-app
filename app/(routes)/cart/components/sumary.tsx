@@ -1,19 +1,20 @@
 "use client"
 import useCart from "@/hooks/use-cart";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
 import { Trash } from "lucide-react";
+import Currencyonevalue from "@/components/ui/currencyonevalue";
 
 const Sumary = () => {
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
   const cart = useCart();
-  
+  const [totalCoins, setTotalCoins] = useState<number>(0);
   const onRemoveAll = () => {
     cart.removeSelectedItems();
     toast.success("Selected items have been removed from the cart.");
@@ -33,6 +34,13 @@ const Sumary = () => {
   const selectedItems = items.filter((item) =>
   cart.selectedItems.includes(item.id)
 );
+//Total Coins
+useEffect(() => {
+  // Load totalCoins from the server using GET request
+  axios.get("/api/wheelSpin").then((response) => {
+    setTotalCoins(response.data.totalCoins);
+  });
+}, []);
 
 const totalAmounts = selectedItems.reduce(
   (total, item) => {
@@ -62,7 +70,7 @@ const totalWarrantyAmount = selectedItems.reduce((total, item) => {
 }, 0);
 
 const totalAmount = totalAmounts.totalPrice + totalWarrantyAmount;
-
+const TotalAmountCoins = totalAmount - totalCoins
   // const onCheckout = async () => {
   //   const reponse = await axios.post(
   //     `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
@@ -94,7 +102,19 @@ const totalAmount = totalAmounts.totalPrice + totalWarrantyAmount;
           <div className="text-base font-medium text-gray-900">Tổng tiền</div>
           <Currency value={totalAmount}  valueold ={totalAmounts.totalPriceOld}/>
         </div>
+
+        <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+          <div className="text-base font-medium text-gray-900">Xu</div>
+          <Currencyonevalue value={- totalCoins}/>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+          <div className="text-base font-medium text-gray-900">Số tiền cần thanh toán</div>
+          <Currencyonevalue value={TotalAmountCoins}/>
+        </div>
       </div>
+
+      
       <Button
         // onClick={onCheckout}
         disabled={selectedItems.length === 0}

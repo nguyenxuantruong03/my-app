@@ -15,7 +15,7 @@ export default function ListItem({post}: Props) {
             <br />
             {image && <CustomImageMainPage src={image} alt={title} />}
             </Link>
-            <p className="text-sm mt-1 ">{formattedDate}</p>
+            <p className="text-sm mt-1 font-semibold">{formattedDate}</p>
         </li>
     </div>
   )

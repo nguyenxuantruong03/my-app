@@ -4,11 +4,11 @@ import { Input } from "@nextui-org/react";
 import {
   AlignJustify,
   UserCircle2,
-  Truck,
   ShoppingBag,
   Gift,
-  MapPin,
   Coins,
+  Gamepad2,
+  Heart,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -151,16 +151,16 @@ const MainNav = () => {
         </div>
       </Link>
 
-      <Link href="/">
+      <Link href="/game">
         <div className="rounded-lg p-2 hover:bg-[#e53350] ">
           <div className="flex flex-col md:flex-row justify-center  items-center ">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
-                <MapPin className=" text-white w-6 h-6" />
+                <Gamepad2 className=" text-white w-6 h-6" />
               </div>
               <div className="basis-2/3">
-                <div className="text-xs flex gap-4 text-white">Cửa hàng</div>
-                <div className="text-xs w-20 text-white">gần bạn</div>
+                <div className="text-xs flex gap-4 text-white">Trò chơi</div>
+                <div className="text-xs w-14 text-white">giải trí</div>
               </div>
             </div>
           </div>
@@ -172,11 +172,11 @@ const MainNav = () => {
           <div className="flex flex-col md:flex-row justify-center  items-center ">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
-                <Truck className="w-6 h-6 text-white" />
+                <Heart className="w-6 h-6 text-white" />
               </div>
               <div className="basis-2/3">
-                <div className="text-xs flex gap-4 text-white">Tra cứu</div>
-                <div className="text-xs w-14 text-white">đơn hàng</div>
+                <div className="text-xs flex gap-4 text-white">Sản phẩm</div>
+                <div className="text-xs w-14 text-white">đã tim</div>
               </div>
             </div>
           </div>
