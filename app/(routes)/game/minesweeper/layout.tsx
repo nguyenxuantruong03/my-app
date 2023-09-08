@@ -21,22 +21,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-    const [isMounted,setIsMounted] = useState(false)
-    useEffect(()=>{
-        setIsMounted(true)
-    },[])
-    if(!isMounted){
-        return null
-      }
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-      <Navbar />
+    <>
         <Provider store={store}>
         {children}
         </Provider>
-        <Footer />
-      </body>
-    </html>
+        </>
   );
 }

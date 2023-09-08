@@ -170,9 +170,9 @@ function Game({ settings }: GameProps) {
             <DigitsDisplay digits={3} value={timeToDisplay} />
           </div>
           <div className={styles["inner-border"]}>
-            {grid.map((v, y) => (
+            {grid.map((row, y) => (
               <div key={`row-${y}`} className={styles["row"]}>
-                {v.map((tile, x) => (
+                {row.map((tile, x) => (
                   <Tile
                     tile={tile}
                     coordinates={{ x, y }}
