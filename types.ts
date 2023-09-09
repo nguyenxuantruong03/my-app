@@ -1394,3 +1394,85 @@ export interface Imagesalientfeaturesmouse {
   id: string;
   url: string;
 }
+
+//Pacman
+export type Character = {
+  velocity: number;
+  size: number;
+  border: number;
+  topScoreBoard: number;
+  color: string;
+  name: string;
+};
+
+
+export enum COLOR {
+  PACMAN_DEAD = "white",
+  GHOST_DEAD = "white",
+  RED = "red",
+  BLUE = "blue",
+  ORANGE = "orange",
+  GREEN = "green",
+}
+
+
+export enum DIFFICULTY {
+  EASY = "easy",
+  MEDIUM = "medium",
+  ADVANCED = "advanced",
+}
+
+export type Difficulty =
+  | DIFFICULTY.EASY
+  | DIFFICULTY.MEDIUM
+  | DIFFICULTY.ADVANCED;
+
+
+  export enum DIRECTION {
+    LEFT = "left",
+    RIGHT = "right",
+    UP = "up",
+    DOWN = "down",
+  }
+  
+  export type Direction =
+    | DIRECTION.LEFT
+    | DIRECTION.RIGHT
+    | DIRECTION.UP
+    | DIRECTION.DOWN;
+  
+  export enum ARROW {
+    LEFT = 37,
+    RIGHT = 39,
+    UP = 38,
+    DOWN = 40,
+  }
+
+  export enum GAME_STATUS {
+    IN_PROGRESS = "in_progress",
+    PAUSED = "paused",
+    LOST = "lost",
+    WON = "won",
+  }
+  
+  export type GameStatus =
+    | GAME_STATUS.IN_PROGRESS
+    | GAME_STATUS.LOST
+    | GAME_STATUS.WON
+    | GAME_STATUS.PAUSED;
+
+    export type Position = {
+      top: number;
+      left: number;
+    };
+    
+    export const ghostStartPosition: Position = {
+      top: 300,
+      left: 300,
+    };
+    
+    export const pacmanStartPosition: Position = {
+      top: 0,
+      left: 0,
+    };
+    

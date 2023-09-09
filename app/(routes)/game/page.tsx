@@ -4,8 +4,6 @@ import Container from "@/components/ui/container";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Provider } from "react-redux";
-import { store } from "./minesweeper/hooks/store";
 
 const GamePage = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -21,6 +19,9 @@ const GamePage = () => {
 
   const handleClickMinesweeper = () => {
     router.push("/game/minesweeper");
+  };
+  const handleClickPacman= () => {
+    router.push("/game/pacman");
   };
 
   useEffect(() => {
@@ -51,7 +52,6 @@ const GamePage = () => {
           className="cursor-pointer"
           onClick={handleClickDino}
         />
-        <Provider store={store}>
           <Image
             src="/images/logo-minesweeper.png"
             alt=""
@@ -60,7 +60,14 @@ const GamePage = () => {
             className="cursor-pointer"
             onClick={handleClickMinesweeper}
           />
-        </Provider>
+          <Image
+            src="/images/Pacman.png"
+            alt=""
+            width={100}
+            height={100}
+            className="cursor-pointer"
+            onClick={handleClickPacman}
+          />
       </div>
     </Container>
   );
