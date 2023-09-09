@@ -6,6 +6,7 @@ import Food from "./Food";
 import styled from "styled-components";
 import { useGameContext } from "../context/GameContext";
 import { DIFFICULTY, Difficulty,COLOR,GAME_STATUS } from "@/types";
+import { Volume2 } from 'lucide-react';
 
 type SceneProps = {
   foodSize: number;
@@ -91,6 +92,15 @@ const Scene = (props: SceneProps) => {
   } = useGameContext();
 
   const [ghostVelocity, setGhostVelocity] = React.useState(20);
+  const [volume, setVolume] = useState(50);
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseInt(event.target.value, 10); // Parse the input value to an integer
+    setVolume(newVolume);
+    if (audio) {
+      // Step 3: Set the audio volume
+      audio.volume = newVolume / 100; // Convert volume to a value between 0 and 1
+    }
+  };
   React.useEffect(() => {
     const handleKeyDown = (event:any) => {
       // Check if the pressed key is an arrow key
@@ -173,6 +183,18 @@ const Scene = (props: SceneProps) => {
             )}
           </OverlayContent>
         )}
+        <div className="absolute z-50 -top-[1.5rem] flex">
+        <label htmlFor="volume"><Volume2 className="w-5 h-5 text-gray-500 font-semibold"/></label>
+        <input
+          type="range"
+          id="volume"
+          name="volume"
+          min="1"
+          max="100"
+          value={volume}
+          onChange={handleVolumeChange}
+        />
+      </div>
       {gameStatus === GAME_STATUS.PAUSED && (
         <OverlayContent>
           <CenterContainer>
@@ -276,6 +298,7 @@ const OverlayContent = styled.div`
 `;
 
 const StyledScene = styled.div`
+position:relative;
   --container-width: 105vw - 20px;
   height: calc(100vh - 120px);
   width: calc(var(--container-width));

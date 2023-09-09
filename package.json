@@ -39,6 +39,7 @@
     "react-wheel-of-prizes": "^1.0.9",
     "rehype-highlight": "^6.0.0",
     "rehype-slug": "^5.1.0",
+    "sass": "^1.66.1",
     "semantic": "^0.0.1",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",

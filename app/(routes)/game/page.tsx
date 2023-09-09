@@ -23,6 +23,9 @@ const GamePage = () => {
   const handleClickPacman= () => {
     router.push("/game/pacman");
   };
+   const handleClickTictoe= () => {
+    router.push("/game/tictoe");
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -67,6 +70,14 @@ const GamePage = () => {
             height={100}
             className="cursor-pointer"
             onClick={handleClickPacman}
+          />
+          <Image
+            src="/images/tictoe.png"
+            alt=""
+            width={100}
+            height={100}
+            className="cursor-pointer"
+            onClick={handleClickTictoe}
           />
       </div>
     </Container>
