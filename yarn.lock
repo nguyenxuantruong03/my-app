@@ -3771,6 +3771,11 @@ hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   dependencies:
     react-is "^16.7.0"
 
+howler@^2.1.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.3.tgz#a2eff9b08b586798e7a2ee17a602a90df28715da"
+  integrity sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==
+
 human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
@@ -5137,7 +5142,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5208,6 +5213,13 @@ react-confetti@^6.1.0:
   integrity sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==
   dependencies:
     tween-functions "^1.2.0"
+
+react-device-detect@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-2.2.3.tgz#97a7ae767cdd004e7c3578260f48cf70c036e7ca"
+  integrity sha512-buYY3qrCnQVlIFHrC5UcUoAj7iANs/+srdkwsnNjI7anr3Tt7UY6MqNxtMLlr0tMBied0O49UZVK8XKs3ZIiPw==
+  dependencies:
+    ua-parser-js "^1.0.33"
 
 react-dom@18.2.0:
   version "18.2.0"
@@ -5310,6 +5322,14 @@ react-router@^3.0.1:
     prop-types "^15.7.2"
     react-is "^16.13.0"
     warning "^3.0.0"
+
+react-sound@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-sound/-/react-sound-1.2.0.tgz#1bb7e1ec8494ecc57b03dbdecd1496b10f6541f2"
+  integrity sha512-pc2l8f7Oy3VePRRVesBwSSJ0mrCeD/lE5GVCT1RPdEQ7lgbZTDyWI8HokXHmS1v79aiLnd3WTRhfsBAY0NTb8g==
+  dependencies:
+    prop-types "^15.5.7"
+    soundmanager2 "^2.97.20170602"
 
 react-transition-group@^1.2.0:
   version "1.2.1"
@@ -5735,6 +5755,11 @@ slash@^4.0.0:
   resolved "https://registry.npmjs.org/slash/-/slash-4.0.0.tgz"
   integrity sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==
 
+soundmanager2@^2.97.20170602:
+  version "2.97.20170602"
+  resolved "https://registry.yarnpkg.com/soundmanager2/-/soundmanager2-2.97.20170602.tgz#fe3bc731bfc4d54c1364e71980263e6816981879"
+  integrity sha512-2ee7ES9SJ++WkD7PGHMeT4QUuJr7uC3wacD6RoCDlKjdSp9lpEOaKm3lKWKld119DLILjS2l9U6xpXJN6U0KPQ==
+
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
@@ -6127,6 +6152,11 @@ ua-parser-js@^0.7.30:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.35.tgz#8bda4827be4f0b1dda91699a29499575a1f1d307"
   integrity sha512-veRf7dawaj9xaWEu9HoTVn5Pggtc/qj+kqTOFvNiN1l0YdxwC1kvel57UCjThjGa3BHBihE8/UJAHI+uQHmd/g==
 
+ua-parser-js@^1.0.33:
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.35.tgz#c4ef44343bc3db0a3cbefdf21822f1b1fc1ab011"
+  integrity sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==
+
 ui-react@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ui-react/-/ui-react-1.0.3.tgz#05d4a64fcbacdd5a009bdfcc43a404fcb1fca8ca"
@@ -6274,6 +6304,13 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-sound@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/use-sound/-/use-sound-4.0.1.tgz#8c8de4badd16902db7762fd9418a4283b9bf7b3e"
+  integrity sha512-hykJ86kNcu6y/FzlSHcQxhjSGMslZx2WlfLpZNoPbvueakv4OF3xPxEtGV2YmculrIaH0tPp9LtG4jgy17xMWg==
+  dependencies:
+    howler "^2.1.3"
 
 use-sync-external-store@1.2.0, use-sync-external-store@^1.0.0:
   version "1.2.0"

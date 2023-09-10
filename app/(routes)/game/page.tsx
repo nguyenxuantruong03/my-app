@@ -26,6 +26,9 @@ const GamePage = () => {
    const handleClickTictoe= () => {
     router.push("/game/tictoe");
   };
+  const handleClickTetris= () => {
+    router.push("/game/tetris");
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -78,6 +81,14 @@ const GamePage = () => {
             height={100}
             className="cursor-pointer"
             onClick={handleClickTictoe}
+          />
+          <Image
+            src="/images/tetris.png"
+            alt=""
+            width={100}
+            height={100}
+            className="cursor-pointer"
+            onClick={handleClickTetris}
           />
       </div>
     </Container>
