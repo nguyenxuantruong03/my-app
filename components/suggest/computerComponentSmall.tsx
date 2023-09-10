@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import {computerComponentSmallcolor} from "@/components/color/color"
 
 const computerComponentSmall = () => {
     return ( 
         <div className="grid grid-cols-10  my-4 mx-2">
-        <div className="w-[120px] h-[125px] bg-[#ffa4a7] rounded-lg">
+        <div className={computerComponentSmallcolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Pc ráp sẵn </span>
         <div className="ml-2">
@@ -19,7 +20,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#ffa3b0] rounded-lg overflow-hidden">
+        <div className={computerComponentSmallcolor.bg_height_width_rounded_overflowhidden}>
         <Link href="/">
         <span className="text-white font-bold p-1"> CPU </span>
         <div className="-mt-10">
@@ -34,7 +35,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#fda8d3] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Mainboard </span>
         <div className=" -mt-8">
@@ -49,7 +50,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#c4b5f9] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg1}>
         <Link href="/">
         <span className="text-white font-bold p-2"> RAM </span>
         <div className="-mt-10">
@@ -64,7 +65,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#a2b4f8] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg2}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Ổ cứng </span>
         <div className="-mt-10">
@@ -79,7 +80,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#8dc5f9] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg3}>
         <Link href="/">
         <span className="text-white font-bold p-2">Card màn </span>
         <span className="text-white font-bold p-2">hình </span>
@@ -95,7 +96,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#5fe7b9] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg4}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Nguồn máy </span>
         <span className="text-white font-bold p-2"> tính </span>
@@ -111,7 +112,7 @@ const computerComponentSmall = () => {
         </Link>
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#ffd35e] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg5}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Tản nhiệt </span>
         <div className="-mt-10">
@@ -128,7 +129,7 @@ const computerComponentSmall = () => {
         
         </div>
 
-        <div className="w-[120px] h-[125px] bg-[#ffba7c] rounded-lg ">
+        <div className={computerComponentSmallcolor.bg6}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Case máy tính </span>
         <div className="-mt-10">

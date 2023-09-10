@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import {secondhandcolor} from "@/components/color/color"
 
 const Secondhand = () => {
     return ( 
         <div className="grid grid-cols-10  my-4 mx-2">
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Điện thoại cũ </span>
         <div className="-mt-4  ">
@@ -20,7 +21,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg overflow-hidden">
+        <div className={secondhandcolor.bg_h_w_rounded_overflow}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Máy tính bảng </span>
         <span className="text-white font-bold p-2"> cũ </span>
@@ -37,7 +38,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Mac cũ </span>
         <div className=" mt-4">
@@ -53,7 +54,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Laptop cũ </span>
         <div className="ml-3 mt-5">
@@ -69,7 +70,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Tai nghe cũ </span>
         <div className="mr-1 mb-2 -mt-10">
@@ -85,7 +86,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Loa cũ </span>
         <div className="m-3 mr-2 -mt-8">
@@ -101,7 +102,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Đồng hồ thông </span>
         <span className="text-white font-bold p-2"> minh cũ </span>
@@ -118,7 +119,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Nhà thông </span>
         <span className="text-white font-bold p-2"> minh cũ </span>
@@ -135,7 +136,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Phụ kiện cũ </span>
         <div className="-mt-10">
@@ -151,7 +152,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Màn hình cũ </span>
         <div className="-mt-10">
@@ -167,7 +168,7 @@ const Secondhand = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#d64044] rounded-lg mt-3 ">
+        <div className={secondhandcolor.bg_h_w_rounded_special}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Tivi cũ </span>
         <div className="ml-8 mr-2">

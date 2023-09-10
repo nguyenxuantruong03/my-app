@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import {InformationCompanyFootercolor} from "@/components/color/color"
+
 const InformationCompanyFooter = () => {
   return (
     <>
@@ -21,7 +23,7 @@ const InformationCompanyFooter = () => {
         <div><Link href="/">Máy lọc không khí </Link> - <Link href="/">Máy lọc không khí Samsung </Link> </div>
         </div>
       </div>
-      <div className="flex items-center justify-center text-[#a6a6a6] space-y-2">
+      <div className={InformationCompanyFootercolor.textflex}>
       Công ty TNHH MTV và TLT- Địa chỉ: Lê Văn Quới, Quân Bình Tân, Phường Bình Trị Đông A, Thành phố Hồ Chí Minh, Việt Nam, Điện thoại 0352261103
         </div> 
         <div className="items-center flex justify-center">

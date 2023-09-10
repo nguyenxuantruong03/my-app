@@ -88,7 +88,7 @@ const DinoPage = () => {
       <p className="text-7xl text-center">DiNO</p>
         <div className="absolute left-36"> 
       <div className="w-20 h-10 bg-amber-300 rounded-md flex items-center text-sm px-2 mx-auto my-1 font-semibold">Lưu ý<AlertTriangle className=" ml-1 h-5 w-5" /> </div>
-      <div className="font-semibold w-48 rounded p-1 mx-auto bg-opacity-50 bg-gray-300 "> Để trải nghiệm tốt nhấn <p className="text-red-500">&#39;Space&#39; </p> để bắt đầu trò chơi hoặc làm mới.</div>
+      <div className="font-semibold w-48 rounded p-1 mx-auto bg-opacity-50 bg-gray-300 "> Để trải nghiệm tốt nhấn <p className="text-red-500 text-center">&#39;Space&#39; </p> để bắt đầu trò chơi hoặc làm mới.</div>
       </div>
 <div className="text-center mt-2">
 {canGetCoins ? (

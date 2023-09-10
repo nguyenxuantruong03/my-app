@@ -21,13 +21,13 @@ const IndexPage = () => {
     // Check for game over and calculate totalCoins when the game is over
     if (gameOver) {
       // Calculate the newTotalCoins when the game is over
-      const newTotalCoins = totalCoins + Math.floor(score / 80);
+      const newTotalCoins = totalCoins + Math.floor(score / 100);
   
       // Save the new totalCoins to the database
       updateTotalCoinsAndSave(newTotalCoins);
       audio.play();
       setMessage(
-        `Game OVER! Tổng xu bạn nhận: ${Math.floor(score / 80)} xu. Tổng điểm ${score}`
+        `Game OVER! Tổng xu bạn nhận: ${Math.floor(score / 100)} xu. Tổng điểm ${score}`
       );
     }
   }, [gameOver, score]);

@@ -4,7 +4,8 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import { FaStar } from "react-icons/fa";
 import Container from "../ui/container";
 import Image from "next/image";
-
+import {commentcolor} from "@/components/color/color"
+import ProductListSingle from "../product/product-list/product-list-signle";
 interface Comment {
   rating: number;
   comment: string;
@@ -15,14 +16,6 @@ interface Comment {
 interface CommentProps {
   data: string;
 }
-
-const colors = {
-  orange: "#FFBA5A",
-  grey: "#a9a9a9",
-  gradient: "linear-gradient(135deg, #ee9ca7, #ffdde1)",
-  gradienthover: " linear-gradient(135deg,#009fff, #ec2f4b)"
-};
-
 const Comment: React.FC<CommentProps> = ({ data }) => {
   const [rating, setRating] = useState<number | null>(null);
   const [comment, setComment] = useState<string>("");
@@ -73,8 +66,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
 
     const timeDifference = Date.now() - parseInt(lastCommentTime, 10);
-    const minutesPassed = timeDifference / (0 * 60); // Convert milliseconds to hours
-    // const minutesPassed = timeDifference / (1000 * 60); // Convert milliseconds to hours
+    const minutesPassed = timeDifference / (1000 * 60); // Convert milliseconds to hours
 
     return minutesPassed >= 1;
   };
@@ -195,7 +187,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
         <FaStar
           key={i}
           size={24}
-          color={colors.orange}
+          color={commentcolor.orange}
           style={{
             marginRight: 10,
           }}
@@ -209,7 +201,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
         <FaStar
           key={integerPart}
           size={24}
-          color={colors.orange}
+          color={commentcolor.orange}
           style={{
             marginRight: 10,
             clipPath: `polygon(0 0, ${fractionalPart * 100}% 0, ${
@@ -227,7 +219,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
         <FaStar
           key={integerPart + i + 1}
           size={24}
-          color={colors.grey}
+          color={commentcolor.grey}
           style={{
             marginRight: 10,
           }}
@@ -291,7 +283,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                 <FaStar
                   key={index}
                   size={24}
-                  color={colors.orange}
+                  color={commentcolor.orange}
                   style={{
                     marginRight: 10,
                     cursor: "pointer",
@@ -301,12 +293,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               <div
                 style={{
                   width: `${(starReviewCounts[4] / totalReviews) * 100}%`,
-                  backgroundImage: colors.gradient,
+                  backgroundImage: commentcolor.gradient,
                   height: "100%",
                   borderRadius: "20px",
                 }}
               >
-                <h3 className="text-[#ee9ca7]">{starReviewCounts[4]}</h3>
+                <h3 className={commentcolor.text}>{starReviewCounts[4]}</h3>
               </div>
               <h3 className="absolute right-0">
                 {starReviewCounts[4]} đánh giá
@@ -319,7 +311,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                 <FaStar
                   key={index}
                   size={24}
-                  color={colors.orange}
+                  color={commentcolor.orange}
                   style={{
                     marginRight: 10,
                     cursor: "pointer",
@@ -329,12 +321,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               <div
                 style={{
                   width: `${(starReviewCounts[3] / totalReviews) * 100}%`,
-                  backgroundImage: colors.gradient,
+                  backgroundImage: commentcolor.gradient,
                   height: "100%",
                   borderRadius: "20px",
                 }}
               >
-                <h3 className="text-[#ee9ca7]">{starReviewCounts[3]}</h3>
+                <h3 className={commentcolor.text}>{starReviewCounts[3]}</h3>
               </div>
               <h3 className="absolute right-0">
                 {starReviewCounts[3]} đánh giá
@@ -347,7 +339,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                 <FaStar
                   key={index}
                   size={24}
-                  color={colors.orange}
+                  color={commentcolor.orange}
                   style={{
                     marginRight: 10,
                     cursor: "pointer",
@@ -357,12 +349,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               <div
                 style={{
                   width: `${(starReviewCounts[2] / totalReviews) * 100}%`,
-                  backgroundImage: colors.gradient,
+                  backgroundImage: commentcolor.gradient,
                   height: "100%",
                   borderRadius: "20px",
                 }}
               >
-                <h3 className="text-[#ee9ca7]">{starReviewCounts[2]}</h3>
+                <h3 className={commentcolor.text}>{starReviewCounts[2]}</h3>
               </div>
               <h3 className="absolute right-0">
                 {starReviewCounts[2]} đánh giá
@@ -375,7 +367,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                 <FaStar
                   key={index}
                   size={24}
-                  color={colors.orange}
+                  color={commentcolor.orange}
                   style={{
                     marginRight: 10,
                     cursor: "pointer",
@@ -385,12 +377,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               <div
                 style={{
                   width: `${(starReviewCounts[1] / totalReviews) * 100}%`,
-                  backgroundImage: colors.gradient,
+                  backgroundImage: commentcolor.gradient,
                   height: "100%",
                   borderRadius: "20px",
                 }}
               >
-                <h3 className="text-[#ee9ca7]">{starReviewCounts[1]}</h3>
+                <h3 className={commentcolor.text}>{starReviewCounts[1]}</h3>
               </div>
               <h3 className="absolute right-0">
                 {starReviewCounts[1]} đánh giá
@@ -403,7 +395,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                 <FaStar
                   key={index}
                   size={24}
-                  color={colors.orange}
+                  color={commentcolor.orange}
                   style={{
                     marginRight: 10,
                     cursor: "pointer",
@@ -413,12 +405,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               <div
                 style={{
                   width: `${(starReviewCounts[0] / totalReviews) * 100}%`,
-                  backgroundImage: colors.gradient,
+                  backgroundImage: commentcolor.gradient,
                   height: "100%",
                   borderRadius: "20px",
                 }}
               >
-                <h3 className="text-[#ee9ca7]">{starReviewCounts[0]}</h3>
+                <h3 className={commentcolor.text}>{starReviewCounts[0]}</h3>
               </div>
               <h3 className="absolute right-0">
                 {starReviewCounts[0]} đánh giá
@@ -443,8 +435,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                   (hoverValue !== null || currentValue !== null) &&
                   (hoverValue !== null ? hoverValue : currentValue ?? 0) >=
                     index + 1
-                    ? colors.orange
-                    : colors.grey
+                    ? commentcolor.orange
+                    : commentcolor.grey
                 }
                 style={{
                   marginRight: 10,
@@ -473,12 +465,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
         <button
           onClick={handleSubmit}
           className={`text-white px-4 py-2 rounded `}
-          style={{ backgroundImage: colors.gradient }}
+          style={{ backgroundImage: commentcolor.gradient }}
           onMouseOver={(event) => {
-            event.currentTarget.style.backgroundImage = colors.gradienthover;
+            event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
           }}
           onMouseLeave={(event) => {
-            event.currentTarget.style.backgroundImage = colors.gradient;
+            event.currentTarget.style.backgroundImage = commentcolor.gradient;
           }}
         >
           Đánh giá
@@ -524,8 +516,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                                   size={16}
                                   color={
                                     starIndex + 1 <= parseInt(rating, 10)
-                                      ? colors.orange
-                                      : colors.grey
+                                      ? commentcolor.orange
+                                      : commentcolor.grey
                                   }
                                 />
                               ))}
@@ -547,8 +539,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           }`}
           style={{
             backgroundImage: collapsedComments
-              ? colors.gradienthover
-              : colors.gradient,
+              ? commentcolor.gradienthover
+              : commentcolor.gradient,
           }}
         >
           {collapsedComments ? "Thu gọn" : "Xem tất cả"}

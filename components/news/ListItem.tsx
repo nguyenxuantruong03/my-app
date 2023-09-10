@@ -10,7 +10,7 @@ export default function ListItem({post}: Props) {
     const formattedDate = getFormattedDate(date)
   return (
     <div>
-        <li className="mt-2 text-lg bg-gray-500 bg-opacity-10 rounded-md ">
+        <li className="mt-2 text-lg bg-gray-500 bg-opacity-10 rounded-md p-2">
             <Link className=" text-gray-900 hover:text-opacity-50 font-semibold" href={`/post/${id}`}>{title}
             <br />
             {image && <CustomImageMainPage src={image} alt={title} />}

@@ -5,20 +5,20 @@ import InformationPolicy from "./infomationPolicy";
 import InformationCompanyFooter from "./infomationcompanyfooter";
 import PaymentMethod from "./paymentMethod";
 import ServiceInfomation from "./serviceInfomation";
-
+import {footercolor,root} from "@/components/color/color"
 const Footer = () => {
   return (
     <>
     <div className="border-t">
     <div className="max-w-7xl mx-auto">
-    <footer className="bg-white ">
+    <footer className={root.bgwhite}>
       <div className="grid grid-cols-4 mt-4">
       <div>
-        <p className=" text-lg text-[#4a4a4a]">Tổng đài hỗ trợ miễn phí</p>
+        <p className={footercolor.text}>Tổng đài hỗ trợ miễn phí</p>
           <div className="grid grid-rows-3 m-2 space-y-1 ">
               < FreeSupportHotline />
           </div>
-          <p className=" text-lg text-[#4a4a4a]">Phương thức thanh toán</p>
+          <p className={footercolor.text}>Phương thức thanh toán</p>
           <div>
           <div className="grid grid-cols-5 m-2 text-sm space-y-1 ">
             <PaymentMethod />
@@ -26,25 +26,25 @@ const Footer = () => {
           </div>
         </div>
         <div>
-        <p className=" text-lg text-[#4a4a4a]">Thông tin và chính sách</p>
-          <div className="grid grid-rows-10 m-2 text-sm space-y-1 text-[#4a4a4a]">
+        <p className={footercolor.text}>Thông tin và chính sách</p>
+          <div className={footercolor.gridrows10}>
               <InformationPolicy />
           </div>
         </div>
         <div>
-        <p className="text-lg text-[#4a4a4a]">Dịch vụ và thông tin khác </p>
-        <div className="grid grid-rows-8 m-2 text-sm space-y-1 text-[#4a4a4a]">
+        <p className={footercolor.text}>Dịch vụ và thông tin khác </p>
+        <div className={footercolor.gridrows8}>
               <ServiceInfomation />
           </div>
         </div>
 
         <div>
-        <p className="text-lg text-[#4a4a4a]">Kết nối với Xuân Trường </p>
-        <div className="grid grid-cols-5 m-2 text-sm space-y-1 text-[#4a4a4a]">
+        <p className={footercolor.text}>Kết nối với Xuân Trường </p>
+        <div className={footercolor.gridcols5}>
               <ConnectForme />
           </div>
-          <p className="text-lg text-[#4a4a4a] mt-6">Website cá nhân </p>
-        <div className="grid grid-row-3 m-2 text-sm space-y-1 text-[#4a4a4a]">
+          <p className={footercolor.textmt}>Website cá nhân </p>
+        <div className={footercolor.gridrows3}>
               <InfomationWebsite />
           </div>
         </div>
@@ -53,7 +53,7 @@ const Footer = () => {
     </footer>
     </div>
 
-    <div className="bg-slate-100">
+    <div className={root.bgwhite}>
     <div className="max-w-7xl mx-auto ">
 <footer >
           <div className="m-2 space-y-1 text-[11px]">

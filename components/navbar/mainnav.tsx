@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import Menu from "@/components/navbar/menu-list";
 import axios from "axios";
+import {mainnavcolor} from "@/components/color/color"
+
 const MainNav = () => {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
@@ -89,7 +91,7 @@ const MainNav = () => {
       </Link>
 
       <div onClick={toggleOpen}>
-        <div className="bg-[#e53350] p-2 rounded-lg cursor-pointer">
+        <div className={mainnavcolor.bg_list}>
           <div className="flex items-center justify-center text-white ">
             <div className="px-1 py-1">
               <AlignJustify className="w-5 h-5" />
@@ -112,7 +114,7 @@ const MainNav = () => {
         </div>
       )}
 
-      <div className="bg-[#e53350]  px-2  rounded-lg ">
+      <div className={mainnavcolor.bgrounded}>
         <div className="flex flex-col md:flex-row justify-center  items-center ">
           <div className="basis-1/2 md:flex gap-2">
             <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
@@ -136,7 +138,7 @@ const MainNav = () => {
       </Link>
 
       <Link href="/spinlucky">
-        <div className="rounded-lg p-2 hover:bg-[#e53350] ">
+        <div className={mainnavcolor.bghover}>
           <div className="flex flex-col md:flex-row justify-center  items-center ">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
@@ -152,7 +154,7 @@ const MainNav = () => {
       </Link>
 
       <Link href="/game">
-        <div className="rounded-lg p-2 hover:bg-[#e53350] ">
+        <div className={mainnavcolor.bghover}>
           <div className="flex flex-col md:flex-row justify-center  items-center ">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
@@ -168,7 +170,7 @@ const MainNav = () => {
       </Link>
 
       <Link href="/">
-        <div className=" rounded-lg p-2 hover:bg-[#e53350] ">
+        <div className={mainnavcolor.bghover}>
           <div className="flex flex-col md:flex-row justify-center  items-center ">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
@@ -184,7 +186,7 @@ const MainNav = () => {
       </Link>
 
       <button onClick={() => router.push("/cart")}>
-        <div className=" rounded-lg p-2 hover:bg-[#e53350] ">
+        <div className={mainnavcolor.bghover_gio_hang}>
           <div className="flex flex-col md:flex-row justify-center  items-center relative">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
@@ -203,7 +205,7 @@ const MainNav = () => {
       </button>
 
       <Link href="/">
-        <div className="bg-[#e53350]  px-2 py-1  rounded-lg ">
+        <div className={mainnavcolor.bg_dang_nhap}>
           <div className="items-center justify-center text-white flex">
             <UserCircle2 />
           </div>

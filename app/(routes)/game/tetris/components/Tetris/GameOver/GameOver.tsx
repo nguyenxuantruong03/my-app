@@ -9,7 +9,7 @@ const GameOver = (): JSX.Element => {
   
 
   useEffect(() => {
-      const newTotalCoins = totalCoins + Math.floor(gameState.score / 80);
+      const newTotalCoins = totalCoins + Math.floor(gameState.score / 300);
       updateTotalCoinsAndSave(newTotalCoins);
   }, []);
   const updateTotalCoinsAndSave = async (newTotalCoins: number) => {

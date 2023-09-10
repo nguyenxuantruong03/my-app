@@ -1,0 +1,67 @@
+.loader {
+  position: relative;
+  overflow: hidden;
+  border-right: 3px solid;
+  width: 0px;
+  animation: typewriter 2s steps(10)  infinite alternate , blink 0.5s steps(10) infinite;
+}
+
+.loaderproductsale {
+  position: relative;
+  overflow: hidden;
+  border-right: 3px solid;
+  width: 0px;
+  animation: typewriterr 2s steps(10)  infinite alternate , blink 0.5s steps(10) infinite;
+}
+
+.loader-text {
+  background: linear-gradient(to right,#da4453, #89216b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes typewriterr {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 120px;
+  }
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 80px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    border-right-color: rgba(255,255,255,.75);
+    ;
+  }
+
+  100% {
+    border-right-color: transparent;
+  }
+}
+
+.slider-right{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.slider-right-animation{
+  display: inline-block;
+  padding-left: 100%;
+  animation: move 25s linear infinite;
+}
+@keyframes move {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}

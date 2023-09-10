@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import {accessorycolor} from "@/components/color/color"
 
 const Accessory = () => {
     return ( 
         <div className="grid grid-cols-10  my-4 mx-2">
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Nổi bật </span>
         <div className="m-4">
@@ -20,7 +21,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg overflow-hidden">
+        <div className={accessorycolor.bg_height_width_rounded_overflowhidden}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Phụ kiện </span>
         <span className="text-white font-bold p-2"> Apple </span>
@@ -37,7 +38,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Dán màn hình </span>
         <div className=" mt-4">
@@ -53,7 +54,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Ốp lưng - Bao </span>
         <span className="text-white font-bold p-2"> da </span>
@@ -70,7 +71,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Cáp, sạc </span>
         <div className="mr-1 mb-2 -mt-4">
@@ -86,7 +87,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Pin dự phòng </span>
         <div className="m-3 mr-2">
@@ -102,7 +103,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Thiết bị mạng </span>
         <div className="m-3 mr-2 ">
@@ -118,7 +119,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Gaming Gear </span>
         <div className="m-4">
@@ -134,7 +135,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Gimbal | Tay </span>
         <span className="text-white font-bold pl-2">  cầm chống  </span>
@@ -152,7 +153,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg ">
+        <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Thẻ nhớ, USB </span>
         <div className="m-3">
@@ -168,7 +169,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Chuột, bàn </span>
         <span className="text-white font-bold p-2"> phím </span>
@@ -185,7 +186,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Sim 4G </span>
         <div className="-mt-9">
@@ -201,7 +202,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Sim số đẹp</span>
         <div className="-mt-10">
@@ -217,7 +218,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Camera hành </span>
         <span className="text-white font-bold p-2"> trình </span>
@@ -234,7 +235,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Camera an</span>
         <span className="text-white font-bold p-2"> ninh</span>
@@ -251,7 +252,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Phụ kiện </span>
         <span className="text-white font-bold p-2"> Laptop </span>
@@ -268,7 +269,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2">Balo, túi </span>
         <span className="text-white font-bold p-2"> chống sốc </span>
@@ -285,7 +286,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Quạt mini </span>
         <div className="-mt-7">
@@ -301,7 +302,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2">Ổ cứng di </span>
         <span className="text-white font-bold p-2"> dộng</span>
@@ -318,7 +319,7 @@ const Accessory = () => {
 
         
         </div>
-        <div className="w-[120px] h-[125px] bg-[#f8827a] rounded-lg mt-3">
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
         <span className="text-white font-bold p-2"> Apple Care </span>
         <div className="ml-3">

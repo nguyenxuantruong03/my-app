@@ -9,6 +9,7 @@ import { MouseEventHandler } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import {Infoproductcolor} from "@/components/color/color"
 
 interface InfoProductProps{
   data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
@@ -135,12 +136,12 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                     <h1 className="ml-3 font-bold "> Ưa đãi thêm </h1>
                 </div>
                 <div className="flex items-center">
-                <CheckCircle2 className="text-green-500 p-1 gap-x-5" />
+                <CheckCircle2 className={Infoproductcolor.textcolor} />
                   <h1 className="text-sm"> Giảm thêm tới 1% cho thành viên member (áp dụng tùy sản phẩm)</h1>
                 </div>
 
                 <div className="flex items-center">
-                <CheckCircle2 className="text-green-500 p-1 gap-x-5" />
+                <CheckCircle2 className={Infoproductcolor.textcolor} />
                 <Image
                 width="70"
                 height="20"
@@ -152,7 +153,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                 </div>
 
                 <div className="flex items-center">
-                <CheckCircle2 className="text-green-500 p-1 gap-x-5" />
+                <CheckCircle2 className={Infoproductcolor.textcolor} />
                 <Image
                 width="40"
                 height="40"
@@ -164,7 +165,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                 </div>
 
                 <div className="flex items-center">
-                <CheckCircle2 className="text-green-500 p-1 gap-x-5" />
+                <CheckCircle2 className={Infoproductcolor.textcolor} />
                 <Image
                 width="30"
                 height="30"
@@ -176,7 +177,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                 </div>
 
                 <div className="flex items-center">
-                <CheckCircle2 className="text-green-500 p-1 gap-x-5" />
+                <CheckCircle2 className={Infoproductcolor.textcolor} />
                 <Image
                 width="45"
                 height="45"
@@ -188,7 +189,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                 </div>
 
                 <div className="flex items-center">
-                <CheckCircle2 className="text-green-500 p-1 gap-x-5" />
+                <CheckCircle2 className={Infoproductcolor.textcolor} />
                 <Image
                 width="70"
                 height="20"

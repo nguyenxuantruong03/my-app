@@ -43,7 +43,7 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
             <SwiperSlide key={product.id}>
               <div
                 onClick={() => handleClick(product.id)}
-                className=" bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative"
+                className=" bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative "
               >
                 {/* Images and actions */}
                 <div className="aspect-square rounded-xl bg-gray-100 relative  ">
@@ -51,7 +51,7 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
                     src={product?.images?.[0].url}
                     fill
                     alt="Image"
-                    className="aspect-square object-cover rounded-md"
+                    className="aspect-square object-cover rounded-xl "
                   />
                 </div>
 

@@ -6,6 +6,7 @@ import { Category, Category1, Category10, Category11, Category2, Category3,Categ
 import {usePathname} from "next/navigation"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import {menutreecolor} from "@/components/color/color"
 
 interface menuTreeProps{
 data: Category[]
@@ -199,8 +200,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
     <div className="h-[377px] rounded-md shadow-md">
       <div className=" w-[205px] ">
       <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Điện thoại </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Điện thoại </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -244,8 +245,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver1} onMouseOut={handleMouseOut1}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Âm thanh </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Âm thanh </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -289,8 +290,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Đồng hồ, máy ảnh </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Đồng hồ, máy ảnh </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -334,8 +335,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Gia dụng, Smarthome </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Gia dụng, Smarthome </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -379,8 +380,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Phụ kiện</p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Phụ kiện</p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -424,8 +425,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">PC, màn hình </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>PC, màn hình </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -469,8 +470,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Tivi </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Tivi </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -514,8 +515,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Ốp lưng </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Ốp lưng </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -559,8 +560,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Chuột, bàn phím </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Chuột, bàn phím </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -604,8 +605,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Sim</p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Sim</p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -649,8 +650,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver10} onMouseOut={handleMouseOut10}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Laptop </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Laptop </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>
@@ -694,8 +695,8 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       </div>
 
       <div onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11}>
-        <div className="flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200">
-          <p className="hover:text-red-500">Hàng cũ </p>
+        <div className={menutreecolor.flex_hover_bg}>
+          <p className={menutreecolor.texthover}>Hàng cũ </p>
           <p>
             <ChevronRight className="absolute left-[185px]" />
           </p>

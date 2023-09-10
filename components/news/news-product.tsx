@@ -21,7 +21,7 @@ export default async function NewsPageProduct() {
 
   return ( 
     <section className="mt-2 mx-auto">
-    <ul className=" space-y-3 grid grid-rows-4">
+    <ul className=" space-y-3 ">
     {displayedPosts.map(post => (
         <ListItem key={post.id} post={post} />
     ))}

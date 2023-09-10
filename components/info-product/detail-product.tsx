@@ -51,9 +51,18 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
           <h1 className="text-center text-lg font-bold text-red-500">
             Tin tức
           </h1>
-          <div>
-            <NewsPageProduct />
-          </div>
+          <div className="h-[1300px] overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+  <style>{`
+    .overflow-y-auto::-webkit-scrollbar {
+      width: 6px;
+    }
+    .overflow-y-auto::-webkit-scrollbar-thumb {
+      background-color: transparent; 
+    }
+  `}</style>
+  <NewsPageProduct />
+</div>
+
         </div>
       </div>
     </>
