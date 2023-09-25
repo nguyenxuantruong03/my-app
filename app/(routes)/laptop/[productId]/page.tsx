@@ -8,10 +8,10 @@ import Image from "next/image";
 import DetailProduct from "@/components/info-product/detail-product";
 
 import ModalProvider from "@/providers/modal-provider";
-import getProductLaptop from "@/actions/product/get-product-laptop";
 import Comment from "@/components/comment/comment";
-import { getLaptop } from "@/actions/products/get-products";
+import { getProducts10 } from "@/actions/products/get-products";
 import ProductList from "@/components/product/product-list/product-list";
+import getProduct10 from "@/actions/product/get-product10";
 
 export const revalidate = 0;
 
@@ -22,11 +22,11 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "3e77206e-551f-4453-948b-955e18ec62c1"
+    "9fd6af05-278a-4149-9967-032bb2326246"
   );
-  const product = await getLaptop(params.productId);
+  const product = await getProducts10(params.productId);
 
-  const suggestedProducts = await getProductLaptop({
+  const suggestedProducts = await getProduct10({
     categoryId: product?.category?.id,
   });
 
@@ -81,3 +81,22 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
 };
 
 export default ProductPage;
+
+type Props={
+  params:{
+    productId: string
+  }
+}
+
+export async function generateMetadata({params :{productId}}:Props ) {
+  const post = await getProducts10(`${productId}`); //deduped!
+//deduped loại bỏ trùng lặp trong quá trình xây dựng 
+  if (!post) {
+    return {
+      title: "Product Not Found",
+    }
+  }
+  return {
+    title: post.name,
+  };
+}

@@ -1,9 +1,9 @@
-import { Headphone, Ipad, Laptop, Mouse,Product,Product1,Product10,Product11,Product2,Product3,Product4,Product5,Product6,Product7,Product8,Product9, Tivi, Watch } from "@/types";
+import { Product,Product1,Product10,Product11,Product2,Product3,Product4,Product5,Product6,Product7,Product8,Product9 } from "@/types";
 import toast from "react-hot-toast";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-export type ProductUnion =  Product | Product1 | Product2 | Product3 |Product4 |Product5| Product6 | Product7 |Product8 |Product9 | Product10 | Product11| Ipad | Laptop | Headphone | Tivi | Watch | Mouse;
+export type ProductUnion =  Product | Product1 | Product2 | Product3 |Product4 |Product5| Product6 | Product7 |Product8 |Product9 | Product10 | Product11;
 
 
 interface CartStore {
@@ -51,17 +51,27 @@ const useCart = create(
           const updatedSelectedItems = isSelected
             ? state.selectedItems.filter((itemId) => itemId !== id)
             : [...state.selectedItems, id];
-
-          return { selectedItems: updatedSelectedItems };
+      
+          return {
+            selectedItems: updatedSelectedItems,
+            selectAll: updatedSelectedItems.length === state.items.length,
+          };
         });
       },
       // Toggle the "Select All" checkbox
       toggleSelectAll: () => {
-        set((state) => ({
-          selectedItems: state.selectAll ? [] : state.items.map((item) => item.id),
-          selectAll: !state.selectAll,
-        }));
+        set((state) => {
+          const updatedSelectedItems = state.selectAll
+            ? []
+            : state.items.map((item) => item.id);
+      
+          return {
+            selectedItems: updatedSelectedItems,
+            selectAll: !state.selectAll,
+          };
+        });
       },
+      
       addItem: (data: ProductUnion, quantity: number) => {
         const currentItem = get().items;
         const existingItem = currentItem.find((item) => item.id === data.id);

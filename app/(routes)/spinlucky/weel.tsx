@@ -1,8 +1,16 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import useSeeWarningSpin from "@/hooks/use-see-warning-spin";
+import ModalProviderNoneData from "@/providers/modal-provider-none-data";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+
+interface Segment {
+  value: string;
+  probability: number;
+}
 
 interface WheelProps {
-  segments: string[];
+  segments: Segment[];
   segColors: string[];
   winningSegment: string | null;
   onFinished: (segment: string) => void;
@@ -10,6 +18,7 @@ interface WheelProps {
   contrastColor?: string;
   buttonText?: string;
   isOnlyOnce?: boolean;
+  rotation?: number
 }
 
 const WheelComponent: React.FC<WheelProps> = ({
@@ -21,6 +30,7 @@ const WheelComponent: React.FC<WheelProps> = ({
   contrastColor,
   buttonText,
   isOnlyOnce,
+  rotation
 }) => {
   let currentSegment = "";
   let isStarted = false;
@@ -64,15 +74,27 @@ const WheelComponent: React.FC<WheelProps> = ({
     canvasContext = canvas.getContext("2d");
   };
 
+  // -------------Xử lý vòng quay nếu như ===0 thì không thể quay được phải sử dụng useRef--------------------
+  const warningspinmodal = useSeeWarningSpin();
+  const rotationRef = useRef(rotation);
+useEffect(() => {
+  rotationRef.current = rotation;
+}, [rotation]);
+
   const spin = () => {
-    isStarted = true;
-    if (timerHandle === 0) {
-      spinStart = new Date().getTime();
-      maxSpeed = Math.PI / segments.length;
-      frames = 0;
-      timerHandle = setInterval(onTimerTick, timerDelay) as NodeJS.Timer;
+    if (rotationRef.current === 0) {
+      warningspinmodal.onOpen();
+      return;
     }
-  };
+  isStarted = true;
+  if (timerHandle === 0) {
+    spinStart = new Date().getTime();
+    maxSpeed = Math.PI / segments.length;
+    frames = 0;
+    timerHandle = setInterval(onTimerTick, timerDelay) as NodeJS.Timer;
+  }
+};
+
 
   const onTimerTick = () => {
     frames++;
@@ -128,7 +150,9 @@ const WheelComponent: React.FC<WheelProps> = ({
 
   const drawSegment = (key: number, lastAngle: number, angle: number) => {
     const ctx = canvasContext!;
-    const value = segments[key];
+    const segment = segments[key];
+    const value = segment.value; // Access the 'value' property
+  
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
@@ -206,7 +230,7 @@ const WheelComponent: React.FC<WheelProps> = ({
     ctx.textBaseline = "middle";
     ctx.fillStyle = primaryColor || "black";
     ctx.font = "20px Nunito";
-    currentSegment = segments[i];
+    currentSegment = segments[i].value; // Access the 'value' property
     isFinished &&
       ctx.fillText(currentSegment, centerX + 10, centerY + size + 50);
   };
@@ -217,6 +241,7 @@ const WheelComponent: React.FC<WheelProps> = ({
   };
 
   return (
+    <>
     <canvas
       id="canvas"
       width="600"
@@ -225,6 +250,8 @@ const WheelComponent: React.FC<WheelProps> = ({
         pointerEvents: isFinished && !isOnlyOnce ? "none" : "auto",
       }}
     />
+    <ModalProviderNoneData />
+    </>
   );
 };
 

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import NewsPageProduct from "@/components/news/news-product";
-import { Product,Headphone, Ipad, Laptop, Mouse, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch } from "@/types";
+import { Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9} from "@/types";
 
 
 
 
 interface DetailProductProps {
-  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
+  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 ;
 }
 
 const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {

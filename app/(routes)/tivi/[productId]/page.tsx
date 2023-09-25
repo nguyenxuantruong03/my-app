@@ -7,10 +7,10 @@ import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
 import DetailProduct from "@/components/info-product/detail-product";
 import ModalProvider from "@/providers/modal-provider";
-import getProductTivi from "@/actions/product/get-product-tivi";
 import Comment from "@/components/comment/comment";
-import { getTivi } from "@/actions/products/get-products";
+import { getProducts7 } from "@/actions/products/get-products";
 import ProductListSingle from "@/components/product/product-list/product-list-signle";
+import getProduct7 from "@/actions/product/get-product7";
 
 export const revalidate = 0;
 
@@ -21,11 +21,11 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "3e77206e-551f-4453-948b-955e18ec62c1"
+    "9fd6af05-278a-4149-9967-032bb2326246"
   );
-  const product = await getTivi(params.productId);
+  const product = await getProducts7(params.productId);
 
-  const suggestedProducts = await getProductTivi({
+  const suggestedProducts = await getProduct7({
     categoryId: product?.category?.id,
   });
 
@@ -80,3 +80,22 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
 };
 
 export default ProductPage;
+
+type Props={
+  params:{
+    productId: string
+  }
+}
+
+export async function generateMetadata({params :{productId}}:Props ) {
+  const post = await getProducts7(`${productId}`); //deduped!
+//deduped loại bỏ trùng lặp trong quá trình xây dựng 
+  if (!post) {
+    return {
+      title: "Product Not Found",
+    }
+  }
+  return {
+    title: post.name,
+  };
+}

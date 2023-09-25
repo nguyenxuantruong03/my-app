@@ -12,8 +12,6 @@ type Props={
   }
 }
 
-//SSG Static-Side-Generate (Nếu ko có dòng này nó sẽ chuyển sang SSR)
-//deduped loại bỏ trùng lặp trong quá trình xây dựng 
 export async function generateStaticParams(){
   const posts = await getPostsMeta(); //deduped!
 

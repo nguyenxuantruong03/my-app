@@ -8,11 +8,12 @@ import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import BillboardCategory from "@/components/slider-item/billboard-category";
 import ProductCard from "@/components/product/productcard-category/productcard";
+import { getCategories } from "@/actions/categories/get-categories";
 
 export const revalidate = 0;
 interface CategoryPageProps {
   params: {
-    categoryId: string;
+    name: string;
   };
   searchParams: {
     colorId: string;
@@ -24,9 +25,9 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   params,
   searchParams,
 }) => {
-  const billboard = await getBillboard("b07b8761-8367-44d1-b67e-349646648191");
+  const billboard = await getBillboard("4cb42a8d-4c68-4d01-b152-5b0d0c471e4c");
   const product = await getProduct({
-    categoryId: params.categoryId,
+    categoryId: params.name,
     sizeId: searchParams.sizeId,
     colorId: searchParams.colorId,
   });
@@ -63,3 +64,24 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 };
 
 export default CategoryPage;
+
+type Props={
+  params:{
+    categoryId: string
+  }
+}
+
+export async function generateMetadata({ params: { categoryId }}:Props) {
+  const categories = await getCategories();
+  const category = categories.find((category) => category.name);
+
+  if (!category) {
+    return {
+      title: "Category Not Found",
+    };
+  }
+
+  return {
+    title: category.name,
+  };
+}

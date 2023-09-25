@@ -21,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children, open }) => {
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
-              enter="eease-ou duration-300"
+              enter="ease-out duration-300"
               enterFrom="opacity-0 slace-95"
               enterTo="opacity-100 scale-100"
               leave="ease-in duration-200"

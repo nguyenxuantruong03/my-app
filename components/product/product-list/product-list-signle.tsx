@@ -4,7 +4,7 @@ import { SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Autoplay } from "swiper/modules";
-import { Mouse, Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi } from "@/types";
+import {  Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9 } from "@/types";
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ import PrevNextSwiper from "./prevnextswiper";
 import "./product-list.css"
 interface ProductListProps {
  data: Product[] | Product1[] |Product2[] |Product3[] | Product4[] 
-       |Product5[] |Product6[] |Product7[] |Product8[] |Product9[] |Product10[] |Product11[] |Mouse[] |Tivi[] ; 
+       |Product5[] |Product6[] |Product7[] |Product8[] |Product9[] |Product10[] |Product11[] ; 
 
   route: string; // Route for navigation
 }
@@ -42,7 +42,7 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
           return (
             <SwiperSlide key={product.id}>
               <div
-                onClick={() => handleClick(product.id)}
+                onClick={() => handleClick(product.name)}
                 className=" bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative "
               >
                 {/* Images and actions */}

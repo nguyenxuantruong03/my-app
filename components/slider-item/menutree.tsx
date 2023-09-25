@@ -2,12 +2,11 @@
 import { useState } from "react";
 
 import { ChevronRight } from "lucide-react";
-import { Category, Category1, Category10, Category11, Category2, Category3,Category4,Category5,Category6,Category7,Category8,Category9 } from "@/types";
+import { Category,Category1,Category2,Category3,Category4,Category5,Category6,Category7,Category8,Category9,Category10,Category11, } from "@/types";
 import {usePathname} from "next/navigation"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {menutreecolor} from "@/components/color/color"
-
 interface menuTreeProps{
 data: Category[]
 categories1: Category1[]
@@ -26,65 +25,64 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
   const pathname = usePathname()
   const routes = data.map((route) =>({
-    href:`/category/${route.id}`,
+    href:`/category/${route.name}`,
     label: route.name,
-    active: pathname === `/category/${route.id}`
+    active: pathname === `/category/${route.name}`
   }))
-
   const categories01 = categories1.map((categories) =>({
-    href:`/category1/${categories.id}`,
+    href:`/category1/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category1/${categories.id}`
+    active: pathname === `/category1/${categories.name}`
   }))
   const categories02 = categories2.map((categories) =>({
-    href:`/category2/${categories.id}`,
+    href:`/category2/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category2/${categories.id}`
+    active: pathname === `/category2/${categories.name}`
   }))
   const categories03 = categories3.map((categories) =>({
-    href:`/category3/${categories.id}`,
+    href:`/category3/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category3/${categories.id}`
+    active: pathname === `/category3/${categories.name}`
   }))
   const categories04 = categories4.map((categories) =>({
-    href:`/category4/${categories.id}`,
+    href:`/category4/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category4/${categories.id}`
+    active: pathname === `/category4/${categories.name}`
   }))
   const categories05 = categories5.map((categories) =>({
-    href:`/category5/${categories.id}`,
+    href:`/category5/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category5/${categories.id}`
+    active: pathname === `/category5/${categories.name}`
   }))
   const categories06 = categories6.map((categories) =>({
-    href:`/category6/${categories.id}`,
+    href:`/category6/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category6/${categories.id}`
+    active: pathname === `/category6/${categories.name}`
   }))
   const categories07 = categories7.map((categories) =>({
-    href:`/category7/${categories.id}`,
+    href:`/category7/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category7/${categories.id}`
+    active: pathname === `/category7/${categories.name}`
   }))
   const categories08 = categories8.map((categories) =>({
-    href:`/category8/${categories.id}`,
+    href:`/category8/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category8/${categories.id}`
+    active: pathname === `/category8/${categories.name}`
   }))
   const categories09 = categories9.map((categories) =>({
-    href:`/category9/${categories.id}`,
+    href:`/category9/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category9/${categories.id}`
+    active: pathname === `/category9/${categories.name}`
   }))
   const categories010 = categories10.map((categories) =>({
-    href:`/category10/${categories.id}`,
+    href:`/category10/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category10/${categories.id}`
+    active: pathname === `/category10/${categories.name}`
   }))
   const categories011 = categories11.map((categories) =>({
-    href:`/category11/${categories.id}`,
+    href:`/category11/${categories.name}`,
     label: categories.name,
-    active: pathname === `/category11/${categories.id}`
+    active: pathname === `/category11/${categories.name}`
   }))
 
   const [isShown, setIsShown] = useState(false);

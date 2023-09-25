@@ -3,7 +3,7 @@ import Link from "next/link";
 const NoResults = () => {
     return ( 
         <section className="bg-white py-10">
-        <div className="container mx-auto">
+        <div className=" max-w-7xl mx-auto">
           <div className="flex justify-center">
             <div className="w-full sm:w-10/12 text-center">
               <div

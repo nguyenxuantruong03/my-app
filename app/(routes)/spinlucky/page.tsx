@@ -14,14 +14,14 @@ const SpinCoinPage: React.FC = () => {
   const [portal, setPortal] = useState<boolean>(false);
   const [show, setShow] = useState<string | false>(false);
   const [totalCoins, setTotalCoins] = useState<number>(0);
-  
+  const [rotation, setRotation] = useState<number>(0);
   //List-onClick-onBlur click mở blur ra ngoài thì tắt đi
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Load totalCoins from the server using GET request
     axios.get("/api/wheelSpin").then((response) => {
       setTotalCoins(response.data.totalCoins);
+      setRotation(response.data.latestRotation)
     });
 
     document.addEventListener("click", handleDocumentClick);
@@ -45,60 +45,64 @@ const SpinCoinPage: React.FC = () => {
     "8000 xu": 4,
     "9000 xu": 5,
     "10000 xu":6,
-    "15000 xu":7,
+    "12000 xu":7,
     "5000 xu": 8,
     "3000 xu": 9,
     "2000 xu": 10
   };
 
   const segments = [
-    "6000 xu",
-    "7000 xu",
-    "4000 xu ",
-    "8000 xu",
-    "9000 xu",
-    "10000 xu",
-    "15000 xu",
-    "5000 xu",
-    "3000 xu",
-    "2000 xu",
+    { value: "6000 xu", probability: 0.99  },     // 0.005%
+    { value: "7000 xu", probability: 0.99  },     // 0.005%
+    { value: "4000 xu", probability: 0.99 },     // 99%
+    { value: "8000 xu", probability: 0.99  },     // 0.005%
+    { value: "9000 xu", probability: 0.99  },     // 0.005%
+    { value: "10000 xu", probability: 0.99  },   // 0.005%
+    { value: "12000 xu", probability: 0.99  },   // 0.005%
+    { value: "5000 xu", probability: 0.99  },         // 1.25%
+    { value: "3000 xu", probability: 0.00005 },       // 99%
+    { value: "2000 xu", probability: 0.00005  },       // 99%
   ];
-
+  
   const weelColors = (): string[] => {
     let arr: string[] = [];
     let colors = ["#EE4040", "#F0CF50", "#815CD1", "#3DA5E0", "#34A24F"];
-    segments.forEach((el) => {
+    segments.forEach(() => {
       let color = colors.shift() || "";
       arr.push(color);
       colors.push(color);
     });
-
+  
     return arr;
   };
   const segColors = weelColors();
 
-  const onFinished = async (coin: string) => {
+  const onFinished = async (coin: string ) => {
     setPortal(false);
     setShow(coin);
     const coinsWon = parseInt(coin.split(" ")[0]); // Assuming "winner" is in the format "X xu"
     const newTotalCoins = totalCoins + coinsWon;
+    const newRotation = rotation - 1 
     try {
       // Send the winner data to the server using POST request
-      await axios.post("/api/wheelSpin", { coin });
+      await axios.post("/api/wheelSpin", { coin,rotation: newRotation });
       setTotalCoins(newTotalCoins);
       const response = await axios.get("/api/wheelSpin");
+      setRotation( newRotation);
       setTotalCoins(response.data.totalCoins);
+      setRotation(response.data.latestRotation)
+
     } catch (error) {
       console.error("Failed to save wheel spin data:", error);
     }
   };
- 
   return (
     <Container>
-    <div className="mt-36"> 
+    <div className="mt-36 relative"> 
       <h2 className="flex items-center justify-center text-5xl">Vòng quay May Mắn </h2>
       <p className="flex items-center justify-center text-gray-400 mt-2">Vui chơi trúng thưởng </p>
-      <p className="flex items-center justify-center text-gray-400 mt-2">Khi bạn mua 1.000.000đ sẽ được tặng 2 vòng quay may mắn </p>
+      <p className="flex items-center justify-center text-gray-400 mt-2">Khi mua 1.000.000đ sẽ được tặng 2 vòng quay may mắn </p>
+      <p className="flex items-center justify-center text-gray-400 mt-2">Khi mua 500.000đ sẽ được tặng 1 vòng quay may mắn </p>
     <div className="flex justify-center pt-8 pb-16 bg-cover bg-center bg-no-repeat">
       {show && <Confetti width={1200} height={1019} />}
       <WheelComponent
@@ -110,6 +114,7 @@ const SpinCoinPage: React.FC = () => {
         contrastColor="white"
         buttonText="Spin"
         isOnlyOnce={true}
+        rotation ={rotation}
       />
       {portal ? <TrPortal /> : null}
       {show && (
@@ -136,11 +141,13 @@ const SpinCoinPage: React.FC = () => {
       )}
     </div>
     </div>
+      
     {/* Total coin */}
     <div className="relative">
       <div className="w-48 absolute bottom-80 bg-black bg-opacity-10 p-2 rounded-md"> 
       <div className="bg-red-300 rounded-md p-2"> 
-    <div className="text-md  text-center">Tổng {totalCoins} xu</div>
+    <div className="text-md text-center">Tổng <span className="text-blue-800  font-semibold">{totalCoins}</span> xu</div>
+    <div className="text-md text-center">Tổng <span className="text-blue-800 font-semibold">{rotation}</span> lượt quay</div>
       </div>
 
       <div className="bg-amber-300 rounded-md mt-2 p-1"> 

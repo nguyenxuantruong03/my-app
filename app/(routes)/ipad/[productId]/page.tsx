@@ -6,11 +6,11 @@ import InfoPromotion from "@/components/info-product/info-promotion";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
 import DetailProduct from "@/components/info-product/detail-product";
-import getProductIpad from "@/actions/product/get-product-ipad";
 import ModalProvider from "@/providers/modal-provider";
 import Comment from "@/components/comment/comment";
-import { getIpad } from "@/actions/products/get-products";
+import {  getProducts1 } from "@/actions/products/get-products";
 import ProductList from "@/components/product/product-list/product-list";
+import getProduct1 from "@/actions/product/get-product1";
 
 export const revalidate = 0;
 
@@ -21,11 +21,11 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "3e77206e-551f-4453-948b-955e18ec62c1"
+    "9fd6af05-278a-4149-9967-032bb2326246"
   );
-  const product = await getIpad(params.productId);
+  const product = await getProducts1(params.productId);
 
-  const suggestedProducts = await getProductIpad({
+  const suggestedProducts = await getProduct1({
     categoryId: product?.category?.id,
   });
 
@@ -80,3 +80,22 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
 };
 
 export default ProductPage;
+
+type Props={
+  params:{
+    productId: string
+  }
+}
+
+export async function generateMetadata({params :{productId}}:Props ) {
+  const post = await getProducts1(`${productId}`); //deduped!
+//deduped loại bỏ trùng lặp trong quá trình xây dựng 
+  if (!post) {
+    return {
+      title: "Product Not Found",
+    }
+  }
+  return {
+    title: post.name,
+  };
+}

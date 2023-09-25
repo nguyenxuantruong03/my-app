@@ -1,4 +1,6 @@
-"use client"
+"use client";
+import { useState } from "react";
+import { RadioGroup } from "@headlessui/react";
 import Currencyonevalue from "@/components/ui/currencyonevalue";
 import useCart from "@/hooks/use-cart";
 import useSeeDetail from "@/hooks/use-see-detail";
@@ -6,122 +8,194 @@ import useSeeDetail1 from "@/hooks/use-see-detail1";
 import useSeeDetail2 from "@/hooks/use-see-detail2";
 import useSeeDetail3 from "@/hooks/use-see-detail3";
 import useSeeDetail4 from "@/hooks/use-see-detail4";
-import { Product, Headphone, Ipad, Laptop, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch, Mouse } from "@/types";
-
+import {Product,Product1,Product10,Product11,Product2,Product3,Product4,Product5,Product6,Product7,Product8,Product9,} from "@/types";
 import { ShieldCheck } from "lucide-react";
-import { MouseEventHandler, useState } from 'react';
 
 interface InfoWarrantyProps {
-    data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
+  data:| Product| Product1 | Product2| Product3| Product4| Product5| Product6| Product7| Product8| Product9| Product10| Product11;
 }
 
 const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
-    const cart = useCart()
-    const seedetail = useSeeDetail();
-    const seedetail1 = useSeeDetail1();
-    const seedetail2 = useSeeDetail2();
-    const seedetail3 = useSeeDetail3();
-    const seedetail4 = useSeeDetail4();
-    const [selectedWarranty, setSelectedWarranty] = useState<string | null>(null);
-    const handleWarrantyCheckboxChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-        warrantyOption: string
-      ) => {
-        if (event.target.checked) {
-          setSelectedWarranty(warrantyOption);
-          cart.updateWarrantyOption(data.id, warrantyOption);
-        }
-      };
+  const cart = useCart();
+  const seedetail = useSeeDetail();
+  const seedetail1 = useSeeDetail1();
+  const seedetail2 = useSeeDetail2();
+  const seedetail3 = useSeeDetail3();
+  const seedetail4 = useSeeDetail4();
+  const [selectedWarranty, setSelectedWarranty] = useState<string | null>(null);
 
-    const onSeeDetail: MouseEventHandler<HTMLButtonElement> = (event) => {
-        event.stopPropagation();
-        seedetail.onOpen();
-    };
+  const handleWarrantyCheckboxChange = (warrantyOption: string) => {
+    // If the clicked option is already selected, uncheck it
+    if (selectedWarranty === warrantyOption) {
+      setSelectedWarranty(null);
+    } else {
+      setSelectedWarranty(warrantyOption);
+    }
+    cart.updateWarrantyOption(data.id, warrantyOption);
+  };
 
-    const onSeeDetail1: MouseEventHandler<HTMLButtonElement> = (event) => {
-        event.stopPropagation();
-        seedetail1.onOpen();
-    };
+  const onSeeDetail = () => {
+    seedetail.onOpen();
+  };
 
-    const onSeeDetail2: MouseEventHandler<HTMLButtonElement> = (event) => {
-        event.stopPropagation();
-        seedetail2.onOpen();
-    };
+  const onSeeDetail1 = () => {
+    seedetail1.onOpen();
+  };
 
-    const onSeeDetail3: MouseEventHandler<HTMLButtonElement> = (event) => {
-        event.stopPropagation();
-        seedetail3.onOpen();
-    };
+  const onSeeDetail2 = () => {
+    seedetail2.onOpen();
+  };
 
-    const onSeeDetail4: MouseEventHandler<HTMLButtonElement> = (event) => {
-        event.stopPropagation();
-        seedetail4.onOpen();
-    };
+  const onSeeDetail3 = () => {
+    seedetail3.onOpen();
+  };
 
-    return (
-        <>
-            <div className="my-1 ">
-                <div className="flex bg-gradient-to-r from-[#C00000] to-[#FF3334] rounded-md p-5">
-                    <ShieldCheck className="text-white" />
-                    <div className="flex ml-2 ">
-                        <h1 className="text-md ml-2 text-white font-bold ">Bảo vệ sản phẩm toàn diện với dịch vụ bảo hành mở rộng</h1>
-                        <span onClick={onSeeDetail} className=" ml-2  underline font-bold cursor-pointer"> Xem chi tiết</span>
+  const onSeeDetail4 = () => {
+    seedetail4.onOpen();
+  };
+
+  const warrantyOptions = [
+    {
+      heading: "S24 + 12 tháng",
+      description:
+        "Đổi sản phẩm tương đương hoặc miễn phí chi phí sữa chữa nếu có lỗi của NSX khi hết hạn bảo hành trong 12 tháng",
+      value: data.guaranteeheading,
+      onClick: onSeeDetail1,
+    },
+    {
+      heading: "1 đổi 1 VIP 12 tháng",
+      description: "Đổi máy mới tương đương khi có lỗi từ NSX trong 12 tháng",
+      value: data.guaranteedescription,
+      onClick: onSeeDetail2,
+    },
+    {
+      heading: "Rơi vỡ - Rớt nước",
+      description:
+        "Hỗ trợ 90% chi phí sữa chữa, đổi mới sản phẩm nếu hư hỏng nặng trong 12 tháng",
+      value: data.guaranteeinfomation,
+      onClick: onSeeDetail3,
+    },
+    {
+      heading: "1 đổi 1 VIP 6 tháng",
+      description: "Đổi máy mới tương đương khi có lỗi từ NSX trong 6 tháng",
+      value: data.guaranteeprice,
+      onClick: onSeeDetail4,
+    },
+  ];
+
+  return (
+    <>
+      <div className="my-1 ">
+        <div className="flex bg-gradient-to-r from-[#C00000] to-[#FF3334] rounded-md p-5">
+          <ShieldCheck className="text-white" />
+          <div className="flex ml-2 ">
+            <h1 className="text-md ml-2 text-white font-bold ">
+              Bảo vệ sản phẩm toàn diện với dịch vụ bảo hành mở rộng
+            </h1>
+            <span
+              onClick={onSeeDetail}
+              className=" ml-2  underline font-bold cursor-pointer"
+            >
+              {" "}
+              Xem chi tiết
+            </span>
+          </div>
+        </div>
+        <p className="text-sm mx-4 my-2">
+          (Khách hàng đăng ký thông tin để được hỗ trợ tư vấn và thanh toán tại
+          cửa hàng nhanh nhất, số tiền phải thanh toán chưa bao gồm giá trị của
+          gói bảo hành mở rộng)
+        </p>
+      </div>
+      <RadioGroup
+        value={selectedWarranty}
+        onChange={handleWarrantyCheckboxChange}
+      >
+        <div className="space-y-1">
+          {warrantyOptions.map((option, index) => (
+            <RadioGroup.Option
+              key={index}
+              value={option.value}
+              className={({ active, checked }) =>
+                `${
+                  checked ? "bg-sky-800 bg-opacity-40 text-white" : "bg-white"
+                } relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+              }
+            >
+              {({ active, checked }) => (
+                <>
+                  <div className="flex w-full items-center justify-between h-[49px]">
+                    <div className="flex items-center">
+                      <div className="text-sm">
+                        <RadioGroup.Label
+                          as="p"
+                          className={`font-medium  ${
+                            checked ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          {option.heading}
+                        </RadioGroup.Label>
+                        <RadioGroup.Description
+                          as="span"
+                          className={`inline ${
+                            checked ? "text-sky-100" : "text-gray-500"
+                          }`}
+                        >
+                          <span>{option.description}</span>
+                        </RadioGroup.Description>
+                      </div>
                     </div>
-                </div>
-                <p className="text-sm mx-4 my-2">
-                    (Khách hàng đăng ký thông tin để được hỗ trợ tư vấn và thanh toán tại cửa hàng nhanh nhất, số tiền phải thanh toán chưa bao gồm giá trị của gói bảo hành mở rộng)
-                </p>
-            </div>
-            <div className="h-[65px] w-[508px] m-auto mt-4 border-2 border-slate-500  rounded-md">
-                <p className=" ml-2 text-sm font-semibold"> S24 + 12 tháng: Đổi sản phẩm tương đương hoặc miễn phí chi phí sữa chữa nếu có lỗi của NSX khi hết hạn bảo hành trong 12 tháng </p>
-                <div className="flex justify-between mx-8">
-                    <input
-            type="checkbox"
-            checked={selectedWarranty === data.guaranteeheading}
-            onChange={(e) => handleWarrantyCheckboxChange(e, data.guaranteeheading)}
-          />
-                    <p className="text-sm "><Currencyonevalue value={data.guaranteeheading} /> </p>
-                    <span onClick={onSeeDetail1} className=" text-red-600 cursor-pointer text-sm font-bold"> Xem chi tiết</span>
-                </div>
-            </div>
-            <div className="h-[65px] w-[508px] m-auto mt-4 border-2 border-slate-500  rounded-md">
-                <p className="ml-2 text-sm font-semibold"> 1 đổi 1 VIP 12 tháng: Đổi máy mới tương đương khi có lỗi từ NSX trong 12 tháng </p>
-                <div className="flex justify-between mx-8 mb-1">
-                    <input
-            type="checkbox"
-            checked={selectedWarranty === data.guaranteedescription}
-            onChange={(e) => handleWarrantyCheckboxChange(e, data.guaranteedescription)}
-          />
-                    <p className="text-sm "><Currencyonevalue value={data.guaranteedescription} /> </p>
-                    <span onClick={onSeeDetail2} className=" text-red-600 cursor-pointer text-sm font-bold"> Xem chi tiết</span>
-                </div>
-            </div>
-            <div className="h-[65px] w-[508px] m-auto mt-4 border-2 border-slate-500  rounded-md">
-                <p className="ml-2 text-sm font-semibold"> Rơi vỡ - Rớt nước: Hỗ trợ 90% chi phí sữa chữa, đổi mới sản phẩm nếu hư hỏng nặng trong 12 tháng </p>
-                <div className="flex justify-between mx-8 ">
-                    <input
-            type="checkbox"
-            checked={selectedWarranty === data.guaranteeinfomation}
-            onChange={(e) => handleWarrantyCheckboxChange(e, data.guaranteeinfomation)}
-          />
-                    <p className="text-sm "><Currencyonevalue value={data.guaranteeinfomation} /> </p>
-                    <span onClick={onSeeDetail3} className=" text-red-600 cursor-pointer text-sm font-bold"> Xem chi tiết</span>
-                </div>
-            </div>
-            <div className="h-[65px] w-[508px] m-auto mt-4 border-2 border-slate-500  rounded-md">
-                <p className=" ml-2 text-sm font-semibold">1 đổi 1 VIP 6 tháng: Đổi máy mới tương đương khi có lỗi từ NSX trong 6 tháng </p>
-                <div className="flex justify-between mx-8 mt-5">
-                    <input
-            type="checkbox"
-            checked={selectedWarranty === data.guaranteeprice}
-            onChange={(e) => handleWarrantyCheckboxChange(e,data.guaranteeprice)}
-          />
-                    <p className="text-sm "><Currencyonevalue value={data.guaranteeprice} /> </p>
-                    <span onClick={onSeeDetail4} className=" text-red-600 cursor-pointer text-sm font-bold"> Xem chi tiết</span>
-                </div>
-            </div>
-        </>
-    );
-}
+                  </div>
+                  <div className="flex w-full justify-between mt-2 ">
+                    <div className="flex items-center">
+                      <button
+                        className={`w-6 h-6 border rounded-full flex items-center justify-center border-gray-300 mx-3 ${
+                          selectedWarranty === option.value
+                            ? "bg-sky-900 border-sky-900"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          handleWarrantyCheckboxChange(option.value)
+                        }
+                      >
+                        {selectedWarranty === option.value && (
+                          <CheckIcon className="text-white" />
+                        )}
+                      </button>
+                      <p className="text-sm px-10">
+                        <Currencyonevalue value={option.value} />
+                      </p>
+                    </div>
+                    <span
+                      onClick={option.onClick}
+                      className="text-red-600 cursor-pointer text-sm font-bold my-auto"
+                    >
+                      Xem chi tiết
+                    </span>
+                  </div>
+                </>
+              )}
+            </RadioGroup.Option>
+          ))}
+        </div>
+      </RadioGroup>
+    </>
+  );
+};
 
 export default InfoWarranty;
+
+function CheckIcon(props: any) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" {...props}>
+      <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
+      <path
+        d="M7 13l3 3 7-7"
+        stroke="#fff"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

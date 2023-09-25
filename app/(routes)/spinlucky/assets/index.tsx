@@ -1,13 +1,13 @@
-import image1 from "@/public/images/PK-Nguon-may-tinh.webp";
-import image2 from "@/public/images/Nhathongminh-cu.png"
-import image3 from "@/public/images/PK-Mainboard.webp"
-import image4 from "@/public/images/PK-Ram.webp"
-import image5 from  "@/public/images/PK-Ram.webp"
-import image6 from "@/public/images/PK-Ram.webp"
-import image7 from "@/public/images/PK-SSD.webp"
-import image8 from "@/public/images/PK-VGA.webp"
-import image9 from  "@/public/images/PK-case-may-tinh.webp"
-import image10 from  "@/public/images/PK-case-may-tinh.webp"
+import image1 from "@/public/images/gif-lucky1.gif";
+import image2 from "@/public/images/gif-lucky.gif"
+import image3 from "@/public/images/gif-lucky1.gif"
+import image4 from "@/public/images/gif-lucky.gif"
+import image5 from  "@/public/images/gif-lucky.gif"
+import image6 from "@/public/images/gif-lucky.gif"
+import image7 from "@/public/images/gif-lucky.gif"
+import image8 from "@/public/images/gif-lucky1.gif"
+import image9 from  "@/public/images/gif-lucky1.gif"
+import image10 from  "@/public/images/gif-lucky1.gif"
 
 const IMAGES = {
     image1,

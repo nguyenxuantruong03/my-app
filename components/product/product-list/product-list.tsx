@@ -13,10 +13,10 @@ import PrevNextSwiper from "./prevnextswiper";
 import "./product-list.css"
 
 // Define the types for different product categories
-import { Headphone, Ipad, Laptop, Watch } from "@/types";
+import { Product2, Product1, Product10, Product3 } from "@/types";
 
 interface ProductListProps {
-  data: Headphone[] | Ipad[] | Laptop[] | Watch[]
+  data: Product2[] | Product1[] | Product10[] | Product3[]
   productType: "headphone" | "ipad" | "laptop" | "watch";
 }
 
@@ -68,7 +68,7 @@ const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
           return (
             <SwiperSlide key={product.id}>
               <div
-                onClick={() => handleClick(product.id)}
+                onClick={() => handleClick(product.name)}
                 className="bg-white group cursor-pointer rounded-xl border space-y-4 shadow-inner relative"
               >
                 <div className="aspect-square rounded-xl bg-gray-100 relative">

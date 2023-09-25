@@ -21,7 +21,7 @@ interface PropductPageProps {
 }
 const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   const billboardmini = await getBillboardmini(
-    "3e77206e-551f-4453-948b-955e18ec62c1"
+    "9fd6af05-278a-4149-9967-032bb2326246"
   );
   const product = await getProducts3(params.productId);
 
@@ -80,3 +80,23 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
 };
 
 export default ProductPage;
+
+
+type Props={
+  params:{
+    productId: string
+  }
+}
+
+export async function generateMetadata({params :{productId}}:Props ) {
+  const post = await getProducts3(`${productId}`); //deduped!
+//deduped loại bỏ trùng lặp trong quá trình xây dựng 
+  if (!post) {
+    return {
+      title: "Product Not Found",
+    }
+  }
+  return {
+    title: post.name,
+  };
+}

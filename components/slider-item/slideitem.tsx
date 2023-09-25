@@ -10,12 +10,12 @@ import { getCategories, getCategories1, getCategories10, getCategories11, getCat
 
 export const revalidate = 0;
 const SlideItem = async () => {
-  const billboard = await getBillboard("b07b8761-8367-44d1-b67e-349646648191");
+  const billboard = await getBillboard("4cb42a8d-4c68-4d01-b152-5b0d0c471e4c");
   const billboardmini = await getBillboardmini(
-    "3e77206e-551f-4453-948b-955e18ec62c1"
+    "9fd6af05-278a-4149-9967-032bb2326246"
   );
   const billboardsale = await getBillboardsale(
-    "85c5eda8-421e-4f83-a40f-fc2f0760ba70"
+    "4eb35ef7-2b46-4011-91b9-7aef788b1d92"
   );
   const categories = await getCategories();
   const categories1 = await getCategories1();

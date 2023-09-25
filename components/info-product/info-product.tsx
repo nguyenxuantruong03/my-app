@@ -1,5 +1,5 @@
 "use client"
-import { Product ,Headphone, Ipad, Laptop, Mouse, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Tivi, Watch } from "@/types";
+import { Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9 } from "@/types";
 import Currency from "../ui/currency";
 import { CheckCircle2, ShoppingBasket, ShoppingCart } from "lucide-react";
 import  Button  from "../ui/button";
@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import {Infoproductcolor} from "@/components/color/color"
 
 interface InfoProductProps{
-  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 | Ipad |Headphone | Laptop |Tivi |Watch |Mouse;
+  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 
 }
 const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
     const cart = useCart();
@@ -30,7 +30,6 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
         toast.success("Sản phẩm đã được cập nhật số lượng trong giỏ hàng.");
       } else {
         cart.addItem(productWithQuantity, quantity);
-        toast.success("Sản phẩm đã thêm vào giỏ hàng.");
       }
     };
 
@@ -45,7 +44,6 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
         toast.success("Sản phẩm đã được cập nhật số lượng trong giỏ hàng.");
       } else {
         cart.addItem(productWithQuantity, quantity);
-        toast.success("Sản phẩm đã thêm vào giỏ hàng.");
       }
       router.push("/cart")
     };

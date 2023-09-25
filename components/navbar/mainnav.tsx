@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { Input } from "@nextui-org/react";
 import {
   AlignJustify,
   UserCircle2,
@@ -16,6 +15,7 @@ import useCart from "@/hooks/use-cart";
 import Menu from "@/components/navbar/menu-list";
 import axios from "axios";
 import {mainnavcolor} from "@/components/color/color"
+import SearchPage from "./Search";
 
 const MainNav = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -59,11 +59,13 @@ const MainNav = () => {
 
   //Coin
   const [totalCoins, setTotalCoins] = useState<number>(0);
+  const [rotation, setRotation] = useState<number>(0);
 
   useEffect(() => {
     // Load totalCoins from the server using GET request
     axios.get("/api/wheelSpin").then((response) => {
       setTotalCoins(response.data.totalCoins);
+      setRotation(response.data.latestRotation)
     });
   }, []);
   
@@ -115,7 +117,7 @@ const MainNav = () => {
       )}
 
       <div className={mainnavcolor.bgrounded}>
-        <div className="flex flex-col md:flex-row justify-center  items-center ">
+        <div className="flex flex-col md:flex-row justify-center  items-center  py-[2px]">
           <div className="basis-1/2 md:flex gap-2">
             <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
               <Coins className=" text-white w-5 h-5" />
@@ -128,18 +130,11 @@ const MainNav = () => {
         </div>
       </div>
 
-      <Link href="/">
-        <Input
-          width="300px"
-          animated={false}
-          clearable
-          placeholder="Bạn muốn tìm kiếm gì ?"
-        />
-      </Link>
+      <SearchPage />
 
       <Link href="/spinlucky">
         <div className={mainnavcolor.bghover}>
-          <div className="flex flex-col md:flex-row justify-center  items-center ">
+          <div className="flex flex-col md:flex-row justify-center  items-center relative">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
                 <Gift className="w-6 h-6 text-white" />
@@ -150,12 +145,15 @@ const MainNav = () => {
               </div>
             </div>
           </div>
+          <span className="w-5 h-5 absolute bg-[#e53350] rounded-full top-[15px] right-[505px] -mt[1px] shadow-lg">
+            <p className="text-[0.75rem] text-center font-semibold text-white">{rotation} </p>
+          </span>
         </div>
       </Link>
 
       <Link href="/game">
         <div className={mainnavcolor.bghover}>
-          <div className="flex flex-col md:flex-row justify-center  items-center ">
+          <div className="flex flex-col md:flex-row justify-center  items-center">
             <div className="basis-1/2 md:flex gap-2">
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
                 <Gamepad2 className=" text-white w-6 h-6" />
@@ -198,8 +196,8 @@ const MainNav = () => {
               </div>
             </div>
           </div>
-          <span className="w-4 h-4 absolute bg-white rounded-full top-[15px] right-[122px] bg-opacity-90">
-            <p className="items-center text-sm ">{cart.items.length} </p>
+          <span className="w-5 h-5 absolute bg-[#e53350] rounded-full top-[15px] right-[125px] bg-opacity-90 -mt[1px] shadow-lg">
+            <p className="text-[0.75rem] m-auto text-white font-semibold">{cart.items.length} </p>
           </span>
         </div>
       </button>
