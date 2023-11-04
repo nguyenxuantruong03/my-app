@@ -1,6 +1,6 @@
 .home-product-item__favorite{
   position:absolute;
-  top: 1px;
+  top: 0px;
   left: -4px;
   font-size: 0.9rem;
   color: red;
@@ -14,7 +14,7 @@
   /* Cách làm style yêu thích giống shoppe */
   .home-product-item__favorite::after{
       border-left: 6px solid transparent;
-      border-top: 3px solid currentColor; 
+      border-top: 4px solid currentColor; 
       content: "";
       position: absolute;
       left: 0;
@@ -40,7 +40,6 @@
   display: block;
   position: sticky;
   overflow: hidden;
-  font-size: 30px;
   color: #ecf0f1;
   font-weight: 600;
 }
@@ -48,13 +47,9 @@
 .content__container {
   font-weight: 600;
   overflow: hidden;
-  height: 51px;
-  padding: 0 40px;
 }
 
 .content__container__list {
-  margin-top: 0px;
-  padding-left: 300px;
   margin-left: 44px;
   text-align: left;
   list-style: none;
@@ -68,10 +63,6 @@
 .content__container__text {
   display: inline;
   float: left;
-  margin: 0;
-}
-.content__container__list__item {
-  line-height: 48px;
   margin: 0;
 }
 
@@ -906,4 +897,13 @@
   border-radius: 50%;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.05), 0 0 0 15px rgba(255, 255, 255, 0.05), 0 0 0 25px rgba(255, 255, 255, 0.05), 0 0 0 35px rgba(255, 255, 255, 0.05);
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+.single-line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

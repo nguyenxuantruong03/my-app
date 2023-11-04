@@ -4,33 +4,16 @@ import {accessorycolor} from "@/components/color/color"
 
 const Accessory = () => {
     return ( 
-        <div className="grid grid-cols-10  my-4 mx-2">
+        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 lg:gap-0 lg:overflow-hidden">
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Nổi bật </span>
+        <span className="text-white font-bold p-2"> Ốc vít </span>
         <div className="m-4">
         <Image 
         width="80"
         height="100"
         className="object-fit"
-        src="/../public/images/Accessory.png"
-        alt="error"
-        />
-        </div>
-        </Link>
-
-        
-        </div>
-        <div className={accessorycolor.bg_height_width_rounded_overflowhidden}>
-        <Link href="/">
-        <span className="text-white font-bold p-2"> Phụ kiện </span>
-        <span className="text-white font-bold p-2"> Apple </span>
-        <div className="mb-2">
-        <Image 
-        width="120"
-        height="90"
-        className="object-fit"
-        src="/../public/images/Pk-iphone.png"
+        src="/../public/images-product/boloncontan.png"
         alt="error"
         />
         </div>
@@ -40,13 +23,30 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Dán màn hình </span>
+        <span className="text-white font-bold p-2"> Bóng Điện </span>
+        <span className="text-white font-bold pl-2"> Quang </span>
+        <div className="mb-2 ml-6">
+        <Image 
+        width="75"
+        height="80"
+        className="object-fit"
+        src="/../public/images-product/bongdienquang.png"
+        alt="error"
+        />
+        </div>
+        </Link>
+
+        
+        </div>
+        <div className={accessorycolor.bg_height_width_rounded}>
+        <Link href="/">
+        <span className="text-white font-bold p-2"> Co </span>
         <div className=" mt-4">
         <Image 
-        width="300"
+        width="90"
         height="300"
         className="object-fit"
-        src="/../public/images/PK-manhinh.png"
+        src="/../public/images-product/co27.png"
         alt="error"
         />
         </div>
@@ -56,14 +56,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Ốp lưng - Bao </span>
-        <span className="text-white font-bold p-2"> da </span>
-        <div className="ml-6 -mt-5">
+        <span className="text-white font-bold p-2"> Đá cắt </span>
+        <div className="mt-1">
         <Image 
         width="100"
         height="70"
         className="object-fit"
-        src="/../public/images/PK-oplung.png"
+        src="/../public/images-product/dacatsat.png"
         alt="error"
         />
         </div>
@@ -73,13 +72,14 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Cáp, sạc </span>
+        <span className="text-white font-bold p-2"> Dây điện </span>
+        <span className="text-white font-bold p-2"> Daphaco </span>
         <div className="mr-1 mb-2 -mt-4">
         <Image 
         width="120"
         height="120"
         className="object-fit"
-        src="/../public/images/PK-cucsac.png"
+        src="/../public/images-product/daphaco.png"
         alt="error"
         />
         </div>
@@ -89,13 +89,14 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Pin dự phòng </span>
-        <div className="m-3 mr-2">
+        <span className="text-white font-bold p-2"> Dây điện </span>
+        <span className="text-white font-bold p-2"> Cadivi </span>
+        <div className="m-2 mr-3">
         <Image 
         width="80"
         height="100"
         className="object-fit"
-        src="/../public/images/Pk-cucsacdanang.png"
+        src="/../public/images-product/daydiencadivi.png"
         alt="error"
         />
         </div>
@@ -105,13 +106,14 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Thiết bị mạng </span>
+        <span className="text-white font-bold p-2"> Dây điện </span>
+        <span className="text-white font-bold p-2"> Daphaco lớn </span>
         <div className="m-3 mr-2 ">
         <Image 
         width="90"
         height="100"
         className="object-fit"
-        src="/../public/images/PK-router.png"
+        src="/../public/images-product/daydiendaphacolon.png"
         alt="error"
         />
         </div>
@@ -121,13 +123,30 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Gaming Gear </span>
-        <div className="m-4">
+        <span className="text-white font-bold p-2"> Đèn Bàn Rạng </span>
+        <span className="text-white font-bold p-2"> Đông </span>
+        <div className="-mt-6">
         <Image 
-        width="85"
+        width="120"
+        height="80"
+        className="object-fit"
+        src="/../public/images-product/denrangdong.png"
+        alt="error"
+        />
+        </div>
+        </Link>
+
+        
+        </div>
+        <div className={accessorycolor.bg_height_width_rounded}>
+        <Link href="/">
+        <span className="text-white font-bold p-2"> Keo 2 mặt</span>
+        <div className="mt-2 ">
+        <Image 
+        width="120"
         height="100"
         className="object-fit"
-        src="/../public/images/PK-taycam.png"
+        src="/../public/images-product/keo2mat.png"
         alt="error"
         />
         </div>
@@ -137,31 +156,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Gimbal | Tay </span>
-        <span className="text-white font-bold pl-2">  cầm chống  </span>
-        <span className="text-white font-bold pl-2">  rung </span>
-        <div className="-mt-5 ml-8">
+        <span className="text-white font-bold p-2"> Keo Apolo </span>
+        <div className="-mt-2">
         <Image 
-        width="70"
-        height="20"
+        width="110"
+        height="120"
         className="object-fit"
-        src="/../public/images/PK-gimble.png"
-        alt="error"
-        />
-        </div>
-        </Link>
-
-        
-        </div>
-        <div className={accessorycolor.bg_height_width_rounded}>
-        <Link href="/">
-        <span className="text-white font-bold p-2"> Thẻ nhớ, USB </span>
-        <div className="m-3">
-        <Image 
-        width="80"
-        height="100"
-        className="object-fit"
-        src="/../public/images/Pk-USB.png"
+        src="/../public/images-product/keoapolo.png"
         alt="error"
         />
         </div>
@@ -171,14 +172,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Chuột, bàn </span>
-        <span className="text-white font-bold p-2"> phím </span>
-        <div className="ml-8">
+        <span className="text-white font-bold p-2"> Kéo bếp ăn</span>
+        <div className="ml-1">
         <Image 
-        width="70"
-        height="30"
+        width="120"
+        height="120"
         className="object-fit"
-        src="/../public/images/PK-chuột.png"
+        src="/../public/images-product/keobepan.png"
         alt="error"
         />
         </div>
@@ -188,13 +188,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Sim 4G </span>
-        <div className="-mt-9">
+        <span className="text-white font-bold p-2"> Keo con chó</span>
+        <div className="-ml-2">
         <Image 
-        width="140"
-        height="140"
+        width="120"
+        height="120"
         className="object-fit"
-        src="/../public/images/Pk-Sim.webp"
+        src="/../public/images-product/keoconcho.png"
         alt="error"
         />
         </div>
@@ -204,13 +204,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Sim số đẹp</span>
-        <div className="-mt-10">
+        <span className="text-white font-bold p-2"> Keo dán sắt</span>
+        <div className="-mt-3">
         <Image 
         width="170"
         height="150"
         className="object-fit"
-        src="/../public/images/Pk-Sim-so-dep.webp"
+        src="/../public/images-product/keodansat.png"
         alt="error"
         />
         </div>
@@ -220,14 +220,30 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Camera hành </span>
-        <span className="text-white font-bold p-2"> trình </span>
-        <div className="-mt-16">
+        <span className="text-white font-bold p-2"> Khóa việt </span>
+        <span className="text-white font-bold p-2"> tiệp </span>
+        <div className="-mt-4 ml-6">
+        <Image 
+        width="90"
+        height="90"
+        className="object-fit"
+        src="/../public/images-product/khoaviettiep.png"
+        alt="error"
+        />
+        </div>
+        </Link>
+
+        
+        </div>
+        <div className={accessorycolor.bg_height_width_rounded_mt}>
+        <Link href="/">
+        <span className="text-white font-bold p-2"> Lơi </span>
+        <div className="-mt-2">
         <Image 
         width="140"
         height="140"
         className="object-fit"
-        src="/../public/images/Pk-camera-hanh-trinh.webp"
+        src="/../public/images-product/loi27.png"
         alt="error"
         />
         </div>
@@ -237,31 +253,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Camera an</span>
-        <span className="text-white font-bold p-2"> ninh</span>
-        <div className="-mt-16">
+        <span className="text-white font-bold p-2"> Lưới xanh </span>
+        <div className="ml-2 mt-2">
         <Image 
-        width="140"
-        height="140"
-        className="object-fit"
-        src="/../public/images/Pk-camera.webp"
-        alt="error"
-        />
-        </div>
-        </Link>
-
-        
-        </div>
-        <div className={accessorycolor.bg_height_width_rounded_mt}>
-        <Link href="/">
-        <span className="text-white font-bold p-2"> Phụ kiện </span>
-        <span className="text-white font-bold p-2"> Laptop </span>
-        <div className="ml-6">
-        <Image 
-        width="80"
+        width="100"
         height="100"
         className="object-fit"
-        src="/../public/images/Pk-Gia-do-lap-top.png"
+        src="/../public/images-product/luoixanh.png"
         alt="error"
         />
         </div>
@@ -271,14 +269,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2">Balo, túi </span>
-        <span className="text-white font-bold p-2"> chống sốc </span>
-        <div className="ml-6">
+        <span className="text-white font-bold p-2">Mỏ lết </span>
+        <div className="ml-4">
         <Image 
-        width="75"
-        height="70"
+        width="100"
+        height="100"
         className="object-fit"
-        src="/../public/images/Pk-balo-chong-nuoc.png"
+        src="/../public/images-product/molet.png"
         alt="error"
         />
         </div>
@@ -288,13 +285,13 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Quạt mini </span>
-        <div className="-mt-7">
+        <span className="text-white font-bold p-2"> Nối </span>
+        <div className="-mt-3 ml-2">
         <Image 
         width="110"
         height="110"
         className="object-fit"
-        src="/../public/images/Pk-quat-mini.webp"
+        src="/../public/images-product/noi27.png"
         alt="error"
         />
         </div>
@@ -304,14 +301,14 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2">Ổ cứng di </span>
-        <span className="text-white font-bold p-2"> dộng</span>
+        <span className="text-white font-bold p-2">Ổ cắm cây </span>
+        <span className="text-white font-bold pl-2"> thông </span>
         <div className="-mt-3 ml-9">
         <Image 
-        width="90"
+        width="100"
         height="100"
         className="object-fit"
-        src="/../public/images/Pk-o-cung-di-dong.png"
+        src="/../public/images-product/ocamcaythong.png"
         alt="error"
         />
         </div>
@@ -321,21 +318,19 @@ const Accessory = () => {
         </div>
         <div className={accessorycolor.bg_height_width_rounded_mt}>
         <Link href="/">
-        <span className="text-white font-bold p-2"> Apple Care </span>
+        <span className="text-white font-bold p-2">Ổ cắm điện </span>
+        <span className="text-white font-bold p-2"> quang </span>
         <div className="ml-3">
         <Image 
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images/PK-logo-apple.png"
+        src="/../public/images-product/ocamdienquang.png"
         alt="error"
         />
         </div>
         </Link>
-
-        
         </div>
-        
         </div>
      );
 }

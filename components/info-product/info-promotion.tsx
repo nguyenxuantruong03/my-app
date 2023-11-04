@@ -1,7 +1,7 @@
 "use client"
 import useSeeDetailSpecifications from "@/hooks/use-see-detail-specifications";
 import { Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9 } from "@/types";
-import { Package2, Receipt, Shield, Smartphone,GraduationCap,Gift,Sparkle, ChevronDown  } from "lucide-react";
+import { Package2, Receipt, Shield, Wrench ,Home,Gift,Sparkle, ChevronDown  } from "lucide-react";
 import { MouseEventHandler } from "react";
 
 interface InfoPromotionprops{
@@ -16,17 +16,17 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
         seedetailspecification.onOpen()
     }
     return ( 
-        <div className="max-w-2xl">
-        <div className="hidden lg:grid  lg:grid-cols-2 lg:item-start lg:gap-x-8  mb-5">
-         <div className="w-[300px] h-[200px] shadow-lg rounded-md p-4 ">
-             <h1 className="font-bold text-md text-[#666666]">Thông tin sản phẩm</h1>
+        <div className="md:max-w-3xl lg:max-w-2xl">
+        <div className="md:grid  md:grid-cols-2 md:ml-8 md:mb-5 lg:grid  lg:grid-cols-2 lg:item-start lg:gap-x-8  mb-5">
+         <div className="w-[300px] h-[200px] shadow-lg rounded-md p-4 ml-9 md:ml-0">
+             <h1 className="font-bold text-base text-[#666666]">Thông tin sản phẩm</h1>
             <div className="flex my-1 text-[#666666]">
-             <Smartphone  className="w-4 h-4"/>
+             <Wrench   className="w-4 h-4"/>
                  <span className="ml-1 text-sm "> Mới, đầy đủ phụ kiện từ nhà sản xuất </span>
             </div>
             <div className="flex my-1 text-[#666666]">
              <Package2  className="w-4 h-4"/>
-                 <span className=" ml-1 text-sm"> {data.name}, vệ sinh miễn phí trong vòng 1 năm </span>
+                 <span className=" ml-1 text-sm"> {data.name}, Hỗ trợ sửa chữa </span>
             </div>
             <div className="flex my-1 text-[#666666]">
              <Shield className="w-10 h-10 -mt-3 "/>
@@ -37,9 +37,9 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
                  <span className="ml-1 text-sm"> Giá sản phẩm đã bao gồm VAT </span>
             </div>
          </div>
-             <div className="w-[250px] h-[200px] ">
 
-             <div className="h-[90px] shadow-md my-[10px] rounded-md overflow-hidden ">
+             <div className="w-[250px] h-[200px] ml-14 md:ml-0">
+             <div className="h-[90px] shadow-md my-[10px] rounded-md  overflow-hidden">
                  <h1 className= "text-white font-bold bg-[#e5002d] text-center">Ưa đãi khách hàng thân thiết</h1>
              <div className="flex text-[#666666] my-2">
                  <Gift className="ml-1 w-4 h-4 "/>
@@ -49,25 +49,25 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
              </div >
              <div className="flex text-[#666666] my-2">
                  <Sparkle className=" ml-1 w-4 h-4 "/>
-             <p className="ml-1 text-sm"> Giảm thêm 500k khi có thẻ VIP </p>
+             <p className="ml-1 text-sm"> Giảm giá mua sỉ </p>
              </div>
              </div>
 
              <div className="h-[90px] shadow-md my-[10px] rounded-md overflow-hidden">
-                 <h1 className="text-white font-bold bg-[#e5002d] text-center">Ưa đãi sinh viên</h1>
+                 <h1 className="text-white font-bold bg-[#e5002d] text-center">Ưa đãi nhà thầu</h1>
              <div className="flex text-[#666666] my-2">
                  <Gift className="ml-1 w-4 h-4 "/>
              <p className="ml-2 text-sm">{data.promotiondescription}</p>
              </div>
             <div className="flex text-[#666666] my-2">
-            <GraduationCap className=" ml-1 w-5 h-5 "/>
-            <p className="ml-1 text-sm"> Giảm thêm 500k cho sinh viên </p>
+            <Home className=" ml-1 w-5 h-5 "/>
+            <p className="ml-1 text-sm"> Giảm thêm cho toàn bộ công trình </p>
             </div>
              </div>
              </div>
          </div>
-         <div className="grid grid-cols-2"> 
-                <div className=" w-[300px] p-2 rounded-md shadow-lg">
+         <div className="grid md:grid-cols-2 md:ml-8 md:mb-5 lg:mx-0"> 
+                <div className="w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg ml-4 md:ml-0">
                     <h1 className="font-bold"> Thông số kỹ thuật </h1>
                     <div className="flex justify-between bg-gray-500 bg-opacity-10 p-4 rounded-md">
                             {data.descriptionspecifications}
@@ -90,7 +90,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
                             <p>{data.value5specifications}</p>
                     </div>
                 </div>
-                <div className=" w-[300px] p-2 rounded-md shadow-lg">
+                <div className=" w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg ml-4 md:ml-0 mt-2 md:mt-0">
                 <h1 className="font-bold"> Thông số kỹ thuật </h1>
                     <div className="flex justify-between bg-gray-500 bg-opacity-10 p-4 rounded-md">
                             {data.description6specifications}
@@ -114,7 +114,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
                     </div>
                 </div>
          </div>
-         <div onClick={onSeeDetailSpecification} className="w-[550px] h-[50px] shadow-lg rounded-md mt-2 ml-[40px] flex items-center justify-center hover:bg-red-300 hover:bg-opacity-30 hover:border-[1px] hover:border-red-500 hover:text-red-600 cursor-pointer">
+         <div onClick={onSeeDetailSpecification} className=" w-[290px] md:w-[550px] h-[50px] shadow-lg rounded-md mt-2 ml-[40px] flex items-center justify-center hover:bg-red-300 hover:bg-opacity-30 hover:border-[1px] hover:border-red-500 hover:text-red-600 cursor-pointer md:m-auto md:mb-5">
                 <div >Xem chi tiết </div>
                 <ChevronDown className="ml-1 h-4 w-4" />
          </div>

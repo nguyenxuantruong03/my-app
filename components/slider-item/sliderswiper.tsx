@@ -17,7 +17,7 @@ const SliderSwiper: React.FC<SliderSwiperProps> = ({ data }) => {
   const renderSlides = () => {
     return data?.imagebillboard?.map((image, index) => (
       <SwiperSlide key={index}>
-        <div className="overflow-hidden rounded-xl md:aspect-[2/1] bg-cover">
+        <div className="overflow-hidden rounded-xl md:aspect-[1/1] bg-cover">
           <Image
             src={image.url}
             fill
@@ -30,9 +30,9 @@ const SliderSwiper: React.FC<SliderSwiperProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-[750px] h-[377px] rounded-md shadow-md">
+    <div className="w-[335px] md:w-[520px] lg:w-[750px] h-[377px] rounded-md shadow-md">
       <Swiper
-        spaceBetween={30}
+        spaceBetween={20}
         centeredSlides={true}
         autoplay={{
           delay: 2500,

@@ -28,7 +28,7 @@ const Gallery:React.FC<GalleryProps> = ({images = []}) => {
                                 <NextImage 
                                 fill 
                                 src={image.url}
-                                className="object-cover object-center"
+                                className=""
                                 alt=""
                                 />
                             </div>

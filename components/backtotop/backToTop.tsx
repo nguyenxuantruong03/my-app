@@ -29,7 +29,7 @@ const ScrollButton = () => {
   }, []); // Add an empty array as the second argument to run this effect only once
 
   return (
-    <div className='fixed left-[90%] bottom-[40px] font-2xl z-10 cursor-pointer'>
+    <div className='fixed left-[65%] md:left-[80%] lg:left-[90%] bottom-[80px] md:bottom-[40px] font-2xl z-10 cursor-pointer'>
       <FaArrowCircleUp
         onClick={scrollToTop}
         style={{ display: visible ? 'inline' : 'none' }}

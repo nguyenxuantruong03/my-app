@@ -1,70 +1,26 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const PaymentMethod = () => {
     return ( 
         <>
-        <Link href="/">
-       <div className=" mt-1 w-14  border rounded-sm">
+       <div className=" w-[3.3rem] mt-1 border rounded-sm">
         <Image 
         width="50"
         height="50"
         className="object-fit"
-        src="/../public/images/alepay-logo.png"
+        src="/../public/images/stripe.png"
         alt="error"
         />
        </div>
-      </Link>
-
-      <Link href="/">
-       <div className=" w-14  border rounded-sm">
+       <div className="  w-[3.3rem] border rounded-sm">
         <Image 
         width="50"
         height="50"
         className="object-fit"
-        src="/../public/images/kredivo-logo.png"
+        src="/../public/images/visa-mastercard.png"
         alt="error"
         />
        </div>
-      </Link>
-
-      <Link href="/">
-       <div className=" w-14  border rounded-sm">
-        <Image 
-        width="50"
-        height="50"
-        className="object-fit"
-        src="/../public/images/moca-logo.png"
-        alt="error"
-        />
-       </div>
-      </Link>
-
-      <Link href="/">
-       <div className=" w-14  border rounded-sm">
-        <Image 
-        width="50"
-        height="50"
-        className="object-fit"
-        src="/../public/images/mpos-logo.png"
-        alt="error"
-        />
-       </div>
-      </Link>
-
-      <Link href="/">
-       <div className=" w-14  border rounded-sm">
-        <Image 
-        width="50"
-        height="50"
-        className="object-fit"
-        src="/../public/images/onepay-logo.png"
-        alt="error"
-        />
-       </div>
-      </Link>
-
-      <Link href="/">
        <div className=" w-14  border rounded-sm">
         <Image 
         width="50"
@@ -74,9 +30,7 @@ const PaymentMethod = () => {
         alt="error"
         />
        </div>
-      </Link>
-
-      <Link href="/">
+      
        <div className=" w-14  border rounded-sm">
         <Image 
         width="50"
@@ -86,8 +40,7 @@ const PaymentMethod = () => {
         alt="error"
         />
        </div>
-      </Link>
-      </>
+       </>
      );
 }
  

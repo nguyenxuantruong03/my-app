@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 import "./delivery.css";
 const items = [
-  "Accessory",
-  "Computer",
-  "Laptop",
-  "Iphone",
-  "Samsung",
-  "Headphones",
-  "Ipad",
-  "Tivi",
+  "Ốngnhựa",
+  "Bóngđèn",
+  "Pin",
+  "Dâyđiện",
+  "Sơn",
+  "Ổkhóa",
+  "Quạt",
+  "Đácắt",
 ];
 import {deliverycolor} from "@/components/color/color"
 

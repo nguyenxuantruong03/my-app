@@ -76,3 +76,71 @@
     @apply bg-background text-foreground;
   }
 }
+
+.cl-internal-wkkub3,
+.cl-internal-b3fm6y,
+.cl-internal-13zhnx0{
+display: none;
+}
+.cl-internal-uyu30o{
+  padding:0;
+}
+.cl-internal-g6a67s:focus{
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.cl-signUp-root {
+  padding: 280px 0px 100px 130px;
+}
+.cl-signIn-root {
+  padding: 330px 0px 100px 130px;
+}
+.cl-internal-17ydaof,
+.cl-internal-1vi7rps{
+  background: #363636;
+  
+}
+@media screen and (max-width: 420px) {
+  .cl-internal-17ydaof {
+    margin-left: -7.7rem;
+    margin-top: -8rem;
+  }
+}
+@media (min-width: 760px) and (max-width: 820px){
+  .cl-internal-1vi7rps {
+    margin-left: 5rem;
+  }
+}
+@media (min-width: 760px) and (max-width: 820px) {
+  .cl-internal-17ydaof {
+    margin-left: 4.8rem;
+  }
+}
+.cl-internal-1vbdq0x{
+  color: white;
+  text-align: center
+}
+.cl-internal-q966dm{
+  border: 1px solid rgb(255,255,255);
+}
+.cl-internal-b868gt{
+  background-color: rgba(255,255,255);
+}
+.cl-internal-15amzqo{
+  color: rgb(112 134 215);
+  font-weight: 700;
+}
+.cl-internal-1ho4xv,
+.cl-internal-1ptfnbv,
+.cl-internal-1yejcov,
+.cl-internal-17bz5n6,
+.cl-internal-1xpzc82,
+.cl-internal-138ov2f{
+  color: rgba(255,255,255);
+}
+.cl-internal-yrq74:hover{
+  background-color: hsla(0, 0%, 0%, 0.3);
+}
+.cl-internal-1bm3sy9 {
+  background-color: rgba(255,255,255);
+}

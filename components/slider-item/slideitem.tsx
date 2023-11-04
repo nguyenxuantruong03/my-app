@@ -8,14 +8,21 @@ import getBillboardsale from "@/actions/billboard/get-billboardsale";
 import BillboardCategory from "./billboard-category";
 import { getCategories, getCategories1, getCategories10, getCategories11, getCategories2, getCategories3, getCategories4, getCategories5, getCategories6, getCategories7, getCategories8, getCategories9 } from "@/actions/categories/get-categories";
 
+
 export const revalidate = 0;
 const SlideItem = async () => {
-  const billboard = await getBillboard("4cb42a8d-4c68-4d01-b152-5b0d0c471e4c");
+  const billboard = await getBillboard("671f2bf3-3c95-4ac8-82bc-9ce9a026ad75");
   const billboardmini = await getBillboardmini(
-    "9fd6af05-278a-4149-9967-032bb2326246"
+    "f4ad613b-e77a-4f79-969a-32017dc278a5"
   );
   const billboardsale = await getBillboardsale(
-    "4eb35ef7-2b46-4011-91b9-7aef788b1d92"
+    "c549dc49-35a3-466d-ba22-272a2b3e2ce3"
+  );
+  const billboardsaleipad = await getBillboardsale(
+    "0081ff49-2a20-49e9-addf-1ab48b54a0ff"
+  );
+  const billboardsalemobile = await getBillboardsale(
+    "957e9978-07ea-4da7-9749-8e8b93d6ad3f"
   );
   const categories = await getCategories();
   const categories1 = await getCategories1();
@@ -31,8 +38,8 @@ const SlideItem = async () => {
   const categories11 =await getCategories11();
   return (
     <>
-      <div className=" mx-auto max-w-7xl h-[377px] my-2 mt-[120px]">
-        <div className="flex space-x-5">
+      <div className=" mx-auto max-w-7xl h-[377px] my-2 mt-[120px] ">
+        <div className="flex space-x-5 md:m-5 lg:m-0">
           <MenuTree
             data={categories}
             categories1={categories1}
@@ -52,14 +59,20 @@ const SlideItem = async () => {
           </div>
           <SliderSwipper data={billboard} />
 
-          <div className="w-full space-y-4 h-[115px] ">
+          <div className="w-full space-y-4 h-[115px] hidden lg:block">
             <ImageMini data={billboardmini} />
           </div>
         </div>
       </div>
 
-      <div className=" mx-auto max-w-7xl my-2">
+      <div className=" mx-auto md:max-w-3xl lg:max-w-7xl my-2 hidden lg:block">
         <ImageSale data={billboardsale} />
+      </div>
+      <div className=" mx-auto md:max-w-3xl lg:max-w-7xl my-2 hidden md:block lg:hidden">
+        <ImageSale data={billboardsaleipad} />
+      </div>
+      <div className=" mx-auto my-2 md:hidden">
+        <ImageSale data={billboardsalemobile} />
       </div>
     </>
   );

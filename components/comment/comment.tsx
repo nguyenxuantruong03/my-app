@@ -5,13 +5,14 @@ import { FaStar } from "react-icons/fa";
 import Container from "../ui/container";
 import Image from "next/image";
 import {commentcolor} from "@/components/color/color"
-import ProductListSingle from "../product/product-list/product-list-signle";
+import { useUser } from "@clerk/nextjs";
 interface Comment {
   rating: number;
   comment: string;
   commenter: string;
   createdAt: string;
   nameproduct: string;
+  imageUrl: string
 }
 interface CommentProps {
   data: string;
@@ -30,6 +31,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
   const [collapsedComments, setCollapsedComments] = useState<boolean>(false);
   const stars = Array(5).fill(0);
   const stars1 = Array(1).fill(0);
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -54,6 +56,9 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
 
      fetchComments();
   }, []);
+
+  const { user } = useUser();
+
 
   const handleTimestampUpdate = () => {
     localStorage.setItem("lastCommentTime", Date.now().toString());
@@ -99,16 +104,18 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
 
     handleTimestampUpdate();
-
-    const newComment = {
-      rating: rating as number,
-      comment,
-      commenter: "Vô danh", // Change this to the actual commenter's name
-      createdAt: new Date().toISOString(),
-      nameproduct: data ||"123"
-    };
-
+    
+    
     try {
+      
+      const newComment = {
+        rating: rating as number,
+        comment,
+        imageUrl: user?.imageUrl || "",
+        commenter:user?.username || "Vô danh" , 
+        createdAt: new Date().toISOString(),
+        nameproduct: data ||"123"
+      };
       const response = await axios.post("/api/comments/", newComment);
       const savedComment: Comment = response.data;
 
@@ -257,12 +264,11 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       return "Vừa xong";
     }
   };
- 
   return (
     <Container>
       <div className="p-4 shadow-lg my-6 rounded-md">
         <h2 className="text-xl font-semibold mb-4">Rate and Comment -{data}</h2>
-        <div className="grid grid-cols-2 shadow-inner p-2">
+        <div className="grid md:grid-cols-2 shadow-inner p-2">
           <div className="m-auto">
             <h3 className="font-bold text-3xl">
               {calculateAverageRating(data).toFixed(1)}/5
@@ -490,7 +496,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                         <li key={index} >
                           <div className=" flex items-center relative">
                             <Image
-                              src="https://bathanh.com.vn/wp-content/uploads/2017/08/default_avatar.png"
+                              src={comment.imageUrl || "https://bathanh.com.vn/wp-content/uploads/2017/08/default_avatar.png"}
                               alt=""
                               width="30"
                               height="30"
@@ -500,7 +506,6 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                               {comment.commenter} <p className="text-sm text-gray-400 flex items-center font-normal ">-{comment.nameproduct}</p>
                             </p>
                               
-
                             <p className=" absolute right-0 text-sm font-bold text-gray-800 text-opacity-60">
                               {formatTimestamp(comment.createdAt)}
                             </p>
@@ -534,7 +539,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           onClick={() => {
             setCollapsedComments(!collapsedComments);
           }}
-          className={`rounded px-2 md:px-28 md:py-2 py-1 mb-2 md:ml-[512px]  ${
+          className={`rounded px-2 md:px-28 md:py-2 py-1 mb-2 ml-[140px] md:ml-[220px] lg:ml-[512px]  ${
             collapsedComments ? " text-gray-700 " : "text-white"
           }`}
           style={{

@@ -17,7 +17,7 @@ import { Product2, Product1, Product10, Product3 } from "@/types";
 
 interface ProductListProps {
   data: Product2[] | Product1[] | Product10[] | Product3[]
-  productType: "headphone" | "ipad" | "laptop" | "watch";
+  productType: "ongnhua" | "quat" | "bongden" | "daydien";
 }
 
 const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
@@ -25,17 +25,17 @@ const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
 
   const handleClick = (productId: string) => {
     switch (productType) {
-      case "headphone":
-        router.push(`/headphone/${productId}`);
+      case "ongnhua":
+        router.push(`/ongnhua/${productId}`);
         break;
-      case "ipad":
-        router.push(`/ipad/${productId}`);
+      case "quat":
+        router.push(`/quat/${productId}`);
         break;
-      case "laptop":
-        router.push(`/laptop/${productId}`);
+      case "bongden":
+        router.push(`/bongden/${productId}`);
         break;
-      case "watch":
-        router.push(`/watch/${productId}`);
+      case "daydien":
+        router.push(`/daydien/${productId}`);
         break;
       default:
         break;
@@ -51,6 +51,12 @@ const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
           fill: "row",
         }}
         spaceBetween={20}
+        breakpoints={{
+          320: { slidesPerView: 2, spaceBetween: 20 },
+          480: { slidesPerView: 2, spaceBetween: 20 },
+          768: { slidesPerView: 3, spaceBetween: 20 },
+          1024: { slidesPerView: 5, spaceBetween: 20 },
+        }}
         pagination={{
           clickable: true,
         }}
@@ -80,10 +86,10 @@ const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
                   />
                 </div>
                 <div className="ml-3">
-                  <p className="font-semibold text-lg">{product.name}</p>
-                  <p className="text-sm text-gray-500">{product.category.name}</p>
+                  <p className="font-semibold text-sm md:text-base single-line-ellipsis">{product.heading}</p>
+                  <p className="text-xs md:text-sm text-gray-500 single-line-ellipsis">{product.category.name}</p>
                 </div>
-                <div className="flex items-center justify-between ml-3">
+                <div className="flex items-center justify-between ml-2 md:ml-3 mb-2.5">
                   <Currency valueold={product?.price} value={discountedPrice} />
                 </div>
               </div>
@@ -93,7 +99,7 @@ const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
             </SwiperSlide>
           );
         })}
-        <div className="absolute top-16 z-10 ">
+        <div className="absolute top-[11.5rem] md:top-16 z-10 ">
           <PrevNextSwiper />
         </div>
       </Swiper>

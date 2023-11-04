@@ -89,7 +89,7 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
         <div className="flex bg-gradient-to-r from-[#C00000] to-[#FF3334] rounded-md p-5">
           <ShieldCheck className="text-white" />
           <div className="flex ml-2 ">
-            <h1 className="text-md ml-2 text-white font-bold ">
+            <h1 className="text-sm md:text-base ml-2 text-white font-bold ">
               Bảo vệ sản phẩm toàn diện với dịch vụ bảo hành mở rộng
             </h1>
             <span
@@ -118,7 +118,7 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
               value={option.value}
               className={({ active, checked }) =>
                 `${
-                  checked ? "bg-sky-800 bg-opacity-40 text-white" : "bg-white"
+                  checked ? "bg-[#FF3334] bg-opacity-40 text-white" : "bg-white"
                 } relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
               }
             >
@@ -138,10 +138,10 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
                         <RadioGroup.Description
                           as="span"
                           className={`inline ${
-                            checked ? "text-sky-100" : "text-gray-500"
+                            checked ? "text-gray-900" : "text-gray-500"
                           }`}
                         >
-                          <span>{option.description}</span>
+                          <span className="hidden md:block">{option.description}</span>
                         </RadioGroup.Description>
                       </div>
                     </div>
@@ -151,7 +151,7 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
                       <button
                         className={`w-6 h-6 border rounded-full flex items-center justify-center border-gray-300 mx-3 ${
                           selectedWarranty === option.value
-                            ? "bg-sky-900 border-sky-900"
+                            ? "bg-[#C00000] border-[#FF3334]"
                             : ""
                         }`}
                         onClick={() =>

@@ -1,0 +1,13 @@
+  @import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+.text1 {
+  font: italic 60px 'Mooli', sans-serif;
+  fill: #fff;
+}
+.text2 {
+  font: bold 60px 'Mooli', sans-serif;
+  fill: #fff;
+}
+.text3 {
+        font: bold 60px 'Mooli', sans-serif;
+  fill: #e53350;
+}

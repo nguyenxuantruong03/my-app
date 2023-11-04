@@ -1,24 +1,24 @@
 import Container from "@/components/ui/container";
 import Accessory from "./accessory";
-import ComputerComponentSmall from './computerComponentSmall';
-import Secondhand from "./secondhand";
+import ComputerComponentSmall from './accessory2';
+import Secondhand from "./accessory3";
 import {suggestcolor} from "@/components/color/color"
 
 const Suggest = () => {
     return ( 
         <Container>
-        <div>
-        <p className={suggestcolor.textcolor}>PHỤ KIỆN</p>
+        <div className=" mt-3 md:mt-10">
+        <p className={suggestcolor.textcolor}>GIA DỤNG</p>
             <Accessory />
         </div>
 
-        <div>
-        <p className={suggestcolor.textcolor}>LINH KIỆN MÁY TÍNH</p>
+        <div className="mt-3 md:mt-10"> 
+        <p className={suggestcolor.textcolor}>NỘI THẤT</p>
             <ComputerComponentSmall />
         </div>
 
-        <div>
-        <p className={suggestcolor.textcolor}>HÀNG CŨ</p>
+        <div className="mt-3 md:mt-10">
+        <p className={suggestcolor.textcolor}>XÂY DỰNG</p>
             <Secondhand />
         </div>
 

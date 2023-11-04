@@ -42,7 +42,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
       cart.updateQuantity(data.id, newQuantity);
     }
   };
-
+  
   const onRemove = () => {
     cart.removeItem(data.id);
   };
@@ -51,7 +51,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   const totalPrice = data.price * quantity;
   return (
     <li className={`flex py-6 border-b ${selected ? "selected" : ""}`}>
-      <div className="px-5 my-auto">
+      <div className="px-0 md:px-5 my-auto">
         <input
           className="w-4 h-4"
           type="checkbox"

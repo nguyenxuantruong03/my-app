@@ -93,7 +93,10 @@ const DangerModal = () => {
   }, 0);
 
   const totalAmount = totalAmounts.totalPrice + totalWarrantyAmount;
-  const TotalAmountCoins = totalAmount - totalCoins;
+  const TotalAmountCoins =  Math.ceil(totalAmount - totalCoins);
+
+  const totalAmountOld = totalAmounts.totalPriceOld + totalWarrantyAmount;
+  const totalAmountOldCoin =  Math.ceil(totalAmountOld - totalCoins);
 
   const selectedQuantities = selectedItems.map((item) => {
     const itemInCart = items.find((cartItem) => cartItem.id === item.id);
@@ -110,6 +113,8 @@ const DangerModal = () => {
           productIds: selectedProductIds,
           pricesales: TotalAmountCoins,
           quantity: selectedQuantities,
+          priceold: totalAmountOldCoin,
+          warranty: totalWarrantyAmount,
         }
       );
       
@@ -123,13 +128,13 @@ const DangerModal = () => {
     <Modal open={danger.isOpen} onClose={danger.onClose}>
       <div className="w-full">
         <div className=" bg-yellow-400 rounded-md font-bold p-2  ">
-          <h1 className="ml-[320px] flex items-center font-bold">Lưu ý <AlertTriangle className="w-5 h-5 ml-1"/> </h1>
+          <h1 className="ml-[120px] md:ml-[320px] flex items-center font-bold">Lưu ý <AlertTriangle className="w-5 h-5 ml-1"/> </h1>
         </div>
 
         <p className="mt-4">
           Khi thanh toán quý khách tránh làm mới trang và thoát trang bằng nút quay lại trên chuột , nếu muốn quay lại thì đợi load xong, mới 
           ấn mũi tên để quay trở lại trang đảm bảo sản phẩm sẽ không bị mất khi chưa ghi thông tin thanh toán.
-          Nếu có các vấn đề rủi ro liên lạc  <span className="text-red-400 font-semibold">0352261103</span>.
+          Nếu khách hàng không muốn trả tiền online có thể liên lạc  <span className="text-red-400 font-semibold">0352261103</span> trả lời nhanh chóng cho quý khách trả tiền mặt.
         </p>
         <div className="mt-4 text-end">
           <span onClick={danger.onClose} className="underline text-lg mr-3 cursor-pointer">Back</span>

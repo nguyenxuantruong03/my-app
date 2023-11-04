@@ -12,16 +12,16 @@ import Suggest from "@/components/suggest/Suggest";
 
 export const revalidate = 0;
 const HomePage = async () => {
-  const ipad = await getProduct1({ isFeatured: true });
-  const watch = await getProduct3({ isFeatured: true });
-  const headphone = await getProduct2({ isFeatured: true });
-  const laptop = await getProduct10({ isFeatured: true });
-  const tivi = await getProduct7({ isFeatured: true });
-  const mouse = await getProduct8({ isFeatured: true });
+  const quat = await getProduct1({ isFeatured: true });
+  const daydien = await getProduct3({ isFeatured: true });
+  const ongnhua = await getProduct2({ isFeatured: true });
+  const bongden = await getProduct10({ isFeatured: true });
+  const ocam = await getProduct7({ isFeatured: true });
+  const son = await getProduct8({ isFeatured: true });
   return (
     <>
       <SlideItem />
-      <MainProduct ipad={ipad} watch={watch} headphone={headphone} tivi={tivi} laptop={laptop} mouse={mouse} />
+      <MainProduct quat={quat} daydien={daydien} ongnhua={ongnhua} ocam={ocam} bongden={bongden} son={son} />
       <Suggest />
       <NewsPage />
     </>

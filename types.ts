@@ -1,3 +1,5 @@
+import { Listing } from "@prisma/client";
+
 export interface Store {
   name: string;
 }
@@ -186,7 +188,7 @@ export interface Product {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -249,7 +251,7 @@ export interface Product1 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -312,7 +314,7 @@ export interface Product2 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -375,7 +377,7 @@ export interface Product3 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -438,7 +440,7 @@ export interface Product4 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -501,7 +503,7 @@ export interface Product5 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -564,7 +566,7 @@ export interface Product6 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -627,7 +629,7 @@ export interface Product7 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -690,7 +692,7 @@ export interface Product8 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -753,7 +755,7 @@ export interface Product9 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -816,7 +818,7 @@ export interface Product10 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -879,7 +881,7 @@ export interface Product11 {
   guaranteedescription: string;
   guaranteeinfomation: string;
   guaranteeprice: string;
-
+  userId:any
   isFeatured: boolean;
   quantity: number;
   selectedWarranty: any;
@@ -904,6 +906,10 @@ export interface Imagesalientfeaturesproduct {
   id: string;
   url: string;
 }
+
+export type SafeListing = Omit<Listing, "createdAt"> & {
+  createdAt: string;
+};
 
 //-------------------------Pacman---------------------------
 export type Character = {

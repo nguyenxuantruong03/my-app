@@ -40,7 +40,9 @@ const GamePage = () => {
 
   return (
     <Container>
-      <div className="mt-40 space-x-5 flex">
+      <div className="mt-40"> 
+        <h1 className="text-center text-4xl font-bold my-5"> Trò Chơi nhận xu </h1>
+      <div className="my-8 space-x-5 flex">
         <Image
           src="/images/2048.png"
           alt=""
@@ -67,7 +69,7 @@ const GamePage = () => {
             onClick={handleClickMinesweeper}
           />
           <Image
-            src="/images/Pacman.png"
+            src="/images/pacman.png"
             alt=""
             width={100}
             height={100}
@@ -90,6 +92,7 @@ const GamePage = () => {
             className="cursor-pointer"
             onClick={handleClickTetris}
           />
+      </div>
       </div>
     </Container>
   );

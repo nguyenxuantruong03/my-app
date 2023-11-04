@@ -1,7 +1,6 @@
 "use client"
 import useSeeWarningSpin from "@/hooks/use-see-warning-spin";
 import ModalProviderNoneData from "@/providers/modal-provider-none-data";
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 
 interface Segment {
@@ -187,6 +186,11 @@ useEffect(() => {
       lastAngle = angle;
     }
 
+
+
+
+
+    
     ctx.beginPath();
     ctx.arc(centerX, centerY, 50, 0, PI2, false);
     ctx.closePath();

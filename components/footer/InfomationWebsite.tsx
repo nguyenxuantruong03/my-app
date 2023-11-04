@@ -1,4 +1,5 @@
 import {InfomationWebsitecolor} from "@/components/color/color"
+import Link from "next/link";
 
 const InfomationWebsite = () => {
     return ( 
@@ -7,10 +8,10 @@ const InfomationWebsite = () => {
             Website thuộc về Xuân Trường
         </div>
         <div>
-            Liên lạc <span className={InfomationWebsitecolor.textfont}>035.222.444</span>
+            Liên lạc <span className={InfomationWebsitecolor.textfont}><Link href="tel:0352261103">035.222.444</Link></span>
         </div>
         <div>
-            Hoặc zalo <span className={InfomationWebsitecolor.textfont}>035.222.444</span> (7h00-21h00)
+            Hoặc zalo <span className={InfomationWebsitecolor.textfont}><Link href="tel:0352261103">035.222.444</Link></span> (7h00-21h00)
         </div>
         </>
      );

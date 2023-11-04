@@ -34,8 +34,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, route }) => {
         </div>
         {/* Description */}
         <div>
-          <p className="font-semibold text-lg">{data.name}</p>
-          <p className="text-sm text-gray-500">{data.category.name}</p>
+          <p className="font-semibold text-base single-line-ellipsis">{data.name}</p>
+          <p className="text-sm text-gray-500 single-line-ellipsis">{data.category.name}</p>
         </div>
         <div className="flex items-center justify-between">
           <Currency valueold={data?.price} value={discountedPrice} />

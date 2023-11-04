@@ -120,7 +120,7 @@ const Sumary = () => {
       </div>
 
       <Button disabled={selectedItems.length === 0} onClick={onCheckout}>
-        <div className="container w-full mt-6">
+        <div className="container w-[350px] hover:w-[360px] md:w-[650px] lg:w-[1050px]  mt-6 md:max-w-3xl lg:max-w-7xl group md:hover:w-[700px] lg:hover:w-[1150px] ">
           <div className="left-side">
             <div className="card">
               <div className="card-line"></div>

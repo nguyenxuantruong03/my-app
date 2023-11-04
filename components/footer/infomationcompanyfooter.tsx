@@ -5,30 +5,29 @@ import {InformationCompanyFootercolor} from "@/components/color/color"
 const InformationCompanyFooter = () => {
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className=" lg:grid-cols-4 hidden lg:grid">
         <div className="grid grid-row-2 space-y-2 my-2">
-        <div><Link href="/">Điện thoại </Link> - <Link href="/">Điện thoại Iphone </Link> -  <Link href="/">Điện thoại IPhone14</Link></div>
-        <div><Link href="/">iPhone 14 Pro 128GB  </Link> - <Link href="/">iPhone 14 Pro Max 128GB </Link></div>
+        <div><Link href="/">Pin con ó</Link> - <Link href="/">Bóng Điện Quang </Link> -  <Link href="/">Bóng Rạng Đông</Link></div>
+        <div><Link href="/">Keo 2 mặt </Link> - <Link href="/">Lưới xanh </Link> - <Link href="/">Xe rùa </Link> - <Link href="/">Thước kéo </Link></div>
         </div>
         <div className="grid grid-row-2 space-y-2 my-2">
-        <div><Link href="/">Điện thoại Vivo </Link> - <Link href="/">Điện thoại OPPO </Link> - <Link href="/">Điện thoại Samsung</Link></div>
-        <div><Link href="/">Back to School </Link> - <Link href="/">Điện thoại Samsung S23 Ultra </Link></div>
+        <div><Link href="/">Ống Bình Minh </Link> - <Link href="/">Quạt Treo Senko</Link> - <Link href="/">Ống lưới xanh</Link></div>
+        <div><Link href="/">Sifa Thông Cống</Link> - <Link href="/">Sơn xịt ATM </Link> - <Link href="/">Cờ lê Yeti </Link> - <Link href="/">Bạt xanh </Link></div>
         </div>
         <div className="grid grid-row-2 space-y-2 my-2">
-        <div><Link href="/">Máy tính Laptop</Link> - <Link href="/">Laptop Acer </Link> - <Link href="/">Laptop ASUS</Link></div>
-        <div><Link href="/">Máy tính để bàn </Link> - <Link href="/">Tivi </Link> - <Link href="/">Tivi Samsung </Link> - <Link href="/">Sim số đẹp </Link></div>
+        <div><Link href="/">Keo Apolo</Link> - <Link href="/">Dây Daphaco </Link> - <Link href="/">Dây Daphaco lớn</Link></div>
+        <div><Link href="/">Dây điện Cadivi </Link> - <Link href="/">Quạt Senko </Link> - <Link href="/">Sơn Expo</Link> - <Link href="/">Ổ cắm Sino </Link></div>
         </div>
         <div className="grid grid-row-2 space-y-2 my-2">
-        <div><Link href="/">Máy hút bụi </Link> - <Link href="/">Máy hút bụi cầm tay </Link> - <Link href="/">Robot hút bụi</Link></div>
-        <div><Link href="/">Máy lọc không khí </Link> - <Link href="/">Máy lọc không khí Samsung </Link> </div>
+        <div><Link href="/">Ổ cắm cây thông </Link> - <Link href="/">Ổ cắm Điện Quang </Link> - <Link href="/">Keo dán sắt</Link></div>
+        <div><Link href="/">Sơn Bạch Tuyết </Link> - <Link href="/">Keo con chó </Link> - <Link href="/">V lỗ </Link> - <Link href="/">Que hàn </Link> </div>
         </div>
       </div>
       <div className={InformationCompanyFootercolor.textflex}>
-      Công ty TNHH MTV và TLT- Địa chỉ: Lê Văn Quới, Quân Bình Tân, Phường Bình Trị Đông A, Thành phố Hồ Chí Minh, Việt Nam, Điện thoại 0352261103
+      Cửa hàng VLXH - Địa chỉ: 457 Lê Văn Quới, Quân Bình Tân, Phường Bình Trị Đông A, Thành phố Hồ Chí Minh, Việt Nam, Điện thoại 0352261103
         </div> 
         <div className="items-center flex justify-center">
-        <Link href="/">
-       <div className=" mt-1 w-20 h-8 border rounded-sm">
+        <Link href="/" className=" mt-1 w-20 h-8 border rounded-sm mb-16 md:mb-0">
         <Image 
         width="500"
         height="500"
@@ -36,7 +35,6 @@ const InformationCompanyFooter = () => {
         src="/../public/images/logoSaleNoti.webp"
         alt="error"
         />
-       </div>
       </Link>
         </div>
     </>

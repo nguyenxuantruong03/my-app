@@ -9,32 +9,31 @@ import {
   Product8,
 } from "@/types";
 import NoResults from "../ui/no-result";
-import RelatedTagIphone from "./list-related-tag/related-tag-iphone";
-import RelatedTagWatch from "./list-related-tag/related-tag-watch";
-import RelatedTagHeadphone from "./list-related-tag/related-tag-headphone";
-import RelatedTagTivi from "./list-related-tag/related-tag-tivi";
-import RelatedTagLaptop from "./list-related-tag/related-tag-laptop";
-import RelatedTagMouse from "./list-related-tag/related-tag-mouse";
+import RelatedTagDaydien from "./list-related-tag/related-tag-daydien";
+import RelatedTagOngnhua from "./list-related-tag/related-tag-ongnhua";
+import RelatedTagOcam from "./list-related-tag/related-tag-ocam";
+import RelatedTagBongden from "./list-related-tag/related-tag-bongden";
+import RelatedTagSon from "./list-related-tag/related-tag-son";
 import ProductList from "./product-list/product-list";
 import ProductListSingle from "./product-list/product-list-signle";
 import { useEffect, useState } from "react";
 import "./product-list/product-list.css"
 
 interface ProductMainListProps {
-  ipad: Product1[];
-  watch: Product3[];
-  tivi: Product7[];
-  headphone: Product2[];
-  laptop: Product10[];
-  mouse: Product8[];
+  quat: Product1[];
+  daydien: Product3[];
+  ocam: Product7[];
+  ongnhua: Product2[];
+  bongden: Product10[];
+  son: Product8[];
 }
 const MainProduct: React.FC<ProductMainListProps> = ({
-  ipad,
-  watch,
-  tivi,
-  headphone,
-  laptop,
-  mouse,
+  quat,
+  daydien,
+  ocam,
+  ongnhua,
+  bongden,
+  son,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -54,27 +53,27 @@ const MainProduct: React.FC<ProductMainListProps> = ({
   return (
     <div className="mx-auto max-w-7xl">
       <div
-        className={`bg-black bg-opacity-90 rounded-md p-2 ${isVisible ? "block" : "hidden"}`}
+        className={`bg-black bg-opacity-90 rounded-md p-[1px] ${isVisible ? "block" : "hidden"}`}
       >
         <div className="flex item-center justify-between">
-          <h1 className="content">Ipad</h1>
+          <h1 className="content text-[16px] md:text-[30px] ml-2">Nổi bật</h1>
           <div>
-              <div className="content">
-                <div className="content__container">
+              <div className="content text-[16px] md:text-[30px]">
+                <div className="content__container h-[29px] md:h-[51px] md:px-11">
                   <p className="content__container__text">
                     Sản phẩm bán chạy nhất
                   </p>
 
-                  <ul className="content__container__list">
-                    <li className="content__container__list__item">uiverse !</li>
-                    <li className="content__container__list__item">uiverse !</li>
-                    <li className="content__container__list__item">uiverse !</li>
-                    <li className="content__container__list__item">uiverse</li>
+                  <ul className="content__container__list -mt-[10] pl-[8.8rem] md:pl-[18.5rem]  text-[16px] md:text-[30px] md:mt-0">
+                    <li className="m-0 leading-[24px] md:leading-[46px]">Ống nhựa, Ống lưới xanh</li>
+                    <li className="m-0 leading-[24px] md:leading-[46px]">Quạt</li>
+                    <li className="m-0 leading-[24px] md:leading-[46px]">Sơn</li>
+                    <li className="m-0 leading-[24px] md:leading-[46px]">Dây điện</li>
                   </ul>
                 </div>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative hidden lg:block">
           <div className="absolute left-[-368px] bottom-[-72px]">
           <div className="scene">
   <div className="forest">
@@ -190,44 +189,43 @@ const MainProduct: React.FC<ProductMainListProps> = ({
           </div>
           </div>
         </div>
-        {/* <RelatedTagIphone /> */}
-        {ipad.length === 0 && <NoResults />}
-        <ProductList data={ipad} productType="ipad" />
+        {quat.length === 0 && <NoResults />}
+        <ProductList data={quat} productType="quat" />
       </div>
 
       <>
-        <h1 className="my-4 font-bold text-3xl">Watch</h1>
-        <RelatedTagWatch />
-        {watch.length === 0 && <NoResults />}
-        <ProductList data={watch} productType="watch" />
+        <h1 className="mb-4 mt-4 md:mt-10 font-bold text-3xl md:ml-6 lg:ml-0">Dây điện</h1>
+        <RelatedTagDaydien />
+        {daydien.length === 0 && <NoResults />}
+        <ProductList data={daydien} productType="daydien" />
       </>
 
       <>
-        <h1 className="my-4 font-bold text-3xl">Tivi</h1>
-        <RelatedTagTivi />
-        {tivi.length === 0 && <NoResults />}
-        <ProductListSingle data={tivi} route="tivi" />
+        <h1 className="mb-4 mt-4 md:mt-10 font-bold text-3xl md:ml-6 lg:ml-0">Ổ cắm,mặt ổ cắm</h1>
+        <RelatedTagOcam />
+        {ocam.length === 0 && <NoResults />}
+        <ProductListSingle data={ocam} route="ocam" />
       </>
 
       <>
-        <h1 className="my-4 font-bold text-3xl">Headphone</h1>
-        <RelatedTagHeadphone />
-        {headphone.length === 0 && <NoResults />}
-        <ProductList data={headphone} productType="headphone" />
+        <h1 className="mb-4 mt-4 md:mt-10 font-bold text-3xl md:ml-6 lg:ml-0">Ống nhựa, Ống lưới xanh</h1>
+        <RelatedTagOngnhua />
+        {ongnhua.length === 0 && <NoResults />}
+        <ProductList data={ongnhua} productType="ongnhua" />
       </>
 
       <>
-        <h1 className="my-4 font-bold text-3xl">Laptop</h1>
-        <RelatedTagLaptop />
-        {laptop.length === 0 && <NoResults />}
-        <ProductList data={laptop} productType="laptop" />
+        <h1 className="mb-4 mt-4 md:mt-10 font-bold text-3xl md:ml-6 lg:ml-0">Bóng đèn</h1>
+        <RelatedTagBongden />
+        {bongden.length === 0 && <NoResults />}
+        <ProductList data={bongden} productType="bongden" />
       </>
 
       <>
-        <h1 className="my-4 font-bold text-3xl">Mouse</h1>
-        <RelatedTagMouse />
-        {mouse.length === 0 && <NoResults />}
-        <ProductListSingle data={mouse} route="mouse" />
+        <h1 className="mb-4 mt-4 md:mt-10 font-bold text-3xl md:ml-6 lg:ml-0">Sơn</h1>
+        <RelatedTagSon />
+        {son.length === 0 && <NoResults />}
+        <ProductListSingle data={son} route="son" />
       </>
     </div>
   );

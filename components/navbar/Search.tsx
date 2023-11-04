@@ -32,6 +32,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 const SearchPage = () => {
   const router = useRouter();
@@ -151,21 +152,22 @@ const SearchPage = () => {
 
   return (
     <>
+     <div className="w-full flex flex-col gap-2 max-w-[200px] md:max-w-[300px]">
       <Input
-        width="300px"
         animated={false}
         clearable
         placeholder="Bạn muốn tìm kiếm gì ?"
         value={searchTerm}
         onChange={handleInputChange}
       />
+      </div>
       {filteredProductNames.length > 0 && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" />
       )}
 
       <div
         ref={productContainerRef}
-        className="bg-white shadow-xl absolute top-[4.5rem] left-[20rem] w-[500px] rounded-md z-40"
+        className="bg-white shadow-xl absolute top-[4.5rem] w-[352px] left-[1rem] md:left-[4rem] lg:left-[20rem] md:w-[500px] rounded-md z-40"
       >
         {loading && (
           <svg
@@ -227,42 +229,89 @@ const SearchPage = () => {
           {filteredProductNames.map((productName, index) => (
             <div className="p-2" key={index}>
               <li
-                className="text-md text-red-300 py-1 cursor-pointer header__cart-list"
+                className="text-base text-red-500 py-1 cursor-pointer header__cart-list"
                 key={index}
               >
                 {productName}
               </li>
               <div className="border-t-2 border-gray-200 my-2 " />
-              <div className="my-2 text-md text-gray-500 text-opacity-90">
+              <div className="my-2 text-base text-gray-500 text-opacity-90">
                 Sản phẩm nổi bật
               </div>
               <div className="grid grid-cols-2 ">
                 <div className="my-1">
-                  <Link href="/category5/truong5">
-                    <div className="my-1">123</div>
+                  <Link href="/category5/truong5" className="flex items-center my-2">
+                    <div className="my-1">Ống nhựa, Ống lưới xanh</div>
+                  <Image
+                  src="/images-product/ongnhuapvc.png"
+                  alt="404"
+                  width="35"
+                  height="35"
+                  className="ml-20"
+                  />
                   </Link>
-                  <Link href="/category1/truong1">
-                    <div className="my-1">123</div>
+
+                  <Link href="/category1/truong1" className="flex items-center my-2">
+                    <div className="my-1">Bóng đèn</div>
+                  <Image
+                  src="/images-product/bongdienquang.png"
+                  alt="404"
+                  width="35"
+                  height="35"
+                  className="ml-20"
+                  />
                   </Link>
-                  <Link href="/category2/truong2">
-                    <div className="my-1">123</div>
+
+                  <Link href="/category2/truong2" className="flex items-center my-2">
+                    <div className="my-1">Quạt</div>
+                   <Image
+                  src="/images-product/quatbansenko.png"
+                  alt="404"
+                  width="35"
+                  height="35"
+                  className="ml-28"
+                  />
                   </Link>
                 </div>
-                <div className="my-1">
+
+                <div className="my-2">
                   <div className="border-l-2 border-gray-200 my-1">
-                    <Link href="/category9/truong9">
-                      <div className="mx-2">123</div>
-                    </Link>
+                  <Link href="/category9/truong9" className="flex items-center">
+                      <div className="mx-2">Ổ cắm cây thông</div>
+                    <Image
+                  src="/images-product/ocamcaythong.png"
+                  alt="404"
+                  width="35"
+                  height="35"
+                  className="ml-7"
+                  />
+                  </Link>
                   </div>
+
                   <div className="border-l-2 border-gray-200 my-1">
-                    <Link href="/category11/truong11">
-                      <div className="mx-2">123</div>
-                    </Link>
+                  <Link href="/category11/truong11" className="flex items-center">
+                      <div className="mx-2">Pin</div>
+                    <Image
+                  src="/images-product/pincono.png"
+                  alt="404"
+                  width="35"
+                  height="35"
+                  className="ml-32"
+                  />
+                  </Link>
                   </div>
+
                   <div className="border-l-2 border-gray-200 my-1">
-                    <Link href="/category7/truong7">
-                      <div className="mx-2">123</div>
-                    </Link>
+                  <Link href="/category7/truong7" className="flex items-center">
+                      <div className="mx-2">Sơn</div>
+                    <Image
+                  src="/images-product/sonexpo.png"
+                  alt="404"
+                  width="35"
+                  height="35"
+                  className="ml-[7.6rem]"
+                  />
+                  </Link>
                   </div>
                 </div>
               </div>

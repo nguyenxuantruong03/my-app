@@ -16,17 +16,36 @@ export default async function NewsPage() {
   }
   const shuffledPosts = shuffleArray<Meta>(posts);
   const displayedPosts = shuffledPosts.slice(0, 5);
-
+  const displayedPostsinfoproduct3 = shuffledPosts.slice(0, 3);
+  const displayedPostsinfoproduct1 = shuffledPosts.slice(0, 1);
 
 
   return ( 
-    <section className="mt-6 max-w-7xl mx-auto">
-    <h2 className="text-4xl font-bold "> News</h2>
+    <>
+    <section className="mt-6 max-w-7xl mx-auto hidden lg:block">
+    <h2 className="text-4xl font-bold "> Tin tức </h2>
     <ul className=" gap-5 grid grid-cols-5">
     {displayedPosts.map(post => (
         <ListItem key={post.id} post={post} />
     ))}
     </ul>
     </section>
+    <section className="mt-6 max-w-3xl mx-auto hidden md:block lg:hidden">
+    <h2 className="text-4xl font-bold "> Tin tức</h2>
+    <ul className=" gap-3 grid grid-cols-3">
+    {displayedPostsinfoproduct3.map(post => (
+        <ListItem key={post.id} post={post} />
+    ))}
+    </ul>
+    </section>
+    <section className="mt-6 max-w-3xl mx-auto md:hidden">
+    <h2 className="text-4xl font-bold "> Tin tức</h2>
+    <ul className="grid grid-cols-1">
+    {displayedPostsinfoproduct1.map(post => (
+        <ListItem key={post.id} post={post} />
+    ))}
+    </ul>
+    </section>
+    </>
   )
 }

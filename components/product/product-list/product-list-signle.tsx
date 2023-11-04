@@ -33,6 +33,12 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
           delay: 3500,
           disableOnInteraction: false,
         }}
+        breakpoints={{
+          320: { slidesPerView: 2, spaceBetween: 20 },
+          480: { slidesPerView: 2, spaceBetween: 20 },
+          768: { slidesPerView: 3, spaceBetween: 20 },
+          1024: { slidesPerView: 5, spaceBetween: 20 },
+        }}
         modules={[FreeMode, Autoplay]}
         className="container-0"
       >
@@ -57,10 +63,10 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
 
                 {/* Description */}
                 <div className="ml-3">
-                  <p className="font-semibold text-lg">{product.name}</p>
-                  <p className="text-sm text-gray-500">{product.category.name}</p>
+                  <p className="font-semibold text-sm md:text-base single-line-ellipsis">{product.heading}</p>
+                  <p className="text-xs md:text-sm text-gray-500 single-line-ellipsis">{product.category.name}</p>
                 </div>
-                <div className="flex items-center justify-between ml-3">
+                <div className="flex items-center justify-between ml-2 md:ml-3 mb-2.5">
                   <Currency valueold={product?.price} value={discountedPrice} />
                 </div>
               </div>
@@ -70,7 +76,7 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
             </SwiperSlide>
           );
         })}
-        <div className="absolute -top-32 z-10 ">
+        <div className="absolute -top-[2rem] md:-top-32 z-10 ">
           <PrevNextSwiper />
         </div>
       </Swiper>

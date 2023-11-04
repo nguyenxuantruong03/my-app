@@ -8,7 +8,8 @@ export type ProductUnion =  Product | Product1 | Product2 | Product3 |Product4 |
 
 interface CartStore {
   items: ProductUnion[];
-  addItem: (data: ProductUnion, quantity: number) => void;
+  userId: string | null;
+  addItem: (data: ProductUnion, quantity: number,userId:any) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
   updateQuantity: (id: string, quantity: number) => void;
@@ -26,6 +27,7 @@ const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
+       userId: null,
       selectedItems: [], // Initialize with an empty array
       selectAll: false, // Initialize as false
       selectedWarranties: {},
@@ -72,13 +74,14 @@ const useCart = create(
         });
       },
       
-      addItem: (data: ProductUnion, quantity: number) => {
-        const currentItem = get().items;
-        const existingItem = currentItem.find((item) => item.id === data.id);
+      addItem: (data: ProductUnion, quantity: number,userId:any) => {
+        const currentUserCart = get().items.filter(item => item.userId === userId);
+  const existingItem = currentUserCart.find((item) => item.id === data.id);
+
     
         if (existingItem) {
           // Update the quantity of the existing item
-          const updatedItems = currentItem.map((item) =>
+          const updatedItems = currentUserCart.map((item) =>
             item.id === existingItem.id ? { ...item, quantity: item.quantity + quantity } : item
           );
           set({ items: updatedItems });
@@ -117,4 +120,3 @@ const useCart = create(
 );
 
 export default useCart;
-

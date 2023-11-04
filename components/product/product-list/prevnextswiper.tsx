@@ -5,7 +5,7 @@ const PrevNextSwiper = () => {
   return (
     <div>
     <div className=" relative ">
-        <div className=" shadow-lg left-[1250px] cursor-pointer absolute rounded-l-full rounded-r-none  bg-white bg-opacity-70 text-gray-500  top-[250px] animate-fade-left animate-once animate-duration-500 animate-ease-in-out animate-normal animate-fill-forwards">
+        <div className=" shadow-lg left-[344px] md:left-[772px] lg:left-[1250px] cursor-pointer absolute rounded-l-full rounded-r-none  bg-white bg-opacity-70 text-gray-500  top-[250px] animate-fade-left animate-once animate-duration-500 animate-ease-in-out animate-normal animate-fill-forwards">
       <button   aria-label="Back to the page" title="Close" onClick={() => swiper.slideNext()}>
       <ChevronRight className="w-8 h-14" />
       </button>

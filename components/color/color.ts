@@ -12,10 +12,11 @@ export const commentcolor = {
 
 //// ----------footer ---------////
 export const footercolor ={
-  text: "text-lg text-[#4a4a4a]",
-  textmt: "text-lg text-[#4a4a4a] mt-6",
+  text: "text-lg ml-3 md:ml-0 text-[#4a4a4a] underline md:no-underline",
+  textmt: "text-lg text-[#4a4a4a] mt-6 underline md:no-underline",
+  textml: "text-lg text-[#4a4a4a] ml-3 underline md:no-underline",
   gridrows3: "grid grid-row-3 m-2 text-sm space-y-1 text-[#4a4a4a]",
-  gridcols5:"grid grid-cols-5 m-2 text-sm space-y-1 text-[#4a4a4a]",
+  gridcols5:"grid grid-cols-5 m-2 text-sm space-y-1 text-[#4a4a4a] md:-ml-16 lg:ml-0 mb-8 md:mb-0",
   gridrows8:"grid grid-rows-8 m-2 text-sm space-y-1 text-[#4a4a4a]",
   gridrows10:"grid grid-rows-10 m-2 text-sm space-y-1 text-[#4a4a4a]"
   }
@@ -43,20 +44,21 @@ export const Infoproductcolor={
 export const mainnavcolor={
   bg_rounded_cursor: "bg-[#e53350]  px-2  rounded-lg ",
   bgrounded:"bg-[#e53350]  px-2  rounded-lg ",
+  bgroundedmd:"bg-[#e53350] px-1 m-0  md:px-2  rounded-lg md:m-1.5",
   bghover: "rounded-lg p-2 hover:bg-[#e53350] ",
   bg_dang_nhap:"bg-[#e53350]  px-2 py-1  rounded-lg ",
-  bghover_gio_hang:" rounded-lg p-2 hover:bg-[#e53350] ",
+  bghover_gio_hang:" rounded-lg p-4 md:p-2 md:hover:bg-[#e53350] ",
   bg_list:"bg-[#e53350] p-2 rounded-lg cursor-pointer"
 }
 
 export const navbarcolor={
-  bg_height:"h-[40px] bg-[#e9efff]",
+  bg_height:"md:h-[50px] lg:h-[40px] bg-[#e9efff]",
   bg:"bg-[#de0024]"
 }
 
 export const deliverycolor ={
-  bg_rounded__p_mt:"mt-1 p-1 rounded-md bg-red-500 bg-opacity-30 w-80 h-8 flex items-center ",
-  bg_not_w:"h-8 slider-right mt-1 p-1 rounded-md bg-red-500 bg-opacity-30"
+  bg_rounded__p_mt:"mt-1 p-1 rounded-md bg-red-500 bg-opacity-30 md:w-60 lg:w-80 h-8 md:flex items-center hidden",
+  bg_not_w:"h-8 slider-right mt-0 md:mt-1 p-1 rounded-md bg-red-500 bg-opacity-30"
 }
 
 //// ----------product ---------////
@@ -116,5 +118,5 @@ export const secondhandcolor = {
 } 
 
 export const suggestcolor ={
-textcolor: "text-3xl font-bold my-2 text-[#444444]"
+textcolor: "text-3xl font-bold my-2 text-[#444444] md:ml-6 lg:ml-0"
 }

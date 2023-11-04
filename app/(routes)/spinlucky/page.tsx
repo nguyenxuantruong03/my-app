@@ -144,14 +144,14 @@ const SpinCoinPage: React.FC = () => {
       
     {/* Total coin */}
     <div className="relative">
-      <div className="w-48 absolute bottom-80 bg-black bg-opacity-10 p-2 rounded-md"> 
+      <div className="hidden md:block md:w-40 lg:w-48 absolute md:bottom-[36rem] lg:bottom-80 bg-black bg-opacity-10 p-2 rounded-md"> 
       <div className="bg-red-300 rounded-md p-2"> 
-    <div className="text-md text-center">Tổng <span className="text-blue-800  font-semibold">{totalCoins}</span> xu</div>
-    <div className="text-md text-center">Tổng <span className="text-blue-800 font-semibold">{rotation}</span> lượt quay</div>
+    <div className="text-sm text-center">Tổng <span className="text-blue-800  font-semibold">{totalCoins}</span> xu</div>
+    <div className="text-sm text-center">Tổng <span className="text-blue-800 font-semibold">{rotation}</span> lượt quay</div>
       </div>
 
       <div className="bg-amber-300 rounded-md mt-2 p-1"> 
-    <div className="text-md flex ml-12  items-center">Lưu ý <AlertTriangle className=" ml-1 h-5 w-5" /></div>
+    <div className="text-sm flex md:ml-8 lg:ml-12  items-center">Lưu ý <AlertTriangle className=" ml-1 h-5 w-5" /></div>
       </div>
       
     <p className="font-semibold text-sm"> Nếu như xu chưa được cập nhật lại bạn có thể F5 để xu được cập nhật lại nhanh nhất.</p>  

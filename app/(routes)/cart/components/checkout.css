@@ -1,7 +1,6 @@
 .container {
     background-color: #333;
     display: flex;
-    width: 1150px;
     height: 60px;
     position: relative;
     border-radius: 6px;
@@ -11,7 +10,6 @@
   
   .container:hover {
     transform: scale(1.03);
-    width: 1150px;
   }
   
   .container:hover .left-side {

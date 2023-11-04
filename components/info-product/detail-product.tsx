@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NewsPageProduct from "@/components/news/news-product";
 import { Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9} from "@/types";
+import NewsPage from "../news/news";
 
 
 
@@ -14,11 +15,11 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
 
   return (
     <>
-      <div className="space-x-5 relative my-2">
-        <div className="w-[1000px] shadow-inner pt-5 px-5 rounded-lg">
+      <div className="space-x-5 relative my-2 ">
+        <div className="w-[1000px] shadow-inner pt-5 px-5 rounded-lg mx-auto md:mx-0 max-w-[360px] md:max-w-3xl lg:max-w-7xl">
           <div className="p-2 bg-slate-400 bg-opacity-10 rounded-lg">
             <h1 className="text-center text-lg font-bold text-red-500">
-              Đặc điểm nổi bậc
+              Đặc điểm nổi bật
             </h1>
             <p className="text-sm">{data.descriptionsalientfeatures}</p>
           </div>
@@ -28,10 +29,10 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
           </span>
           <div className="pl-2 my-1">
             <p>
-              {data.name} là {data.description3salientfeatures}
+              {data.description3salientfeatures}
             </p>
           </div>
-          <p className="text-md font-bold my-2">
+          <p className="text-sm font-bold my-2">
             {data.description4salientfeatures}
           </p>
           {images.map((image, index) => (
@@ -41,14 +42,14 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
               width="1000"
               height={index === 0 ? "200" : "300"}
               alt="Image"
-              className="aspect-square object-cover rounded-md mt-3"
+              className="rounded-md mt-3"
             />
           ))}
           <p className="text-sm my-2">{data.contentsalientfeatures}</p>
         </div>
         {/* News */}
-        <div className="p-2 bg-slate-500 bg-opacity-20 w-[250px] rounded-lg absolute right-0 top-0">
-          <h1 className="text-center text-lg font-bold text-red-500">
+        <div className="p-2 bg-slate-500 bg-opacity-20 w-[250px] rounded-lg absolute right-0 top-0 hidden lg:block">
+          <h1 className="text-center text-lg font-bold text-gray-700">
             Tin tức
           </h1>
           <div className="h-[1300px] overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
@@ -62,6 +63,10 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
   `}</style>
   <NewsPageProduct />
 </div>
+
+        </div>
+        <div className="md:block lg:hidden">
+      <NewsPage />
 
         </div>
       </div>

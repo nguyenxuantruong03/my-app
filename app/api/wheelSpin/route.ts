@@ -1,3 +1,4 @@
+import { auth } from '@clerk/nextjs';
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
 const prisma = new PrismaClient();
@@ -7,10 +8,15 @@ export async function POST(req: Request) {
     const { coin,rotation  } = body;
 
     try {
+      const { userId } = auth();
+      if (!userId) {
+        return new NextResponse("Unauthenticated", { status: 403 });
+      }
       const Coin = await prisma.wheelSpin.create({
         data: {
             coin,
             rotation,
+            authenticationId: userId
         },
       });
       await prisma.wheelSpin.update({
@@ -28,7 +34,17 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   
     try {
-      const coins = await prisma.wheelSpin.findMany();
+       const { userId } = auth();
+
+    if (!userId) {
+      return new NextResponse('Unauthenticated', { status: 403 });
+    }
+
+    const coins = await prisma.wheelSpin.findMany({
+      where: {
+        authenticationId: userId,
+      },
+    });
       // Return the sum of all coins
       const totalCoins = coins.reduce((total, coin) => total + parseInt(coin.coin.split(" ")[0]), 0);
       const latestRotation = coins.reduce((total,coin) =>total + (coin.rotation),0)
