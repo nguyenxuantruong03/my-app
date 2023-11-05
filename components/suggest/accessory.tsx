@@ -13,7 +13,7 @@ const Accessory = () => {
         width="80"
         height="100"
         className="object-fit"
-        src="/../public/images-product/boloncontan.png"
+        src="/images-product/boloncontan.png"
         alt="error"
         />
         </div>
@@ -30,7 +30,7 @@ const Accessory = () => {
         width="75"
         height="80"
         className="object-fit"
-        src="/../public/images-product/bongdienquang.png"
+        src="/images-product/bongdienquang.png"
         alt="error"
         />
         </div>
@@ -46,7 +46,7 @@ const Accessory = () => {
         width="90"
         height="300"
         className="object-fit"
-        src="/../public/images-product/co27.png"
+        src="/images-product/co27.png"
         alt="error"
         />
         </div>
@@ -62,7 +62,7 @@ const Accessory = () => {
         width="100"
         height="70"
         className="object-fit"
-        src="/../public/images-product/dacatsat.png"
+        src="/images-product/dacatsat.png"
         alt="error"
         />
         </div>
@@ -79,7 +79,7 @@ const Accessory = () => {
         width="120"
         height="120"
         className="object-fit"
-        src="/../public/images-product/daphaco.png"
+        src="/images-product/daphaco.png"
         alt="error"
         />
         </div>
@@ -96,7 +96,7 @@ const Accessory = () => {
         width="80"
         height="100"
         className="object-fit"
-        src="/../public/images-product/daydiencadivi.png"
+        src="/images-product/daydiencadivi.png"
         alt="error"
         />
         </div>
@@ -113,7 +113,7 @@ const Accessory = () => {
         width="90"
         height="100"
         className="object-fit"
-        src="/../public/images-product/daydiendaphacolon.png"
+        src="/images-product/daydiendaphacolon.png"
         alt="error"
         />
         </div>
@@ -130,7 +130,7 @@ const Accessory = () => {
         width="120"
         height="80"
         className="object-fit"
-        src="/../public/images-product/denrangdong.png"
+        src="/images-product/denrangdong.png"
         alt="error"
         />
         </div>
@@ -146,7 +146,7 @@ const Accessory = () => {
         width="120"
         height="100"
         className="object-fit"
-        src="/../public/images-product/keo2mat.png"
+        src="/images-product/keo2mat.png"
         alt="error"
         />
         </div>
@@ -162,7 +162,7 @@ const Accessory = () => {
         width="110"
         height="120"
         className="object-fit"
-        src="/../public/images-product/keoapolo.png"
+        src="/images-product/keoapolo.png"
         alt="error"
         />
         </div>
@@ -178,7 +178,7 @@ const Accessory = () => {
         width="120"
         height="120"
         className="object-fit"
-        src="/../public/images-product/keobepan.png"
+        src="/images-product/keobepan.png"
         alt="error"
         />
         </div>
@@ -194,7 +194,7 @@ const Accessory = () => {
         width="120"
         height="120"
         className="object-fit"
-        src="/../public/images-product/keoconcho.png"
+        src="/images-product/keoconcho.png"
         alt="error"
         />
         </div>
@@ -210,7 +210,7 @@ const Accessory = () => {
         width="170"
         height="150"
         className="object-fit"
-        src="/../public/images-product/keodansat.png"
+        src="/images-product/keodansat.png"
         alt="error"
         />
         </div>
@@ -227,7 +227,7 @@ const Accessory = () => {
         width="90"
         height="90"
         className="object-fit"
-        src="/../public/images-product/khoaviettiep.png"
+        src="/images-product/khoaviettiep.png"
         alt="error"
         />
         </div>
@@ -243,7 +243,7 @@ const Accessory = () => {
         width="140"
         height="140"
         className="object-fit"
-        src="/../public/images-product/loi27.png"
+        src="/images-product/loi27.png"
         alt="error"
         />
         </div>
@@ -259,7 +259,7 @@ const Accessory = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/luoixanh.png"
+        src="/images-product/luoixanh.png"
         alt="error"
         />
         </div>
@@ -275,7 +275,7 @@ const Accessory = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/molet.png"
+        src="/images-product/molet.png"
         alt="error"
         />
         </div>
@@ -291,7 +291,7 @@ const Accessory = () => {
         width="110"
         height="110"
         className="object-fit"
-        src="/../public/images-product/noi27.png"
+        src="/images-product/noi27.png"
         alt="error"
         />
         </div>
@@ -308,7 +308,7 @@ const Accessory = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/ocamcaythong.png"
+        src="/images-product/ocamcaythong.png"
         alt="error"
         />
         </div>
@@ -325,7 +325,7 @@ const Accessory = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/ocamdienquang.png"
+        src="/images-product/ocamdienquang.png"
         alt="error"
         />
         </div>

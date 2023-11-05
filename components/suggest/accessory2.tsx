@@ -14,7 +14,7 @@ const computerComponentSmall = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/ongluoixanh.png"
+        src="/images-product/ongluoixanh.png"
         alt="error"
         />
         </div>
@@ -30,7 +30,7 @@ const computerComponentSmall = () => {
         width="120"
         height="100"
         className="object-fit"
-        src="/../public/images-product/ongnhuapvc.png"
+        src="/images-product/ongnhuapvc.png"
         alt="error"
         />
         </div>
@@ -45,7 +45,7 @@ const computerComponentSmall = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/pincono.png"
+        src="/images-product/pincono.png"
         alt="error"
         />
         </div>
@@ -61,7 +61,7 @@ const computerComponentSmall = () => {
         width="60"
         height="80"
         className="object-fit"
-        src="/../public/images-product/quatbansenko.png"
+        src="/images-product/quatbansenko.png"
         alt="error"
         />
         </div>
@@ -77,7 +77,7 @@ const computerComponentSmall = () => {
         width="70"
         height="80"
         className="object-fit"
-        src="/../public/images-product/quattreosenko.png"
+        src="/images-product/quattreosenko.png"
         alt="error"
         />
         </div>
@@ -93,7 +93,7 @@ const computerComponentSmall = () => {
         width="100"
         height="120"
         className="object-fit"
-        src="/../public/images-product/sifa-thongcong.png"
+        src="/images-product/sifa-thongcong.png"
         alt="error"
         />
         </div>
@@ -109,7 +109,7 @@ const computerComponentSmall = () => {
         width="65"
         height="100"
         className="object-fit"
-        src="/../public/images-product/sonbachtuyet.png"
+        src="/images-product/sonbachtuyet.png"
         alt="error"
         />
         </div>
@@ -124,7 +124,7 @@ const computerComponentSmall = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/sonexpo.png"
+        src="/images-product/sonexpo.png"
         alt="error"
         />
         </div>
@@ -141,7 +141,7 @@ const computerComponentSmall = () => {
         width="100"
         height="120"
         className="object-fit"
-        src="/../public/images-product/sonxitatm.png"
+        src="/images-product/sonxitatm.png"
         alt="error"
         />
         </div>

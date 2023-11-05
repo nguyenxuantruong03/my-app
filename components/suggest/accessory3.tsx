@@ -13,7 +13,7 @@ const Secondhand = () => {
         width="100"
         height="110"
         className="object-fit"
-        src="/../public/images-product/te27.png"
+        src="/images-product/te27.png"
         alt="error"
         />
         </div>
@@ -29,7 +29,7 @@ const Secondhand = () => {
         width="90"
         height="90"
         className="object-fit"
-        src="/../public/images-product/thuockeo.png"
+        src="/images-product/thuockeo.png"
         alt="error"
         />
         </div>
@@ -45,7 +45,7 @@ const Secondhand = () => {
         width="95"
         height="100"
         className="object-fit rounded-sm"
-        src="/../public/images-product/bat_xanh.png"
+        src="/images-product/bat_xanh.png"
         alt="error"
         />
         </div>
@@ -62,7 +62,7 @@ const Secondhand = () => {
         width="85"
         height="70"
         className="object-fit"
-        src="/../public/images-product/bong_am_tran_mpe.png"
+        src="/images-product/bong_am_tran_mpe.png"
         alt="error"
         />
         </div>
@@ -78,7 +78,7 @@ const Secondhand = () => {
         width="120"
         height="120"
         className="object-fit"
-        src="/../public/images-product/co_le_yeti.png"
+        src="/images-product/co_le_yeti.png"
         alt="error"
         />
         </div>
@@ -95,7 +95,7 @@ const Secondhand = () => {
         width="100"
         height="120"
         className="object-fit"
-        src="/../public/images-product/cp_sino.png"
+        src="/images-product/cp_sino.png"
         alt="error"
         />
         </div>
@@ -112,7 +112,7 @@ const Secondhand = () => {
         width="150"
         height="120"
         className="object-fit"
-        src="/../public/images-product/may-bom-nuoc.png"
+        src="/images-product/may-bom-nuoc.png"
         alt="error"
         />
         </div>
@@ -129,7 +129,7 @@ const Secondhand = () => {
         width="100"
         height="100"
         className="object-fit"
-        src="/../public/images-product/mat_3_lo_sino.png"
+        src="/images-product/mat_3_lo_sino.png"
         alt="error"
         />
         </div>
@@ -145,7 +145,7 @@ const Secondhand = () => {
         width="120"
         height="150"
         className="object-fit"
-        src="/../public/images-product/que_han.png"
+        src="/images-product/que_han.png"
         alt="error"
         />
         </div>
@@ -161,7 +161,7 @@ const Secondhand = () => {
         width="150"
         height="100"
         className="object-fit"
-        src="/../public/images-product/v_lo.png"
+        src="/images-product/v_lo.png"
         alt="error"
         />
         </div>
@@ -177,7 +177,7 @@ const Secondhand = () => {
         width="150"
         height="150"
         className="object-fit"
-        src="/../public/images-product/xe-rua.png"
+        src="/images-product/xe-rua.png"
         alt="error"
         />
         </div>
