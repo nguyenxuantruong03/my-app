@@ -32,7 +32,7 @@ const InformationCompanyFooter = () => {
         width="500"
         height="500"
         className="object-fit"
-        src="/../public/images/logoSaleNoti.webp"
+        src="/images/logoSaleNoti.webp"
         alt="error"
         />
       </Link>

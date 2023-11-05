@@ -8,7 +8,7 @@ const PaymentMethod = () => {
         width="50"
         height="50"
         className="object-fit"
-        src="/../public/images/stripe.png"
+        src="/images/stripe.png"
         alt="error"
         />
        </div>
@@ -17,7 +17,7 @@ const PaymentMethod = () => {
         width="50"
         height="50"
         className="object-fit"
-        src="/../public/images/visa-mastercard.png"
+        src="/images/visa-mastercard.png"
         alt="error"
         />
        </div>
@@ -26,7 +26,7 @@ const PaymentMethod = () => {
         width="50"
         height="50"
         className="object-fit"
-        src="/../public/images/vnpay-logo.png"
+        src="/images/vnpay-logo.png"
         alt="error"
         />
        </div>
@@ -36,7 +36,7 @@ const PaymentMethod = () => {
         width="50"
         height="50"
         className="object-fit"
-        src="/../public/images/zalopay-logo.png"
+        src="/images/zalopay-logo.png"
         alt="error"
         />
        </div>

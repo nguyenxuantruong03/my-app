@@ -9,7 +9,7 @@ const ConnectForme = () => {
          width="50"
          height="50"
          className="object-fit"
-         src="/../public/images/facebook.png"
+         src="/images/facebook.png"
          alt="error"
          />
         </div>
@@ -21,7 +21,7 @@ const ConnectForme = () => {
          width="50"
          height="50"
          className="object-fit"
-         src="/../public/images/instagram.png"
+         src="/images/instagram.png"
          alt="error"
          />
         </div>
@@ -33,7 +33,7 @@ const ConnectForme = () => {
          width="50"
          height="50"
          className="object-fit"
-         src="/../public/images/tiktok.png"
+         src="/images/tiktok.png"
          alt="error"
          />
         </div>
@@ -45,7 +45,7 @@ const ConnectForme = () => {
          width="50"
          height="50"
          className="object-fit"
-         src="/../public/images/zalo.png"
+         src="/images/zalo.png"
          alt="error"
          />
         </div>
@@ -57,7 +57,7 @@ const ConnectForme = () => {
          width="50"
          height="50"
          className="object-fit"
-         src="/../public/images/youtube.png"
+         src="/images/youtube.png"
          alt="error"
          />
         </div>
