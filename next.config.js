@@ -2,7 +2,6 @@
 const nextConfig = {
     images:{
         output: 'export',
-        distDir: 'out',
         domains:["res.cloudinary.com"],
         remotePatterns: [
             {
