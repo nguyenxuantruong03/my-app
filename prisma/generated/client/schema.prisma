@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Authentication {
+  id        String      @id @default(uuid())
+  userId     String
+  comment   Comment[]   @relation("AuthenticationComment")
+  wheelspin WheelSpin[] @relation("AuthenticationWheelSpin")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model Comment {
+  id               String         @id @default(uuid())
+  authenticationId String
+  authentication   Authentication @relation("AuthenticationComment", fields: [authenticationId], references: [id])
+  rating           Int
+  comment          String
+  commenter        String
+  imageUrl          String
+  nameproduct      String
+  createdAt        DateTime       @default(now())
+
+  @@index([authenticationId])
+}
+
+model WheelSpin {
+  id               String         @id @default(uuid())
+  authenticationId String
+  authentication   Authentication @relation("AuthenticationWheelSpin", fields: [authenticationId], references: [id])
+  coin             String
+  rotation         Int            @default(0)
+  createdAt        DateTime       @default(now())
+
+  @@index([authenticationId])
+}

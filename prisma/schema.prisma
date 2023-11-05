@@ -17,7 +17,6 @@ model Authentication {
   userId     String
   comment   Comment[]   @relation("AuthenticationComment")
   wheelspin WheelSpin[] @relation("AuthenticationWheelSpin")
-  listing Listing[] @relation("AuthenticationFavorite")
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 }
@@ -45,16 +44,4 @@ model WheelSpin {
   createdAt        DateTime       @default(now())
 
   @@index([authenticationId])
-}
-
-
-model Listing {
-  id               String         @id @default(uuid())
-  authenticationId String
-  authentication   Authentication @relation("AuthenticationFavorite", fields: [authenticationId], references: [id])
-  favoriteIds     String
-  userId String
-  createdAt DateTime @default(now())
-  @@index([authenticationId])
-
 }
