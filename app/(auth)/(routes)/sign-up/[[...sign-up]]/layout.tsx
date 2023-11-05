@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { useEffect, useState } from "react";
 
 export const metadata: Metadata = {
   title: "Sign-up",
@@ -10,13 +9,6 @@ export default function RootLayout({
   }: {
     children: React.ReactNode;
   }) {
-      const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-      setIsMounted(true);
-    }, []);
-    if (!isMounted) {
-      return null;
-    }
     return (
       <html lang="en">
         <style>
