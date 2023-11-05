@@ -9,9 +9,10 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { viVN } from "@clerk/localizations";
 const roboto = Nunito({ weight:"400" , subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata: Metadata & { image: string } = {
   title: "VLXD Xuân Trường",
-  description: "Chào mừng đến VLXD Xuân Trường",
+  description: "Vật liệu xây dựng Xuân Trường",
+  image: '/images/Home.png',
 };
 
 
