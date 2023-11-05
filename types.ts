@@ -1,4 +1,3 @@
-import { Listing } from "@prisma/client";
 
 export interface Store {
   name: string;
@@ -906,10 +905,6 @@ export interface Imagesalientfeaturesproduct {
   id: string;
   url: string;
 }
-
-export type SafeListing = Omit<Listing, "createdAt"> & {
-  createdAt: string;
-};
 
 //-------------------------Pacman---------------------------
 export type Character = {

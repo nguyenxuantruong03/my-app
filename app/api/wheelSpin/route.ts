@@ -46,8 +46,8 @@ export async function GET(req: Request) {
       },
     });
       // Return the sum of all coins
-      const totalCoins = coins.reduce((total, coin) => total + parseInt(coin.coin.split(" ")[0]), 0);
-      const latestRotation = coins.reduce((total,coin) =>total + (coin.rotation),0)
+      const totalCoins = coins.reduce((total:any, coin:any) => total + parseInt(coin.coin.split(" ")[0]), 0);
+      const latestRotation = coins.reduce((total:any,coin:any) =>total + (coin.rotation),0)
       return NextResponse.json({ totalCoins,latestRotation });
     } catch (error) {
       console.error('Error fetching comments:', error);
