@@ -14,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, route }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/${route}/${data?.name}`);
+    router.push(`/${route}/${data?.id}`);
   };
 
   const discountedPrice = data.price * ((100 - data.percentpromotion) / 100);

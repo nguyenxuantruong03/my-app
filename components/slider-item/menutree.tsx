@@ -25,64 +25,64 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
 
   const pathname = usePathname()
   const routes = data.map((route) =>({
-    href:`/category/${route.name}`,
+    href:`/category/${route.id}`,
     label: route.name,
-    active: pathname === `/category/${route.name}`
+    active: pathname === `/category/${route.id}`
   }))
   const categories01 = categories1.map((categories) =>({
-    href:`/category1/${categories.name}`,
+    href:`/category1/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category1/${categories.name}`
+    active: pathname === `/category1/${categories.id}`
   }))
   const categories02 = categories2.map((categories) =>({
-    href:`/category2/${categories.name}`,
+    href:`/category2/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category2/${categories.name}`
+    active: pathname === `/category2/${categories.id}`
   }))
   const categories03 = categories3.map((categories) =>({
-    href:`/category3/${categories.name}`,
+    href:`/category3/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category3/${categories.name}`
+    active: pathname === `/category3/${categories.id}`
   }))
   const categories04 = categories4.map((categories) =>({
-    href:`/category4/${categories.name}`,
+    href:`/category4/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category4/${categories.name}`
+    active: pathname === `/category4/${categories.id}`
   }))
   const categories05 = categories5.map((categories) =>({
-    href:`/category5/${categories.name}`,
+    href:`/category5/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category5/${categories.name}`
+    active: pathname === `/category5/${categories.id}`
   }))
   const categories06 = categories6.map((categories) =>({
-    href:`/category6/${categories.name}`,
+    href:`/category6/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category6/${categories.name}`
+    active: pathname === `/category6/${categories.id}`
   }))
   const categories07 = categories7.map((categories) =>({
-    href:`/category7/${categories.name}`,
+    href:`/category7/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category7/${categories.name}`
+    active: pathname === `/category7/${categories.id}`
   }))
   const categories08 = categories8.map((categories) =>({
-    href:`/category8/${categories.name}`,
+    href:`/category8/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category8/${categories.name}`
+    active: pathname === `/category8/${categories.id}`
   }))
   const categories09 = categories9.map((categories) =>({
-    href:`/category9/${categories.name}`,
+    href:`/category9/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category9/${categories.name}`
+    active: pathname === `/category9/${categories.id}`
   }))
   const categories010 = categories10.map((categories) =>({
-    href:`/category10/${categories.name}`,
+    href:`/category10/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category10/${categories.name}`
+    active: pathname === `/category10/${categories.id}`
   }))
   const categories011 = categories11.map((categories) =>({
-    href:`/category11/${categories.name}`,
+    href:`/category11/${categories.id}`,
     label: categories.name,
-    active: pathname === `/category11/${categories.name}`
+    active: pathname === `/category11/${categories.id}`
   }))
 
   const [isShown, setIsShown] = useState(false);

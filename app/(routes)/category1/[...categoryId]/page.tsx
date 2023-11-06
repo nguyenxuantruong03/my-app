@@ -13,7 +13,7 @@ import { getCategories1 } from "@/actions/categories/get-categories";
 export const revalidate = 0;
 interface CategoryPageProps {
   params: {
-    name: string;
+    categoryId: string;
   };
   searchParams: {
     colorId: string;
@@ -27,7 +27,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 }) => {
   const billboard = await getBillboard("21ec25e6-d40a-4540-ad93-985feb86ffa4");
   const product = await getProduct1({
-    categoryId: params.name,
+    categoryId: params.categoryId,
     sizeId: searchParams.sizeId,
     colorId: searchParams.colorId,
   });

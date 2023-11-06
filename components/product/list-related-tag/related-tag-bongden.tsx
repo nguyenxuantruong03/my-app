@@ -4,39 +4,39 @@ import {relatedTagLaptopcolor} from "@/components/color/color"
 const RelatedTagLaptop = () => {
     return ( 
         <div className=" my-2 relative">
-            <div className="absolute hidden md:flex bottom-4 md:left-[14.3rem] lg:left-[46.3rem] space-x-4 ">
+            <div className="absolute hidden md:flex bottom-4 md:left-[12.3rem] lg:left-[37.4rem] space-x-4 ">
          <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
-            Điện quang
+            <Link  href="https://vlxdxuantruong.vercel.app/bongden/dienquang40w">
+            Điện quang Bulb 40W
             </Link>
         </div>
         <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
+            <Link  href="https://vlxdxuantruong.vercel.app/bongden/denbanhocledrangdong">
             Bàn học
             </Link>
         </div>
         <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
-            MPE
+            <Link  href="https://vlxdxuantruong.vercel.app/bongden/denledmpe40w">
+            MPE Bulb 40W
             </Link>
         </div>
         <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
-            Rạng Đông
+            <Link  href="https://vlxdxuantruong.vercel.app/bongden/denledthuytinh1m2">
+            Rạng Đông 1m2
             </Link>
         </div>
         <div className= {relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
+            <Link  href="https://vlxdxuantruong.vercel.app/bongden/bongdienquang4u50w">
             Bóng chữ u
             </Link>
         </div>
         <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
-            Bóng trái ớt
+            <Link  href="https://vlxdxuantruong.vercel.app/bongden/bongdenledcana">
+            Bóng cà na
             </Link>
         </div>
         <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="">
+            <Link  href="https://vlxdxuantruong.vercel.app/category10/MPE">
             Xem tất cả
             </Link>
       </div>

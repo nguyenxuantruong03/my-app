@@ -9,7 +9,7 @@ interface ImageMiniProps {
 const ImageMini: React.FC<ImageMiniProps> = ({ data }) => {
   const imageComponents = data?.imagebillboardmini?.slice(0, 3).map((image, index) => (
     <div key={index} className="h-[115px] rounded-md shadow-md">
-      <Link href="/">
+      <Link href="https://vlxdxuantruong.vercel.app/category1/Qu%E1%BA%A1t%20Senko">
         <div className="overflow-hidden rounded-xl h-[115px]">
           <Image
             src={image.url}
