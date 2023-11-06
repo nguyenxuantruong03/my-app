@@ -14,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, route }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/${route}/${data?.id}`);
+    router.push(`/${route}/${data?.name}`);
   };
 
   const discountedPrice = data.price * ((100 - data.percentpromotion) / 100);
@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, route }) => {
         </div>
         {/* Description */}
         <div>
-          <p className="font-semibold text-base single-line-ellipsis">{data.name}</p>
+          <p className="font-semibold text-base single-line-ellipsis">{data.heading}</p>
           <p className="text-sm text-gray-500 single-line-ellipsis">{data.category.name}</p>
         </div>
         <div className="flex items-center justify-between">
