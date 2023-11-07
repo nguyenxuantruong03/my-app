@@ -69,7 +69,7 @@ const GamePage = () => {
             onClick={handleClickMinesweeper}
           />
           <Image
-            src="/images/pacman.png"
+            src="/images/imagepacman.png"
             alt=""
             width={100}
             height={100}
