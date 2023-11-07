@@ -276,7 +276,7 @@ const Menu = () => {
               <span className="text-base">Sơn</span>
             </label>
             <label htmlFor="category4" className="category4">
-              <span className="text-base">VL Nhà tắm</span>
+              <span className="text-base">Vl Nhà tắm</span>
             </label>
             <label htmlFor="category5" className="category5">
               <span className="text-base">Bóng đèn</span>
