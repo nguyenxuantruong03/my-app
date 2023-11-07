@@ -76,7 +76,7 @@ const generateFoodMatrix = (props: SceneProps, amountOfFood: number) => {
   return foods;
 };
 
- const audio = new Audio("/images/pacman.mp3");
+ const audio = new Audio("/images/gamepacman.mp3");
 
 const Scene = (props: SceneProps) => {
   const {
