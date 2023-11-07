@@ -74,7 +74,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         </div>
         <hr className="my-10" />
         <h1 className="font-bold text-3xl my-3">Gợi ý khác </h1>
-        <ProductListSingleSuggest data={suggestedProducts} route="mouse"/>
+        <ProductListSingleSuggest data={suggestedProducts} route="son"/>
         <h1 className="font-bold text-3xl my-3">Loại khác </h1>
         <ProductListSingleSuggest data={suggestedProducts5} route="product5" />
         <hr className="my-8" />

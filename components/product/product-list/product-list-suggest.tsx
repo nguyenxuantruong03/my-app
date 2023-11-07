@@ -17,7 +17,7 @@ import { Product2, Product1, Product10, Product3 } from "@/types";
 
 interface ProductListProps {
   data: Product2[] | Product1[] | Product10[] | Product3[]
-  productType: "headphone" | "ipad" | "laptop" | "watch";
+  productType: "ongnhua" | "quat" | "bongden" | "daydien";
 }
 
 const ProductListSuggest: React.FC<ProductListProps> = ({ data, productType }) => {
@@ -25,17 +25,17 @@ const ProductListSuggest: React.FC<ProductListProps> = ({ data, productType }) =
 
   const handleClick = (productId: string) => {
     switch (productType) {
-      case "headphone":
-        router.push(`/headphone/${productId}`);
+      case "ongnhua":
+        router.push(`/ongnhua/${productId}`);
         break;
-      case "ipad":
-        router.push(`/ipad/${productId}`);
+      case "quat":
+        router.push(`/quat/${productId}`);
         break;
-      case "laptop":
-        router.push(`/laptop/${productId}`);
+      case "bongden":
+        router.push(`/bongden/${productId}`);
         break;
-      case "watch":
-        router.push(`/watch/${productId}`);
+      case "daydien":
+        router.push(`/daydien/${productId}`);
         break;
       default:
         break;
