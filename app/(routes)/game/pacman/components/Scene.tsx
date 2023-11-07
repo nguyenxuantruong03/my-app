@@ -77,9 +77,9 @@ const generateFoodMatrix = (props: SceneProps, amountOfFood: number) => {
 };
 let audio: HTMLAudioElement | undefined;
 
-if (typeof window !== "undefined") {
-  audio = new Audio("/images/pacman.mp3");
-}
+
+audio = new Audio("/images/pacman.mp3");
+
 const Scene = (props: SceneProps) => {
   const {
     setFoodAmount,
