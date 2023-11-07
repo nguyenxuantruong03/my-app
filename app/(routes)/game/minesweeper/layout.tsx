@@ -1,4 +1,3 @@
-"use client"
 import type { Metadata } from "next";
 import { Provider } from "react-redux";
 import { store } from "./hooks/store";
