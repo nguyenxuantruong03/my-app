@@ -36,7 +36,7 @@ const RelatedTagLaptop = () => {
             </Link>
         </div>
         <div className={relatedTagLaptopcolor.bg_opacity_border}>
-            <Link  href="https://vlxdxuantruong.vercel.app/category10/MPE">
+            <Link  href="https://vlxdxuantruong.vercel.app/category10/fd46f2da-a6a2-4f46-890a-7bc951dd1aa4">
             Xem tất cả
             </Link>
       </div>

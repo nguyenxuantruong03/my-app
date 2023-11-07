@@ -31,7 +31,7 @@ const RelatedTagWatch= () => {
             </Link>
         </div>
         <div className={relatedTagWatchcolor.bg_opacity_border}>
-            <Link  href="https://vlxdxuantruong.vercel.app/category3/Cadivi">
+            <Link  href="https://vlxdxuantruong.vercel.app/category3/37e650f8-c1aa-49dc-9c34-22b1c038bbeb">
             Xem tất cả
             </Link>
       </div>

@@ -8,7 +8,6 @@ import {  Product, Product1, Product10, Product11, Product2, Product3, Product4,
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
-import PrevNextSwiper from "./prevnextswiper";
 import "./product-list.css"
 interface ProductListProps {
  data: Product[] | Product1[] |Product2[] |Product3[] | Product4[] 

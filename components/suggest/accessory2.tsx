@@ -6,7 +6,7 @@ const computerComponentSmall = () => {
     return (  
         <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 lg:gap-0 lg:overflow-hidden">
         <div className={computerComponentSmallcolor.bg_height_width_rounded}>
-        <Link href="https://vlxdxuantruong.vercel.app/category2/%E1%BB%90ng%20l%C6%B0%E1%BB%9Bi%20xanh">
+        <Link href="https://vlxdxuantruong.vercel.app/category2/e9762cb1-1077-43ef-97e9-44d0d20dec83">
         <span className="text-white font-bold p-2">Ống lưới </span>
         <span className="text-white font-bold p-2">xanh </span>
         <div className="ml-2 -mt-2">
@@ -22,7 +22,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg_height_width_rounded_overflowhidden}>
-        <Link href="https://vlxdxuantruong.vercel.app/category2/%E1%BB%90ng%20B%C3%ACnh%20Minh">
+        <Link href="https://vlxdxuantruong.vercel.app/category2/388fcfa8-720d-4ca5-ace8-45370235e6eb">
         <span className="text-white font-bold p-2">Ống nhựa</span>
         <span className="text-white font-bold p-2">PVC </span>
         <div className="mt-1">
@@ -38,7 +38,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg}>
-        <Link href="https://vlxdxuantruong.vercel.app/category/Pin%20con%20%C3%B3">
+        <Link href="https://vlxdxuantruong.vercel.app/category/8bcd192e-d45b-49e6-a73e-444a17c09a50">
         <span className="text-white font-bold p-2"> Pin con ó </span>
         <div className="ml-4">
         <Image 
@@ -53,7 +53,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg1}>
-        <Link href="https://vlxdxuantruong.vercel.app/category1/Qu%E1%BA%A1t%20Senko">
+        <Link href="https://vlxdxuantruong.vercel.app/category1/52d11611-ccd2-4326-bf7f-bd224ebef89d">
         <span className="text-white font-bold p-2">Quạt bàn </span>
         <span className="text-white font-bold p-2">Senko </span>
         <div className="ml-8">
@@ -69,7 +69,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg2}>
-        <Link href="https://vlxdxuantruong.vercel.app/category1/Qu%E1%BA%A1t%20Senko">
+        <Link href="https://vlxdxuantruong.vercel.app/category1/ca558334-3aa3-4781-854e-46fe1c77bafa">
         <span className="text-white font-bold p-2">Quạt treo </span>
         <span className="text-white font-bold p-2">Senko </span>
         <div className="ml-7">
@@ -85,7 +85,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg3}>
-        <Link href="https://vlxdxuantruong.vercel.app/category11/Th%C3%B4ng%20c%E1%BB%91ng">
+        <Link href="https://vlxdxuantruong.vercel.app/category11/408fda97-34c0-4841-b1b3-52f420c7ca4c">
         <span className="text-white font-bold p-2">Sifa thông </span>
         <span className="text-white font-bold p-2">cống </span>
         <div className="">
@@ -101,7 +101,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg4}>
-        <Link href="https://vlxdxuantruong.vercel.app/category8/B%E1%BA%A1ch%20Tuy%E1%BA%BFt">
+        <Link href="https://vlxdxuantruong.vercel.app/category8/595f6934-f5d2-49e0-84f0-71c1e6eba2f9">
         <span className="text-white font-bold p-2"> Sơn bạch </span>
         <span className="text-white font-bold p-2"> tuyết </span>
         <div className="ml-6 -mt-4">
@@ -117,7 +117,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg5}>
-        <Link href="https://vlxdxuantruong.vercel.app/category8/Expo">
+        <Link href="https://vlxdxuantruong.vercel.app/category8/792fa51d-31b9-441a-91e7-882bfc47dcdd">
         <span className="text-white font-bold p-2"> Sơn Expo </span>
         <div className="-mt-3">
         <Image 
@@ -134,7 +134,7 @@ const computerComponentSmall = () => {
         </div>
 
         <div className={computerComponentSmallcolor.bg6}>
-        <Link href="https://vlxdxuantruong.vercel.app/category8/S%C6%A1n%20x%E1%BB%8Bt%20ATM">
+        <Link href="https://vlxdxuantruong.vercel.app/category8/5de119d8-c8f1-41e5-aea5-4710b2d65410">
         <span className="text-white font-bold p-2"> Sơn xịt ATM </span>
         <div className="ml-2">
         <Image 

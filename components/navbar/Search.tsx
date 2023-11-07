@@ -77,15 +77,15 @@ const SearchPage = () => {
     )[]
   ) => {
     return products
-      .filter((product) => product && product.name) // Filter out null or undefined products
-      .map((product) => product.name); // Map to product names
+      .filter((product) => product && (product.name))
+      .map((product) => product.name);
   };
 
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const inputValue = event.target.value;
-    setSearchTerm(inputValue.toLowerCase().trim()); // Convert to lowercase for case-insensitive search and trim spaces
+    setSearchTerm(inputValue); // Convert to lowercase for case-insensitive search and 
   };
 
   const productContainerRef = useRef<HTMLDivElement | null>(null); // Adjusted type for the ref
@@ -115,36 +115,32 @@ const SearchPage = () => {
         getProductFunc(debouncedSearchTerm)
       );
       Promise.all(productNamesPromises)
-        .then((productNames) => {
-          const allProductNames = extractProductNames(productNames);
-
-          const filteredProductNames = allProductNames.filter((productName) =>
-            productName
-              .toLowerCase()
-              .includes(debouncedSearchTerm.toLowerCase())
-          );
-
-          setFilteredProductNames(filteredProductNames);
-
-          // Handle routing based on index
-          productNames.forEach((product, index) => {
-            const productName = product && product.name; // Extract the product name
-            if (productName && filteredProductNames.includes(productName)) {
-              // Adjust index since getProducts is at index 0
-              const productIndex = index - 1;
-              if (productIndex >= 0 && productIndex <= 10) {
-                const productRoute = `/product${
-                  productIndex + 1
-                }/${productName}`;
-                router.push(productRoute);
-              }
+      .then((productNames) => {
+        const allProductNames = extractProductNames(productNames);
+    
+        const filteredProductNames = allProductNames.filter((productName) =>
+         productName.includes(debouncedSearchTerm)
+              );
+    
+        setFilteredProductNames(filteredProductNames);
+        // Handle routing based on index
+        productNames.forEach((product, index) => {
+          const productName = product && product.name; 
+          if (productName && filteredProductNames.includes(productName)) {
+            // Adjust index since getProducts is at index 0
+            const productIndex = index - 1;
+            if (productIndex >= -1 && productIndex <= 11) {
+              const productRoute = `/product${productIndex + 1}/${productName}`;
+              router.push(productRoute);
             }
-          });
-          if (filteredProductNames.length === 0) {
-            toast.error(`Không tìm thấy ${debouncedSearchTerm}`);
           }
-        })
-        .finally(() => setLoading(false));
+        });
+    
+        if (filteredProductNames.length === 0) {
+          toast.error(`Không tìm thấy ${debouncedSearchTerm}`);
+        }
+      })
+      .finally(() => setLoading(false))
     } else {
       setFilteredProductNames([]);
     }
@@ -156,7 +152,7 @@ const SearchPage = () => {
       <Input
         animated={false}
         clearable
-        placeholder="Bạn muốn tìm kiếm gì ?"
+        placeholder="Nhập tên đường dẫn VD:pincono."
         value={searchTerm}
         onChange={handleInputChange}
       />
@@ -229,10 +225,10 @@ const SearchPage = () => {
           {filteredProductNames.map((productName, index) => (
             <div className="p-2" key={index}>
               <li
-                className="text-base text-red-500 py-1 cursor-pointer header__cart-list"
+                className="text-base text-red-500 py-1 header__cart-list"
                 key={index}
               >
-                {productName}
+                      {productName}
               </li>
               <div className="border-t-2 border-gray-200 my-2 " />
               <div className="my-2 text-base text-gray-500 text-opacity-90">
@@ -240,8 +236,8 @@ const SearchPage = () => {
               </div>
               <div className="grid grid-cols-2 ">
                 <div className="my-1">
-                  <Link href="/category5/truong5" className="flex items-center my-2">
-                    <div className="my-1">Ống nhựa, Ống lưới xanh</div>
+                  <Link href="https://vlxdxuantruong.vercel.app/category2/e9762cb1-1077-43ef-97e9-44d0d20dec83" className="flex items-center my-2">
+                    <div className="my-1">Ống nhựa</div>
                   <Image
                   src="/images-product/ongnhuapvc.png"
                   alt="404"
@@ -251,7 +247,7 @@ const SearchPage = () => {
                   />
                   </Link>
 
-                  <Link href="/category1/truong1" className="flex items-center my-2">
+                  <Link href="https://vlxdxuantruong.vercel.app/category10/4bf607bb-79d9-4b51-bde2-320c285573e0" className="flex items-center my-2">
                     <div className="my-1">Bóng đèn</div>
                   <Image
                   src="/images-product/bongdienquang.png"
@@ -262,7 +258,7 @@ const SearchPage = () => {
                   />
                   </Link>
 
-                  <Link href="/category2/truong2" className="flex items-center my-2">
+                  <Link href="https://vlxdxuantruong.vercel.app/category1/52d11611-ccd2-4326-bf7f-bd224ebef89d" className="flex items-center my-2">
                     <div className="my-1">Quạt</div>
                    <Image
                   src="/images-product/quatbansenko.png"
@@ -276,7 +272,7 @@ const SearchPage = () => {
 
                 <div className="my-2">
                   <div className="border-l-2 border-gray-200 my-1">
-                  <Link href="/category9/truong9" className="flex items-center">
+                  <Link href="https://vlxdxuantruong.vercel.app/product7/o-cam-cay-thong" className="flex items-center">
                       <div className="mx-2">Ổ cắm cây thông</div>
                     <Image
                   src="/images-product/ocamcaythong.png"
@@ -289,7 +285,7 @@ const SearchPage = () => {
                   </div>
 
                   <div className="border-l-2 border-gray-200 my-1">
-                  <Link href="/category11/truong11" className="flex items-center">
+                  <Link href="https://vlxdxuantruong.vercel.app/category/8bcd192e-d45b-49e6-a73e-444a17c09a50" className="flex items-center">
                       <div className="mx-2">Pin</div>
                     <Image
                   src="/images-product/pincono.png"
@@ -302,7 +298,7 @@ const SearchPage = () => {
                   </div>
 
                   <div className="border-l-2 border-gray-200 my-1">
-                  <Link href="/category7/truong7" className="flex items-center">
+                  <Link href="https://vlxdxuantruong.vercel.app/category8/595f6934-f5d2-49e0-84f0-71c1e6eba2f9" className="flex items-center">
                       <div className="mx-2">Sơn</div>
                     <Image
                   src="/images-product/sonexpo.png"
