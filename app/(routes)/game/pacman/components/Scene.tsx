@@ -299,7 +299,7 @@ const OverlayContent = styled.div`
 
 const StyledScene = styled.div`
 position:relative;
-  --container-width: 105vw - 20px;
+  --container-width: 100%;
   height: calc(100vh - 120px);
   width: calc(var(--container-width));
   background-color: ${colors.color1};
