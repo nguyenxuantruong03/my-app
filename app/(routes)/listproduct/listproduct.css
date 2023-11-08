@@ -68,6 +68,7 @@
 
 .list{
   height:425px;
+  width:255px;
   overflow-y:auto;
 }
 ::-webkit-scrollbar {

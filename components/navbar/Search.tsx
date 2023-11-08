@@ -148,7 +148,7 @@ const SearchPage = () => {
 
   return (
     <>
-     <div className="w-full flex flex-col gap-2 max-w-[200px] md:max-w-[300px]">
+     <div className="w-full flex flex-col gap-2 max-w-[225px] md:max-w-[300px]">
       <Input
         animated={false}
         clearable

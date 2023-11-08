@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation"; 
 import { useEffect, useState } from "react";
 import ImageDelivery from "./Delivery";
 import Mainnav from "./mainnav";
@@ -11,8 +12,12 @@ const Navbar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [totalCoins, setTotalCoins] = useState<number>(0);
   const [rotation, setRotation] = useState<number>(0);
-
+  const router = useRouter()
   useEffect(() => {
+    const savedActiveIndex = localStorage.getItem("activeIndex")
+    if (savedActiveIndex) {
+      setActiveIndex(Number(savedActiveIndex));
+    }
     // Load totalCoins from the server using GET request
     axios.get("/api/wheelSpin").then((response) => {
       setTotalCoins(response.data.totalCoins);
@@ -21,13 +26,15 @@ const Navbar = () => {
   }, []);
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
+
+    localStorage.setItem("activeIndex", index.toString());
   };
   return (
     <>
       <div className=" fixed z-[100] w-full top-0">
         <div className={navbarcolor.bg_height}>
           <div className="max-w-[640px] md:max-w-3xl lg:mx-auto lg:max-w-7xl md:p-1 lg:p-0">
-            <div className="md:grid  md:grid-cols-3 overflow-hidden overflow-x-auto">
+            <div className="md:grid md:grid-cols-3 overflow-hidden overflow-x-auto">
               <ImageDelivery />
             </div>
           </div>

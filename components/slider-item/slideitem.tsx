@@ -71,7 +71,7 @@ const SlideItem = async () => {
       <div className=" mx-auto md:max-w-3xl lg:max-w-7xl my-2 hidden md:block lg:hidden">
         <ImageSale data={billboardsaleipad} />
       </div>
-      <div className=" mx-auto my-2 md:hidden">
+      <div className=" mx-auto mb-2 mt-10 md:hidden">
         <ImageSale data={billboardsalemobile} />
       </div>
     </>

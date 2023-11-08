@@ -54,7 +54,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         {/* Infomation khuyen mai va bao hanh */}
         <div className="md:max-w-3xl lg:max-w-7xl grid lg:grid-cols-2 relative ">
           <InfoPromotion data={product} />
-          <div className="h-[600px] md:h-[460px] w-full shadow-lg mb-5 rounded-md overflow-hidden ">
+          <div className="h-[580px] md:h-[460px] w-full shadow-lg mb-5 rounded-md overflow-hidden ">
             <InfoWarranty data={product} />
             <div className="w-[19.5rem] h-28 shadow-lg absolute top-[30.5rem]  rounded-xl hidden lg:block">
               <Image

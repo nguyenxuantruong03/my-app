@@ -18,7 +18,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
     return ( 
         <div className="md:max-w-3xl lg:max-w-2xl">
         <div className="md:grid  md:grid-cols-2 md:ml-8 md:mb-5 lg:grid  lg:grid-cols-2 lg:item-start lg:gap-x-8  mb-5">
-         <div className="w-[300px] h-[200px] shadow-lg rounded-md p-4 ml-9 md:ml-0">
+         <div className="w-[300px] h-[200px] shadow-lg rounded-md p-4 m-auto md:m-0">
              <h1 className="font-bold text-base text-[#666666]">Thông tin sản phẩm</h1>
             <div className="flex my-1 text-[#666666]">
              <Wrench   className="w-4 h-4"/>
@@ -38,7 +38,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
             </div>
          </div>
 
-             <div className="w-[250px] h-[200px] ml-14 md:ml-0">
+             <div className="w-[250px] h-[200px] m-auto md:m-0">
              <div className="h-[90px] shadow-md my-[10px] rounded-md  overflow-hidden">
                  <h1 className= "text-white font-bold bg-[#e5002d] text-center">Ưa đãi khách hàng thân thiết</h1>
              <div className="flex text-[#666666] my-2">
@@ -67,7 +67,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
              </div>
          </div>
          <div className="grid md:grid-cols-2 md:ml-8 md:mb-5 lg:mx-0"> 
-                <div className="w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg ml-4 md:ml-0">
+                <div className="w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg m-auto md:m-0">
                     <h1 className="font-bold"> Thông số kỹ thuật </h1>
                     <div className="flex justify-between bg-gray-500 bg-opacity-10 p-4 rounded-md">
                             {data.descriptionspecifications}
@@ -90,7 +90,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
                             <p>{data.value5specifications}</p>
                     </div>
                 </div>
-                <div className=" w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg ml-4 md:ml-0 mt-2 md:mt-0">
+                <div className=" w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg m-auto md:m-0 mt-2 md:mt-0">
                 <h1 className="font-bold"> Thông số kỹ thuật </h1>
                     <div className="flex justify-between bg-gray-500 bg-opacity-10 p-4 rounded-md">
                             {data.description6specifications}
@@ -114,7 +114,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
                     </div>
                 </div>
          </div>
-         <div onClick={onSeeDetailSpecification} className=" w-[290px] md:w-[550px] h-[50px] shadow-lg rounded-md mt-2 ml-[40px] flex items-center justify-center hover:bg-red-300 hover:bg-opacity-30 hover:border-[1px] hover:border-red-500 hover:text-red-600 cursor-pointer md:m-auto md:mb-5">
+         <div onClick={onSeeDetailSpecification} className=" w-[290px] md:w-[550px] h-[50px] shadow-lg rounded-md mt-2 flex items-center justify-center hover:bg-red-300 hover:bg-opacity-30 hover:border-[1px] hover:border-red-500 hover:text-red-600 cursor-pointer m-auto md:mb-5">
                 <div >Xem chi tiết </div>
                 <ChevronDown className="ml-1 h-4 w-4" />
          </div>

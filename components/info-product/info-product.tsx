@@ -161,7 +161,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                   <h1 className="ml-1 text-sm ">Nếu sản phẩm có lỗi hoặc hư bảo hành 1 năm tùy món hàng.</h1>
                 </div>
             </div>
-            <div className="w-full h-[205px] mt-4 rounded-md overflow-hidden"> 
+            <div className="w-full h-[125px] md:h-[205px] mt-4 rounded-md overflow-hidden"> 
               <Image 
                 alt="Error"
                 src="/images/baohanh.png"

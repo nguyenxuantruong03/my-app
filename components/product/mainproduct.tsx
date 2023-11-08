@@ -64,7 +64,7 @@ const MainProduct: React.FC<ProductMainListProps> = ({
                     Sản phẩm bán chạy nhất
                   </p>
 
-                  <ul className="content__container__list -mt-[10] pl-[8.8rem] md:pl-[18.5rem]  text-[16px] md:text-[30px] md:mt-0">
+                  <ul className="content__container__list -mt-[10] pl-[8.8rem] md:pl-[18.5rem] hidden lg:block text-[16px] md:text-[30px] md:mt-0">
                     <li className="m-0 leading-[24px] md:leading-[46px]">Ống nhựa, Ống lưới xanh</li>
                     <li className="m-0 leading-[24px] md:leading-[46px]">Quạt</li>
                     <li className="m-0 leading-[24px] md:leading-[46px]">Sơn</li>

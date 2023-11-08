@@ -30,7 +30,7 @@ const SliderSwiper: React.FC<SliderSwiperProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-[335px] md:w-[520px] lg:w-[750px] h-[377px] rounded-md shadow-md">
+    <div className="w-[375px] md:w-[542px] lg:w-[750px] h-[405px] rounded-md shadow-md">
       <Swiper
         spaceBetween={20}
         centeredSlides={true}
@@ -42,7 +42,7 @@ const SliderSwiper: React.FC<SliderSwiperProps> = ({ data }) => {
           hide: true,
         }}
         modules={[Autoplay, Pagination, Scrollbar]}
-        className="h-[380px] relative group"
+        className="h-[405px] relative group"
       >
         {renderSlides()}
         <div className="absolute top-10 z-10 hidden group-hover:block">
