@@ -102,7 +102,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           <Currency value={percentPrice} valueold={totalPrice} />
         </div>
         <div className="mt-1 text-sm text-gray-500">
-          Giá tiền bảo hành cho {data.name}:
+          Giá tiền bảo hành cho {data.heading}:
           {data.id in cart.selectedWarranties ? (
             <span>
               <Currencyonevalue value={cart.selectedWarranties[data.id]} />

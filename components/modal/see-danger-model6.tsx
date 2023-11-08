@@ -97,7 +97,7 @@ const DangerModal = () => {
 
   const totalAmountOld = totalAmounts.totalPriceOld + totalWarrantyAmount;
   const totalAmountOldCoin =  Math.ceil(totalAmountOld - totalCoins);
-
+  
   const selectedQuantities = selectedItems.map((item) => {
     const itemInCart = items.find((cartItem) => cartItem.id === item.id);
     return itemInCart?.quantity || 1;

@@ -76,7 +76,7 @@ const useCart = create(
       
       addItem: (data: ProductUnion, quantity: number,userId:any) => {
         const currentUserCart = get().items.filter(item => item.userId === userId);
-  const existingItem = currentUserCart.find((item) => item.id === data.id);
+        const existingItem = currentUserCart.find((item) => item.id === data.id);
 
     
         if (existingItem) {
