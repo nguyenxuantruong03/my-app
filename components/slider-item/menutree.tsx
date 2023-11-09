@@ -212,7 +212,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
       lg:w-[780px] 
       md:w-[535px]
       lg:h-[400px] 
-      md:h-[388px]
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -256,8 +256,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown1 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -301,8 +303,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown2 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -346,8 +350,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown3 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -391,8 +397,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown4 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -436,8 +444,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown5 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -481,8 +491,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown6 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -526,8 +538,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown7 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -571,8 +585,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown8 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -616,8 +632,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown9 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -661,8 +679,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown10 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
@@ -706,8 +726,10 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           {isShown11 && (
             <div
               className="absolute 
-      w-[780px] 
-      h-[400px] 
+      lg:w-[780px] 
+      md:w-[535px]
+      lg:h-[400px] 
+      md:h-[388px] 
       shadow-xl 
       bg-white 
       rounded-md 
