@@ -6,10 +6,10 @@ import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import getProduct10 from "@/actions/product/get-product10";
+import BillboardCategory from "@/components/slider-item/billboard-category";
 import ProductCard from "@/components/product/productcard-category/productcard";
 import { getCategories10 } from "@/actions/categories/get-categories";
-import dynamic from "next/dynamic";
-const BillboardCategory = dynamic(() => import('@/components/slider-item/billboard-category'), { ssr: false })
+
 export const revalidate = 7200;
 interface CategoryPageProps {
   params: {

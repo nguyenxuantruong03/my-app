@@ -6,10 +6,9 @@ import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import getProduct1 from "@/actions/product/get-product1";
+import BillboardCategory from "@/components/slider-item/billboard-category";
 import ProductCard from "@/components/product/productcard-category/productcard";
 import { getCategories1 } from "@/actions/categories/get-categories";
-import dynamic from "next/dynamic";
-const BillboardCategory = dynamic(() => import('@/components/slider-item/billboard-category'), { ssr: false })
 
 export const revalidate = 7200;
 interface CategoryPageProps {

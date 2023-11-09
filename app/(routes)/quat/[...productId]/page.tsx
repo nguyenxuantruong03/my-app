@@ -1,19 +1,18 @@
 import Container from "@/components/ui/container";
+import Gallery from "@/components/gallery/gallery";
 import InfoProduct from "@/components/info-product/info-product";
+import InfoWarranty from "@/components/info-product/infowarranty";
+import InfoPromotion from "@/components/info-product/info-promotion";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
+import DetailProduct from "@/components/info-product/detail-product";
 import ModalProvider from "@/providers/modal-provider";
-import {getProducts1, getProducts4 } from "@/actions/products/get-products";
+import Comment from "@/components/comment/comment";
+import {  getProducts1, getProducts4 } from "@/actions/products/get-products";
 import getProduct1 from "@/actions/product/get-product1";
 import getProduct4 from "@/actions/product/get-product4";
-import dynamic from "next/dynamic";
-const ProductListSuggest = dynamic(() => import('@/components/product/product-list/product-list-suggest'), { ssr: false })
-const ProductListSingleSuggest = dynamic(() => import('@/components/product/product-list/product-list-signle-suggest'), { ssr: false })
-const DetailProduct = dynamic(() => import('@/components/info-product/detail-product'), { ssr: false })
-const InfoPromotion = dynamic(() => import('@/components/info-product/info-promotion'), { ssr: false })
-const InfoWarranty = dynamic(() => import('@/components/info-product/infowarranty'), { ssr: false })
-const Comment = dynamic(() => import('@/components/comment/comment'), { ssr: false })
-import Gallery from "@/components/gallery/gallery";
+import ProductListSuggest from "@/components/product/product-list/product-list-suggest";
+import ProductListSingleSuggest from "@/components/product/product-list/product-list-signle-suggest";
 
 export const revalidate = 86400;
 
