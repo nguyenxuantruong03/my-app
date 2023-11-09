@@ -7,6 +7,7 @@ import ToastProvider from "@/providers/toast-provider";
 import { Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs'
 import { viVN } from "@clerk/localizations";
+import { Analytics } from '@vercel/analytics/react';
 const roboto = Nunito({ weight:"400" , subsets: ["latin"] });
 
 export const metadata: Metadata & { image: string } = {
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ToastProvider />
         <Navbar />
         {children}
+        <Analytics />
         <ScrollButton />
         <Footer />
     </ClerkProvider>
