@@ -4,7 +4,7 @@ import Container from "@/components/ui/container";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-
+export const revalidate =86400
 const GamePage = () => {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();

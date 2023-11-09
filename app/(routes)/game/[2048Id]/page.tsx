@@ -5,6 +5,7 @@ import { AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide
 import { useState, useEffect, useRef } from "react";
 import "./style.css"
 import axios from "axios";
+export const revalidate = 86400;
 
 const IndexPage = () => {
   const [board, setBoard] = useState<number[][] | null>(null);

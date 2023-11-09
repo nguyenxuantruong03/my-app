@@ -8,7 +8,7 @@ import Image from "next/image";
 import Container from "@/components/ui/container";
 import axios from "axios";
 import { AlertTriangle } from 'lucide-react';
-
+export const revalidate = 86400;
 
 const SpinCoinPage: React.FC = () => {
   const [portal, setPortal] = useState<boolean>(false);

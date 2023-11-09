@@ -5,6 +5,7 @@ import ChromeDinoGame from 'react-chrome-dino';
 import { useEffect, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 import axios from 'axios';
+export const revalidate = 86400;
 
 const DinoPage = () => {
   const [isMounted, setIsMounted] = useState(false);

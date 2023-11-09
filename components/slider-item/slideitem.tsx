@@ -9,7 +9,7 @@ import BillboardCategory from "./billboard-category";
 import { getCategories, getCategories1, getCategories10, getCategories11, getCategories2, getCategories3, getCategories4, getCategories5, getCategories6, getCategories7, getCategories8, getCategories9 } from "@/actions/categories/get-categories";
 
 
-export const revalidate = 0;
+export const revalidate = 86400;
 const SlideItem = async () => {
   const billboard = await getBillboard("671f2bf3-3c95-4ac8-82bc-9ce9a026ad75");
   const billboardmini = await getBillboardmini(

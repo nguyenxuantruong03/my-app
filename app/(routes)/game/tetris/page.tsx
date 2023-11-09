@@ -2,6 +2,7 @@ import React from "react";
 import { TetrisProvider } from "./hooks/useTetris";
 import Tetris from "./components/Tetris/Tetris";
 import { AlertTriangle } from "lucide-react";
+export const revalidate = 86400;
 
 const TetrisPage = () => {
   return (
