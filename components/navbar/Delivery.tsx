@@ -103,9 +103,8 @@ const ImageDelivery = () => {
       <div>
           <div className={deliverycolor.bg_not_w}>
           <p className="slider-right-animation font-semibold">
-            Cửa hàng Trường Đạt . T/g làm việc :6:00-18:00. Sđt: 0352261103 .
-            Địa chỉ: 457 Lê Văn Quới , Phường Bình Trị Đông A , Quận Bình Tân ,
-            Thành Phố Hồ Chí Minh
+            Cửa hàng Trường Đạt . T/g làm việc: 6:00-18:00. Sđt: 0352261103 .
+            Địa chỉ: 457 Lê Văn Quới, Phường Bình Trị Đông A, Quận Bình Tân, Thành Phố Hồ Chí Minh
           </p>
           </div>
       </div>
