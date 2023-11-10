@@ -71,7 +71,7 @@ type Props={
     categoryId: string
   }
 }
-export async function generateMetadata({ params: { categoryId }}:Props) {
+export async function generateMetadata() {
   const categories = await getCategories8();
   const category = categories.find((category) => category.name );
 

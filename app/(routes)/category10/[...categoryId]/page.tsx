@@ -65,13 +65,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 
 export default CategoryPage;
 
-
-type Props={
-  params:{
-    categoryId: string
-  }
-}
-export async function generateMetadata({ params: { categoryId }}:Props) {
+export async function generateMetadata() {
   const categories = await getCategories10();
   const category = categories.find((category) => category.name);
 
