@@ -23,7 +23,11 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
 
     const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.stopPropagation();
-      const productWithQuantity = { ...data, quantity };
+      const productWithQuantity = {
+        ...data,
+        quantity,
+        selectedWarranty: cart.getSelectedItemWarranty(data.id),
+      };
   
       const existingCartItem = cart.items.find((item) => item.id === data.id);
   
