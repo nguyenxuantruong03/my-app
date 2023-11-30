@@ -82,7 +82,7 @@ const MainNav = () => {
   return (
     <>
       <Link href="/" >
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
        <div className="bg-[#333]  p-1  rounded-lg">
        <svg width="120" height="35" viewBox="0 0 512 52" xmlns="http://www.w3.org/2000/svg">
           <text x="20" y="10" className="text1">Xuân</text>
@@ -92,12 +92,12 @@ const MainNav = () => {
         </svg>
         </div>
         </div>
-        <div className="block lg:hidden">
+        <div className="block xl:hidden">
             <Image alt=""  src="/images/logo.ico" width="45" height="45" className="rounded-md m-[6.5px] border border-white"/>  
         </div>
       </Link>
 
-      <div onClick={toggleOpen} className="hidden lg:block">
+      <div onClick={toggleOpen} className="hidden xl:block">
         <div className={mainnavcolor.bg_list}>
           <div className="flex items-center justify-center text-white ">
             <div className="px-1 py-1">
@@ -158,7 +158,7 @@ const MainNav = () => {
         </div>
       </Link>
 
-      <Link href="/game" className="hidden lg:block">
+      <Link href="/game" className="hidden xl:block">
         <div className={mainnavcolor.bghover}>
           <div className="flex flex-col md:flex-row justify-center  items-center">
             <div className="basis-1/2 md:flex gap-2">
