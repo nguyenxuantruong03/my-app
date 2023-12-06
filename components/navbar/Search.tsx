@@ -27,13 +27,12 @@ import {
   Product8,
   Product9,
 } from "@/types";
-import { Input } from "@nextui-org/react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Image from "next/image";
-
+import { XCircle } from 'lucide-react';
 const SearchPage = () => {
   const router = useRouter();
   const productFunctions = [
@@ -145,17 +144,25 @@ const SearchPage = () => {
       setFilteredProductNames([]);
     }
   }, [debouncedSearchTerm]);
-
+  const handleClearClick = () => {
+    setSearchTerm("");
+  };
   return (
     <>
-     <div className="w-full flex flex-col gap-2 max-w-[225px] md:max-w-[300px]">
-      <Input
-        animated={false}
-        clearable
-        placeholder="Nhập tên đường dẫn VD:pincono."
-        value={searchTerm}
-        onChange={handleInputChange}
-      />
+      <div className="relative">
+        <input 
+          type="text" 
+          placeholder="VD: pincono"
+          value={searchTerm}
+          onChange={handleInputChange}
+          className="w-full flex flex-col gap-2 max-w-[225px] md:max-w-[350px] h-[40px] rounded-md p-2 outline-none border-none" // Add right padding for the close icon
+        />
+        {searchTerm && (
+          <XCircle 
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
+            onClick={handleClearClick}
+          />
+        )}
       </div>
       {filteredProductNames.length > 0 && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" />

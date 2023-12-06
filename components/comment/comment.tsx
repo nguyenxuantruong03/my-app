@@ -1,11 +1,12 @@
 "use client";
 import axios from "axios";
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { FaStar } from "react-icons/fa";
 import Container from "../ui/container";
 import Image from "next/image";
 import {commentcolor} from "@/components/color/color"
 import { useUser } from "@clerk/nextjs";
+import { Star } from 'lucide-react';
+
 interface Comment {
   rating: number;
   comment: string;
@@ -111,7 +112,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       const newComment = {
         rating: rating as number,
         comment,
-        imageUrl: user?.imageUrl || "",
+        imageUrl: user?.imageUrl || "/images/default_avatar.png",
         commenter:user?.username || "Vô danh" , 
         createdAt: new Date().toISOString(),
         nameproduct: data ||"123"
@@ -191,7 +192,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     // Render full stars for the integer part
     for (let i = 0; i < integerPart; i++) {
       starElements.push(
-        <FaStar
+        <Star
           key={i}
           size={24}
           color={commentcolor.orange}
@@ -205,7 +206,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     // Render a partially filled star for the fractional part
     if (fractionalPart > 0) {
       starElements.push(
-        <FaStar
+        <Star
           key={integerPart}
           size={24}
           color={commentcolor.orange}
@@ -223,7 +224,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     const remainingStars = 5 - starElements.length;
     for (let i = 0; i < remainingStars; i++) {
       starElements.push(
-        <FaStar
+        <Star
           key={integerPart + i + 1}
           size={24}
           color={commentcolor.grey}
@@ -286,7 +287,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             <div className="flex relative">
               5
               {stars1.map((_, index) => (
-                <FaStar
+                <Star
                   key={index}
                   size={24}
                   color={commentcolor.orange}
@@ -314,7 +315,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             <div className="flex mt-2 relative">
               4
               {stars1.map((_, index) => (
-                <FaStar
+                <Star
                   key={index}
                   size={24}
                   color={commentcolor.orange}
@@ -342,7 +343,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             <div className="flex mt-2 relative">
               3
               {stars1.map((_, index) => (
-                <FaStar
+                <Star
                   key={index}
                   size={24}
                   color={commentcolor.orange}
@@ -370,7 +371,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             <div className="flex mt-2 relative">
               2
               {stars1.map((_, index) => (
-                <FaStar
+                <Star
                   key={index}
                   size={24}
                   color={commentcolor.orange}
@@ -398,7 +399,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             <div className="flex mt-2 relative">
               1
               {stars1.map((_, index) => (
-                <FaStar
+                <Star
                   key={index}
                   size={24}
                   color={commentcolor.orange}
@@ -431,7 +432,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           </span>
           <div className="flex space-x-2">
             {stars.map((_, index) => (
-              <FaStar
+              <Star
                 key={index}
                 size={24}
                 onClick={() => handleRatingChange(index + 1)}
@@ -496,7 +497,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                         <li key={index} >
                           <div className=" flex items-center relative">
                             <Image
-                              src={comment.imageUrl || "https://bathanh.com.vn/wp-content/uploads/2017/08/default_avatar.png"}
+                              src={comment.imageUrl}
                               alt=""
                               width="30"
                               height="30"
@@ -516,7 +517,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                             <div className="flex space-x-2 items-center text-sm">
                               <p> Đánh giá: </p>
                               {stars.map((_, starIndex) => (
-                                <FaStar
+                                <Star
                                   key={starIndex}
                                   size={16}
                                   color={

@@ -9,7 +9,6 @@ import { Grid, Autoplay, FreeMode } from "swiper/modules";
 import Image from "next/image";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
-import PrevNextSwiper from "./prevnextswiper";
 import "./product-list.css"
 
 // Define the types for different product categories
@@ -83,6 +82,7 @@ const ProductListSuggest: React.FC<ProductListProps> = ({ data, productType }) =
                     alt="Image"
                     className="aspect-square object-cover rounded-md"
                     fill
+                    loading="lazy"
                   />
                 </div>
                 <div className="ml-3">

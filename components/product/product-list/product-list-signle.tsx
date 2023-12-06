@@ -58,6 +58,7 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
                     fill
                     alt="Image"
                     className="aspect-square object-cover rounded-xl "
+                    loading="lazy"
                   />
                 </div>
 

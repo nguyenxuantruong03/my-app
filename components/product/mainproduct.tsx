@@ -14,8 +14,10 @@ import RelatedTagOngnhua from "./list-related-tag/related-tag-ongnhua";
 import RelatedTagOcam from "./list-related-tag/related-tag-ocam";
 import RelatedTagBongden from "./list-related-tag/related-tag-bongden";
 import RelatedTagSon from "./list-related-tag/related-tag-son";
-import ProductList from "./product-list/product-list";
-import ProductListSingle from "./product-list/product-list-signle";
+import dynamic from 'next/dynamic';
+const ProductListSingle = dynamic(() => import('./product-list/product-list-signle'), { ssr: false });
+const ProductList = dynamic(() => import('./product-list/product-list'), { ssr: false });
+
 import { useEffect, useState } from "react";
 import "./product-list/product-list.css"
 

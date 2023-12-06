@@ -30,6 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, route }) => {
             height="500"
             alt="Image"
             className="aspect-square object-cover rounded-md"
+            loading="lazy"
           />
         </div>
         {/* Description */}

@@ -83,6 +83,7 @@ const ProductList: React.FC<ProductListProps> = ({ data, productType }) => {
                     alt="Image"
                     className="aspect-square object-cover rounded-md"
                     fill
+                    loading="lazy"
                   />
                 </div>
                 <div className="ml-3">

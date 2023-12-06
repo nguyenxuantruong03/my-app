@@ -1,20 +1,20 @@
 import Container from "@/components/ui/container";
-import Gallery from "@/components/gallery/gallery";
-import InfoProduct from "@/components/info-product/info-product";
-import InfoWarranty from "@/components/info-product/infowarranty";
-import InfoPromotion from "@/components/info-product/info-promotion";
 import getBillboardmini from "@/actions/billboard/get-billboardmini";
 import Image from "next/image";
-import DetailProduct from "@/components/info-product/detail-product";
-
 import ModalProvider from "@/providers/modal-provider";
-import Comment from "@/components/comment/comment";
 import { getProducts10, getProducts11 } from "@/actions/products/get-products";
 import getProduct10 from "@/actions/product/get-product10";
 import getProduct11 from "@/actions/product/get-product11";
-import ProductListSingleSuggest from "@/components/product/product-list/product-list-signle-suggest";
-import ProductListSuggest from "@/components/product/product-list/product-list-suggest";
 
+import dynamic from "next/dynamic";
+const ProductListSuggest = dynamic(() => import('@/components/product/product-list/product-list-suggest'), {ssr: false,})
+const ProductListSingleSuggest = dynamic(() => import('@/components/product/product-list/product-list-signle-suggest'), {ssr: false,})
+const Comment = dynamic(() => import('@/components/comment/comment'), {ssr: false,})
+const DetailProduct = dynamic(() => import('@/components/info-product/detail-product'), {ssr: false,})
+const InfoPromotion = dynamic(() => import('@/components/info-product/info-promotion'), {ssr: false})
+const InfoWarranty = dynamic(() => import('@/components/info-product/infowarranty'), {ssr: false,})
+const InfoProduct = dynamic(() => import('@/components/info-product/info-product'), {ssr: false,})
+const Gallery = dynamic(() => import('@/components/gallery/gallery'), {ssr: false,})
 export const revalidate = 86400;
 
 interface PropductPageProps {

@@ -107,13 +107,16 @@
     margin: 10px 0 0 -30px;
   }
   
-  .container:hover .card {
-    animation: slide-top 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+  @media screen and (min-width: 700px) {
+    .container:hover .card {
+      animation: slide-top 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+    }
+  
+    .container:hover .post {
+      animation: slide-post 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
   }
   
-  .container:hover .post {
-    animation: slide-post 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
-  }
   
   @keyframes slide-top {
     0% {
@@ -224,8 +227,10 @@
     text-align: center;
   }
   
-  .container:hover .dollar {
-    animation: fade-in-fwd 0.3s 1s backwards;
+  @media screen and (min-width: 700px) {
+    .container:hover .dollar {
+      animation: fade-in-fwd 0.3s 1s backwards;
+    }
   }
   
   @keyframes fade-in-fwd {

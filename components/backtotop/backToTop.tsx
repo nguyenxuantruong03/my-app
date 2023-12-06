@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { FaArrowCircleUp } from 'react-icons/fa';
-
+import { ArrowUpCircle } from 'lucide-react';
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
 
@@ -30,7 +29,7 @@ const ScrollButton = () => {
 
   return (
     <div className='fixed left-[65%] md:left-[80%] lg:left-[90%] bottom-[80px] md:bottom-[40px] font-2xl z-10 cursor-pointer'>
-      <FaArrowCircleUp
+      <ArrowUpCircle
         onClick={scrollToTop}
         style={{ display: visible ? 'inline' : 'none' }}
         className='w-[200px] h-12'

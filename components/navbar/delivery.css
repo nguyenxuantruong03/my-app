@@ -385,7 +385,7 @@
 }
 .navigation {
   position: relative;
-  width: 415px;
+  width: 100%;
   height: 70px;
   background: #fff;
   display: flex;

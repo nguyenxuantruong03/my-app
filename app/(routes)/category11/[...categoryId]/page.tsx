@@ -1,15 +1,15 @@
 import getColors from "@/actions/get-colors";
 import getSizes from "@/actions/get-size";
 import NoResults from "@/components/ui/no-result";
-import MobileFilter from "./components/mobile-filter";
-import Filter from "./components/filter";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
-import BillboardCategory from "@/components/slider-item/billboard-category";
 import getProduct11 from "@/actions/product/get-product11";
-import ProductCard from "@/components/product/productcard-category/productcard";
 import { getCategories11 } from "@/actions/categories/get-categories";
-
+import dynamic from "next/dynamic";
+const ProductCard = dynamic(() => import('@/components/product/productcard-category/productcard'), {ssr: false,})
+const BillboardCategory = dynamic(() => import('@/components/slider-item/billboard-category'), {ssr: false,})
+const Filter = dynamic(() => import('./components/filter'), {ssr: false,})
+const MobileFilter = dynamic(() => import('./components/mobile-filter'), {ssr: false,})
 export const revalidate = 7200;
 interface CategoryPageProps {
   params: {

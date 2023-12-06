@@ -1,11 +1,20 @@
-import Footer from "@/components/footer/footer";
+import dynamic from 'next/dynamic'
 import "./globals.css";
 import type { Metadata } from "next";
-import Navbar from "@/components/navbar/navbar";
-import ScrollButton from "@/components/backtotop/backToTop";
-import ToastProvider from "@/providers/toast-provider";
 import { Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs'
+const ToastProvider = dynamic(() => import('@/providers/toast-provider'), {
+  ssr: false,
+})
+const Navbar = dynamic(() => import('@/components/navbar/navbar'), {
+  ssr: false,
+})
+const ScrollButton = dynamic(() => import('@/components/backtotop/backToTop'), {
+  ssr: false,
+})
+const Footer = dynamic(() => import('@/components/footer/footer'), {
+  ssr: false,
+})
 import { viVN } from "@clerk/localizations";
 import { Analytics } from '@vercel/analytics/react';
 const roboto = Nunito({ weight:"400" , subsets: ["latin"] });

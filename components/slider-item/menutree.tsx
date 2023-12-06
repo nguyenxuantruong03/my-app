@@ -205,7 +205,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-10 left-[195px] z-30 ">
+        <div className="relative bottom-10 md:left-[175px] lg:left-[195px] z-30 ">
           {isShown && (
             <div
               className="absolute 
@@ -252,7 +252,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[4.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[4.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown1 && (
             <div
               className="absolute 
@@ -299,7 +299,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[6.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[6.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown2 && (
             <div
               className="absolute 
@@ -346,7 +346,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[8.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[8.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown3 && (
             <div
               className="absolute 
@@ -393,7 +393,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[10.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[10.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown4 && (
             <div
               className="absolute 
@@ -440,7 +440,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[12.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[12.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown5 && (
             <div
               className="absolute 
@@ -487,7 +487,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[14.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[14.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown6 && (
             <div
               className="absolute 
@@ -534,7 +534,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[16.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[16.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown7 && (
             <div
               className="absolute 
@@ -581,7 +581,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[18.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[18.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown8 && (
             <div
               className="absolute 
@@ -628,7 +628,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[20.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[20.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown9 && (
             <div
               className="absolute 
@@ -675,7 +675,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[22.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[22.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown10 && (
             <div
               className="absolute 
@@ -722,7 +722,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[24.5rem] left-[195px] z-30 ">
+        <div className="relative bottom-[24.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown11 && (
             <div
               className="absolute 
