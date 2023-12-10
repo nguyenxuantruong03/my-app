@@ -195,7 +195,7 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
   };
 
   return (
-    <div className="h-[405px] rounded-md shadow-md hidden md:block">
+    <div className="rounded-md shadow-md hidden md:block">
       <div className=" md:w-[185px] lg:w-[205px] ">
       <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
         <div className={menutreecolor.flex_hover_bg}>

@@ -1,3 +1,4 @@
+"use client";
 import getColors from "@/actions/get-colors";
 import getSizes from "@/actions/get-size";
 import NoResults from "@/components/ui/no-result";
@@ -6,10 +7,20 @@ import getBillboard from "@/actions/billboard/get-billboard";
 import getProduct1 from "@/actions/product/get-product1";
 import { getCategories1 } from "@/actions/categories/get-categories";
 import dynamic from "next/dynamic";
-const ProductCard = dynamic(() => import('@/components/product/productcard-category/productcard'), {ssr: false,})
-const BillboardCategory = dynamic(() => import('@/components/slider-item/billboard-category'), {ssr: false,})
-const Filter = dynamic(() => import('./components/filter'), {ssr: false,})
-const MobileFilter = dynamic(() => import('./components/mobile-filter'), {ssr: false,})
+import { useEffect, useMemo, useState } from "react";
+import { Billboard, Color, Product1, Size } from "@/types";
+const ProductCard = dynamic(
+  () => import("@/components/product/productcard-category/productcard"),
+  { ssr: false }
+);
+const BillboardCategory = dynamic(
+  () => import("@/components/slider-item/billboard-category"),
+  { ssr: false }
+);
+const Filter = dynamic(() => import("./components/filter"), { ssr: false });
+const MobileFilter = dynamic(() => import("./components/mobile-filter"), {
+  ssr: false,
+});
 export const revalidate = 7200;
 interface CategoryPageProps {
   params: {
@@ -21,19 +32,68 @@ interface CategoryPageProps {
   };
 }
 
-const CategoryPage: React.FC<CategoryPageProps> = async ({
+const CategoryPage: React.FC<CategoryPageProps> = ({
   params,
   searchParams,
 }) => {
-  const billboard = await getBillboard("21ec25e6-d40a-4540-ad93-985feb86ffa4");
-  const product = await getProduct1({
-    categoryId: params.categoryId,
-    sizeId: searchParams.sizeId,
-    colorId: searchParams.colorId,
-  });
+  const [billboard, setBillboard] = useState<Billboard | null>(null);
+  const [product, setProduct] = useState<Product1[]>([]);
+  const [size, setSize] = useState<Size[]>([]);
+  const [color, setColor] = useState<Color[]>([]);
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const handleSortChange = (value: string) => {
+    setSortOrder(value);
+  };
 
-  const size = await getSizes();
-  const color = await getColors();
+  const sortedProduct = useMemo(() => {
+    let sortedArray = [...product];
+
+    switch (sortOrder) {
+      case "priceHighToLow":
+        sortedArray.sort((a, b) => b.price - a.price);
+        break;
+      case "priceLowToHigh":
+        sortedArray.sort((a, b) => a.price - b.price);
+        break;
+      case "nameAToZ":
+        sortedArray.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "nameZToA":
+        sortedArray.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      default:
+        // Default order (unsorted)
+        break;
+    }
+
+    return sortedArray;
+  }, [product, sortOrder]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const billboardData = await getBillboard(
+          "2f4334fd-71a6-47ce-a048-0b52c55308f0"
+        );
+        const productData = await getProduct1({
+          categoryId: params.categoryId,
+          sizeId: searchParams.sizeId,
+          colorId: searchParams.colorId,
+        });
+        const sizeData = await getSizes();
+        const colorData = await getColors();
+
+        setBillboard(billboardData);
+        setProduct(productData);
+        setSize(sizeData);
+        setColor(colorData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [params.categoryId, searchParams.sizeId, searchParams.colorId]);
   return (
     <div className="bg-white">
       <Container>
@@ -49,11 +109,24 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               <Filter valueKey="colorId" name="Colors" data={color} />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
-              {product.length === 0 && <NoResults />}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {product.map((item) => (
-                  <ProductCard key={item.id} data={item} route="product1"/>
-                ))}
+              {sortedProduct.length === 0 && <NoResults />}
+              <div className="">
+                <select
+                  value={sortOrder}
+                  onChange={(e) => handleSortChange(e.target.value)}
+                  className="mt-2 p-2 border border-gray-300 rounded-md mb-3"
+                >
+                  <option value="">Lựa chọn </option>
+                  <option value="priceHighToLow">Price High to Low</option>
+                  <option value="priceLowToHigh">Price Low to High</option>
+                  <option value="nameAToZ">Sort Names A-Z</option>
+                  <option value="nameZToA">Sort Names Z-A</option>
+                </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {sortedProduct.map((item) => (
+                    <ProductCard key={item.id} data={item} route="product1" />
+                  ))}
+                </div>
               </div>
             </div>
           </div>

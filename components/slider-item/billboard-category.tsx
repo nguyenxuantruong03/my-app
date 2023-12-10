@@ -10,10 +10,13 @@ import { Billboard } from '@/types';
 import Image from 'next/image';
 
 interface BillboardCategoryProps {
-  data: Billboard;
+  data: Billboard | null;
 }
 
 const BillboardCategory: React.FC<BillboardCategoryProps> = ({ data }) => {
+  if (!data) {
+    return null;
+  }
   return (
     <div className="w-[750px] h-[377px] rounded-md shadow-md relative">
       <Swiper
