@@ -1,5 +1,6 @@
 import { getPostsMeta } from "@/lib/posts"
 import ListItem from "./ListItem" 
+import HeadingEffect from "../uis-home/HeadingEffect";
 
 function shuffleArray<T>(array: T[]): T[] {
   const shuffledArray = [...array];
@@ -22,8 +23,8 @@ export default async function NewsPage() {
 
   return ( 
     <>
-    <section className="mt-6 max-w-7xl mx-auto hidden lg:block">
-    <h2 className="text-4xl font-bold "> Tin tức </h2>
+    <section className="mt-6 max-w-7xl mx-auto hidden lg:block pb-6">
+    <HeadingEffect heading="Cập nhật tin tức mới nhất"/>
     <ul className=" gap-5 grid grid-cols-5">
     {displayedPosts.map(post => (
         <ListItem key={post.id} post={post} />

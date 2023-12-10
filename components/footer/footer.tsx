@@ -9,9 +9,8 @@ import {footercolor,root} from "@/components/color/color"
 const Footer = () => {
   return (
     <>
-    <div className="border-t">
+    <div className={`border-t border-solid border-gray-500 pb-0.5 ${root.bgwhite}`}>
     <div className="max-w-7xl mx-auto">
-    <footer className={root.bgwhite}>
       <div className="md:grid md:grid-cols-4 md:mt-4">
       <div>
         <p className={footercolor.textml}>Hỗ trợ đổi hàng</p>
@@ -49,8 +48,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
-    </footer>
     </div>
 
     <div className={root.bgwhite}>

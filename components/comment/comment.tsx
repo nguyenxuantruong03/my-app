@@ -72,7 +72,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
 
     const timeDifference = Date.now() - parseInt(lastCommentTime, 10);
-    const minutesPassed = timeDifference / (1000 * 60); // Convert milliseconds to hours
+    const minutesPassed = timeDifference / (30000 * 60); // Convert milliseconds to hours
 
     return minutesPassed >= 1;
   };
@@ -90,17 +90,17 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
 
   const handleSubmit = async () => {
     if (rating === null) {
-      setRatingError("Please choose a star rating.");
+      setRatingError("Hãy lựa chọn sao.");
       return;
     }
 
     if (comment.trim() === "") {
-      setCommentError("Comment field is required.");
+      setCommentError("Hãy nhập nội dụng đánh giá.");
       return;
     }
 
     if (!canUserComment()) {
-      setCommentError("You can only comment once every 1 minute.");
+      setCommentError("Bạn có thể đánh giá lại trong 30 phút nữa.");
       return;
     }
 

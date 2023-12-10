@@ -1,5 +1,5 @@
 export const root={
-  bgwhite: "#fff"
+  bgwhite: "bg-white"
 }
 //// ----------comment ---------////
 export const commentcolor = {
@@ -52,7 +52,7 @@ export const mainnavcolor={
 }
 
 export const navbarcolor={
-  bg_height:"md:h-[50px] lg:h-[40px] bg-[#e9efff]",
+  bg_height:"md:h-[50px] lg:h-[40px] bg-[#e9efff] md:animate-fade-down md:animate-once md:animate-duration-[400ms] md:animate-delay-100 md:animate-ease-linear",
   bg:"bg-[#de0024]"
 }
 

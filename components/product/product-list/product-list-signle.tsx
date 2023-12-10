@@ -63,7 +63,7 @@ const ProductListSingle: React.FC<ProductListProps> = ({ data, route }) => {
                 </div>
 
                 {/* Description */}
-                <div className="ml-3">
+                <div className="ml-1 md:ml-3">
                   <p className="font-semibold text-sm md:text-base single-line-ellipsis">{product.heading}</p>
                   <p className="text-xs md:text-sm text-gray-500 single-line-ellipsis">{product.category.name}</p>
                 </div>

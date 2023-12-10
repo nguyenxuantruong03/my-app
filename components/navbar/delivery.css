@@ -376,7 +376,7 @@
 
 
 
-
+//-----------------------------mobile----------------------------
 .mainnav {
   box-sizing: border-box;
   background: #222327;
@@ -386,7 +386,7 @@
 .navigation {
   position: relative;
   width: 100%;
-  height: 70px;
+  height: 75px;
   background: #fff;
   display: flex;
   justify-content: center;
@@ -459,7 +459,7 @@
 .indicator::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: -22px;
   width: 20px;
   height: 20px;
@@ -470,7 +470,7 @@
 .indicator::after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 54%;
   right: -22px;
   width: 20px;
   height: 20px;
@@ -481,15 +481,18 @@
 
 /* Indicator Transitions */
 .navigation ul li:nth-child(1).active ~ .indicator {
-  transform: translateX(calc(70px * 0));
+  transform: translateX(calc(-5px * 1));
 }
 .navigation ul li:nth-child(2).active ~ .indicator {
-  transform: translateX(calc(80px * 1));
+  transform: translateX(calc(65px * 1));
 }
 .navigation ul li:nth-child(3).active ~ .indicator {
-  transform: translateX(calc(82px * 2));
+  transform: translateX(calc(67px * 2));
 }
 .navigation ul li:nth-child(4).active ~ .indicator {
-  transform: translateX(calc(82px * 3));
+  transform: translateX(calc(68px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(68px * 4));
 }
 

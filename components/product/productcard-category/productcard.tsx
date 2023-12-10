@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, route }) => {
           />
         </div>
         {/* Description */}
-        <div>
+        <div className="ml-1 md:ml-3">
           <p className="font-semibold text-base single-line-ellipsis">{data.heading}</p>
           <p className="text-sm text-gray-500 single-line-ellipsis">{data.category.name}</p>
         </div>

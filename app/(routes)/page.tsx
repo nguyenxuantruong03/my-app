@@ -1,36 +1,26 @@
-import getProduct1 from "@/actions/product/get-product1";
-import getProduct10 from "@/actions/product/get-product10";
-import getProduct2 from "@/actions/product/get-product2";
-import getProduct3 from "@/actions/product/get-product3";
-import getProduct7 from "@/actions/product/get-product7";
-import getProduct8 from "@/actions/product/get-product8";
-import dynamic from "next/dynamic";
-const MainProduct = dynamic(() => import('@/components/product/mainproduct'), {
-  ssr: false,
-})
-const SlideItem = dynamic(() => import('@/components/slider-item/slideitem'), {
-  ssr: false,
-})
-const Suggest = dynamic(() => import('@/components/suggest/Suggest'), {
-  ssr: false,
-})
-const NewsPage = dynamic(() => import('@/components/news/news'), {
-  ssr: false,
-})
-export const revalidate = 86400;
+import IntroductProduct from "@/components/home/introduct-product";
+import SellingProduct from "@/components/home/selling-product";
+import Service from "@/components/home/service";
+import Slider from "@/components/home/slider";
+import Story from "@/components/home/story";
+import OurProject from "@/components/home/our-project";
+import News from "@/components/home/news";
+import Sponsor from "@/components/home/sponsor";
+import BuyProduct from "@/components/home/buy-product";
+
 const HomePage = async () => {
-  const quat = await getProduct1({ isFeatured: true });
-  const daydien = await getProduct3({ isFeatured: true });
-  const ongnhua = await getProduct2({ isFeatured: true });
-  const bongden = await getProduct10({ isFeatured: true });
-  const ocam = await getProduct7({ isFeatured: true });
-  const son = await getProduct8({ isFeatured: true });
+ 
   return (
     <>
-      <SlideItem />
-      <MainProduct quat={quat} daydien={daydien} ongnhua={ongnhua} ocam={ocam} bongden={bongden} son={son} />
-      <Suggest />
-      <NewsPage />
+        <Slider />
+        <Story />
+        <Service />
+        <IntroductProduct />
+        <SellingProduct />
+        <OurProject />
+        <BuyProduct />
+        <News />
+        <Sponsor />
     </>
   );
 };

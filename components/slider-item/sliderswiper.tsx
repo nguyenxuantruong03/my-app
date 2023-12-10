@@ -30,7 +30,7 @@ const SliderSwiper: React.FC<SliderSwiperProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-full md:w-full lg:w-[750px] h-[405px] rounded-md shadow-md">
+    <div className="w-[90vw] md:w-[70vw] lg:w-[750px] h-[405px] rounded-md shadow-md">
       <Swiper
         spaceBetween={20}
         centeredSlides={true}

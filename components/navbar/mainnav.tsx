@@ -81,7 +81,7 @@ const MainNav = () => {
   }
   return (
     <>
-      <Link href="/" >
+      <Link href="/home-product" >
         <div className="hidden xl:block">
        <div className="bg-[#333]  p-1  rounded-lg">
        <svg width="120" height="35" viewBox="0 0 512 52" xmlns="http://www.w3.org/2000/svg">

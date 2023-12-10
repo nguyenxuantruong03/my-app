@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { ArrowUpCircle } from 'lucide-react';
+import './backtotop.scss'
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
 
@@ -28,12 +28,13 @@ const ScrollButton = () => {
   }, []); // Add an empty array as the second argument to run this effect only once
 
   return (
-    <div className='fixed left-[65%] md:left-[80%] lg:left-[90%] bottom-[80px] md:bottom-[40px] font-2xl z-10 cursor-pointer'>
-      <ArrowUpCircle
-        onClick={scrollToTop}
-        style={{ display: visible ? 'inline' : 'none' }}
-        className='w-[200px] h-12'
-      />
+    <div className='fixed right-1 xl:left-[90%] bottom-[80px] md:bottom-[40px] font-2xl z-10 cursor-pointer'>
+      <div 
+      className="scroll"
+      onClick={scrollToTop}
+      style={{ display: visible ? 'block' : 'none' }}
+      ></div>
+     
     </div>
   );
 };
