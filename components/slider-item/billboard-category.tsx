@@ -49,12 +49,6 @@ const BillboardCategory: React.FC<BillboardCategoryProps> = ({ data }) => {
           <SwiperButtons />
         </div>
       </Swiper>
-      
-      <div className="absolute bottom-[10rem] right-[350px] z-50 text-6xl font-bold hidden md:block text-white text-opacity-50">
-        <div>
-          <p>{data.label}</p>
-        </div>
-      </div>
     </div>
   );
 };
