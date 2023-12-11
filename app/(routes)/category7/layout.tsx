@@ -1,43 +1,23 @@
 import { Nunito } from 'next/font/google';
-import type { GetStaticProps, NextPage } from "next";
-import { ReactNode } from "react";
-import { getCategories7 } from '@/actions/categories/get-categories';
-
-const roboto = Nunito({ weight: "400", subsets: ["latin"] });
-
-interface PageProps {
-  title: string;
-  children?: ReactNode;
-}
-
-const RootLayout: NextPage<PageProps> = ({ title, children }) => (
-  <html lang="en">
-    <head>
-      <title>{title}</title>
-    </head>
-    <body className={roboto.className}>
-      {children}
-    </body>
-  </html>
-);
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const categories = await getCategories7();
-  const category = categories.find((category) => category.name);
-
-  if (!category) {
-    return {
-      props: {
-        title: "Ổ cắm, mặt ổ cắm Not Found",
-      },
-    };
-  }
-
-  return {
-    props: {
-      title: "Ổ cắm, mặt ổ cắm",
-    },
-  };
+import type { Metadata } from "next";
+export const metadata: Metadata & { image: string } = {
+  title: "Ổ cắm, mặt ổ cắm", 
+  description: "Vật liệu xây dựng Xuân Trường",
+  image: '/images/Home.png',
 };
 
-export default RootLayout;
+const roboto = Nunito({ weight:"400" , subsets: ["latin"] });
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={roboto.className}>
+        {children}
+      </body>
+    </html>
+  );
+}
