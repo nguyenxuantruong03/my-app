@@ -2,13 +2,13 @@
 import getColors from "@/actions/get-colors";
 import getProduct8 from "@/actions/product/get-product8";
 import getSizes from "@/actions/get-size";
-import NoResults from "@/components/ui/no-result";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import { getCategories8 } from "@/actions/categories/get-categories";
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import { Billboard, Color, Product8, Size } from "@/types";
+import LoadingPageComponent from "@/components/ui/loading";
 const ProductCard = dynamic(() => import('@/components/product/productcard-category/productcard'), {ssr: false,})
 const BillboardCategory = dynamic(() => import('@/components/slider-item/billboard-category'), {ssr: false,})
 const Filter = dynamic(() => import('./components/filter'), {ssr: false,})
@@ -100,7 +100,6 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
               <Filter valueKey="colorId" name="Colors" data={color} />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
-              {sortedProduct.length === 0 && <NoResults />}
               <div className="">
                 <select
                   value={sortOrder}
@@ -113,6 +112,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
                   <option value="nameAToZ">Sort Names A-Z</option>
                   <option value="nameZToA">Sort Names Z-A</option>
                 </select>
+                {sortedProduct.length === 0 && <LoadingPageComponent />}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {sortedProduct.map((item) => (
                     <ProductCard key={item.id} data={item} route="product8" />
@@ -128,24 +128,3 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
 };
 
 export default CategoryPage;
-
-
-type Props={
-  params:{
-    categoryId: string
-  }
-}
-export async function generateMetadata() {
-  const categories = await getCategories8();
-  const category = categories.find((category) => category.name );
-
-  if (!category) {
-    return {
-      title: "Category Not Found",
-    };
-  }
-
-  return {
-    title: "Sơn"
-  };
-}
