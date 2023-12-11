@@ -4,7 +4,7 @@ import {relatedTagTivicolor} from "@/components/color/color"
 const RelatedTagTivi = () => {
     return ( 
         <div className=" my-2 relative">
-            <div className="absolute hidden md:flex bottom-4 md:left-[26rem] lg:left-[58.1rem] space-x-4 ">
+            <div className="absolute hidden md:flex bottom-4 md:left-[26rem] xl:left-[58.1rem] space-x-4 ">
          <div className={relatedTagTivicolor.bg_opacity_border}>
             <Link  href="https://vlxdxuantruong.vercel.app/ocam/mat-3-lo-cam-sino">
             Mặt 3 lỗ

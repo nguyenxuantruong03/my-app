@@ -39,7 +39,7 @@ const SlideItem = async () => {
   return (
     <>
       <div className=" mx-auto max-w-7xl h-[377px] my-2 mt-[120px] ">
-        <div className="flex space-x-5 md:m-5 lg:m-0">
+        <div className="flex space-x-5 md:m-5 xl:m-0">
           <MenuTree
             data={categories}
             categories1={categories1}
@@ -59,16 +59,16 @@ const SlideItem = async () => {
           </div>
           <SliderSwipper data={billboard} />
 
-          <div className="w-full space-y-4 h-[115px] hidden lg:block">
+          <div className="w-full space-y-4 h-[115px] hidden xl:block">
             <ImageMini data={billboardmini} />
           </div>
         </div>
       </div>
 
-      <div className=" mx-auto md:max-w-3xl lg:max-w-7xl my-2 hidden lg:block">
+      <div className=" mx-auto md:max-w-3xl xl:max-w-7xl my-2 hidden xl:block">
         <ImageSale data={billboardsale} />
       </div>
-      <div className=" mx-auto md:max-w-3xl lg:max-w-7xl my-2 hidden md:block lg:hidden">
+      <div className=" mx-auto md:max-w-3xl xl:max-w-7xl my-2 hidden md:block xl:hidden">
         <ImageSale data={billboardsaleipad} />
       </div>
       <div className=" mx-auto mb-2 mt-10 md:hidden">

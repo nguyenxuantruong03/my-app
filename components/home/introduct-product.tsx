@@ -19,7 +19,7 @@ const IntroductProduct = () => {
         <div className="mb-2 relative md:pl-12 md:pb-[410px] xl:w-[48%] xl:pl-8">
           <div className="background-infoproduct" />
           <div className=" w-full h-[320px] shadow-xl top-[120px] z-8 bg-white rounded-md md:w-[600px] md:absolute xl:w-[700px] 2xl:w-[900px] xl:h-[440px]">
-            <div className='text-lg px-3 py-10  font-bold text-gray-500 text-opacity-80 md:mt-16 md:text-2xl md:px-10 xl:px-40'> 
+            <div className='text-lg px-3 py-10  font-bold text-gray-500 text-opacity-80 xl:mt-16 md:text-2xl md:px-10 xl:px-40'> 
             Chúng tôi không chỉ chú trọng vào việc thiết kế sản phẩm mà còn đặt sự tập trung lớn vào việc phát triển Hình thức và Chức năng. Giá trị cốt lõi của chúng tôi không chỉ là nguồn động lực cho sự sáng tạo mà còn là động lực để thúc đẩy sự tiến bộ.  
             </div> 
             <div className="flex px-3 items-center md:px-10 xl:px-40">

@@ -4,7 +4,7 @@ import {computerComponentSmallcolor} from "@/components/color/color"
 
 const computerComponentSmall = () => {
     return (  
-        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 lg:gap-0 lg:overflow-hidden">
+        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 xl:gap-0 xl:overflow-hidden">
         <div className={computerComponentSmallcolor.bg_height_width_rounded}>
         <Link href="https://vlxdxuantruong.vercel.app/category2/e9762cb1-1077-43ef-97e9-44d0d20dec83">
         <span className="text-white font-bold p-2">Ống lưới </span>

@@ -16,8 +16,8 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
         seedetailspecification.onOpen()
     }
     return ( 
-        <div className="md:max-w-3xl lg:max-w-2xl">
-        <div className="md:grid  md:grid-cols-2 md:ml-8 md:mb-5 lg:grid  lg:grid-cols-2 lg:item-start lg:gap-x-8  mb-5">
+        <div className="mx-auto xl:max-w-2xl">
+        <div className="md:grid  md:grid-cols-2 md:ml-8 md:mb-5 xl:grid  xl:grid-cols-2 xl:item-start xl:gap-x-8  mb-5">
          <div className="w-[300px] h-[200px] shadow-lg rounded-md p-4 m-auto md:m-0">
              <h1 className="font-bold text-base text-[#666666]">Thông tin sản phẩm</h1>
             <div className="flex my-1 text-[#666666]">
@@ -66,8 +66,8 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
              </div>
              </div>
          </div>
-         <div className="grid md:grid-cols-2 md:ml-8 md:mb-5 lg:mx-0"> 
-                <div className="w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg m-auto md:m-0">
+         <div className="grid md:grid-cols-2 md:ml-8 md:mb-5 xl:mx-0"> 
+                <div className="w-[340px] md:w-[345px] xl:w-[300px] p-2 rounded-md shadow-lg m-auto md:m-0">
                     <h1 className="font-bold"> Thông số kỹ thuật </h1>
                     <div className="flex justify-between bg-gray-500 bg-opacity-10 p-4 rounded-md">
                             {data.descriptionspecifications}
@@ -90,7 +90,7 @@ const InfoPromotion:React.FC<InfoPromotionprops> = ({data}) => {
                             <p>{data.value5specifications}</p>
                     </div>
                 </div>
-                <div className=" w-[340px] md:w-[345px] lg:w-[300px] p-2 rounded-md shadow-lg m-auto md:m-0 mt-2 md:mt-0">
+                <div className=" w-[340px] md:w-[345px] xl:w-[300px] p-2 rounded-md shadow-lg m-auto md:m-0 mt-2 md:mt-0">
                 <h1 className="font-bold"> Thông số kỹ thuật </h1>
                     <div className="flex justify-between bg-gray-500 bg-opacity-10 p-4 rounded-md">
                             {data.description6specifications}

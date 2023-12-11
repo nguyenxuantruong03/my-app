@@ -97,7 +97,7 @@ const MainNav = () => {
         </div>
       </Link>
 
-      <div onClick={toggleOpen} className="hidden xl:block">
+      <div onClick={toggleOpen} className="hidden lg:block">
         <div className={mainnavcolor.bg_list}>
           <div className="flex items-center justify-center text-white ">
             <div className="px-1 py-1">
@@ -174,7 +174,7 @@ const MainNav = () => {
         </div>
       </Link>
 
-      <Link href="tel:0948468558" className="hidden lg:block">
+      <Link href="tel:0948468558" className="hidden xl:block">
           <div className={mainnavcolor.bghover} >
             <div className="flex flex-col md:flex-row justify-center  items-center ">
             <div className="basis-1/2 md:flex gap-2">

@@ -60,13 +60,13 @@ const MainProduct: React.FC<ProductMainListProps> = ({
         <div className="flex item-center justify-between">
           <h1 className="content text-[16px] md:text-[30px] ml-2">Nổi bật</h1>
           <div>
-              <div className="content text-[16px] md:text-[30px]">
+              <div className="content text-[16px] md:text-[30px] hidden xl:block">
                 <div className="content__container h-[29px] md:h-[51px] md:px-11">
                   <p className="content__container__text">
                     Sản phẩm bán chạy nhất
                   </p>
 
-                  <ul className="content__container__list -mt-[10] pl-[8.8rem] md:pl-[18.5rem] hidden lg:block text-[16px] md:text-[30px] md:mt-0">
+                  <ul className="content__container__list -mt-[10] pl-[8.8rem] md:pl-[18.5rem] text-[16px] md:text-[30px] md:mt-0">
                     <li className="m-0 leading-[24px] md:leading-[46px]">Ống nhựa, Ống lưới xanh</li>
                     <li className="m-0 leading-[24px] md:leading-[46px]">Quạt</li>
                     <li className="m-0 leading-[24px] md:leading-[46px]">Sơn</li>
@@ -75,7 +75,7 @@ const MainProduct: React.FC<ProductMainListProps> = ({
                 </div>
             </div>
           </div>
-          <div className="relative hidden lg:block">
+          <div className="relative hidden xl:block">
           <div className="absolute left-[-368px] bottom-[-72px]">
           <div className="scene">
   <div className="forest">

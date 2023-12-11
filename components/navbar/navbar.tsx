@@ -53,8 +53,8 @@ const Navbar = () => {
         </div>
       )}
         <div className={navbarcolor.bg}>
-          <div className="max-w-[640px] lg:mx-auto md:max-w-3xl  lg:max-w-7xl ">
-            <div className="relative flex h-16 items-center lg:justify-between">
+          <div className="xl:mx-auto xl:max-w-7xl ">
+            <div className="relative flex h-16 items-center justify-between px-5">
               <Mainnav />
             </div>
           </div>

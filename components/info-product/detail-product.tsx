@@ -1,22 +1,44 @@
 import Image from "next/image";
 import NewsPageProduct from "@/components/news/news-product";
-import { Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9} from "@/types";
+import {
+  Product,
+  Product1,
+  Product10,
+  Product11,
+  Product2,
+  Product3,
+  Product4,
+  Product5,
+  Product6,
+  Product7,
+  Product8,
+  Product9,
+} from "@/types";
 import NewsPage from "../news/news";
 
-
-
-
 interface DetailProductProps {
-  data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 ;
+  data:
+    | Product
+    | Product1
+    | Product2
+    | Product3
+    | Product4
+    | Product5
+    | Product6
+    | Product7
+    | Product8
+    | Product9
+    | Product10
+    | Product11;
 }
 
 const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
-  const images = ( data.imagesalientfeatures);
+  const images = data.imagesalientfeatures;
 
   return (
     <>
       <div className="space-x-5 relative my-2 ">
-        <div className="w-[1000px] shadow-inner pt-5 px-5 rounded-lg mx-auto md:mx-0 max-w-[360px] md:max-w-3xl lg:max-w-7xl">
+        <div className="w-[1000px] shadow-inner pt-5 px-5 rounded-lg mx-auto md:mx-0 max-w-[360px] md:max-w-3xl xl:max-w-7xl">
           <div className="p-2 bg-slate-400 bg-opacity-10 rounded-lg">
             <h1 className="text-center text-lg font-bold text-red-500">
               Đặc điểm nổi bật
@@ -28,9 +50,7 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
             Sản phẩm {data.name} có gì mới ?
           </span>
           <div className="pl-2 my-1">
-            <p>
-              {data.description3salientfeatures}
-            </p>
+            <p>{data.description3salientfeatures}</p>
           </div>
           <p className="text-sm font-bold my-2">
             {data.description4salientfeatures}
@@ -52,8 +72,11 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
           <h1 className="text-center text-lg font-bold text-gray-700">
             Tin tức
           </h1>
-          <div className="h-[1300px] overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
-  <style>{`
+          <div
+            className="h-[1300px] overflow-y-auto"
+            style={{ scrollbarWidth: "thin" }}
+          >
+            <style>{`
     .overflow-y-auto::-webkit-scrollbar {
       width: 6px;
     }
@@ -61,13 +84,11 @@ const DetailProduct: React.FC<DetailProductProps> = ({ data }) => {
       background-color: transparent; 
     }
   `}</style>
-  <NewsPageProduct />
-</div>
-
+            <NewsPageProduct />
+          </div>
         </div>
         <div className="md:block lg:hidden">
-      <NewsPage />
-
+          <NewsPage />
         </div>
       </div>
     </>

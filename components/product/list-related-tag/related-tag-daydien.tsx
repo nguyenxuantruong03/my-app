@@ -4,7 +4,7 @@ import {relatedTagWatchcolor} from "@/components/color/color"
 const RelatedTagWatch= () => {
     return ( 
         <div className=" my-2 relative">
-            <div className="absolute hidden md:flex bottom-4 md:left-[16rem] lg:left-[48.2rem] space-x-4 ">
+            <div className="absolute hidden md:flex bottom-4 md:left-[16rem] xl:left-[48.2rem] space-x-4 ">
          <div className={relatedTagWatchcolor.bg_opacity_border}>
             <Link  href="https://vlxdxuantruong.vercel.app/daydien/daydiendaphaco1.5">
             Daphaco 1.5

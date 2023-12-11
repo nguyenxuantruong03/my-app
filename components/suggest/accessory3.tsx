@@ -4,7 +4,7 @@ import {secondhandcolor} from "@/components/color/color"
 
 const Secondhand = () => {
     return ( 
-        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 lg:gap-0 lg:overflow-hidden">
+        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 xl:gap-0 xl:overflow-hidden">
         <div className={secondhandcolor.bg_h_w_rounded}>
         <Link href="https://vlxdxuantruong.vercel.app/category2/d63dbaaf-03e8-4671-b261-5e8cd8bd493d">
         <span className="text-white font-bold p-2"> Tê </span>

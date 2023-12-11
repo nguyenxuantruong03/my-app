@@ -4,7 +4,7 @@ import {relatedTagLaptopcolor} from "@/components/color/color"
 const RelatedTagLaptop = () => {
     return ( 
         <div className=" my-2 relative">
-            <div className="absolute hidden md:flex bottom-4 md:left-[12.3rem] lg:left-[37.4rem] space-x-4 ">
+            <div className="absolute hidden md:flex bottom-4 md:left-[12.3rem] xl:left-[37.4rem] space-x-4 ">
          <div className={relatedTagLaptopcolor.bg_opacity_border}>
             <Link  href="https://vlxdxuantruong.vercel.app/bongden/dienquang40w">
             Điện quang Bulb 40W

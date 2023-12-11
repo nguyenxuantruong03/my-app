@@ -110,7 +110,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
       </div>
         </div>
 
-      <div className="mt-5 flex gap-x-4">
+      <div className="mt-5 flex items-center gap-x-4">
         <h3 className="font-semibold"> Tổng giá: </h3>
         <p className="text-lg text-gray-900">
           <Currency
@@ -165,7 +165,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                   <h1 className="ml-1 text-sm ">Nếu sản phẩm có lỗi hoặc hư bảo hành 1 năm tùy món hàng.</h1>
                 </div>
             </div>
-            <div className="w-full h-[125px] md:h-[205px] mt-4 rounded-md overflow-hidden"> 
+            <div className="md:flex md:justify-center xl:block w-full h-[125px] md:h-[205px] mt-4 rounded-md overflow-hidden"> 
               <Image 
                 alt="Error"
                 src="/images/baohanh.png"

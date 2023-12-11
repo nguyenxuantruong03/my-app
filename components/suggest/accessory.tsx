@@ -4,7 +4,7 @@ import {accessorycolor} from "@/components/color/color"
 
 const Accessory = () => {
     return ( 
-        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 lg:gap-0 lg:overflow-hidden">
+        <div className="grid grid-cols-10  my-4 mx-2 overflow-x-auto gap-x-32 xl:gap-0 xl:overflow-hidden">
         <div className={accessorycolor.bg_height_width_rounded}>
         <Link href="https://vlxdxuantruong.vercel.app/category11/54a3fbce-a305-4857-ae0a-d0e68b3963d6">
         <span className="text-white font-bold p-2"> Ốc vít </span>

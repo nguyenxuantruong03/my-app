@@ -4,7 +4,7 @@ import {relatedTagHeadphonecolor} from "@/components/color/color"
 const RelatedTagHeadphone = () => {
     return ( 
         <div className=" my-2 relative">
-            <div className="absolute hidden md:flex bottom-4  md:left-[23.3rem] lg:left-[49.4rem] space-x-4 ">
+            <div className="absolute hidden md:flex bottom-4  md:left-[23.3rem] xl:left-[49.4rem] space-x-4 ">
         <div className={relatedTagHeadphonecolor.bg_opacity_border}>
             <Link  href="https://vlxdxuantruong.vercel.app/ongnhua/ong27binhminh">
             Ống 27

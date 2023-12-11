@@ -41,20 +41,20 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
   return (
     <div className="bg-white">
       <Container>
-        <div className="px-4 py-8 sm:px-6 lg:px-8 mt-20">
-          <div className="lg:grid lg:grid-cols-2 lg:item-start lg:gap-x-8 mt-5">
+        <div className="px-4 py-8 sm:px-6 xl:px-8 mt-20">
+          <div className="xl:grid xl:grid-cols-2 xl:item-start xl:gap-x-8 mt-5">
             <Gallery images={product.images} />
-            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+            <div className="mt-10 px-4 sm:mt-16 sm:px-0 xl:mt-0">
               <InfoProduct data={product} />
             </div>
           </div>
         </div>
         {/* Infomation khuyen mai va bao hanh */}
-        <div className="md:max-w-3xl lg:max-w-7xl grid lg:grid-cols-2 relative">
+        <div className="xl:max-w-7xl grid xl:grid-cols-2 relative">
           <InfoPromotion data={product} />
           <div className="h-[580px] md:h-[460px] w-full shadow-lg mb-5 rounded-md overflow-hidden ">
             <InfoWarranty data={product} />
-            <div className="w-[19.5rem] h-28 shadow-lg absolute top-[30.5rem]  rounded-xl hidden lg:block">
+            <div className="w-[19.5rem] h-28 shadow-lg absolute top-[30.5rem]  rounded-xl hidden xl:block">
               <Image
                 src={billboardmini?.imagebillboardmini?.[3].url}
                 fill
@@ -62,7 +62,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
                 className="aspect-square object-cover rounded-md"
               />
             </div>
-            <div className="  rounded-xl w-[19.5rem] h-28 shadow-lg absolute top-[30.5rem] right-0 hidden lg:block">
+            <div className="rounded-xl w-[19.5rem] h-28 shadow-lg absolute top-[30.5rem] right-0 hidden xl:block">
               <Image
                 src={billboardmini?.imagebillboardmini?.[4].url}
                 fill
