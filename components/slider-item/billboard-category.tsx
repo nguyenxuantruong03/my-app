@@ -18,7 +18,7 @@ const BillboardCategory: React.FC<BillboardCategoryProps> = ({ data }) => {
     return null;
   }
   return (
-    <div className="w-full h-[377px] rounded-md shadow-md relative">
+    <div className="w-full md:w-[750px] h-[377px] rounded-md shadow-md relative">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
