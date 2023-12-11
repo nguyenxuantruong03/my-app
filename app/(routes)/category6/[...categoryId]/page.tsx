@@ -88,7 +88,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
   return (
     <div className="bg-white">
       <Container>
-        <div className="mt-28 flex items-center justify-center">
+        <div className="mt-28 flex items-center justify-center px-2.5">
           <BillboardCategory data={billboard} />
         </div>
         <div className="px-4 sm:px-6 lg:px-8 pb-24 my-5">
