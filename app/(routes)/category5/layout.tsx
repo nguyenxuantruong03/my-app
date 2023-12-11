@@ -1,45 +1,43 @@
-import { getCategories5 } from "@/actions/categories/get-categories";
 import { Nunito } from 'next/font/google';
-import type { Metadata } from "next";
+import type { GetStaticProps, NextPage } from "next";
+import { ReactNode } from "react";
+import { getCategories5 } from '@/actions/categories/get-categories';
 
-export async function generateMetadata() {
+const roboto = Nunito({ weight: "400", subsets: ["latin"] });
+
+interface PageProps {
+  title: string;
+  children?: ReactNode;
+}
+
+const RootLayout: NextPage<PageProps> = ({ title, children }) => (
+  <html lang="en">
+    <head>
+      <title>{title}</title>
+    </head>
+    <body className={roboto.className}>
+      {children}
+    </body>
+  </html>
+);
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const categories = await getCategories5();
   const category = categories.find((category) => category.name);
 
   if (!category) {
     return {
-      title: "Ổ khóa Not Found",
+      props: {
+        title: "Ổ khóa Not Found",
+      },
     };
   }
-  return {
-    title: "Ổ khóa",
-  };
-}
 
-export const metadata: Metadata & { image: string } = {
-  title: "Loading...", 
-  description: "Vật liệu xây dựng Xuân Trường",
-  image: '/images/Home.png',
+  return {
+    props: {
+      title: "Ổ khóa",
+    },
+  };
 };
 
-generateMetadata().then((result) => {
-  metadata.title = result.title;
-});
-const roboto = Nunito({ weight:"400" , subsets: ["latin"] });
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <head>
-      <title>{metadata.title as React.ReactNode}</title>
-      </head>
-      <body className={roboto.className}>
-        {children}
-      </body>
-    </html>
-  );
-}
+export default RootLayout;
