@@ -64,7 +64,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
     const fetchData = async () => {
       try {
         const billboardData = await getBillboard(
-          "2f4334fd-71a6-47ce-a048-0b52c55308f0"
+          "5031604f-3245-461a-8670-0b64b5af8aed"
         );
         const productData = await getProduct4({
           categoryId: params.categoryId,
