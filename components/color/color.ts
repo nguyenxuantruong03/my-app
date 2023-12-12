@@ -89,7 +89,7 @@ export const relatedTagWatchcolor ={
 //// ----------slider-item ---------////
 export const menutreecolor ={
   texthover:"hover:text-red-500",
-  flex_hover_bg:"flex relative cursor-pointer rounded-sm px-2 py-1 hover:bg-slate-200"
+  flex_hover_bg:"flex relative cursor-pointer rounded-sm px-2 hover:bg-slate-200 pt-1.5 pb-1"
 }
 
 //// ----------suggest ---------////

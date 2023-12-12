@@ -6,6 +6,8 @@ import Image from "next/image";
 import {commentcolor} from "@/components/color/color"
 import { useUser } from "@clerk/nextjs";
 import { Star } from 'lucide-react';
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface Comment {
   rating: number;
@@ -14,6 +16,7 @@ interface Comment {
   createdAt: string;
   nameproduct: string;
   imageUrl: string
+  id?: string
 }
 interface CommentProps {
   data: string;
@@ -32,6 +35,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
   const [collapsedComments, setCollapsedComments] = useState<boolean>(false);
   const stars = Array(5).fill(0);
   const stars1 = Array(1).fill(0);
+  const router = useRouter()
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -57,9 +61,79 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
 
      fetchComments();
   }, []);
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 
+  const handleEditClick = (commentId: string | undefined) => {
+    setEditingCommentId(commentId || null);
+    const commentToEdit = savedComments.find((comment) => comment.id === commentId);
+    if (commentToEdit) {
+      setRating(commentToEdit.rating);
+      setComment(commentToEdit.comment);
+      setCurrentValue(commentToEdit.rating);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingCommentId(null);
+    setRating(null);
+    setComment("");
+    setCurrentValue(null);
+    setCommentError("");
+    setRatingError("");
+  };
+
+  const handleUpdate = async () => {
+    // Add your validation logic here if needed
+    try {
+      const updatedComment = {
+        id: editingCommentId,
+        rating: rating as number,
+        comment,
+      };
+
+      const response = await axios.patch(`/api/comments/`, updatedComment);
+      const updatedCommentData: Comment = response.data;
+
+      // Update the comment in the state
+      const updatedComments: Comment[] = savedComments.map((comment) =>
+        comment.id === updatedCommentData.id ? updatedCommentData : comment
+      );
+
+      setSavedComments(updatedComments);
+      setEditingCommentId(null);
+      setRating(null);
+      setCurrentValue(null);
+      setComment("");
+      setCommentError("");
+      setRatingError("");
+      router.refresh()
+      toast.success("Bình luận đã được cập nhật.");
+    } catch (error) {
+      console.error("Error updating comment:", error);
+      toast.error("Xin vui lòng thử lại!");
+    }
+  };
+
+  const handleDeleteComment = async (commentId: string | undefined) => {
+    try {
+      const response = await axios.delete(`/api/comments/`, {
+        data: { id: commentId },
+      });
+      const updatedComments: Comment[] = response.data;
+      if (Array.isArray(updatedComments)) {
+        setSavedComments(updatedComments);
+        router.refresh()
+        toast.success("Bình luận đã xóa thành công.")
+      } else {
+        toast.error("Xin vui lòng thử lại!")
+        console.error("Invalid response format after comment deletion:", response.data);
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
+  };
+  
   const { user } = useUser();
-
 
   const handleTimestampUpdate = () => {
     localStorage.setItem("lastCommentTime", Date.now().toString());
@@ -108,14 +182,13 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     
     
     try {
-      
       const newComment = {
         rating: rating as number,
         comment,
         imageUrl: user?.imageUrl || "/images/default_avatar.png",
         commenter:user?.username || "Vô danh" , 
         createdAt: new Date().toISOString(),
-        nameproduct: data ||"123"
+        nameproduct: data ||"Sản phẩm"
       };
       const response = await axios.post("/api/comments/", newComment);
       const savedComment: Comment = response.data;
@@ -469,19 +542,50 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           />
         </div>
 
-        <button
-          onClick={handleSubmit}
-          className={`text-white px-4 py-2 rounded `}
-          style={{ backgroundImage: commentcolor.gradient }}
-          onMouseOver={(event) => {
-            event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
-          }}
-          onMouseLeave={(event) => {
-            event.currentTarget.style.backgroundImage = commentcolor.gradient;
-          }}
-        >
-          Đánh giá
-        </button>
+        {editingCommentId ? (
+          <div className="flex space-x-4">
+            <button
+              onClick={handleUpdate}
+              className={`text-white px-4 py-2 rounded `}
+              style={{ backgroundImage: commentcolor.gradient }}
+              onMouseOver={(event) => {
+                event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
+              }}
+              onMouseLeave={(event) => {
+                event.currentTarget.style.backgroundImage = commentcolor.gradient;
+              }}
+            >
+              Cập nhật
+            </button>
+            <button
+              onClick={handleCancelEdit}
+              className={`text-white px-4 py-2 rounded `}
+              style={{ backgroundImage: commentcolor.gradient }}
+              onMouseOver={(event) => {
+                event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
+              }}
+              onMouseLeave={(event) => {
+                event.currentTarget.style.backgroundImage = commentcolor.gradient;
+              }}
+            >
+              Hủy
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={handleSubmit}
+            className={`text-white px-4 py-2 rounded `}
+            style={{ backgroundImage: commentcolor.gradient }}
+            onMouseOver={(event) => {
+              event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
+            }}
+            onMouseLeave={(event) => {
+              event.currentTarget.style.backgroundImage = commentcolor.gradient;
+            }}
+          >
+            Đánh giá
+          </button>
+        )}
 
         {Object.entries(commentsByRating)
           .sort(([ratingA], [ratingB]) => parseInt(ratingB) - parseInt(ratingA))
@@ -506,7 +610,23 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                             <p className="ml-3 font-bold flex">
                               {comment.commenter} <p className="text-sm text-gray-400 flex items-center font-normal ">-{comment.nameproduct}</p>
                             </p>
+                            {user && user.username === comment.commenter && (
+                              <>
+                                <button
+                                  onClick={() => handleDeleteComment(comment.id)}
+                                  className="text-red-500 ml-2"
+                                >
+                                  Delete
+                                </button>
+                                <button
+                                  onClick={() => handleEditClick(comment.id)}
+                                  className="text-red-500 ml-2"
+                                >
+                                  Update
+                                </button>
                               
+                              </>
+                              )}
                             <p className=" absolute right-0 text-sm font-bold text-gray-800 text-opacity-60">
                               {formatTimestamp(comment.createdAt)}
                             </p>

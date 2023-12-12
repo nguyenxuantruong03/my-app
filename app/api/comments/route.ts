@@ -40,28 +40,67 @@ export async function DELETE(
       return new NextResponse("Unauthenticated", { status: 403 });
     }
 
-    const storeByUserId = await prisma.comment.findFirst({
+    const commentById = await prisma.comment.findFirst({
       where: {
         authenticationId: userId
       }
     });
 
-    if (!storeByUserId) {
+    if (!commentById) {
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const billboard = await prisma.comment.delete({
+    const comment = await prisma.comment.delete({
       where: {
         id: id
       }
     });
   
-    return NextResponse.json(billboard);
+    return NextResponse.json(comment);
   } catch (error) {
-    console.log('[BILLBOARD_DELETE]', error);
+    console.log('[COMMENT_DELETE]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
+
+export async function PATCH(req: Request) {
+  try {
+    const { userId } = auth();
+    const body = await req.json();
+    const { id, rating, comment } = body;
+
+    if (!userId) {
+      return new NextResponse("Unauthenticated", { status: 403 });
+    }
+
+    const existingComment = await prisma.comment.findFirst({
+      where: {
+        id: id,
+        authenticationId: userId,
+      },
+    });
+
+    if (!existingComment) {
+      return new NextResponse("Comment not found or unauthorized", { status: 403 });
+    }
+
+    const updatedComment = await prisma.comment.update({
+      where: {
+        id: id,
+      },
+      data: {
+        rating: rating ?? existingComment.rating,
+        comment: comment ?? existingComment.comment,
+      },
+    });
+
+    return NextResponse.json(updatedComment);
+  } catch (error) {
+    console.error('[COMMENT_PATCH]', error);
+    return new NextResponse("Internal error", { status: 500 });
+  }
+}
+
 
 export async function GET(req: Request) {
   try {
