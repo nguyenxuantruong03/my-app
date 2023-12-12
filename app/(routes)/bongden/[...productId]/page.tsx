@@ -82,7 +82,7 @@ const ProductPage: React.FC<PropductPageProps> = async ({ params }) => {
         <ProductListSingleSuggest data={suggestedProducts11} route="product11" />
         <hr className="my-8" />
         <DetailProduct data={product} />
-        <Comment data={product.name}/>
+        <Comment data={product.heading}/>
       </Container>
       <ModalProvider data={product} />
     </div>

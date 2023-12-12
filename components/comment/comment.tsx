@@ -107,7 +107,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       setCommentError("");
       setRatingError("");
       router.refresh()
-      toast.success("Bình luận đã được cập nhật.");
+      toast.success("Bình luận đã được cập nhật. Nếu chưa thấy có thể tải lại trang.");
     } catch (error) {
       console.error("Error updating comment:", error);
       toast.error("Xin vui lòng thử lại!");
@@ -123,13 +123,15 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       if (Array.isArray(updatedComments)) {
         setSavedComments(updatedComments);
         router.refresh()
-        toast.success("Bình luận đã xóa thành công.")
+        toast.success("Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang.")
       } else {
-        toast.error("Xin vui lòng thử lại!")
+        router.refresh()
+        toast.success("Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang.")
         console.error("Invalid response format after comment deletion:", response.data);
       }
     } catch (error) {
       console.error("Error deleting comment:", error);
+      toast.error("Xin vui lòng thử lại!");
     }
   };
   
@@ -341,7 +343,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
   return (
     <Container>
       <div className="p-4 shadow-lg my-6 rounded-md">
-        <h2 className="text-xl font-semibold mb-4">Rate and Comment -{data}</h2>
+        <h2 className="text-xl font-semibold mb-4">Đánh giá và Bình luận - {data}</h2>
         <div className="grid md:grid-cols-2 shadow-inner p-2">
           <div className="m-auto">
             <h3 className="font-bold text-3xl">
