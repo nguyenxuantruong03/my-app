@@ -5,9 +5,11 @@ import Container from "../ui/container";
 import Image from "next/image";
 import {commentcolor} from "@/components/color/color"
 import { useUser } from "@clerk/nextjs";
-import { Star } from 'lucide-react';
+import { Star,Trash2,Pencil  } from 'lucide-react';
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import useEmojiSelection from "@/hooks/emoji";
+import EmojiPage from "./emoji";
 
 interface Comment {
   rating: number;
@@ -36,6 +38,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
   const stars = Array(5).fill(0);
   const stars1 = Array(1).fill(0);
   const router = useRouter()
+  const {resetEmojiLength } = useEmojiSelection(comment);
+
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -131,7 +135,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       }
     } catch (error) {
       console.error("Error deleting comment:", error);
-      toast.error("Xin vui lòng thử lại!");
+      toast.success("Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang.")
     }
   };
   
@@ -148,7 +152,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
 
     const timeDifference = Date.now() - parseInt(lastCommentTime, 10);
-    const minutesPassed = timeDifference / (30000 * 60); // Convert milliseconds to hours
+    // const minutesPassed = timeDifference / (30000 * 60); // Convert milliseconds to hours
+    const minutesPassed = timeDifference / (0); // Convert milliseconds to hours
 
     return minutesPassed >= 1;
   };
@@ -215,6 +220,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     } catch (error) {
       console.error("Error submitting comment:", error);
     }
+    resetEmojiLength();
   };
 
   const calculateTotalReviews = () => {
@@ -616,15 +622,15 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                               <>
                                 <button
                                   onClick={() => handleDeleteComment(comment.id)}
-                                  className="text-red-500 ml-2"
+                                  className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
                                 >
-                                  Delete
+                                  <Trash2 className="w-5 h-5"/>
                                 </button>
                                 <button
                                   onClick={() => handleEditClick(comment.id)}
-                                  className="text-red-500 ml-2"
+                                  className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
                                 >
-                                  Update
+                                  <Pencil className="w-5 h-5"/>
                                 </button>
                               
                               </>
@@ -633,7 +639,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                               {formatTimestamp(comment.createdAt)}
                             </p>
                           </div>
-                          <div className="bg-gray-100 mt-4 mb-4 rounded-md p-2 text-sm ml-12">
+                          <div className="bg-gray-100 mt-4 mb-2 rounded-md p-2 text-sm ml-12">
                             <p>Nhận xét: {comment.comment}</p>
                             {/* Format the date and time */}
                             <div className="flex space-x-2 items-center text-sm">
@@ -651,6 +657,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                               ))}
                             </div>
                           </div>
+                          <EmojiPage commentId={comment.id} />
                         </li>
                       ))}
                   </ul>
