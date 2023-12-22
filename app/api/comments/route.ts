@@ -102,12 +102,17 @@ export async function PATCH(req: Request) {
 }
 
 
-export async function GET(req: Request) {
+export async function GET(req: any) {
   try {
-    const comments = await prisma.comment.findMany();
-    return NextResponse.json(comments);
+    const responseComment = await prisma.comment.findMany({
+      include: {
+       responsecomment: true,
+      }});
+
+    return NextResponse.json(responseComment);
   } catch (error) {
     console.error('Error fetching comments:', error);
     return new NextResponse('Internal error', { status: 500 });
   }
 }
+

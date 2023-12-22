@@ -3,9 +3,9 @@ import axios from "axios";
 import React, { useState, useEffect, ChangeEvent } from "react";
 import Container from "../ui/container";
 import Image from "next/image";
-import {commentcolor} from "@/components/color/color"
+import { commentcolor } from "@/components/color/color";
 import { useUser } from "@clerk/nextjs";
-import { Star,Trash2,Pencil  } from 'lucide-react';
+import { Star, Trash2, Pencil } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import useEmojiSelection from "@/hooks/emoji";
@@ -17,13 +17,25 @@ interface Comment {
   commenter: string;
   createdAt: string;
   nameproduct: string;
-  imageUrl: string
-  id?: string
+  imageUrl: string;
+  id?: string;
+  responses?: ResponseComment[];
+}
+
+interface ResponseComment {
+  id: string;
+  commenter: string;
+  imageUrl: string;
+  description: string;
+  createdAt: string;
 }
 interface CommentProps {
   data: string;
 }
-const Comment: React.FC<CommentProps> = ({ data }) => {
+const Comment: React.FC<CommentProps> = (
+  { data },
+  { params }: { params: { commentId: string } }
+) => {
   const [rating, setRating] = useState<number | null>(null);
   const [comment, setComment] = useState<string>("");
   const [savedComments, setSavedComments] = useState<Comment[]>([]);
@@ -37,15 +49,189 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
   const [collapsedComments, setCollapsedComments] = useState<boolean>(false);
   const stars = Array(5).fill(0);
   const stars1 = Array(1).fill(0);
-  const router = useRouter()
-  const {resetEmojiLength } = useEmojiSelection(comment);
+  const router = useRouter();
+  const { resetEmojiLength } = useEmojiSelection(comment);
 
+  // Use an object to store response descriptions for each comment
+  const [responseDescriptions, setResponseDescriptions] = useState<{
+    [key: string]: string;
+  }>({});
+  const [showResponseForm, setShowResponseForm] = useState<string | null>(null);
+  const [errorResponse, setErrorResponse] = useState<string>("");
+  const [showResponseComments, setShowResponseComments] = useState<
+    string | null
+  >(null);
+
+  // Update the handleResponseSubmit function to use the correct response description
+  const handleResponseSubmit = async (commentId: any) => {
+    try {
+      const responseDescription = responseDescriptions[commentId];
+
+      if (
+        responseDescription === null ||
+        responseDescription === undefined ||
+        !responseDescription.trim()
+      ) {
+        setErrorResponse("Nội dung phản hồi không thể trống.");
+        return;
+      }
+      setErrorResponse("");
+      await axios.post(`/api/comments/${commentId}/responsecomment`, {
+        description: responseDescriptions[commentId], // Use the correct response description
+        imageUrl: user?.imageUrl || "/images/default_avatar.png",
+        commenter: user?.username || "Vô danh",
+        createdAt: new Date().toISOString(),
+      });
+      // Clear the response description for the submitted comment
+      setResponseDescriptions((prevDescriptions) => {
+        const newDescriptions = { ...prevDescriptions };
+        delete newDescriptions[commentId];
+        return newDescriptions;
+      });
+      toast.success('Phản hồi thành công.')
+    } catch (error) {
+      console.error("Error submitting response:", error);
+      toast.error('Hãy thử lại.')
+    }
+  };
+
+  const handleDeleteCommentresponse = async (
+    commentId: string | undefined,
+    id: string
+  ) => {
+    try {
+      const response = await axios.delete(
+        `/api/comments/${commentId}/responsecomment`,
+        {
+          data: { id: id },
+        }
+      );
+      const updatedCommentResponse: ResponseComment[] = response.data;
+      if (Array.isArray(updatedCommentResponse)) {
+        toast.success('Xóa thành công.')
+      } else {
+        toast.success('Xóa thành công.')
+
+        console.error(
+          "Invalid response format after comment deletion:",
+          response.data
+        );
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      toast.success('Xóa thành công.')
+
+    }
+  };
+
+  // ... (your existing code)
+
+  const [editingResponseId, setEditingResponseId] = useState<string | null>(
+    null
+  );
+
+  const handleResponseEditClick = (
+    commentId: string | undefined,
+    responseId: string
+  ) => {
+    setEditingResponseId(responseId);
+
+    if (commentId) {
+      const responseToEdit = savedComments
+        .find((comment) => comment.id === commentId)
+        ?.responses?.find((response) => response.id === responseId);
+
+      if (responseToEdit) {
+        setResponseDescriptions({
+          ...responseDescriptions,
+          [commentId]: responseToEdit.description,
+        });
+      }
+      setShowResponseForm(commentId);
+    }
+  };
+
+  const handleResponseCancelEdit = (commentId: string | undefined) => {
+    setEditingResponseId(null);
+    setResponseDescriptions({
+      ...responseDescriptions,
+      [commentId || ""]: "", // Reset response description for the comment
+    });
+    setErrorResponse("");
+  };
+
+
+  const handleResponseUpdate = async (commentId: string | undefined) => {
+    try {
+      const responseDescription = responseDescriptions[commentId ?? ""];
+    
+      if (
+        responseDescription === null ||
+        responseDescription === undefined ||
+        !responseDescription.trim()
+      ) {
+        setErrorResponse("Nội dung phản hồi không thể trống.");
+        return;
+      }
+    
+      setErrorResponse("");
+    
+      if (commentId) {
+        const response = await axios.patch(
+          `/api/comments/${commentId}/responsecomment`,
+          {
+            id: editingResponseId,
+            description: responseDescription,
+          }
+        );
+    
+        // Update the response description in the state
+        setResponseDescriptions((prevDescriptions) => ({
+          ...prevDescriptions,
+          [commentId]: response.data.description,
+        }));
+  
+        // Reset the response description to an empty string
+        setResponseDescriptions((prevDescriptions) => ({
+          ...prevDescriptions,
+          [commentId]: "",
+        }));
+    
+        setEditingResponseId(null);
+      toast.success('Chỉnh sửa thành công.')
+      }
+    } catch (error) {
+      console.error("Error updating response:", error);
+      setErrorResponse("Error updating response.");
+      toast.error('Hãy thử lại.')
+    }
+  };
+  
+  
+  
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const response = await axios.get(`/api/comments`);
         const fetchedComments: Comment[] = response.data;
+
+        for (const comment of fetchedComments) {
+          try {
+            const responseCommentResponse = await axios.get(
+              `/api/comments/${comment.id}/responsecomment`
+            );
+            const responseComments: ResponseComment[] =
+              responseCommentResponse.data;
+            comment.responses = responseComments;
+          } catch (error) {
+            console.error(
+              `Error fetching responses for comment ID: ${comment.id}`,
+              error
+            );
+          }
+        }
+
         setSavedComments(fetchedComments);
 
         const commentsByRating: { [key: number]: Comment[] } =
@@ -63,13 +249,15 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       }
     };
 
-     fetchComments();
+    fetchComments();
   }, []);
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 
   const handleEditClick = (commentId: string | undefined) => {
     setEditingCommentId(commentId || null);
-    const commentToEdit = savedComments.find((comment) => comment.id === commentId);
+    const commentToEdit = savedComments.find(
+      (comment) => comment.id === commentId
+    );
     if (commentToEdit) {
       setRating(commentToEdit.rating);
       setComment(commentToEdit.comment);
@@ -110,8 +298,10 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       setComment("");
       setCommentError("");
       setRatingError("");
-      router.refresh()
-      toast.success("Bình luận đã được cập nhật. Nếu chưa thấy có thể tải lại trang.");
+      router.refresh();
+      toast.success(
+        "Bình luận đã được cập nhật. Nếu chưa thấy có thể tải lại trang."
+      );
     } catch (error) {
       console.error("Error updating comment:", error);
       toast.error("Xin vui lòng thử lại!");
@@ -126,19 +316,28 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       const updatedComments: Comment[] = response.data;
       if (Array.isArray(updatedComments)) {
         setSavedComments(updatedComments);
-        router.refresh()
-        toast.success("Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang.")
+        router.refresh();
+        toast.success(
+          "Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang."
+        );
       } else {
-        router.refresh()
-        toast.success("Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang.")
-        console.error("Invalid response format after comment deletion:", response.data);
+        router.refresh();
+        toast.success(
+          "Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang."
+        );
+        console.error(
+          "Invalid response format after comment deletion:",
+          response.data
+        );
       }
     } catch (error) {
       console.error("Error deleting comment:", error);
-      toast.success("Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang.")
+      toast.success(
+        "Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang."
+      );
     }
   };
-  
+
   const { user } = useUser();
 
   const handleTimestampUpdate = () => {
@@ -153,7 +352,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
 
     const timeDifference = Date.now() - parseInt(lastCommentTime, 10);
     // const minutesPassed = timeDifference / (30000 * 60); // Convert milliseconds to hours
-    const minutesPassed = timeDifference / (0); // Convert milliseconds to hours
+    const minutesPassed = timeDifference / 0; // Convert milliseconds to hours
 
     return minutesPassed >= 1;
   };
@@ -186,16 +385,15 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     }
 
     handleTimestampUpdate();
-    
-    
+
     try {
       const newComment = {
         rating: rating as number,
         comment,
         imageUrl: user?.imageUrl || "/images/default_avatar.png",
-        commenter:user?.username || "Vô danh" , 
+        commenter: user?.username || "Vô danh",
         createdAt: new Date().toISOString(),
-        nameproduct: data ||"Sản phẩm"
+        nameproduct: data || "Sản phẩm",
       };
       const response = await axios.post("/api/comments/", newComment);
       const savedComment: Comment = response.data;
@@ -217,14 +415,17 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
         ],
       };
       setCommentsByRating(updatedCommentsByRating);
+      toast.success('Đánh giá thành công.')
     } catch (error) {
       console.error("Error submitting comment:", error);
+      toast.error('Hãy thử lại.')
     }
-    resetEmojiLength();
+    // resetEmojiLength();
   };
 
   const calculateTotalReviews = () => {
-    return savedComments.filter((comment) => comment.nameproduct === data).length;
+    return savedComments.filter((comment) => comment.nameproduct === data)
+      .length;
   };
 
   // Use the calculateTotalReviews function to get the total reviews for the current product
@@ -233,25 +434,25 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
   const starReviewCounts: number[] = [0, 0, 0, 0, 0];
 
   savedComments
-  .filter((comment) => comment.nameproduct === data)
-  .forEach((savedComment) => {
-    if (savedComment.rating >= 1 && savedComment.rating <= 5) {
-      starReviewCounts[savedComment.rating - 1]++;
-    }
-  });
+    .filter((comment) => comment.nameproduct === data)
+    .forEach((savedComment) => {
+      if (savedComment.rating >= 1 && savedComment.rating <= 5) {
+        starReviewCounts[savedComment.rating - 1]++;
+      }
+    });
 
   const calculateAverageRating = (productName: string) => {
     const productComments = savedComments.filter(
       (comment) => comment.nameproduct === productName
     );
-  
+
     const totalStarsGiven = productComments.reduce(
       (total, savedComment) => total + savedComment.rating,
       0
     );
-  
+
     const totalReviews = productComments.length;
-  
+
     if (totalReviews === 0) {
       return 0;
     }
@@ -267,7 +468,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
     setHoverValue(null);
   };
 
-  const renderStars = (integerPart : number, fractionalPart: number) => {
+  const renderStars = (integerPart: number, fractionalPart: number) => {
     const starElements = [];
 
     // Render full stars for the integer part
@@ -346,10 +547,13 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
       return "Vừa xong";
     }
   };
+
   return (
     <Container>
       <div className="p-4 shadow-lg my-6 rounded-md">
-        <h2 className="text-xl font-semibold mb-4">Đánh giá và Bình luận - {data}</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          Đánh giá và Bình luận - {data}
+        </h2>
         <div className="grid md:grid-cols-2 shadow-inner p-2">
           <div className="m-auto">
             <h3 className="font-bold text-3xl">
@@ -543,7 +747,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           <textarea
             value={comment}
             onChange={handleCommentChange}
-            placeholder="Leave a comment..."
+            placeholder="Nhập nội dung đánh giá..........."
             className={`w-full p-2 border rounded focus:outline-none focus:ring focus:border-blue-300 ${
               commentError ? "border-red-500" : ""
             }`}
@@ -557,10 +761,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               className={`text-white px-4 py-2 rounded `}
               style={{ backgroundImage: commentcolor.gradient }}
               onMouseOver={(event) => {
-                event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
+                event.currentTarget.style.backgroundImage =
+                  commentcolor.gradienthover;
               }}
               onMouseLeave={(event) => {
-                event.currentTarget.style.backgroundImage = commentcolor.gradient;
+                event.currentTarget.style.backgroundImage =
+                  commentcolor.gradient;
               }}
             >
               Cập nhật
@@ -570,10 +776,12 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
               className={`text-white px-4 py-2 rounded `}
               style={{ backgroundImage: commentcolor.gradient }}
               onMouseOver={(event) => {
-                event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
+                event.currentTarget.style.backgroundImage =
+                  commentcolor.gradienthover;
               }}
               onMouseLeave={(event) => {
-                event.currentTarget.style.backgroundImage = commentcolor.gradient;
+                event.currentTarget.style.backgroundImage =
+                  commentcolor.gradient;
               }}
             >
               Hủy
@@ -585,7 +793,8 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             className={`text-white px-4 py-2 rounded `}
             style={{ backgroundImage: commentcolor.gradient }}
             onMouseOver={(event) => {
-              event.currentTarget.style.backgroundImage = commentcolor.gradienthover;
+              event.currentTarget.style.backgroundImage =
+                commentcolor.gradienthover;
             }}
             onMouseLeave={(event) => {
               event.currentTarget.style.backgroundImage = commentcolor.gradient;
@@ -599,14 +808,17 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
           .sort(([ratingA], [ratingB]) => parseInt(ratingB) - parseInt(ratingA))
           .map(([rating, comments]) => (
             <div key={rating}>
-              {(collapsedComments || rating === "5" || rating === "4"|| rating === "3") && (
+              {(collapsedComments ||
+                rating === "5" ||
+                rating === "4" ||
+                rating === "3") && (
                 <div className="mt-10">
                   <ul>
                     {comments
-                    .filter((comment) => comment.nameproduct === data)
+                      .filter((comment) => comment.nameproduct === data)
                       .sort((a, b) => b.rating - a.rating)
                       .map((comment, index) => (
-                        <li key={index} >
+                        <li key={index} className="mb-8">
                           <div className=" flex items-center relative">
                             <Image
                               src={comment.imageUrl}
@@ -615,31 +827,35 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                               height="30"
                               className="rounded-md"
                             />
-                            <p className="ml-3 font-bold flex">
-                              {comment.commenter} <p className="text-sm text-gray-400 flex items-center font-normal ">-{comment.nameproduct}</p>
+                            <p className="ml-3 font-bold flex text-gray-600">
+                              {comment.commenter}
+                              <p className="text-sm text-gray-400 items-center font-normal hidden lg:flex">
+                                -{comment.nameproduct}
+                              </p>
                             </p>
                             {user && user.username === comment.commenter && (
                               <>
                                 <button
-                                  onClick={() => handleDeleteComment(comment.id)}
+                                  onClick={() =>
+                                    handleDeleteComment(comment.id)
+                                  }
                                   className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
                                 >
-                                  <Trash2 className="w-5 h-5"/>
+                                  <Trash2 className="w-5 h-5" />
                                 </button>
                                 <button
                                   onClick={() => handleEditClick(comment.id)}
                                   className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
                                 >
-                                  <Pencil className="w-5 h-5"/>
+                                  <Pencil className="w-5 h-5" />
                                 </button>
-                              
                               </>
-                              )}
+                            )}
                             <p className=" absolute right-0 text-sm font-bold text-gray-800 text-opacity-60">
                               {formatTimestamp(comment.createdAt)}
                             </p>
                           </div>
-                          <div className="bg-gray-100 mt-4 mb-2 rounded-md p-2 text-sm ml-12">
+                          <div className="bg-gray-100 mt-4 mb-2 rounded-md p-3 text-sm ml-12">
                             <p>Nhận xét: {comment.comment}</p>
                             {/* Format the date and time */}
                             <div className="flex space-x-2 items-center text-sm">
@@ -657,7 +873,186 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
                               ))}
                             </div>
                           </div>
-                          <EmojiPage commentId={comment.id} />
+                          {comment.responses &&
+                            comment.responses.length > 0 && (
+                              <>
+                                {showResponseComments === comment.id && (
+                                  <ul>
+                                    {comment.responses.map(
+                                      (response, responseIndex) => (
+                                        <li
+                                          key={responseIndex}
+                                          className="w-[90%] mx-auto"
+                                        >
+                                          {/* Render each response comment here */}
+                                          <div className=" flex justify-end items-center relative">
+                                            <div className=" w-full pl-[50px] ">
+                                              <div className="float-left text-sm font-bold text-gray-800 text-opacity-60">
+                                                {formatTimestamp(
+                                                  response.createdAt
+                                                )}
+                                              </div>{" "}
+                                              <p className="float-right font-bold mr-2 text-gray-600">
+                                                {response.commenter}
+                                              </p>{" "}
+                                            </div>
+                                            <Image
+                                              src={response.imageUrl}
+                                              alt=""
+                                              width="30"
+                                              height="30"
+                                              className="rounded-md"
+                                            />
+                                            {user &&
+                                              user.username ===
+                                                comment.commenter && (
+                                                <>
+                                                  <button
+                                                    onClick={() =>
+                                                      handleDeleteCommentresponse(
+                                                        comment.id,
+                                                        response.id
+                                                      )
+                                                    }
+                                                    className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
+                                                  >
+                                                    <Trash2 className="w-5 h-5" />
+                                                  </button>
+                                                  <button
+                                                    onClick={() =>
+                                                      handleResponseEditClick(
+                                                        comment.id,
+                                                        response.id
+                                                      )
+                                                    }
+                                                    className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
+                                                  >
+                                                    <Pencil className="w-5 h-5" />
+                                                  </button>
+                                                </>
+                                              )}
+                                          </div>
+                                          <div className="bg-gray-100 mt-2 mb-2 rounded-md p-3 text-sm ml-12">
+                                            <p>
+                                              Phản hồi: {response.description}
+                                            </p>
+                                          </div>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                )}
+                              </>
+                            )}
+                          {showResponseForm === comment.id && (
+                            <>
+                              <div
+                                className="mb-4"
+                                key={`responseTextarea-${comment.id}`}
+                              >
+                                <textarea
+                                  value={
+                                    responseDescriptions[
+                                      comment.id as string
+                                    ] || ""
+                                  }
+                                  onChange={(e) => {
+                                    // Update the correct response description for the current comment
+                                    setResponseDescriptions(
+                                      (prevDescriptions) => ({
+                                        ...prevDescriptions,
+                                        [comment.id as string]: e.target.value,
+                                      })
+                                    );
+                                  }}
+                                  placeholder="Nhập nội dung phản hồi..........."
+                                  className={`w-full p-2 border rounded focus:outline-none focus:ring focus:border-blue-300 ${
+                                    errorResponse ? "border-red-500" : ""
+                                  }`}
+                                />
+                                {errorResponse && (
+                                  <p className="text-red-500 text-sm">
+                                    {errorResponse}
+                                  </p>
+                                )}
+                              </div>
+
+                              {editingResponseId ? (
+                                <div className="flex space-x-4">
+                                  <button
+                                    onClick={() =>
+                                      handleResponseUpdate(comment.id)
+                                    }
+                                    className={`text-white px-4 py-2 rounded `}
+                                    style={{
+                                      backgroundImage: commentcolor.gradient,
+                                    }}
+                                    onMouseOver={(event) => {
+                                      event.currentTarget.style.backgroundImage =
+                                        commentcolor.gradienthover;
+                                    }}
+                                    onMouseLeave={(event) => {
+                                      event.currentTarget.style.backgroundImage =
+                                        commentcolor.gradient;
+                                    }}
+                                  >
+                                    Cập nhật
+                                  </button>
+                                  <button
+                                    onClick={() =>
+                                      handleResponseCancelEdit(comment.id)
+                                    }
+                                    className={`text-white px-4 py-2 rounded `}
+                                    style={{
+                                      backgroundImage: commentcolor.gradient,
+                                    }}
+                                    onMouseOver={(event) => {
+                                      event.currentTarget.style.backgroundImage =
+                                        commentcolor.gradienthover;
+                                    }}
+                                    onMouseLeave={(event) => {
+                                      event.currentTarget.style.backgroundImage =
+                                        commentcolor.gradient;
+                                    }}
+                                  >
+                                    Hủy
+                                  </button>
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={() =>
+                                    handleResponseSubmit(comment.id)
+                                  }
+                                  className={`text-white px-4 py-2 rounded `}
+                                  style={{
+                                    backgroundImage: commentcolor.gradient,
+                                  }}
+                                  onMouseOver={(event) => {
+                                    event.currentTarget.style.backgroundImage =
+                                      commentcolor.gradienthover;
+                                  }}
+                                  onMouseLeave={(event) => {
+                                    event.currentTarget.style.backgroundImage =
+                                      commentcolor.gradient;
+                                  }}
+                                >
+                                  Phản hồi
+                                </button>
+                              )}
+                            </>
+                          )}
+                          <EmojiPage
+                            commentId={comment.id}
+                            setShowResponseForm={setShowResponseForm}
+                            setShowResponseComments={setShowResponseComments}
+                            showResponseComments={showResponseComments}
+                            responseComment={
+                              comment.responses && comment.responses.length > 0
+                            }
+                            responsesLength={
+                              comment.responses ? comment.responses.length : 0
+                            }
+                          />
                         </li>
                       ))}
                   </ul>
@@ -670,7 +1065,7 @@ const Comment: React.FC<CommentProps> = ({ data }) => {
             setCollapsedComments(!collapsedComments);
           }}
           className={`rounded px-2 md:px-28 md:py-2 py-1 mb-2 ml-[140px] md:ml-[220px] lg:ml-[512px]  ${
-            collapsedComments ? " text-gray-700 " : "text-white"
+            collapsedComments ? " text-white" : "text-white"
           }`}
           style={{
             backgroundImage: collapsedComments

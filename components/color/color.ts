@@ -5,9 +5,9 @@ export const root={
 export const commentcolor = {
     orange: "#FFBA5A",
     grey: "#a9a9a9",
-    gradient: "linear-gradient(135deg, #ee9ca7, #ffdde1)",
-    gradienthover: " linear-gradient(135deg,#009fff, #ec2f4b)",
-    text: "text-[#ee9ca7]"
+    gradient: "linear-gradient(135deg, #CC0000, #FF0000)",
+    gradienthover: " linear-gradient(135deg,#880000, #ec2f4b)",
+    text: "text-[#CC0000]"
   };
 
 //// ----------footer ---------////
