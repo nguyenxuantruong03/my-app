@@ -82,6 +82,7 @@ const Comment: React.FC<CommentProps> = (
         commenter: user?.username || "Vô danh",
         createdAt: new Date().toISOString(),
       });
+      
       // Clear the response description for the submitted comment
       setResponseDescriptions((prevDescriptions) => {
         const newDescriptions = { ...prevDescriptions };
@@ -100,31 +101,31 @@ const Comment: React.FC<CommentProps> = (
     id: string
   ) => {
     try {
-      const response = await axios.delete(
-        `/api/comments/${commentId}/responsecomment`,
-        {
-          data: { id: id },
-        }
+      // Send a request to delete the comment
+      await axios.delete(`/api/comments/${commentId}/responsecomment`, {
+        data: { id: id },
+      });
+      // Update the local state to remove the deleted comment
+      setSavedComments((prevComments) =>
+        prevComments.map((comment) => {
+          // Find the comment to update
+          if (comment.id === commentId) {
+            // Remove the response with the specified id
+            comment.responses = comment.responses?.filter(
+              (response) => response.id !== id
+            );
+          }
+          return comment;
+        })
       );
-      const updatedCommentResponse: ResponseComment[] = response.data;
-      if (Array.isArray(updatedCommentResponse)) {
-        toast.success('Xóa thành công.')
-      } else {
-        toast.success('Xóa thành công.')
-
-        console.error(
-          "Invalid response format after comment deletion:",
-          response.data
-        );
-      }
+  
+      toast.success('Xóa thành công.');
     } catch (error) {
       console.error("Error deleting comment:", error);
-      toast.success('Xóa thành công.')
-
+      toast.error('Xóa không thành công. Hãy thử lại.');
     }
   };
-
-  // ... (your existing code)
+  
 
   const [editingResponseId, setEditingResponseId] = useState<string | null>(
     null
@@ -164,7 +165,7 @@ const Comment: React.FC<CommentProps> = (
   const handleResponseUpdate = async (commentId: string | undefined) => {
     try {
       const responseDescription = responseDescriptions[commentId ?? ""];
-    
+      
       if (
         responseDescription === null ||
         responseDescription === undefined ||
@@ -173,9 +174,9 @@ const Comment: React.FC<CommentProps> = (
         setErrorResponse("Nội dung phản hồi không thể trống.");
         return;
       }
-    
+      
       setErrorResponse("");
-    
+      
       if (commentId) {
         const response = await axios.patch(
           `/api/comments/${commentId}/responsecomment`,
@@ -184,7 +185,7 @@ const Comment: React.FC<CommentProps> = (
             description: responseDescription,
           }
         );
-    
+  
         // Update the response description in the state
         setResponseDescriptions((prevDescriptions) => ({
           ...prevDescriptions,
@@ -196,17 +197,35 @@ const Comment: React.FC<CommentProps> = (
           ...prevDescriptions,
           [commentId]: "",
         }));
-    
+  
         setEditingResponseId(null);
-      toast.success('Chỉnh sửa thành công.')
+  
+        // Update the savedComments state to reflect the changes
+        setSavedComments((prevComments) =>
+          prevComments.map((comment) => {
+            // Find the comment to update
+            if (comment.id === commentId) {
+              // Find the response to update
+              comment.responses = comment.responses?.map((response) => {
+                if (response.id === editingResponseId) {
+                  // Update the response description
+                  response.description = responseDescription;
+                }
+                return response;
+              });
+            }
+            return comment;
+          })
+        );
+  
+        toast.success('Chỉnh sửa thành công.');
       }
     } catch (error) {
       console.error("Error updating response:", error);
       setErrorResponse("Error updating response.");
-      toast.error('Hãy thử lại.')
+      toast.error('Hãy thử lại.');
     }
   };
-  
   
   
 
@@ -282,15 +301,15 @@ const Comment: React.FC<CommentProps> = (
         rating: rating as number,
         comment,
       };
-
+  
       const response = await axios.patch(`/api/comments/`, updatedComment);
       const updatedCommentData: Comment = response.data;
-
+  
       // Update the comment in the state
       const updatedComments: Comment[] = savedComments.map((comment) =>
         comment.id === updatedCommentData.id ? updatedCommentData : comment
       );
-
+  
       setSavedComments(updatedComments);
       setEditingCommentId(null);
       setRating(null);
@@ -298,7 +317,8 @@ const Comment: React.FC<CommentProps> = (
       setComment("");
       setCommentError("");
       setRatingError("");
-      router.refresh();
+  
+      // Show a success toast
       toast.success(
         "Bình luận đã được cập nhật. Nếu chưa thấy có thể tải lại trang."
       );
@@ -307,36 +327,39 @@ const Comment: React.FC<CommentProps> = (
       toast.error("Xin vui lòng thử lại!");
     }
   };
+  
 
   const handleDeleteComment = async (commentId: string | undefined) => {
     try {
-      const response = await axios.delete(`/api/comments/`, {
+      // Send a request to delete the comment
+      await axios.delete(`/api/comments/`, {
         data: { id: commentId },
       });
-      const updatedComments: Comment[] = response.data;
-      if (Array.isArray(updatedComments)) {
-        setSavedComments(updatedComments);
-        router.refresh();
-        toast.success(
-          "Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang."
-        );
-      } else {
-        router.refresh();
-        toast.success(
-          "Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang."
-        );
-        console.error(
-          "Invalid response format after comment deletion:",
-          response.data
-        );
-      }
+  
+      setSavedComments((prevComments) =>
+        prevComments.filter((comment) => comment.id !== commentId)
+      );
+  
+      // Update commentsByRating if needed
+      setCommentsByRating((prevCommentsByRating) => {
+        const newCommentsByRating = { ...prevCommentsByRating };
+        Object.keys(newCommentsByRating).forEach((rating) => {
+          newCommentsByRating[rating as any] = newCommentsByRating[rating as any].filter(
+            (comment) => comment.id !== commentId
+          );
+        });
+        return newCommentsByRating;
+      });
+  
+      // Show a success toast
+      toast.success("Xóa thành công.");
     } catch (error) {
       console.error("Error deleting comment:", error);
-      toast.success(
-        "Bình luận đã xóa thành công. Nếu chưa thấy có thể tải lại trang."
-      );
+      toast.error("Xóa không thành công. Hãy thử lại.");
     }
   };
+  
+
 
   const { user } = useUser();
 
@@ -420,7 +443,7 @@ const Comment: React.FC<CommentProps> = (
       console.error("Error submitting comment:", error);
       toast.error('Hãy thử lại.')
     }
-    // resetEmojiLength();
+    resetEmojiLength();
   };
 
   const calculateTotalReviews = () => {
