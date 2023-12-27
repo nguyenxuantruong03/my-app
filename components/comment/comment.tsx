@@ -6,7 +6,6 @@ import Image from "next/image";
 import { commentcolor } from "@/components/color/color";
 import { useUser } from "@clerk/nextjs";
 import { Star, Trash2, Pencil } from "lucide-react";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import useEmojiSelection from "@/hooks/emoji";
 import EmojiPage from "./emoji";
@@ -49,7 +48,6 @@ const Comment: React.FC<CommentProps> = (
   const [collapsedComments, setCollapsedComments] = useState<boolean>(false);
   const stars = Array(5).fill(0);
   const stars1 = Array(1).fill(0);
-  const router = useRouter();
   const { resetEmojiLength } = useEmojiSelection(comment);
 
   // Use an object to store response descriptions for each comment
@@ -269,7 +267,7 @@ const Comment: React.FC<CommentProps> = (
     };
 
     fetchComments();
-  }, []);
+  }, [savedComments]);
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 
   const handleEditClick = (commentId: string | undefined) => {
@@ -293,6 +291,7 @@ const Comment: React.FC<CommentProps> = (
     setRatingError("");
   };
 
+  
   const handleUpdate = async () => {
     // Add your validation logic here if needed
     try {
@@ -301,33 +300,32 @@ const Comment: React.FC<CommentProps> = (
         rating: rating as number,
         comment,
       };
-  
-      const response = await axios.patch(`/api/comments/`, updatedComment);
+      
+
+      const response = await axios.patch(`/api/comments`, updatedComment);
       const updatedCommentData: Comment = response.data;
-  
       // Update the comment in the state
-      const updatedComments: Comment[] = savedComments.map((comment) =>
+      setSavedComments((prevComments) =>
+      prevComments.map((comment) =>
         comment.id === updatedCommentData.id ? updatedCommentData : comment
-      );
-  
-      setSavedComments(updatedComments);
+      )
+    );
+    
+
       setEditingCommentId(null);
       setRating(null);
       setCurrentValue(null);
       setComment("");
       setCommentError("");
       setRatingError("");
-  
-      // Show a success toast
       toast.success(
-        "Bình luận đã được cập nhật. Nếu chưa thấy có thể tải lại trang."
+        "Cập nhật thành công."
       );
     } catch (error) {
       console.error("Error updating comment:", error);
       toast.error("Xin vui lòng thử lại!");
     }
   };
-  
 
   const handleDeleteComment = async (commentId: string | undefined) => {
     try {
