@@ -372,8 +372,8 @@ const Comment: React.FC<CommentProps> = (
     }
 
     const timeDifference = Date.now() - parseInt(lastCommentTime, 10);
-    // const minutesPassed = timeDifference / (30000 * 60); // Convert milliseconds to hours
-    const minutesPassed = timeDifference / 0; // Convert milliseconds to hours
+    const minutesPassed = timeDifference / (30000 * 60); // Convert milliseconds to hours
+    // const minutesPassed = timeDifference / 0; // Convert milliseconds to hours
 
     return minutesPassed >= 1;
   };

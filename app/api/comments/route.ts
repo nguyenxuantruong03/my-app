@@ -1,3 +1,4 @@
+// /api/router.ts
 import { auth } from '@clerk/nextjs';
 import { PrismaClient } from '@prisma/client';
 
@@ -46,9 +47,18 @@ export async function DELETE(
       }
     });
 
+   
+
     if (!commentById) {
       return new NextResponse("Unauthorized", { status: 405 });
     }
+
+    await prisma.responseComment.deleteMany({
+      where: {
+        commentId: id,
+      },
+    });
+
 
     const comment = await prisma.comment.delete({
       where: {

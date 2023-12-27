@@ -53,15 +53,15 @@ export async function DELETE(
       return new NextResponse("Unauthenticated", { status: 403 });
     }
 
-    // const commentById = await prisma.comment.findFirst({
-    //   where: {
-    //     authenticationId: userId
-    //   }
-    // });
+    const commentById = await prisma.comment.findFirst({
+      where: {
+        authenticationId: userId
+      }
+    });
 
-    // if (!commentById) {
-    //   return new NextResponse("Unauthorized", { status: 405 });
-    // }
+    if (!commentById) {
+      return new NextResponse("Unauthorized", { status: 405 });
+    }
 
     const comment = await prisma.responseComment.delete({
       where: {
@@ -86,16 +86,16 @@ export async function PATCH(req: Request) {
       return new NextResponse("Unauthenticated", { status: 403 });
     }
 
-    // const existingComment = await prisma.comment.findFirst({
-    //   where: {
-    //     id: id,
-    //     authenticationId: userId,
-    //   },
-    // });
+    const existingComment = await prisma.comment.findFirst({
+      where: {
+        id: id,
+        authenticationId: userId,
+      },
+    });
 
-    // if (!existingComment) {
-    //   return new NextResponse("Comment not found or unauthorized", { status: 403 });
-    // }
+    if (!existingComment) {
+      return new NextResponse("Comment not found or unauthorized", { status: 403 });
+    }
 
     const updatedComment = await prisma.responseComment.update({
       where: {

@@ -50,35 +50,42 @@ const EmojiPage: React.FC<EmojiProps> = ({
   }, []);
 
   // Update the recently selected emojis and store them in local storage
-  useEffect(() => {
-    setRecentlySelectedEmojis((prevEmojis) => {
-      const newEmojis = [selectedEmoji, ...prevEmojis].filter(Boolean) as string[];
-      
-      // Remove duplicates and update local storage only if the selected emoji has changed
-      if (newEmojis.length > 1 && newEmojis[0] === newEmojis[1]) {
-        newEmojis.shift();
-      } else {
-        // Sort the emojis based on their occurrences in descending order
-        const sortedEmojis = newEmojis
-          .reduce((acc, emoji) => {
-            acc.set(emoji, (acc.get(emoji) || 0) + 1);
-            return acc;
-          }, new Map<string, number>())
-          .entries();
-        
-        const sortedArray = Array.from(sortedEmojis)
-          .sort((a, b) => b[1] - a[1])
-          .map(([emoji]) => emoji);
-        
-        localStorage.setItem(
-          "recentlySelectedEmojis",
-          JSON.stringify(sortedArray.slice(0, 3))
-        );
-      }
-  
-      return newEmojis.slice(0, 1); // Display only the most recently selected emoji
-    });
-  }, [selectedEmoji, selectedEmojiLength]);
+useEffect(() => {
+  setRecentlySelectedEmojis((prevEmojis) => {
+    // If selectedEmojiLength is 0, set the emojis to an empty array
+    if (selectedEmojiLength === 0) {
+      const emptyArray: string[] = [];
+      localStorage.setItem("recentlySelectedEmojis", JSON.stringify(emptyArray));
+      return emptyArray;
+    }
+
+    const newEmojis = [selectedEmoji, ...prevEmojis].filter(Boolean) as string[];
+
+    // Remove duplicates and update local storage only if the selected emoji has changed
+    if (newEmojis.length > 1 && newEmojis[0] === newEmojis[1]) {
+      newEmojis.shift();
+    } else {
+      // Sort the emojis based on their occurrences in descending order
+      const sortedEmojis = newEmojis
+        .reduce((acc, emoji) => {
+          acc.set(emoji, (acc.get(emoji) || 0) + 1);
+          return acc;
+        }, new Map<string, number>())
+        .entries();
+
+      const sortedArray = Array.from(sortedEmojis)
+        .sort((a, b) => b[1] - a[1])
+        .map(([emoji]) => emoji);
+
+      localStorage.setItem(
+        "recentlySelectedEmojis",
+        JSON.stringify(sortedArray.slice(0, 3))
+      );
+    }
+
+    return newEmojis.slice(0, 1); // Display only the most recently selected emoji
+  });
+}, [selectedEmoji, selectedEmojiLength]);
   
 
 
@@ -132,12 +139,6 @@ const EmojiPage: React.FC<EmojiProps> = ({
 
   const mapEmojiChangeText = () => {
     if (selectedEmoji) {
-      const firstEmoji = recentlySelectedEmojis[0];
-
-      if (firstEmoji) {
-        return <div key={0}>{getEmojiChangeText(firstEmoji)}</div>;
-      }
-
       return (
         <div
           key={0}
@@ -150,7 +151,6 @@ const EmojiPage: React.FC<EmojiProps> = ({
 
     return (
       <div
-        key={0}
         className="flex justify-center items-center text-gray-800 text-opacity-60"
         onClick={() => handleEmojiClick("like")}
       >
@@ -288,6 +288,7 @@ const EmojiPage: React.FC<EmojiProps> = ({
             </div>
           </div>
         </div>
+
         <button
           onClick={() =>
             setShowResponseForm((prev) =>
