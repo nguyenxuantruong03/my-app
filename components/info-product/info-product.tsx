@@ -1,7 +1,7 @@
 "use client"
 import { Product, Product1, Product10, Product11, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9 } from "@/types";
 import Currency from "../ui/currency";
-import { Banknote ,Shield , ShoppingBasket, ShoppingCart,Award,Tag,CreditCard,BadgePercent} from "lucide-react";
+import { Banknote ,Shield , ShoppingBasket, ShoppingCart,Award,Tag,CreditCard,BadgePercent, Heart} from "lucide-react";
 import  Button  from "../ui/button";
 import useCart from "@/hooks/use-cart";
 import { MouseEventHandler } from "react";
@@ -11,7 +11,9 @@ import { useRouter } from "next/navigation";
 import {Infoproductcolor} from "@/components/color/color"
 import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
-
+import useLike from "@/hooks/use-like";
+import "./info-product.css"
+import { debounce } from 'lodash';
 interface InfoProductProps{
   data: Product | Product1 | Product2 | Product3 | Product4 | Product5 |Product6 | Product7 | Product8 | Product9 | Product10 | Product11 
 }
@@ -20,6 +22,23 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
     const [quantity, setQuantity] = useState(1)
     const router = useRouter()
     const {userId} = useAuth()
+    const like = useLike()
+    const { addItem, removeItem, items } = useLike();
+
+    //Handle add like và sử dụng debounce sau 1 giay mới được add được thêm vào giỏ hàng ngăn chặn hành vi spam
+    const debouncedHandleIconClick = debounce((productId: string) => {
+      const isLiked = items.some((item) => item.id === productId);
+  
+      if (isLiked) {
+        removeItem(productId);
+      } else {
+        addItem(data, userId); 
+      }
+    }, 1000);
+    
+    const handleIconClick = (productId: string) => {
+      debouncedHandleIconClick(productId);
+    };
 
     const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.stopPropagation();
@@ -123,15 +142,23 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                 <Button onClick={onAddtoCart} className=" gap-x-2">
                     <ShoppingBasket />
                 </Button>
+                <Button>
+                <div className="largeFont textCenter">
+                  <Heart
+                      className={`text-gray-600 ${like.items.some(item => item.id === data.id) ? "active" : ""}`}
+                      onClick={() => handleIconClick(data.id)}
+                    />
+              </div>
+              </Button>
                 <Button onClick={onAddtoPushCart} className="w-full " >
-                  <div className="flex text-lg items-center gap-x-2 pl-[2.25] md:pl-[11.25rem] ">
+                  <div className="flex text-lg items-center gap-x-2 pl-[2.25] md:w-full justify-center">
                    Mua ngay
                     <ShoppingCart />
                     </div>
                 </Button>
             </div>
             {/* Ưa đãi thêm */}
-            <div className="w-full h-52 shadow-lg mt-9 rounded-lg space-y-1 overflow-hidden ">
+            <div className="w-full h-full shadow-lg mt-9 rounded-lg space-y-1 overflow-hidden ">
                 <div className="h-10 bg-gray-300 flex items-center ">
                     <h1 className="ml-3 font-bold "> Ưa đãi thêm </h1>
                 </div>
@@ -165,7 +192,7 @@ const InfoProduct:React.FC<InfoProductProps> = ({data}) => {
                   <h1 className="ml-1 text-sm ">Nếu sản phẩm có lỗi hoặc hư bảo hành 1 năm tùy món hàng.</h1>
                 </div>
             </div>
-            <div className="md:flex md:justify-center xl:block w-full h-[125px] md:h-[205px] mt-4 rounded-md overflow-hidden"> 
+            <div className="hidden md:flex md:justify-center xl:block w-full h-[125px] md:h-full mt-4 rounded-md overflow-hidden"> 
               <Image 
                 alt="Error"
                 src="/images/baohanh.png"

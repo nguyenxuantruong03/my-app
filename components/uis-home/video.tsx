@@ -22,8 +22,8 @@ const Video: React.FC<Props> = ({url}) => {
       </video>
       <div className="content-slider">
         <HeadingDescription
-          fontSizeheading="35px"
-          fontSizedescription="28px"
+          fontSizeheading="33px"
+          fontSizedescription="25px"
           heading="Cửa hàng vật liệu xây dựng"
           description="Trường Đạt"
           colordes="#fff"

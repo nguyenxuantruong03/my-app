@@ -170,7 +170,7 @@ const InfoWarranty: React.FC<InfoWarrantyProps> = ({ data }) => {
                       onClick={option.onClick}
                       className="text-red-600 cursor-pointer text-sm font-bold my-auto"
                     >
-                      Xem chi tiết
+                      Xem
                     </span>
                   </div>
                 </>

@@ -33,7 +33,7 @@ interface CommentProps {
 }
 const Comment: React.FC<CommentProps> = (
   { data },
-  { params }: { params: { commentId: string } }
+  { params }: { params: { productId: string } }
 ) => {
   const [rating, setRating] = useState<number | null>(null);
   const [comment, setComment] = useState<string>("");
@@ -59,8 +59,8 @@ const Comment: React.FC<CommentProps> = (
   const [showResponseComments, setShowResponseComments] = useState<
     string | null
   >(null);
+  const { user } = useUser();
 
-  // Update the handleResponseSubmit function to use the correct response description
   const handleResponseSubmit = async (commentId: any) => {
     try {
       const responseDescription = responseDescriptions[commentId];
@@ -74,25 +74,48 @@ const Comment: React.FC<CommentProps> = (
         return;
       }
       setErrorResponse("");
-      await axios.post(`/api/comments/${commentId}/responsecomment`, {
-        description: responseDescriptions[commentId], // Use the correct response description
+      const response = await axios.post(`/api/comments/${commentId}/responsecomment`, {
+        description: responseDescriptions[commentId],
         imageUrl: user?.imageUrl || "/images/default_avatar.png",
         commenter: user?.username || "Vô danh",
         createdAt: new Date().toISOString(),
       });
-      
-      // Clear the response description for the submitted comment
+
+      // Lấy id từ phản hồi của API
+    const newResponseId = response.data.id;
+
+      // Cập nhật savedComments sau khi thêm phản hồi
+      setSavedComments((prevComments) => {
+        const updatedComments = [...prevComments];
+        const commentToUpdate = updatedComments.find((comment) => comment.id === commentId);
+        if (commentToUpdate) {
+          commentToUpdate.responses = [
+            ...(commentToUpdate.responses || []),
+            {
+              id: newResponseId,
+              imageUrl: user?.imageUrl || "/images/default_avatar.png",
+              commenter: user?.username || "Vô danh",
+              description: responseDescriptions[commentId],
+              createdAt: new Date().toISOString(),
+            },
+          ];
+        }
+        return updatedComments;
+      });
+
+      // Xóa response description cho comment đã gửi phản hồi
       setResponseDescriptions((prevDescriptions) => {
         const newDescriptions = { ...prevDescriptions };
         delete newDescriptions[commentId];
         return newDescriptions;
       });
-      toast.success('Phản hồi thành công.')
+      toast.success('Phản hồi thành công.');
     } catch (error) {
       console.error("Error submitting response:", error);
-      toast.error('Hãy thử lại.')
+      toast.error('Hãy thử lại.');
     }
   };
+
 
   const handleDeleteCommentresponse = async (
     commentId: string | undefined,
@@ -232,27 +255,30 @@ const Comment: React.FC<CommentProps> = (
       try {
         const response = await axios.get(`/api/comments`);
         const fetchedComments: Comment[] = response.data;
-
-        for (const comment of fetchedComments) {
-          try {
-            const responseCommentResponse = await axios.get(
-              `/api/comments/${comment.id}/responsecomment`
-            );
-            const responseComments: ResponseComment[] =
-              responseCommentResponse.data;
-            comment.responses = responseComments;
-          } catch (error) {
-            console.error(
-              `Error fetching responses for comment ID: ${comment.id}`,
-              error
-            );
-          }
-        }
-
-        setSavedComments(fetchedComments);
-
+  
+        const updatedComments = await Promise.all(
+          fetchedComments.map(async (comment) => {
+            try {
+              const responseCommentResponse = await axios.get(
+                `/api/comments/${comment.id}/responsecomment`
+              );
+              const responseComments: ResponseComment[] =
+                responseCommentResponse.data;
+              return { ...comment, responses: responseComments };
+            } catch (error) {
+              console.error(
+                `Error fetching responses for comment ID: ${comment.id}`,
+                error
+              );
+              return comment; // Return the original comment if there's an error
+            }
+          })
+        );
+  
+        setSavedComments(updatedComments);
+  
         const commentsByRating: { [key: number]: Comment[] } =
-          fetchedComments.reduce((acc, comment) => {
+          updatedComments.reduce((acc, comment) => {
             if (acc[comment.rating]) {
               acc[comment.rating].push(comment);
             } else {
@@ -260,14 +286,16 @@ const Comment: React.FC<CommentProps> = (
             }
             return acc;
           }, {} as { [key: number]: Comment[] });
+  
         setCommentsByRating(commentsByRating);
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
     };
-
     fetchComments();
-  }, [savedComments]);
+  }, []);
+  
+
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 
   const handleEditClick = (commentId: string | undefined) => {
@@ -293,39 +321,52 @@ const Comment: React.FC<CommentProps> = (
 
   
   const handleUpdate = async () => {
-    // Add your validation logic here if needed
     try {
+      // Add your validation logic here if needed
       const updatedComment = {
         id: editingCommentId,
         rating: rating as number,
         comment,
       };
-      
-
+  
       const response = await axios.patch(`/api/comments`, updatedComment);
       const updatedCommentData: Comment = response.data;
+  
       // Update the comment in the state
       setSavedComments((prevComments) =>
-      prevComments.map((comment) =>
-        comment.id === updatedCommentData.id ? updatedCommentData : comment
-      )
-    );
-    
-
+        prevComments.map((comment) =>
+          comment.id === updatedCommentData.id ? updatedCommentData : comment
+        )
+      );
+  
+      // Update the commentsByRating state to reflect the changes
+      setCommentsByRating((prevCommentsByRating) => {
+        const updatedCommentsByRating = { ...prevCommentsByRating };
+        const commentToUpdate = updatedCommentsByRating[updatedCommentData.rating]?.find(
+          (comment) => comment.id === updatedCommentData.id
+        );
+        if (commentToUpdate) {
+          // Update the comment in commentsByRating if found
+          commentToUpdate.rating = updatedCommentData.rating;
+          commentToUpdate.comment = updatedCommentData.comment;
+        }
+        return updatedCommentsByRating;
+      });
+  
       setEditingCommentId(null);
       setRating(null);
       setCurrentValue(null);
       setComment("");
       setCommentError("");
       setRatingError("");
-      toast.success(
-        "Cập nhật thành công."
-      );
+      
+      toast.success("Cập nhật thành công.");
     } catch (error) {
       console.error("Error updating comment:", error);
       toast.error("Xin vui lòng thử lại!");
     }
   };
+  
 
   const handleDeleteComment = async (commentId: string | undefined) => {
     try {
@@ -359,7 +400,6 @@ const Comment: React.FC<CommentProps> = (
   
 
 
-  const { user } = useUser();
 
   const handleTimestampUpdate = () => {
     localStorage.setItem("lastCommentTime", Date.now().toString());
@@ -502,6 +542,8 @@ const Comment: React.FC<CommentProps> = (
           style={{
             marginRight: 10,
           }}
+          stroke="rgb(255, 186, 90)"
+          fill="rgb(255, 186, 90)"
         />
       );
     }
@@ -519,6 +561,8 @@ const Comment: React.FC<CommentProps> = (
               fractionalPart * 100
             }% 100%, 0% 100%)`,
           }}
+          stroke="rgb(255, 186, 90)"
+          fill="rgb(255, 186, 90)"
         />
       );
     }
@@ -534,6 +578,8 @@ const Comment: React.FC<CommentProps> = (
           style={{
             marginRight: 10,
           }}
+          stroke="rgb(169, 169, 169)"
+          fill="rgb(169, 169, 169)"
         />
       );
     }
@@ -601,6 +647,8 @@ const Comment: React.FC<CommentProps> = (
                     marginRight: 10,
                     cursor: "pointer",
                   }}
+                  stroke="rgb(255, 186, 90)"
+                  fill="rgb(255, 186, 90)"
                 />
               ))}
               <div
@@ -629,6 +677,8 @@ const Comment: React.FC<CommentProps> = (
                     marginRight: 10,
                     cursor: "pointer",
                   }}
+                  stroke="rgb(255, 186, 90)"
+                  fill="rgb(255, 186, 90)"
                 />
               ))}
               <div
@@ -657,6 +707,8 @@ const Comment: React.FC<CommentProps> = (
                     marginRight: 10,
                     cursor: "pointer",
                   }}
+                  stroke="rgb(255, 186, 90)"
+                  fill="rgb(255, 186, 90)"
                 />
               ))}
               <div
@@ -685,6 +737,8 @@ const Comment: React.FC<CommentProps> = (
                     marginRight: 10,
                     cursor: "pointer",
                   }}
+                  stroke="rgb(255, 186, 90)"
+                  fill="rgb(255, 186, 90)"
                 />
               ))}
               <div
@@ -713,6 +767,8 @@ const Comment: React.FC<CommentProps> = (
                     marginRight: 10,
                     cursor: "pointer",
                   }}
+                  stroke="rgb(255, 186, 90)"
+                  fill="rgb(255, 186, 90)"
                 />
               ))}
               <div
@@ -739,23 +795,33 @@ const Comment: React.FC<CommentProps> = (
           <div className="flex space-x-2">
             {stars.map((_, index) => (
               <Star
-                key={index}
-                size={24}
-                onClick={() => handleRatingChange(index + 1)}
-                onMouseOver={() => handleMouseOver(index + 1)}
-                onMouseLeave={handleMouseLeave}
-                color={
-                  (hoverValue !== null || currentValue !== null) &&
+              key={index}
+              size={24}
+              onClick={() => handleRatingChange(index + 1)}
+              onMouseOver={() => handleMouseOver(index + 1)}
+              onMouseLeave={handleMouseLeave}
+              color={
+                (hoverValue !== null || currentValue !== null) &&
+                (hoverValue !== null ? hoverValue : currentValue ?? 0) >=
+                  index + 1
+                  ? commentcolor.orange
+                  : commentcolor.grey
+              }
+              style={{
+                marginRight: 10,
+                cursor: "pointer",
+                stroke: (hoverValue !== null || currentValue !== null) &&
                   (hoverValue !== null ? hoverValue : currentValue ?? 0) >=
                     index + 1
-                    ? commentcolor.orange
-                    : commentcolor.grey
-                }
-                style={{
-                  marginRight: 10,
-                  cursor: "pointer",
-                }}
-              />
+                    ? 'rgb(255, 186, 90)'
+                    : 'rgb(169, 169, 169)',
+                fill: (hoverValue !== null || currentValue !== null) &&
+                  (hoverValue !== null ? hoverValue : currentValue ?? 0) >=
+                    index + 1
+                    ? 'rgb(255, 186, 90)'
+                    : 'rgb(169, 169, 169)',
+              }}
+            />            
             ))}
           </div>
           {ratingError && <p className="text-red-500 text-sm">{ratingError}</p>}
@@ -883,14 +949,25 @@ const Comment: React.FC<CommentProps> = (
                               <p> Đánh giá: </p>
                               {stars.map((_, starIndex) => (
                                 <Star
-                                  key={starIndex}
-                                  size={16}
-                                  color={
-                                    starIndex + 1 <= parseInt(rating, 10)
-                                      ? commentcolor.orange
-                                      : commentcolor.grey
-                                  }
-                                />
+                                key={starIndex}
+                                size={16}
+                                color={
+                                  starIndex + 1 <= parseInt(rating, 10)
+                                    ? commentcolor.orange
+                                    : commentcolor.grey
+                                }
+                                stroke={
+                                  starIndex + 1 <= parseInt(rating, 10)
+                                    ? "rgb(255, 186, 90)"
+                                    : "rgb(169, 169, 169)"
+                                }
+                                fill={
+                                  starIndex + 1 <= parseInt(rating, 10)
+                                    ? "rgb(255, 186, 90)"
+                                    : "rgb(169, 169, 169)"
+                                }
+                              />
+                              
                               ))}
                             </div>
                           </div>
@@ -912,34 +989,13 @@ const Comment: React.FC<CommentProps> = (
                                                 {formatTimestamp(
                                                   response.createdAt
                                                 )}
-                                              </div>{" "}
-                                              <p className="float-right font-bold mr-2 text-gray-600">
-                                                {response.commenter}
-                                              </p>{" "}
+                                              </div>
                                             </div>
-                                            <Image
-                                              src={response.imageUrl}
-                                              alt=""
-                                              width="30"
-                                              height="30"
-                                              className="rounded-md"
-                                            />
                                             {user &&
                                               user.username ===
                                                 comment.commenter && (
                                                 <>
-                                                  <button
-                                                    onClick={() =>
-                                                      handleDeleteCommentresponse(
-                                                        comment.id,
-                                                        response.id
-                                                      )
-                                                    }
-                                                    className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900"
-                                                  >
-                                                    <Trash2 className="w-5 h-5" />
-                                                  </button>
-                                                  <button
+                                                 <button
                                                     onClick={() =>
                                                       handleResponseEditClick(
                                                         comment.id,
@@ -950,8 +1006,33 @@ const Comment: React.FC<CommentProps> = (
                                                   >
                                                     <Pencil className="w-5 h-5" />
                                                   </button>
+                                                  <button
+                                                    onClick={() =>
+                                                      handleDeleteCommentresponse(
+                                                        comment.id,
+                                                        response.id
+                                                      )
+                                                    }
+                                                    className="text-gray-800 text-opacity-60 ml-2 hover:text-gray-900 mr-2"
+                                                  >
+                                                    <Trash2 className="w-5 h-5" />
+                                                  </button>
+                                                 
                                                 </>
                                               )}
+
+                                              <p className="font-bold mr-2 text-gray-600">
+                                                {response.commenter}
+                                              </p>
+
+                                            <Image
+                                              src={response.imageUrl}
+                                              alt=""
+                                              width="30"
+                                              height="30"
+                                              className="rounded-md"
+                                            />
+                                            
                                           </div>
                                           <div className="bg-gray-100 mt-2 mb-2 rounded-md p-3 text-sm ml-12">
                                             <p>

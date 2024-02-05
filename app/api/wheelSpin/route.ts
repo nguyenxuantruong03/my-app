@@ -55,13 +55,47 @@ export async function GET(req: Request) {
       return new NextResponse('Internal error', { status: 500 });
     }
 }
+//--------------Delete xóa tất cả bao gôm rotation và coin --------------------------------
 
-export async function DELETE(req: Request) {
-  try {
-    await prisma.wheelSpin.deleteMany();  // Delete all wheel spins
-    return new NextResponse('Total coins reset successfully', { status: 200 });
-  } catch (error) {
-    console.error('Error resetting total coins:', error);
-    return new NextResponse('Internal error', { status: 500 });
-  }
-}
+// export async function DELETE(req: Request) {
+//   try {
+//     await prisma.wheelSpin.deleteMany();  // Delete all wheel spins
+//     return new NextResponse('Total coins reset successfully', { status: 200 });
+//   } catch (error) {
+//     console.error('Error resetting total coins:', error);
+//     return new NextResponse('Internal error', { status: 500 });
+//   }
+// }
+
+//--------------Delete xóa coins --------------------------------
+// export async function DELETE(req: Request) {
+//   try {
+//     const { userId } = auth();
+
+//     if (!userId) {
+//       return new NextResponse('Unauthenticated', { status: 403 });
+//     }
+
+//     // Find the specific wheelSpin record for the authenticated user
+//     const existingWheelSpin = await prisma.wheelSpin.findFirst({
+//       where: {
+//         authenticationId: userId,
+//       },
+//     });
+
+//     if (!existingWheelSpin) {
+//       return new NextResponse('No wheelSpin record found for the user', { status: 404 });
+//     }
+
+//     // Update only the 'coin' field to 0
+//     await prisma.wheelSpin.update({
+//       where: { id: existingWheelSpin.id },
+//       data: { coin: "0" },
+//     });
+
+//     return new NextResponse('Coin reset successfully', { status: 200 });
+//   } catch (error) {
+//     console.error('Error resetting coin:', error);
+//     return new NextResponse('Internal error', { status: 500 });
+//   }
+// }

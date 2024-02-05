@@ -1,4 +1,5 @@
 declare module 'react-sound';
+declare module 'lodash';
 declare module 'react-chrome-dino' {
     import React from 'react';
   

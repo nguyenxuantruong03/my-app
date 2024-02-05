@@ -205,13 +205,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-10 md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative md:bottom-4 lg:bottom-10 md:left-[175px] lg:left-[195px] z-30 ">
           {isShown && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -252,13 +252,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[4.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative md:bottom-12 lg:bottom-[4.7rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown1 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -299,13 +299,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[6.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[6.7rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown2 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -346,13 +346,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[8.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[8.9rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown3 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -393,13 +393,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[10.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[11rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown4 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -440,13 +440,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[12.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[13.2rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown5 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -487,13 +487,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[14.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[15.3rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown6 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -534,13 +534,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[16.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[17.4rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown7 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -581,13 +581,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[18.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[19.5rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown8 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -628,13 +628,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[20.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[21.7rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown9 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -675,13 +675,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[22.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[23.8rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown10 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 
@@ -722,13 +722,13 @@ const MenuTree:React.FC<menuTreeProps> = ({data,categories1,categories2,categori
           </p>
         </div>
 
-        <div className="relative bottom-[24.5rem] md:left-[175px] lg:left-[195px] z-30 ">
+        <div className="relative bottom-[25.9rem] md:left-[175px] lg:left-[195px] z-30 ">
           {isShown11 && (
             <div
               className="absolute 
       lg:w-[780px] 
       md:w-[535px]
-      lg:h-[400px] 
+      lg:h-[415px] 
       md:h-[388px] 
       shadow-xl 
       bg-white 

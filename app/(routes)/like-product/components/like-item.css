@@ -1,0 +1,162 @@
+.home-product-item__favorite{
+    position:absolute;
+    top: 0px;
+    left: -4px;
+    font-size: 0.9rem;
+    color: red;
+    background-color: currentColor;
+    font-weight: 500;
+    line-height: 16px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 15px  ;
+    padding:4px ;
+    }
+    /* Cách làm style yêu thích giống shoppe */
+    .home-product-item__favorite::after{
+        border-left: 6px solid transparent;
+        border-top: 4px solid currentColor; 
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        filter: brightness(60%);
+    }
+    .home-product-item__favorite span{
+        color: white; 
+    
+    }
+    .home-product-item__favorite i{
+        font-size: 0.9rem;
+        margin: 0 2px 0 5px;
+      color: white; 
+    
+    }
+
+
+
+
+    
+//heart
+.largeFont {
+    font-size: xxx-large;
+  }
+  
+  .textCenter {
+    text-align: center;
+  }
+  
+  .active {
+    animation: like 0.5s 1;
+    fill: red;
+    stroke: none;
+  }
+  .active{
+    stroke:red;
+    transition:all 0.5s;
+  }
+  
+  @-webkit-keyframes like {
+    0% { transform: scale(1); }
+    90% { transform: scale(1.2); }
+    100% { transform: scale(1.1); }
+  }
+
+
+  
+  
+/* Sort-Price-Product-Change */
+.wrapper {
+  background-color: #fff;
+  padding: 0px 20px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper header h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.wrapper header p {
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.wrapper .price-input {
+  display: flex;
+  width: 100%;
+  margin: 30px 0 35px;
+}
+
+.wrapper .price-input .field {
+  display: flex;
+  width: 100%;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-input input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: 1px solid #999;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  margin-left: 12px;
+  color: #333;
+}
+
+.price-input input::-webkit-outer-spin-button,
+.price-input input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.wrapper .seperator {
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+
+.wrapper .slider {
+  height: 5px;
+  position: relative;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.wrapper .progress {
+  position: absolute;
+  height: 100%;
+  left: 5%;
+  right: 65%;
+  background-color: #4070f4;
+  border-radius: 5px;
+}
+
+.wrapper .range-input {
+  position: relative;
+}
+
+.wrapper .range-input input {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: -5px;
+  pointer-events: none;
+  background: none;
+  appearance: none;
+  accent-color: #4070f4;
+}
+
+.wrapper .range-input input::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #4070f4;
+  border-radius: 50%;
+  pointer-events: auto;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}

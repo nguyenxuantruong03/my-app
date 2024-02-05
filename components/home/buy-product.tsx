@@ -8,7 +8,7 @@ const BuyProduct = () => {
     const router = useRouter()
     const [isMounted, setIsMounted] = useState(false);
     const handleClickProduct = () =>{
-        router.push("/enterprise")
+        router.push("/home-product")
     }
         useEffect(() => {
             setIsMounted(true);

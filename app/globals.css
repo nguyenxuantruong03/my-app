@@ -144,3 +144,7 @@ display: none;
 .cl-internal-1bm3sy9 {
   background-color: rgba(255,255,255);
 }
+
+.leaflet-control-attribution{
+  display:none;
+}

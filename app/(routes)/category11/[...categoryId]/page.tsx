@@ -4,16 +4,20 @@ import getSizes from "@/actions/get-size";
 import Container from "./../../../../components/ui/container";
 import getBillboard from "@/actions/billboard/get-billboard";
 import getProduct11 from "@/actions/product/get-product11";
-import { getCategories11 } from "@/actions/categories/get-categories";
 import dynamic from "next/dynamic";
 import { Billboard, Color, Product11, Size } from "@/types";
 import { useEffect, useMemo, useState } from "react";
 import LoadingPageComponent from "@/components/ui/loading";
+import PreviewModal from "@/components/modal/preview.modal";
+import MobileFilter from "@/components/filter-category/mobile-filter";
+import Filter from "@/components/filter-category/filter";
+import {ArrowDownAZ,ArrowDownWideNarrow,ArrowDownZA,ArrowUpNarrowWide,Percent} from "lucide-react";
+import { SortButton } from "@/components/ui/sortButton";
+import PriceRangeCategory from "@/components/ui/price-change-ranger-category";
 const ProductCard = dynamic(() => import('@/components/product/productcard-category/productcard'), {ssr: false,})
 const BillboardCategory = dynamic(() => import('@/components/slider-item/billboard-category'), {ssr: false,})
-const Filter = dynamic(() => import('./components/filter'), {ssr: false,})
-const MobileFilter = dynamic(() => import('./components/mobile-filter'), {ssr: false,})
 export const revalidate = 7200;
+
 interface CategoryPageProps {
   params: {
     categoryId: string;
@@ -24,6 +28,34 @@ interface CategoryPageProps {
   };
 }
 
+const sortButtons = [
+  {
+    label: "Giá cao đến thấp",
+    sortType: "priceHighToLow",
+    icon: <ArrowDownWideNarrow className="w-5 h-5" />,
+  },
+  {
+    label: "Giá thấp đến cao",
+    sortType: "priceLowToHigh",
+    icon: <ArrowUpNarrowWide className="w-5 h-5 " />,
+  },
+  {
+    label: "Tên A đến Z",
+    sortType: "nameAToZ",
+    icon: <ArrowDownAZ className="w-5 h-5 " />,
+  },
+  {
+    label: "Tên Z đến A",
+    sortType: "nameZToA",
+    icon: <ArrowDownZA className="w-5 h-5" />,
+  },
+  {
+    label: "Khuyến mãi hot",
+    sortType: "percentPromotionHighToLow",
+    icon: <Percent className="w-5 h-5" />,
+  },
+];
+
 const CategoryPage: React.FC<CategoryPageProps> = ({
   params,
   searchParams,
@@ -33,8 +65,20 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
   const [size, setSize] = useState<Size[]>([]);
   const [color, setColor] = useState<Color[]>([]);
   const [sortOrder, setSortOrder] = useState<string>("");
-  const handleSortChange = (value: string) => {
-    setSortOrder(value);
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const [maxPriceInDatas, setMaxPriceInDatas] = useState<number>(0);
+
+  const handlePriceChange = (min: number, max: number) => {
+    setMinPrice(min);
+    setMaxPrice(max);
+  };
+
+  // Function to filter products based on price range
+  const filterProductsByPrice = (products: Product11[]) => {
+    return products.filter(
+      (product) => product.price * ((100 - product.percentpromotion) / 100) >= minPrice && product.price * ((100 - product.percentpromotion) / 100) <= maxPrice
+    );
   };
 
   const sortedProduct = useMemo(() => {
@@ -53,13 +97,18 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
       case "nameZToA":
         sortedArray.sort((a, b) => b.name.localeCompare(a.name));
         break;
+      case "percentPromotionHighToLow":
+        sortedArray.sort((a, b) => b.percentpromotion - a.percentpromotion);
+        break;
       default:
-        // Default order (unsorted)
         break;
     }
-
     return sortedArray;
   }, [product, sortOrder]);
+
+  const handleSortChange = (value: string) => {
+    setSortOrder(value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,7 +123,18 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
         });
         const sizeData = await getSizes();
         const colorData = await getColors();
-
+        
+        // Tìm giá cao nhất trong danh sách sản phẩm
+        const highestPrice = productData.reduce(
+          (max, product) =>
+            (product.price * ((100 - product.percentpromotion) / 100)) + 1000000 >
+            max
+              ? (product.price * ((100 - product.percentpromotion) / 100)) + 1000000
+              : max,
+          0
+        );
+        setMaxPrice(Math.floor(highestPrice));
+        setMaxPriceInDatas(Math.floor(highestPrice))
         setBillboard(billboardData);
         setProduct(productData);
         setSize(sizeData);
@@ -102,20 +162,30 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               <div className="">
-                <select
-                  value={sortOrder}
-                  onChange={(e) => handleSortChange(e.target.value)}
-                  className="mt-2 p-2 border border-gray-300 rounded-md mb-3"
-                >
-                  <option value="">Lựa chọn </option>
-                  <option value="priceHighToLow">Price High to Low</option>
-                  <option value="priceLowToHigh">Price Low to High</option>
-                  <option value="nameAToZ">Sort Names A-Z</option>
-                  <option value="nameZToA">Sort Names Z-A</option>
-                </select>
+              <div className="mb-4">
+                  <PriceRangeCategory
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    maxPriceInDatas= {maxPriceInDatas}
+                    onPriceChange={handlePriceChange}
+                  />
+                </div>
+                <div className="flex justify-start items-center mb-4 w-full overflow-x-auto ">
+                  <div className="flex space-x-2">
+                    {sortButtons.map((button, index) => (
+                      <SortButton
+                        key={index}
+                        onClick={() => handleSortChange(button.sortType)}
+                        active={sortOrder === button.sortType}
+                        label={button.label}
+                        icon={button.icon}
+                      />
+                    ))}
+                  </div>
+                </div>
                 {sortedProduct.length === 0 && <LoadingPageComponent />}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {sortedProduct.map((item) => (
+                  {filterProductsByPrice(sortedProduct).map((item) => (
                     <ProductCard key={item.id} data={item} route="product11" />
                   ))}
                 </div>
@@ -123,6 +193,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
             </div>
           </div>
         </div>
+        <PreviewModal />
       </Container>
     </div>
   );

@@ -3,7 +3,7 @@ import { AlertTriangle } from "lucide-react";
 import Modal from "./modal";
 import useSeeDanger from "@/hooks/use-see-danger";
 import useCart from "@/hooks/use-cart";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -15,12 +15,15 @@ const DangerModal = () => {
   const items = useCart((state) => state.items);
   const [totalCoins, setTotalCoins] = useState<number>(0);
   const [rotation, setRotation] = useState<number>(0);
-  
+  const router = useRouter()
+  const handleCheckoutcash =() =>{
+      router.push("/checkoutcash")
+  }
   const resetTotalCoins = async () => {
     try {
       const response = await axios.get("/api/wheelSpin");
       const currentRotation = response.data.latestRotation;
-      await axios.delete("/api/wheelSpin");
+      // await axios.delete("/api/wheelSpin");
       
       let newRotation = currentRotation;
     const paymentAmount = totalAmount - totalCoins;
@@ -42,12 +45,12 @@ const DangerModal = () => {
     }
   };
   useEffect(() => {
-    if (searchParams.get("success")) {
+    if (searchParams.get("payment-success")) {
       toast.success("Payment completed");
       cart.removeSelectedItems();
       resetTotalCoins(); // Reset totalCoins on successful payment
     }
-    if (searchParams.get("canceled")) {
+    if (searchParams.get("payment-fail")) {
       toast.error("Something went wrong");
     }
   }, [searchParams]);
@@ -132,13 +135,14 @@ const DangerModal = () => {
         </div>
 
         <p className="mt-4">
-          Khi thanh toán quý khách tránh làm mới trang và thoát trang bằng nút quay lại trên chuột , nếu muốn quay lại thì đợi load xong, mới 
+          Khi thanh toán quý khách tránh làm mới trang và thoát trang bằng nút quay lại trên chuột , nếu muốn quay lại thì đợi load xong, sau đó rồi 
           ấn mũi tên để quay trở lại trang đảm bảo sản phẩm sẽ không bị mất khi chưa ghi thông tin thanh toán.
           Nếu khách hàng không muốn trả tiền online có thể liên lạc  <span className="text-red-400 font-semibold">0352261103</span> trả lời nhanh chóng cho quý khách trả tiền mặt.
         </p>
         <div className="mt-4 text-end">
           <span onClick={danger.onClose} className="underline text-lg mr-3 cursor-pointer">Back</span>
-        <Button onClick={onCheckout}>Tiếp tục</Button>
+        <Button onClick={onCheckout}>Thanh toán visa</Button>
+        <Button className="ml-3" onClick={handleCheckoutcash}>Thanh toán tiền mặt</Button>
         </div>
       </div>
     </Modal>

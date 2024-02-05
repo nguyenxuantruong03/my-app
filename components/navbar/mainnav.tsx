@@ -7,25 +7,27 @@ import {
   Gift,
   Coins,
   Gamepad2,
-  Phone,
+  Heart,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import Menu from "@/components/navbar/menu-list";
 import axios from "axios";
-import {mainnavcolor} from "@/components/color/color"
-import SearchPage from "./Search";
+import { mainnavcolor } from "@/components/color/color";
 import { UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import "./mainnav.css";
 import { SignInButton } from "@clerk/nextjs";
+import useLike from "@/hooks/use-like";
+import SearchPage from "../search/search";
 
 const MainNav = () => {
   const [isMounted, setIsMounted] = useState(false);
   const user = useUser();
   const router = useRouter();
   const cart = useCart();
+  const like = useLike()
   //List-onClick-onBlur click mở blur ra ngoài thì tắt đi
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -34,29 +36,25 @@ const MainNav = () => {
     setIsOpen((value) => !value);
   }, []);
 
-  const handleOutsideClick = useCallback(
-    (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    },
-    []
-  );
+  const handleOutsideClick = useCallback((event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
       // Add the event listener when the menu is open
-      document.addEventListener('click', handleOutsideClick);
+      document.addEventListener("click", handleOutsideClick);
     } else {
       // Remove the event listener when the menu is closed
-      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener("click", handleOutsideClick);
     }
     // Clean up the event listener on component unmount
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener("click", handleOutsideClick);
     };
   }, [isOpen, handleOutsideClick]);
-  
 
   useEffect(() => {
     setIsMounted(true);
@@ -70,30 +68,47 @@ const MainNav = () => {
     // Load totalCoins from the server using GET request
     axios.get("/api/wheelSpin").then((response) => {
       setTotalCoins(response.data.totalCoins);
-      setRotation(response.data.latestRotation)
+      setRotation(response.data.latestRotation);
     });
   }, []);
-  
-  
 
   if (!isMounted) {
     return null;
   }
   return (
     <>
-      <Link href="/home-product" >
+      <Link href="/home-product">
         <div className="hidden xl:block">
-       <div className="bg-[#333]  p-1  rounded-lg">
-       <svg width="120" height="35" viewBox="0 0 512 52" xmlns="http://www.w3.org/2000/svg">
-          <text x="20" y="10" className="text1">Xuân</text>
-          <text x="160" y="10" className="text2">Trường</text>
-          <text x="32" y="72" className="text1">vật liệu</text>
-          <text x="245" y="72" className="text3">xây dựng</text>
-        </svg>
-        </div>
+          <div className="bg-[#333]  p-1  rounded-lg">
+            <svg
+              width="120"
+              height="35"
+              viewBox="0 0 512 52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <text x="20" y="10" className="text1">
+                Xuân
+              </text>
+              <text x="160" y="10" className="text2">
+                Trường
+              </text>
+              <text x="32" y="72" className="text1">
+                vật liệu
+              </text>
+              <text x="245" y="72" className="text3">
+                xây dựng
+              </text>
+            </svg>
+          </div>
         </div>
         <div className="block xl:hidden">
-            <Image alt=""  src="/images/logo.ico" width="45" height="45" className="rounded-md m-[6.5px] border border-white"/>  
+          <Image
+            alt=""
+            src="/images/logo.ico"
+            width="45"
+            height="45"
+            className="rounded-md m-[6.5px] border border-white"
+          />
         </div>
       </Link>
 
@@ -114,7 +129,7 @@ const MainNav = () => {
           onClick={toggleOpen}
         ></div>
       )}
-       {/* Menu */}
+      {/* Menu */}
       {isOpen && (
         <div className="absolute top-[-40px] z-40 " ref={menuRef}>
           <Menu />
@@ -134,8 +149,9 @@ const MainNav = () => {
           </div>
         </div>
       </div>
-
+        <div className="ml-1.5 md:ml-0">
       <SearchPage />
+        </div>
 
       <Link href="/spinlucky" className=" hidden md:block">
         <div className={mainnavcolor.bghover}>
@@ -144,17 +160,18 @@ const MainNav = () => {
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center relative">
                 <Gift className="w-6 h-6 text-white" />
                 <span className="w-5 h-5 absolute bg-[#e53350] rounded-full  left-[10px] top-0 -mt[1px] shadow-lg">
-            <p className="text-[0.75rem] text-center font-semibold text-white">{rotation} </p>
-          </span>
+                  <p className="text-[0.75rem] text-center font-semibold text-white">
+                    {rotation}{" "}
+                  </p>
+                </span>
               </div>
-              
+
               <div className="basis-2/3">
                 <div className="text-xs flex gap-4 text-white">Vòng quay</div>
                 <div className="text-xs w-20 text-white">May Mắn</div>
               </div>
             </div>
           </div>
-          
         </div>
       </Link>
 
@@ -174,23 +191,26 @@ const MainNav = () => {
         </div>
       </Link>
 
-      <Link href="tel:0948468558" className="hidden xl:block">
-          <div className={mainnavcolor.bghover} >
-            <div className="flex flex-col md:flex-row justify-center  items-center ">
+      <button onClick={() => router.push("/like-product")}>
+        <div className={mainnavcolor.bghover_gio_hang}>
+          <div className="flex flex-col md:flex-row justify-center  items-center relative">
             <div className="basis-1/2 md:flex gap-2">
-            <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
-                <Phone className="w-6 h-6 text-white" />
-            </div>
-            <div className="basis-2/3" >
-            <div className="text-xs flex gap-4 text-white">
-                Gọi mua hàng
-                </div>
-            <div className="text-xs w-20 text-white">032.311.5151</div>
-            </div>
-            </div>
+              <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
+                <Heart className="w-6 h-6 text-white" />
+                <span className="w-5 h-5 absolute bg-[#e53350] rounded-full left-[10px] -top-[5px] md:top-0 bg-opacity-90 -mt[1px] shadow-lg">
+                  <p className="text-[0.75rem] m-auto text-white font-semibold">
+                    {like.items.length}
+                  </p>
+                </span>
+              </div>
+              <div className="basis-2/3 hidden md:block">
+                <div className="text-xs flex gap-4 text-white">Thả</div>
+                <div className="text-xs text-white">Tim</div>
+              </div>
             </div>
           </div>
-        </Link>
+        </div>
+      </button>
 
       <button onClick={() => router.push("/cart")}>
         <div className={mainnavcolor.bghover_gio_hang}>
@@ -199,8 +219,10 @@ const MainNav = () => {
               <div className="basis-1/3 flex md:flex-col flex-row items-center justify-center ">
                 <ShoppingBag className="w-6 h-6 text-white" />
                 <span className="w-5 h-5 absolute bg-[#e53350] rounded-full left-[10px] -top-[5px] md:top-0 bg-opacity-90 -mt[1px] shadow-lg">
-            <p className="text-[0.75rem] m-auto text-white font-semibold">{cart.items.length} </p>
-          </span>
+                  <p className="text-[0.75rem] m-auto text-white font-semibold">
+                    {cart.items.length}
+                  </p>
+                </span>
               </div>
               <div className="basis-2/3 hidden md:block">
                 <div className="text-xs flex gap-4 text-white">Giỏ</div>
@@ -208,25 +230,29 @@ const MainNav = () => {
               </div>
             </div>
           </div>
-          
         </div>
       </button>
-            
-      
-          {user.isSignedIn ? (
+
+      {user.isSignedIn ? (
+        <div className="bg-[#e53350]  px-2 py-1  rounded-lg ">
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      ) : (
+        <div className="cursor-pointer">
+          <SignInButton>
             <div className="bg-[#e53350]  px-2 py-1  rounded-lg ">
-            <UserButton afterSignOutUrl="/" />
+              <div className="text-white text-xs">
+                <div className="items-center justify-center text-white flex">
+                  <UserCircle2 />
+                </div>
+                <div className="items-center justify-center text-white flex">
+                  Sign in
+                </div>
+              </div>
             </div>
-          ) : (
-            <div className="bg-[#e53350]  px-2 py-1  rounded-lg ">
-            <div className="items-center justify-center text-white flex" >
-            <UserCircle2 />
-            </div>
-            <div className="text-white text-xs"> 
-              <SignInButton />
-            </div>
-          </div>
-          )}
+          </SignInButton>
+        </div>
+      )}
     </>
   );
 };

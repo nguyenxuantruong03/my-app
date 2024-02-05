@@ -1,4 +1,4 @@
-// /api/router.ts
+// /api/comments/router.ts
 import { auth } from '@clerk/nextjs';
 import { PrismaClient } from '@prisma/client';
 
@@ -116,9 +116,9 @@ export async function GET(req: any) {
   try {
     const responseComment = await prisma.comment.findMany({
       include: {
-       responsecomment: true,
-      }});
-
+        responsecomment: true,
+      },
+    });
     return NextResponse.json(responseComment);
   } catch (error) {
     console.error('Error fetching comments:', error);

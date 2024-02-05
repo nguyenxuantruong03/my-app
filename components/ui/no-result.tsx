@@ -19,7 +19,7 @@ const NoResults = () => {
                 <h3 className="text-8xl">Chưa có sản phẩm!</h3>
                 <p className="mt-5">Bạn có thể chuyển qua sản phẩm khác.</p>
                 <Link
-                  href="/"
+                  href="/home-product"
                   className="text-white bg-green-500 px-8 py-4 rounded-full inline-block mt-5"
                 >
                   Go to Home

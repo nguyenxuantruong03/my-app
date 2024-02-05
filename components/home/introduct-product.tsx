@@ -16,7 +16,7 @@ const IntroductProduct = () => {
   return (
     <div className={`pb-20 px-5 pt-2 ${root.bgwhite}`}>
       <div className="xl:flex">
-        <div className="mb-2 relative md:pl-12 md:pb-[410px] xl:w-[48%] xl:pl-8">
+        <div className="mb-2 relative md:pl-12 md:pb-[310px] xl:w-[48%] xl:pl-8">
           <div className="background-infoproduct" />
           <div className=" w-full h-[320px] shadow-xl top-[120px] z-8 bg-white rounded-md md:w-[600px] md:absolute xl:w-[700px] 2xl:w-[900px] xl:h-[440px]">
             <div className='text-lg px-3 py-10  font-bold text-gray-500 text-opacity-80 xl:mt-16 md:text-2xl md:px-10 xl:px-40'> 

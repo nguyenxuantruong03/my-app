@@ -92,7 +92,7 @@ const Menu = () => {
 
   return (
     <>
-        <div className=" mx-auto max-w-7xl h-[377px] my-2 mt-[120px] bg-white rounded-md">
+        <div className=" mx-auto max-w-7xl h-[409px] my-2 mt-[120px] bg-white rounded-md">
           <div className="flex space-x-5">
             <MenuTree
               data={categories}

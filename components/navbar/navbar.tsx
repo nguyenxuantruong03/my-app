@@ -4,7 +4,7 @@ import ImageDelivery from "./Delivery";
 import Mainnav from "./mainnav";
 import { navbarcolor } from "@/components/color/color";
 import "./delivery.css";
-import { Home, AlignLeft, Coins, Gift, ShoppingCart } from "lucide-react";
+import { Home, AlignLeft, Heart, Gift, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import axios from "axios";
 const Navbar = () => {
@@ -35,6 +35,22 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    //Check xem thử hiện tại nó đang ở path nào thì sẽ active cái đó
+    if (path === "/") {
+      handleItemClick(0);
+    } else if (path === "/home-product") {
+      handleItemClick(1);
+    } else if (path === "/listproduct") {
+      handleItemClick(2);
+    } else if (path === "/spinlucky") {
+      // You might want to adjust this based on your actual routes
+      handleItemClick(3);
+    }
+  }, []);
+
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
 
@@ -42,7 +58,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className=" fixed z-[100] w-full top-0">
+      <div className=" fixed z-[9998] w-full top-0">
       {!isHidden && (
         <div className={navbarcolor.bg_height}>
           <div className="max-w-[640px] md:max-w-3xl lg:mx-auto lg:max-w-7xl md:p-1 lg:p-0">
@@ -54,14 +70,14 @@ const Navbar = () => {
       )}
         <div className={navbarcolor.bg}>
           <div className="xl:mx-auto xl:max-w-7xl ">
-            <div className="relative flex h-16 items-center justify-between px-5">
+            <div className="relative flex h-16 items-center justify-between px-1">
               <Mainnav />
             </div>
           </div>
         </div>
       </div>
         {/* Mobile */}
-      <div className=" fixed z-[100] w-full bottom-0  md:hidden box-border bg-[#222327] h-[75px] rounded-[14px]">
+      <div className=" fixed z-[100] w-full bottom-0  md:hidden box-border bg-[#222327] h-[75px] rounded-[5px]">
         <div className="navigation">
           <ul>
             <li
@@ -101,11 +117,11 @@ const Navbar = () => {
               className={`list ${activeIndex === 3 ? "active" : ""}`}
               onClick={() => handleItemClick(3)}
             >
-              <Link href="/spinlucky">
+              <Link href="/like-product">
                 <span className="icon">
-                  <Coins />
+                  <Heart />
                 </span>
-                <span className="text">{totalCoins} xu</span>
+                <span className="text">Thả tim</span>
               </Link>
             </li>
             <li

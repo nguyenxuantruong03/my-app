@@ -11,7 +11,7 @@ position: relative;
 .bg-service::before{
     content: "";
     position: absolute;
-    right: -240px;
+    right: -200px;
     bottom: -80px;
     width: 250px;
     height: 381px;
@@ -168,7 +168,7 @@ position: relative;
 }
 
 
-
+//Hiệu ứng nảy nảy 
 .arrow {
   text-align: center;
 }
@@ -192,7 +192,7 @@ position: relative;
 
 
 //laptop
-@media (min-width:1200px) and (max-width: 1600px) { 
+@media (min-width:1500px) and (max-width: 1600px) { 
   //serrvice
   .bg-service::before{
     right: -100px;
@@ -207,7 +207,7 @@ position: relative;
   
  }
 //ipad
-@media (min-width:768px) and (max-width: 1030px) { 
+@media (min-width:768px) and (max-width: 1400px) { 
   //service
   .bg-service::before{
     right: 0px;

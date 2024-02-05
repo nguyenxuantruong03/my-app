@@ -4,19 +4,23 @@ import getProduct2 from "@/actions/product/get-product2";
 import getProduct3 from "@/actions/product/get-product3";
 import getProduct7 from "@/actions/product/get-product7";
 import getProduct8 from "@/actions/product/get-product8";
+import FlowerFalling from "@/components/flower-falling/flower-falling";
 import dynamic from "next/dynamic";
-const MainProduct = dynamic(() => import('@/components/product/mainproduct'), {
+const MainProduct = dynamic(() => import("@/components/product/mainproduct"), {
   ssr: false,
-})
-const SlideItem = dynamic(() => import('@/components/slider-item/slideitem'), {
+});
+const SlideItem = dynamic(() => import("@/components/slider-item/slideitem"), {
   ssr: false,
-})
-const Suggest = dynamic(() => import('@/components/suggest/Suggest'), {
+});
+const Suggest = dynamic(() => import("@/components/suggest/Suggest"), {
   ssr: false,
-})
-const NewsPage = dynamic(() => import('@/components/news/news'), {
+});
+const NewsPage = dynamic(() => import("@/components/news/news"), {
   ssr: false,
-})
+});
+const MapAPI = dynamic(() => import("@/components/leaflet-map/leaflet-map"), {
+  ssr: false,
+});
 export const revalidate = 86400;
 const HomePage = async () => {
   const quat = await getProduct1({ isFeatured: true });
@@ -27,10 +31,19 @@ const HomePage = async () => {
   const son = await getProduct8({ isFeatured: true });
   return (
     <>
-      <SlideItem />
-      <MainProduct quat={quat} daydien={daydien} ongnhua={ongnhua} ocam={ocam} bongden={bongden} son={son} />
-      <Suggest />
-      <NewsPage />
+      <FlowerFalling />
+        <SlideItem />
+        <MainProduct
+          quat={quat}
+          daydien={daydien}
+          ongnhua={ongnhua}
+          ocam={ocam}
+          bongden={bongden}
+          son={son}
+        />
+        <Suggest />
+        <NewsPage />
+        <MapAPI />
     </>
   );
 };

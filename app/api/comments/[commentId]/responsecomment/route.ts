@@ -1,4 +1,4 @@
-// pages/api/comments/[id]/responses.ts
+// pages/api/comments/[commentsId]/responses.ts
 
 import { PrismaClient } from '@prisma/client';
 import { auth } from '@clerk/nextjs';
@@ -17,6 +17,7 @@ export async function POST(req:Request, { params }: { params?: { commentId?: str
     }
     const existingComment = await prisma.comment.findFirst({
       where: {
+        id: params?.commentId,
         authenticationId: userId,
       },
     });
@@ -44,7 +45,7 @@ export async function POST(req:Request, { params }: { params?: { commentId?: str
 
 
 export async function DELETE(
-  req: Request) {
+  req: Request,{ params }: { params?: { commentId?: string } }) {
   try {
     const { userId } = auth();
     const body = await req.json();
@@ -55,7 +56,8 @@ export async function DELETE(
 
     const commentById = await prisma.comment.findFirst({
       where: {
-        authenticationId: userId
+        authenticationId: userId,
+        id: params?.commentId,
       }
     });
 
@@ -76,7 +78,7 @@ export async function DELETE(
   }
 };
 
-export async function PATCH(req: Request) {
+export async function PATCH(req: Request,{ params }: { params?: { commentId?: string } }) {
   try {
     const { userId } = auth();
     const body = await req.json();
@@ -88,7 +90,7 @@ export async function PATCH(req: Request) {
 
     const existingComment = await prisma.comment.findFirst({
       where: {
-        id: id,
+        id: params?.commentId,
         authenticationId: userId,
       },
     });

@@ -23,7 +23,7 @@ const Sumary = () => {
  
   const onRemoveAll = () => {
     cart.removeSelectedItems();
-    toast.success("Selected items have been removed from the cart.");
+    toast.success("Tất cả lựa chọn trong giỏ hàng đã được xóa.");
   };
 
   const selectedItems = items.filter((item) =>

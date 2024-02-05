@@ -24,7 +24,7 @@ const InformationCompanyFooter = () => {
         </div>
       </div>
       <div className={InformationCompanyFootercolor.textflex}>
-      Cửa hàng VLXH - Địa chỉ: 457 Lê Văn Quới, Quân Bình Tân, Phường Bình Trị Đông A, Thành phố Hồ Chí Minh, Việt Nam, Điện thoại 0352261103
+      Cửa hàng VLXD TrườngĐạt - Địa chỉ: 457 Lê Văn Quới, Quân Bình Tân, Phường Bình Trị Đông A, Thành phố Hồ Chí Minh, Việt Nam, Điện thoại 0352261103
         </div> 
         <div className="items-center flex justify-center">
         <Link href="/" className=" mt-1 w-20 h-8 border rounded-sm mb-16 md:mb-0">

@@ -17,7 +17,7 @@ const Story = () => {
               height="606"
             />
             <Image
-              className="hidden xl:block xl:-bottom-[535px] xl:left-[165px] 2xl:-bottom-[475px] 2xl:left-[350px] absolute "
+              className="hidden xl:block xl:-bottom-[545px] xl:left-[165px] 2xl:-bottom-[525px] 2xl:left-[350px] absolute "
               src="/images/coating.png"
               alt="image"
               width="471"

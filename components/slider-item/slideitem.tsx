@@ -59,7 +59,7 @@ const SlideItem = async () => {
           </div>
           <SliderSwipper data={billboard} />
 
-          <div className="w-full space-y-4 h-[115px] hidden xl:block">
+          <div className="w-full space-y-4 hidden xl:block">
             <ImageMini data={billboardmini} />
           </div>
         </div>
